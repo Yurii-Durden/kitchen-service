@@ -16,3 +16,13 @@ class Cook(AbstractUser):
                 f"{self.first_name} {self.last_name} "
                 f"({self.years_of_experience} years_of_experience)"
             )
+
+
+class DishType(models.Model):
+    name = models.CharField(max_length=255, unique=True)
+
+    class Meta:
+        ordering = ["name"]
+
+    def __str__(self) -> str:
+        return self.name
