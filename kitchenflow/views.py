@@ -12,3 +12,9 @@ def index(request) -> HttpResponse:
     }
 
     return render(request,"kitchenflow/home_page.html", context=context)
+
+
+class CookListView(generic.ListView):
+    model = Cook
+    template_name = "kitchenflow/cooks_list.html"
+    context_object_name = "cooks_list"
