@@ -24,6 +24,7 @@ class DishListView(generic.ListView):
     model = Dish
     template_name = "kitchenflow/dishes_list.html"
     context_object_name = "dish_list"
+    queryset = DishType.objects.select_related("dish_type")
 
 
 class DishTypeListView(generic.ListView):
