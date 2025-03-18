@@ -5,4 +5,11 @@
     {{ cook.first_name }} {{ cook.last_name }}
   </h1>
   <p>years of experience - {{ cook.years_of_experience }}</p>
+  <h3>Dishes</h3>
+  {% for dish in cook.dishes.all %}
+    <p>{{ dish }}</p>
+  {% empty %}
+    <p>No dishes</p>
+  {% endfor %}
+
 {% endblock %}
