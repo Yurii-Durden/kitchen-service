@@ -12,7 +12,7 @@
       </tr>
     {% for cook in cooks_list %}
       <tr>
-        <td><a href="#">{{ cook.id }}</a></td>
+        <td><a href="{% url 'kitchenflow:cook-detail' cook.id %}">{{ cook.id }}</a></td>
         <td>{{ cook.first_name }}</td>
         <td>{{ cook.last_name }}</td>
         <td>{{ cook.years_of_experience }}</td>

@@ -9,7 +9,7 @@
       </tr>
     {% for dish_type in dish_type_list %}
       <tr>
-        <td><a href="#">{{ dish_type.name }}</a></td>
+        <td><a href="{% url 'kitchenflow:dish-type-detail' dish_type.id %}">{{ dish_type.name }}</a></td>
       </tr>
     {% endfor %}
     </table>
