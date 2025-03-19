@@ -43,6 +43,6 @@ class DishListView(generic.ListView):
 
 class DishTypeListView(generic.ListView):
     model = DishType
-    template_name = "kitchenflow/type_of_dishes.html"
+    template_name = "kitchenflow/type_of_dishes_list.html"
     context_object_name = "dish_type_list"
 
