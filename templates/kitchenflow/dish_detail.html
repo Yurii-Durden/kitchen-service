@@ -1,1 +1,20 @@
 {% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    {{ dish.name }}
+  </h1>
+  <p>price - {{ dish.price }}$</p>
+  <p>dish type - {{ dish.dish_type.name }}</p>
+  {% if dish.description %}
+    <p>{{ dish.description }}</p>
+  {% endif %}
+  <h3>Cooks</h3>
+  <ul>
+    {% for cook in dish.cooks.all %}
+      <li>
+        <a href="#">{{ cook.first_name }} {{ cook.last_name }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
