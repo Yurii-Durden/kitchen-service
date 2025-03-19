@@ -1,1 +1,14 @@
 {% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    {{ dish_type_detail }}
+  </h1>
+  {% if dish_type_detail.dishes.all %}
+    <ul>
+      {% for dish in dish_type_detail.dishes.all %}
+        <li><a href="#">{{ dish }}</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}
