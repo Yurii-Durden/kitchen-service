@@ -1,6 +1,6 @@
 <ul class="sidebar-nav list-group">
-  <li class="list-group-item"><a href="#">Home</a></li>
-  <li class="list-group-item"><a href="#">All cooks</a></li>
-  <li class="list-group-item"><a href="#">All dishes</a></li>
-  <li class="list-group-item"><a href="#">All types of dishes</a></li>
+  <li class="list-group-item"><a href="{% url 'kitchenflow:index' %}">Home</a></li>
+  <li class="list-group-item"><a href="{% url 'kitchenflow:cook-list' %}">All cooks</a></li>
+  <li class="list-group-item"><a href="{% url 'kitchenflow:dish-list' %}">All dishes</a></li>
+  <li class="list-group-item"><a href="{% url 'kitchenflow:dish-type-list' %}">All types of dishes</a></li>
 </ul>
