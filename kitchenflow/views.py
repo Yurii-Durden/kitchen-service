@@ -5,10 +5,13 @@ from django.views import generic
 from kitchenflow.models import Cook, Dish, DishType
 
 def index(request) -> HttpResponse:
+    num_visits = request.session.get("num_visits", 0) + 1
+    request.session["num_visits"] = num_visits
     context = {
         "count_of_cooks": Cook.objects.count(),
         "count_of_dishes": Dish.objects.count(),
         "count_of_dishes_type": DishType.objects.count(),
+        "num_visits": num_visits
     }
 
     return render(request,"kitchenflow/home_page.html", context=context)
