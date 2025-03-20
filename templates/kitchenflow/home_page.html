@@ -5,5 +5,5 @@
   <p>Cooks: {{ count_of_cooks }}</p>
   <p>Dishes: {{ count_of_dishes }}</p>
   <p>Type of dishes: {{ count_of_dishes_type }}</p>
-  <p>You visited this page {{ num_visits }} times</p>
+  <p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}</p>
 {% endblock %}
