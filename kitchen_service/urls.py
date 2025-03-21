@@ -17,9 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from kitchenflow.views import logout_view
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('admin/', admin.site.urls),
+    path("accounts/logout/", logout_view, name="logout"),
     path("accounts/", include("django.contrib.auth.urls")),
     path("", include("kitchenflow.urls", namespace="kitchenflow"))
 ]

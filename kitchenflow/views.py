@@ -23,7 +23,7 @@ def index(request) -> HttpResponse:
 
 
 @login_required
-def logout_view(request):
+def logout_view(request) -> HttpResponse:
     logout(request)
     return render(request, "registration/logged_out.html")
 
