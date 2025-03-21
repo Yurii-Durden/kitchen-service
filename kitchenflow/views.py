@@ -1,3 +1,4 @@
+from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
@@ -19,6 +20,12 @@ def index(request) -> HttpResponse:
     }
 
     return render(request,"kitchenflow/home_page.html", context=context)
+
+
+@login_required
+def logout_view(request):
+    logout(request)
+    return render(request, "registration/logged_out.html")
 
 
 class CookListView(LoginRequiredMixin, generic.ListView):
