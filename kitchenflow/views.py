@@ -7,7 +7,11 @@ from django.urls import reverse_lazy, reverse
 from django.views import generic
 
 from kitchenflow.models import Cook, Dish, DishType
-from kitchenflow.forms import CookCreationForm, CookPersonalInfoUpdateForm
+from kitchenflow.forms import (
+    CookCreationForm,
+    CookPersonalInfoUpdateForm,
+    DishCreatingForm
+)
 
 @login_required
 def index(request) -> HttpResponse:
@@ -64,6 +68,12 @@ class DishListView(LoginRequiredMixin, generic.ListView):
     context_object_name = "dish_list"
     queryset = Dish.objects.select_related("dish_type")
     paginate_by = 2
+
+
+class DishCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Dish
+    form_class = DishCreatingForm
+    success_url = reverse_lazy("kitchenflow:dish-list")
 
 
 class DishTypeListView(LoginRequiredMixin, generic.ListView):
