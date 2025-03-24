@@ -39,6 +39,11 @@ class CookDetailView(LoginRequiredMixin, generic.DetailView):
     model = Cook
 
 
+class CookCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Cook
+    form_class = CreateCookForm
+
+
 class DishDetailView(LoginRequiredMixin, generic.DetailView):
     model = Dish
 
