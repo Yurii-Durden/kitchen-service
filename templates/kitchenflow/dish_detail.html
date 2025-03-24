@@ -13,7 +13,7 @@
   <ul>
     {% for cook in dish.cooks.all %}
       <li>
-        <a href="#">{{ cook.first_name }} {{ cook.last_name }}</a>
+        <a href="{% url 'kitchenflow:cook-detail' cook.id %}">{{ cook.first_name }} {{ cook.last_name }}</a>
       </li>
     {% endfor %}
   </ul>
