@@ -3,11 +3,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views import generic
 
 from kitchenflow.models import Cook, Dish, DishType
-from kitchenflow.forms import CookCreationForm
+from kitchenflow.forms import CookCreationForm, CookPersonalInfoUpdateForm
 
 @login_required
 def index(request) -> HttpResponse:
@@ -48,8 +48,10 @@ class CookCreateView(LoginRequiredMixin, generic.CreateView):
 
 class CookUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Cook
-    form_class = CookCreationForm
-    success_url = reverse_lazy("kitchenflow:cook-list")
+    form_class = CookPersonalInfoUpdateForm
+
+    def get_success_url(self):
+        return reverse("kitchenflow:cook-detail", args=[self.object.pk])
 
 
 class DishDetailView(LoginRequiredMixin, generic.DetailView):
