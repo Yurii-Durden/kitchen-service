@@ -7,6 +7,9 @@
   <div>
     <a href="{% url 'kitchenflow:dish-update' dish.id %}">Update</a>
   </div>
+  <div>
+    <a href="{% url 'kitchenflow:dish-delete' dish.id %}">Delete</a>
+  </div>
   <p>price - {{ dish.price }}$</p>
   <p>dish type - {{ dish.dish_type.name }}</p>
   {% if dish.description %}

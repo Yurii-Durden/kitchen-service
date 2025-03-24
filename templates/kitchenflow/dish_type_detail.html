@@ -5,7 +5,10 @@
     {{ dish_type_detail }}
   </h1>
   <div>
-    <a href="{% url 'kitchenflow:dish-type-update' object.id %}">Update</a>
+    <a href="{% url 'kitchenflow:dish-type-update' dish_type_detail.id %}">Update</a>
+  </div>
+  <div>
+    <a href="{% url 'kitchenflow:dish-type-delete' dish_type_detail.id %}">Delete</a>
   </div>
   {% if dish_type_detail.dishes.all %}
     <ul>
