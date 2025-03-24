@@ -76,6 +76,14 @@ class DishCreateView(LoginRequiredMixin, generic.CreateView):
     success_url = reverse_lazy("kitchenflow:dish-list")
 
 
+class DishUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Dish
+    form_class = DishCreatingForm
+
+    def get_success_url(self):
+        reverse("kitchenflow:dish-detail", args=[self.object.pk])
+
+
 class DishTypeListView(LoginRequiredMixin, generic.ListView):
     model = DishType
     template_name = "kitchenflow/type_of_dishes_list.html"
