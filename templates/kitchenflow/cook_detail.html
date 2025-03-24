@@ -4,6 +4,9 @@
   <h1>
     {{ cook.first_name }} {{ cook.last_name }}
   </h1>
+  <div class="create-update-button">
+    <a href="{% url "kitchenflow:cook-update" cook.id %}">Update</a>
+  </div>
   <p>years of experience - {{ cook.years_of_experience }}</p>
   <h3>Dishes</h3>
   {% for dish in cook.dishes.all %}
