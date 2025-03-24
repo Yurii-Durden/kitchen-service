@@ -2,6 +2,7 @@
 
 {% block content %}
   <h1>Cooks</h1>
+  <div class="create-button"><a href="{% url 'kitchenflow:cook-create' %}">Create</a></div>
   {% if cooks_list %}
     <table class="table">
       <tr>
