@@ -4,6 +4,9 @@
   <h1>
     {{ dish.name }}
   </h1>
+  <div>
+    <a href="{% url 'kitchenflow:dish-update' dish.id %}">Update</a>
+  </div>
   <p>price - {{ dish.price }}$</p>
   <p>dish type - {{ dish.dish_type.name }}</p>
   {% if dish.description %}

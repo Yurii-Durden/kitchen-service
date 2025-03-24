@@ -2,6 +2,9 @@
 
 {% block content %}
   <h1>Dishes</h1>
+  <div>
+    <a href="{% url 'kitchenflow:dish-create' %}">Create</a>
+  </div>
   {% if dish_list %}
     <table class="table">
       <tr>
