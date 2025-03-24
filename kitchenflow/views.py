@@ -81,7 +81,7 @@ class DishUpdateView(LoginRequiredMixin, generic.UpdateView):
     form_class = DishCreatingForm
 
     def get_success_url(self):
-        reverse("kitchenflow:dish-detail", args=[self.object.pk])
+        return reverse("kitchenflow:dish-detail", args=[self.object.pk])
 
 
 class DishTypeListView(LoginRequiredMixin, generic.ListView):
