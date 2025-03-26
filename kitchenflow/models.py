@@ -8,6 +8,7 @@ from django.db import models
 class Cook(AbstractUser):
     years_of_experience = models.PositiveIntegerField(
         default=0,
+        validators=[MinValueValidator(0), MaxValueValidator(100)]
     )
 
     class Meta:
