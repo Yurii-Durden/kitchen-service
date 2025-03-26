@@ -1,11 +1,14 @@
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 # Create your models here.
 
 
 class Cook(AbstractUser):
-    years_of_experience = models.PositiveIntegerField(default=0)
+    years_of_experience = models.PositiveIntegerField(
+        default=0,
+    )
 
     class Meta:
         verbose_name = "cook"
@@ -26,6 +29,11 @@ class DishType(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+    def save(self, *args, **kwargs):
+        if self.name:
+            self.name = self.name.title()
+        super().save(*args, **kwargs)
 
 
 class Dish(models.Model):
