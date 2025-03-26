@@ -32,6 +32,15 @@ class DishCreatingForm(ModelForm):
         queryset=get_user_model().objects.all(),
         widget=forms.CheckboxSelectMultiple,
     )
+
     class Meta:
         model = Dish
         fields = "__all__"
+
+    def clean_description(self):
+        price = self.cleaned_data.get("price")
+        description = self.cleaned_data.get("description")
+
+        if price >= 100 and not description:
+            raise forms.ValidationError("Description is required for expensive dishes.")
+        return description
