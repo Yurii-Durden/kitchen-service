@@ -30,3 +30,11 @@ class CookAdminPanelTest(TestCase):
         response = self.client.get(url)
 
         self.assertContains(response, self.cook.years_of_experience)
+
+    def test_cook_admin_add_fieldsets(self):
+        url = reverse("admin:kitchenflow_cook_add")
+        response = self.client.get(url)
+
+        self.assertContains(response, "years_of_experience")
+        self.assertContains(response, "first_name")
+        self.assertContains(response, "last_name")
