@@ -5,6 +5,7 @@
   <div>
     <a href="{% url 'kitchenflow:dish-create' %}">Create</a>
   </div>
+  {% include "includes/search_form.html" %}
   {% if dish_list %}
     <table class="table">
       <tr>

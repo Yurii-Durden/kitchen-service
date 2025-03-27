@@ -3,6 +3,7 @@
 {% block content %}
   <h1>Cooks</h1>
   <div class="create-button"><a href="{% url 'kitchenflow:cook-create' %}">Create</a></div>
+  {% include "includes/search_form.html" %}
   {% if cooks_list %}
     <table class="table">
       <tr>
