@@ -10,7 +10,10 @@ from kitchenflow.models import Cook, Dish, DishType
 from kitchenflow.forms import (
     CookCreationForm,
     CookPersonalInfoUpdateForm,
-    DishCreatingForm
+    DishCreatingForm,
+    CookSearchForm,
+    DishSearchForm,
+    DishTypeSearchForm
 )
 
 @login_required
@@ -38,6 +41,17 @@ class CookListView(LoginRequiredMixin, generic.ListView):
     template_name = "kitchenflow/cooks_list.html"
     context_object_name = "cooks_list"
     paginate_by = 2
+
+    def get_context_data(
+            self, *, object_list=..., **kwargs
+    ):
+        context = super(CookListView, self).get_context_data(**kwargs)
+        nickname = self.request.GET.get("nickname")
+        context["search_form"] = CookSearchForm(
+            initial={"nickname": nickname}
+        )
+        return context
+
 
 
 class CookDetailView(LoginRequiredMixin, generic.DetailView):
@@ -75,6 +89,17 @@ class DishListView(LoginRequiredMixin, generic.ListView):
     queryset = Dish.objects.select_related("dish_type")
     paginate_by = 2
 
+    def get_context_data(
+        self, *, object_list = ..., **kwargs
+    ):
+        context = super(DishListView, self).get_context_data(**kwargs)
+        name = self.request.GET.get("name")
+        context["search_form"] = DishSearchForm(
+            initial={"name":name}
+        )
+
+        return context
+
 
 class DishCreateView(LoginRequiredMixin, generic.CreateView):
     model = Dish
@@ -101,6 +126,17 @@ class DishTypeListView(LoginRequiredMixin, generic.ListView):
     template_name = "kitchenflow/type_of_dishes_list.html"
     context_object_name = "dish_type_list"
     paginate_by = 2
+
+    def get_context_data(
+        self, *, object_list = ..., **kwargs
+    ):
+        context = super(DishTypeListView, self).get_context_data(**kwargs)
+        name = self.request.GET.get("name")
+        context["search_form"] = DishTypeSearchForm(
+            initial={"name": name}
+        )
+
+        return context
 
 
 class DishTypeDetailView(LoginRequiredMixin, generic.DetailView):
