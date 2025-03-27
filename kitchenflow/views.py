@@ -46,11 +46,18 @@ class CookListView(LoginRequiredMixin, generic.ListView):
             self, *, object_list=..., **kwargs
     ):
         context = super(CookListView, self).get_context_data(**kwargs)
-        nickname = self.request.GET.get("nickname")
+        username = self.request.GET.get("username")
         context["search_form"] = CookSearchForm(
-            initial={"nickname": nickname}
+            initial={"username": username}
         )
         return context
+
+    def get_queryset(self):
+        queryset = Cook.objects.all()
+        username = self.request.GET.get("username")
+        if username:
+            return queryset.filter(username__icontains=username)
+        return queryset
 
 
 
@@ -86,7 +93,6 @@ class DishListView(LoginRequiredMixin, generic.ListView):
     model = Dish
     template_name = "kitchenflow/dishes_list.html"
     context_object_name = "dish_list"
-    queryset = Dish.objects.select_related("dish_type")
     paginate_by = 2
 
     def get_context_data(
@@ -99,6 +105,13 @@ class DishListView(LoginRequiredMixin, generic.ListView):
         )
 
         return context
+
+    def get_queryset(self):
+        queryset = Dish.objects.select_related("dish_type")
+        name = self.request.GET.get("name")
+        if name:
+            return queryset.filter(name__icontains=name)
+        return queryset
 
 
 class DishCreateView(LoginRequiredMixin, generic.CreateView):
@@ -137,6 +150,13 @@ class DishTypeListView(LoginRequiredMixin, generic.ListView):
         )
 
         return context
+
+    def get_queryset(self):
+        queryset = DishType.objects.all()
+        name = self.request.GET.get("name")
+        if name:
+            return queryset.filter(name__icontains=name)
+        return queryset
 
 
 class DishTypeDetailView(LoginRequiredMixin, generic.DetailView):
