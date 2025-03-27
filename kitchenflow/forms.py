@@ -44,3 +44,28 @@ class DishCreatingForm(ModelForm):
         if price >= 100 and not description:
             raise forms.ValidationError("Description is required for expensive dishes.")
         return description
+
+
+class CookSearchForm(forms.Form):
+    username = forms.CharField(
+        max_length=255,
+        label="",
+        required=False,
+        widget=forms.TextInput(attrs={"placeholder": "search by username"})
+    )
+
+class DishSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        label="",
+        required=False,
+        widget=forms.TextInput(attrs={"placeholder": "search by dish name"})
+    )
+
+class DishTypeSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        label="",
+        required=False,
+        widget=forms.TextInput(attrs={"placeholder": "search by dish type name"})
+    )
