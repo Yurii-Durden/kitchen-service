@@ -24,3 +24,9 @@ class CookAdminPanelTest(TestCase):
         response = self.client.get(url)
 
         self.assertContains(response, self.cook.years_of_experience)
+
+    def test_cook_admin_fieldsets(self):
+        url = reverse("admin:kitchenflow_cook_change", args=[self.cook.pk])
+        response = self.client.get(url)
+
+        self.assertContains(response, self.cook.years_of_experience)
