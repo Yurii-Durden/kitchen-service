@@ -10,6 +10,8 @@ class Cook(AbstractUser):
         default=0,
         validators=[MinValueValidator(0), MaxValueValidator(100)]
     )
+    is_chef = models.BooleanField(default=False)
+
 
     class Meta:
         verbose_name = "cook"
