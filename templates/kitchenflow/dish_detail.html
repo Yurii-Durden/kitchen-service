@@ -20,6 +20,9 @@
     {% for cook in dish.cooks.all %}
       <li>
         <a href="{% url 'kitchenflow:cook-detail' cook.id %}">{{ cook.first_name }} {{ cook.last_name }}</a>
+        {% if user.is_chef %}
+          <a href="{% url 'kitchenflow:remove-from-cooking' cook.id %}">Remove from cooking</a>
+        {% endif %}
       </li>
     {% endfor %}
   </ul>
