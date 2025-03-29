@@ -114,7 +114,11 @@ class DishListView(LoginRequiredMixin, generic.ListView):
         return context
 
     def get_queryset(self):
-        queryset = Dish.objects.select_related("dish_type")
+        user = self.request.user
+        if user.is_chef:
+            queryset = Dish.objects.select_related("dish_type")
+        else:
+            queryset = Dish.objects.select_related("dish_type").filter(cooks=user)
         name = self.request.GET.get("name")
         if name:
             return queryset.filter(name__icontains=name)
@@ -159,7 +163,11 @@ class DishTypeListView(LoginRequiredMixin, generic.ListView):
         return context
 
     def get_queryset(self):
-        queryset = DishType.objects.all()
+        user = self.request.user
+        if user.is_chef:
+            queryset = DishType.objects.all()
+        else:
+            queryset = DishType.objects.filter(dishes__cooks=user)
         name = self.request.GET.get("name")
         if name:
             return queryset.filter(name__icontains=name)
