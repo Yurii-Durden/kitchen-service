@@ -2,9 +2,11 @@
 
 {% block content %}
   <h1>Type of Dishes</h1>
-  <div>
-    <a href="{% url 'kitchenflow:dish-type-create' %}">Create</a>
-  </div>
+  {% if user.is_chef %}
+    <div>
+      <a href="{% url 'kitchenflow:dish-type-create' %}">Create</a>
+    </div>
+  {% endif %}
   {% include "includes/search_form.html" %}
   {% if dish_type_list %}
     <table class="table">
