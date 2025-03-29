@@ -4,16 +4,20 @@
   <h1>
     {{ cook.first_name }} {{ cook.last_name }}
   </h1>
-  <div class="create-update-button">
-    <a href="{% url "kitchenflow:cook-update" cook.id %}">Update</a>
-  </div>
-  <div>
-    <a href="{% url 'kitchenflow:cook-delete' cook.id %}">Delete</a>
-  </div>
+  {% if cook == user or user.is_chef %}
+    <div class="create-update-button">
+      <a href="{% url "kitchenflow:cook-update" cook.id %}">Update</a>
+    </div>
+  {% endif %}
+  {% if user.is_chef %}
+  	<div>
+      <a href="{% url 'kitchenflow:cook-delete' cook.id %}">Delete</a>
+    </div>
+  {% endif %}
   <p>years of experience - {{ cook.years_of_experience }}</p>
   <h3>Dishes</h3>
   {% for dish in cook.dishes.all %}
-    <p>{{ dish }}</p>
+    <p><a href="{% url 'kitchenflow:dish-detail' dish.id %}">{{ dish }}</a></p>
   {% empty %}
     <p>No dishes</p>
   {% endfor %}

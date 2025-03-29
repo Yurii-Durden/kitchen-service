@@ -4,17 +4,22 @@
   <h1>
     {{ dish_type_detail }}
   </h1>
-  <div>
-    <a href="{% url 'kitchenflow:dish-type-update' dish_type_detail.id %}">Update</a>
-  </div>
-  <div>
-    <a href="{% url 'kitchenflow:dish-type-delete' dish_type_detail.id %}">Delete</a>
-  </div>
+  {% if user.is_chef %}
+    <div>
+      <a href="{% url 'kitchenflow:dish-type-update' dish_type_detail.id %}">Update</a>
+    </div>
+    <div>
+      <a href="{% url 'kitchenflow:dish-type-delete' dish_type_detail.id %}">Delete</a>
+    </div>
+  {% endif %}
+
   {% if dish_type_detail.dishes.all %}
     <ul>
       {% for dish in dish_type_detail.dishes.all %}
         <li><a href="{% url 'kitchenflow:dish-detail' dish.id %}">{{ dish }}</a></li>
       {% endfor %}
     </ul>
+  {% else %}
+    <p>No dishes</p>
   {% endif %}
 {% endblock %}

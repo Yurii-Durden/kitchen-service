@@ -9,6 +9,6 @@
 
   <li class="list-group-item"><a href="{% url 'kitchenflow:index' %}">Home</a></li>
   <li class="list-group-item"><a href="{% url 'kitchenflow:cook-list' %}">All cooks</a></li>
-  <li class="list-group-item"><a href="{% url 'kitchenflow:dish-list' %}">All dishes</a></li>
-  <li class="list-group-item"><a href="{% url 'kitchenflow:dish-type-list' %}">All types of dishes</a></li>
+  <li class="list-group-item"><a href="{% url 'kitchenflow:dish-list' %}">{{ user.is_chef|yesno:"All , My " }}dishes</a></li>
+  <li class="list-group-item"><a href="{% url 'kitchenflow:dish-type-list' %}">{{ user.is_chef|yesno:"All , My " }} types of dishes</a></li>
 </ul>
