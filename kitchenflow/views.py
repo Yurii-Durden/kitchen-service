@@ -1,8 +1,9 @@
-from django.contrib.auth import logout
+from django.contrib.auth import logout, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.core.exceptions import ObjectDoesNotExist
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 
@@ -87,6 +88,12 @@ class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class DishDetailView(LoginRequiredMixin, generic.DetailView):
     model = Dish
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["cooks"] = get_user_model().objects.all()
+
+        return context
 
 
 class DishListView(LoginRequiredMixin, generic.ListView):
@@ -185,3 +192,13 @@ class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = DishType
     template_name = "kitchenflow/dish_type_delete.html"
     success_url = reverse_lazy("kitchenflow:dish-type-list")
+
+
+def remove_from_cooking(request, dish_pk: int, cook_pk: int) -> HttpResponseRedirect:
+    cook = get_user_model().objects.get(id=cook_pk)
+    dish = Dish.objects.get(id=dish_pk)
+    if cook in dish.cooks.all():
+        dish.cooks.remove(cook)
+    else:
+        dish.cooks.add(cook)
+    return HttpResponseRedirect(reverse_lazy("kitchenflow:dish-detail", args=[dish_pk]))

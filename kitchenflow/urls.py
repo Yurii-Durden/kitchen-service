@@ -17,6 +17,7 @@ urlpatterns = [
     path("dishes/create/", views.DishCreateView.as_view(), name="dish-create"),
     path("dishes/update/<int:pk>/", views.DishUpdateView.as_view(), name="dish-update"),
     path("dishes/<int:pk>", views.DishDetailView.as_view(), name="dish-detail"),
+    path("dishes/<int:dish_pk>/<int:cook_pk>/remove-from-cooking/", views.remove_from_cooking, name="remove-from-cooking"),
     path("dishes/delete/<int:pk>/", views.DishDeleteView.as_view(), name="dish-delete"),
     path("dish-types/", views.DishTypeListView.as_view(), name="dish-type-list"),
     path("dish-types/<int:pk>", views.DishTypeDetailView.as_view(), name="dish-type-detail"),
