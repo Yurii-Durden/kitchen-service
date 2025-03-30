@@ -9,6 +9,7 @@
 }
 
 .cook-list {
+    padding-left: 0;
     position: absolute;
     left: 0;
     list-style: none;
@@ -30,7 +31,7 @@
 
 .cook-list-items {
     padding: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.1s ease;
 }
 
 .cook-list-items:hover {
@@ -53,7 +54,7 @@
     display: block;
     text-decoration: none;
     color: black;
-    transition: color 0.3s ease;
+    transition: color 0.1s ease;
 }
 
 .cook-list-link:hover {
