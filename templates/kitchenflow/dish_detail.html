@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block extra_styles %}
+  <link rel="stylesheet" href="{% static 'css/drop_menu_style.css' %}">
+{% endblock %}
 
 {% block content %}
   <h1>
@@ -19,17 +24,19 @@
   {% endif %}
   <h3>Cooks</h3>
   {% if user.is_chef %}
-    <div class="cook-list-box">
-      <ul class="cook-list">
-        {% for cook in cooks %}
-          <li class="cook-list-items">
-            <a class="cook-list-links" href="{% url 'kitchenflow:remove-from-cooking' dish.id cook.id %}">
-              {{ cook.first_name }} {{ cook.last_name }}
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
+    <ul class="cook-list-box">
+      <li class="add-cook-button">Add cook
+        <ul class="cook-list">
+          {% for cook in cooks %}
+            <li class="cook-list-items">
+              <a class="cook-list-link" href="{% url 'kitchenflow:remove-from-cooking' dish.id cook.id %}">
+                {{ cook.first_name }} {{ cook.last_name }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </li>
+    </ul>
   {% endif %}
   {% if dish.cooks.all %}
     <ul>
