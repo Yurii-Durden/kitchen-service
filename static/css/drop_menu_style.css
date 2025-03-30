@@ -1,0 +1,62 @@
+.cook-list-box {
+    position: relative;
+    width: 150px;
+    list-style: none;
+}
+
+.add-cook-button {
+    padding: 10px 0 10px 0;
+}
+
+.cook-list {
+    position: absolute;
+    left: 0;
+    list-style: none;
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(3px);
+    border-radius: 5px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease, transform 0.5s ease;
+}
+
+.cook-list-box .add-cook-button:hover > .cook-list {
+    visibility: visible;
+    opacity: 1;
+    box-shadow: 30px 30px 50px #e2e2e2;
+    transform: translateY(10px);
+}
+
+.cook-list-items {
+    padding: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cook-list-items:hover {
+    background-color: #a47764;
+}
+
+.cook-list-items:hover .cook-list-link{
+    color: white;
+}
+
+.cook-list-items:first-child {
+    border-radius: 5px 5px 0 0;
+}
+
+.cook-list-items:last-child {
+    border-radius: 0 0 5px 5px;
+}
+
+.cook-list-link {
+    display: block;
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.cook-list-link:hover {
+    text-decoration: none;
+    color: white;
+}
