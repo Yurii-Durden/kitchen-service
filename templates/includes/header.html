@@ -1,0 +1,32 @@
+<header class="header">
+  <div class="header-container">
+    <nav class="nav-elems">
+      <ul class="nav-list">
+        <li class="nav-items">
+          <a class="nav-link" href="{% url 'kitchenflow:cook-list' %}">ALL COOKS</a>
+        </li>
+        <li class="nav-items">
+          <a class="nav-link" href="{% url 'kitchenflow:dish-list' %}">{{ user.is_chef|yesno:"All , MY " }}DISHES</a>
+        </li>
+        <li class="nav-items">
+          <a class="nav-link" href="{% url 'kitchenflow:dish-type-list' %}">{{ user.is_chef|yesno:"ALL , MY " }} TYPES OF DISHES</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="logo-box">
+      <a class="logo" href="{% url 'kitchenflow:index' %}">SERÈNE ÉLIX</a>
+    </div>
+
+    <ul class="login-list">
+      {% if user.is_authenticated %}
+        <li class="login-list-items user-info"><a href="{% url 'kitchenflow:cook-detail' user.id %}">USER: {{ user.username }}</a></li>
+        <li class="login-list-items"><a href="{% url 'logout' %}">LOGOUT</a></li>
+      {% else %}
+        <li class="login-list-items"><a href="{% url 'login' %}">LOGIN</a></li>
+      {% endif %}
+    </ul>
+  </div>
+</header>
+
+

@@ -38,7 +38,6 @@
     width: 350px;
     padding: 10px;
     background-color: #F2F2F2;
-    backdrop-filter: blur(3px);
     border-radius: 10px;
     visibility: hidden;
     opacity: 0;
