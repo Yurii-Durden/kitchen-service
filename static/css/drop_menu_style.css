@@ -2,62 +2,93 @@
     position: relative;
     width: 150px;
     list-style: none;
+    padding-left: 0;
 }
 
 .add-cook-button {
     padding: 10px 0 10px 0;
+    transition: color 0.3s ease;
+    border-radius: 5px;
+}
+
+.add-cook-button:hover {
+    color: rgb(132, 96, 50);
+}
+
+.bx-chevron-down {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.add-cook-button:hover .bx-chevron-down {
+    transform: rotate(-180deg);
+}
+
+.button-text {
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 5px
 }
 
 .cook-list {
-    padding-left: 0;
     position: absolute;
     left: 0;
     list-style: none;
-    width: 250px;
-    background-color: rgba(255, 255, 255, 0.8);
+    width: 350px;
+    padding: 10px;
+    background-color: #F2F2F2;
     backdrop-filter: blur(3px);
-    border-radius: 5px;
+    border-radius: 10px;
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease, transform 0.5s ease;
+    transition: visibility 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease-in-out;
 }
 
 .cook-list-box .add-cook-button:hover > .cook-list {
     visibility: visible;
     opacity: 1;
-    box-shadow: 30px 30px 50px #e2e2e2;
-    transform: translateY(10px);
+    box-shadow: 35px 35px 60px #cecece;
+    transform: translate3d(0, 10px, 0);
 }
 
 .cook-list-items {
-    padding: 5px;
-    transition: background-color 0.1s ease;
+    padding: 10px;
+    transition: background-color 0.2s ease;
 }
 
-.cook-list-items:hover {
-    background-color: #a47764;
+.cook-list-items:not(:last-child) {
+    border-bottom: .5px solid rgba(0, 0, 0, 0.2);
 }
 
-.cook-list-items:hover .cook-list-link{
-    color: white;
-}
+/*.cook-list-items:first-child {*/
+/*    border-radius: 5px 5px 0 0;*/
+/*}*/
 
-.cook-list-items:first-child {
-    border-radius: 5px 5px 0 0;
-}
-
-.cook-list-items:last-child {
-    border-radius: 0 0 5px 5px;
-}
+/*.cook-list-items:last-child {*/
+/*    border-radius: 0 0 5px 5px;*/
+/*}*/
 
 .cook-list-link {
+    color: #66585b;
+    position: relative;
     display: block;
     text-decoration: none;
-    color: black;
-    transition: color 0.1s ease;
+    transition: color 0.3s ease;
 }
 
-.cook-list-link:hover {
+.cook-list-link:hover{
+    color: rgb(132, 96, 50);
     text-decoration: none;
-    color: white;
+}
+
+.add-cook {
+    position: absolute;
+    right: 3%;
+    transition: transform 0.3s ease-in-out, color 0.3s ease;
+}
+
+.cook-list-items:hover .add-cook {
+    color: #a67057;
+    transform: translate3d(10px, 0, 0);
 }
