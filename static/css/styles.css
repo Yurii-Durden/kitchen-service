@@ -18,7 +18,7 @@ ol, ul {
 
 html,
 body {
-    font-family: inter;
+    font-family: inter, sans-serif;
     height: 100%;
     line-height: 1.5;
     font-size: 18px;
@@ -32,9 +32,15 @@ body {
     bottom: 0;
 }
 
-/*._container {*/
-/*    max-width: 1000px;*/
-/*}*/
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+._container {
+    max-width: 1000px;
+}
 
 /*HEADER------------------------------------------------*/
 .header {
@@ -145,10 +151,20 @@ body {
 
 
 /*BODY-----------------------------------------------*/
-.main_page {
-    flex: 1 1;
+.main-content {
+    flex: 1 1 auto;
 }
 
 .page-body {
     margin: 0 auto;
+}
+
+/*FOOTER---------------------------------------------*/
+.footer {
+    max-width: 100%;
+    background-color: rgba(132, 96, 50);
+}
+
+.footer-container{
+    min-height: 200px;
 }
