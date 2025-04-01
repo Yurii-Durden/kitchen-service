@@ -59,7 +59,7 @@ body {
 
 .nav-link {
     font-weight: 500;
-    font-size: 16px;
+    font-size: 15px;
     color: rgb(132, 96, 50);
 }
 
@@ -78,25 +78,27 @@ body {
 }
 
 .nav-items {
-    padding: 5px;
+    padding: 5px 0 5px 0;
     position: relative;
     /*overflow: hidden;*/
 }
 
 .nav-items::after {
-    transition: width 0.5s ease;
+    transition: transform 0.3s ease;
     position: absolute;
     content: "";
     height: 1px;
     display: block;
-    background-color: rgba(132, 96, 50, 0.6);
+    background-color: rgba(132, 96, 50, 0.5);
     left: 0;
     bottom: 0;
-    width: 0;
+    width: 100%;
+    transform-origin: center;
+    transform: scaleX(0);
 }
 
 .nav-items:hover::after {
-    width: 100%;
+    transform: scaleX(1);
 }
 
 .logo-box {
@@ -116,22 +118,22 @@ body {
 
 .login-list-items {
     position: relative;
-    padding: 5px;
+    padding: 5px 0 5px 0;
 }
 
 .login-list-items a {
     font-weight: 500;
-    font-size: 16px;
+    font-size: 15px;
     color: rgb(132, 96, 50)
 }
 
 .login-list-items::after {
-    transition: width 0.5s ease;
+    transition: width 0.3s ease;
     position: absolute;
     content: "";
     height: 1px;
     display: block;
-    background-color: rgba(132, 96, 50, 0.6);
+    background-color: rgba(132, 96, 50, 0.5);
     right: 0;
     bottom: 0;
     width: 0;
