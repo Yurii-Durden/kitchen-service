@@ -161,10 +161,33 @@ body {
 
 /*FOOTER---------------------------------------------*/
 .footer {
+    border-top: 1px solid rgba(132, 96, 50, 1);
     max-width: 100%;
-    background-color: rgba(132, 96, 50);
+    /*background-color: rgba(132, 96, 50);*/
 }
 
 .footer-container{
-    min-height: 200px;
+    padding: 0 50px 0 50px;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 150px;
+    /*color: #F2F2F2*/
+    color: rgb(132, 96, 50)
+}
+
+.logo-slash {
+    font-weight: 250;
+}
+
+.footer-text {
+    display: inline-flex;
+    width: 250px;
+    font-size: 15px;
+    justify-content: center;
+}
+
+.footer-logo-text {
+    font-weight: 550;
 }
