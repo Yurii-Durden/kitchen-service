@@ -3,7 +3,7 @@
 
 {% block extra_styles %}
   <link rel="stylesheet" href="{% static 'css/dish_detail_styles.css' %}">
-{#  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>#}
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 {% endblock %}
 
 {% block content %}
@@ -23,7 +23,7 @@
   {% if dish.description %}
     <p>{{ dish.description }}</p>
   {% endif %}
-  <h3>Cooks</h3>
+  <h3 class="cooks-title">Cooks</h3>
   {% if user.is_chef %}
     <ul class="cook-list-box">
       <li class="add-cook-button"><span class="button-text">Add cook <i class='bx bx-chevron-down'></i></span>

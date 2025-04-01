@@ -5,6 +5,13 @@
 
 .dish-name {
     font-family: Bodoni, serif;
+    color: rgb(132, 96, 50);
+}
+
+.cooks-title {
+    font-size: 25px;
+    font-family: Bodoni, serif;
+    color: rgb(132, 96, 50);
 }
 
 .cook-list-box {

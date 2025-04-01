@@ -21,7 +21,7 @@ body {
     font-family: inter, sans-serif;
     height: 100%;
     line-height: 1.5;
-    font-size: 18px;
+    font-size: 15px;
     background-color: #F2F2F2;
     color: #66585b;
     scroll-behavior: smooth;
@@ -90,7 +90,7 @@ body {
 }
 
 .nav-items::after {
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, color 0.3s ease;
     position: absolute;
     content: "";
     height: 1px;
@@ -161,9 +161,26 @@ body {
 
 /*FOOTER---------------------------------------------*/
 .footer {
-    border-top: 1px solid rgba(132, 96, 50, 1);
+    position: relative;
+    border-top: 1px solid rgb(132, 96, 50);
     max-width: 100%;
     /*background-color: rgba(132, 96, 50);*/
+}
+
+.footer::before {
+    transition: width 1.5s ease;
+    position: absolute;
+    content: "";
+    height: 1px;
+    display: block;
+    background-color: rgb(132, 96, 50);
+    right: 0;
+    top: 0;
+    width: 0;
+}
+
+.footer:hover::before {
+    width: 100%;
 }
 
 .footer-container{
