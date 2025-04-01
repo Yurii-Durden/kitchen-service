@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_styles %}
-  <link rel="stylesheet" href="{% static 'css/drop_menu_style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/dish_detail_styles.css' %}">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 {% endblock %}
 
@@ -42,12 +42,12 @@
     </ul>
   {% endif %}
   {% if dish.cooks.all %}
-    <ul>
+    <ul class="added-cooks-list">
       {% for cook in dish.cooks.all %}
-        <li>
-          <a href="{% url 'kitchenflow:cook-detail' cook.id %}">{{ cook.first_name }} {{ cook.last_name }}</a>
+        <li class="added-cook">
+          <a class="added-cook-link" href="{% url 'kitchenflow:cook-detail' cook.id %}">{{ cook.first_name }} {{ cook.last_name }}</a>
           {% if user.is_chef %}
-            <a href="{% url 'kitchenflow:remove-from-cooking' dish.id cook.id %}">Remove from cooking</a>
+            <a class="added-cook-link" href="{% url 'kitchenflow:remove-from-cooking' dish.id cook.id %}">Remove from cooking</a>
           {% endif %}
         </li>
       {% endfor %}

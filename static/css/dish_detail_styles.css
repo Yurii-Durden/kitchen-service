@@ -35,7 +35,7 @@
     position: absolute;
     left: 0;
     list-style: none;
-    width: 350px;
+    width: 550px;
     padding: 10px;
     background-color: #F2F2F2;
     border-radius: 10px;
@@ -57,7 +57,7 @@
 }
 
 .cook-list-items:not(:last-child) {
-    border-bottom: .5px solid rgba(0, 0, 0, 0.2);
+    border-bottom: .5px solid rgba(132, 96, 50, 0.2);
 }
 
 /*.cook-list-items:first-child {*/
@@ -90,4 +90,23 @@
 .cook-list-items:hover .add-cook {
     color: #a67057;
     transform: translate3d(10px, 0, 0);
+}
+
+.added-cooks-list {
+    max-width: 500px;
+}
+
+.added-cook {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.added-cook:not(:last-child) {
+    padding: 5px 0 5px 0;
+    border-bottom: .5px solid rgba(132, 96, 50, 0.5)
+}
+
+.added-cook-link {
+    color: #66585b
 }
