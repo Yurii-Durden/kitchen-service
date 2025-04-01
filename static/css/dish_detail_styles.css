@@ -68,21 +68,13 @@
 }
 
 .cook-list-items {
-    padding: 10px;
+    padding: 10px 0 10px 0;
     transition: background-color 0.2s ease;
 }
 
 .cook-list-items:not(:last-child) {
     border-bottom: .5px solid rgba(132, 96, 50, 0.2);
 }
-
-/*.cook-list-items:first-child {*/
-/*    border-radius: 5px 5px 0 0;*/
-/*}*/
-
-/*.cook-list-items:last-child {*/
-/*    border-radius: 0 0 5px 5px;*/
-/*}*/
 
 .cook-list-link {
     color: #66585b;
@@ -116,11 +108,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 10px 0 10px 0;
+    border-bottom: 1px solid rgba(132, 96, 50, 1)
 }
 
-.added-cook:not(:last-child) {
-    padding: 5px 0 5px 0;
-    border-bottom: .5px solid rgba(132, 96, 50, 0.5)
+.added-cook:last-child {
+    border-bottom: 1px solid rgba(132, 96, 50, 0)
 }
 
 .added-cook-link {
