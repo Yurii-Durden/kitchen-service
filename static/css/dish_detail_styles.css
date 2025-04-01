@@ -1,3 +1,13 @@
+@font-face {
+    font-family: "Bodoni";
+    src: url("/fonts/bodoni-serial-bold.ttf") format("truetype");
+    font-weight: bold;
+}
+
+.dish-name {
+    font-family: Bodoni, serif;
+}
+
 .cook-list-box {
     position: relative;
     width: 150px;

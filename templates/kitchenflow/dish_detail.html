@@ -3,11 +3,11 @@
 
 {% block extra_styles %}
   <link rel="stylesheet" href="{% static 'css/dish_detail_styles.css' %}">
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+{#  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>#}
 {% endblock %}
 
 {% block content %}
-  <h1>
+  <h1 class="dish-name">
     {{ dish.name }}
   </h1>
   {% if user.is_chef %}
