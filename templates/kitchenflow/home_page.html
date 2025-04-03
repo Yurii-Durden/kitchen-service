@@ -6,13 +6,16 @@
 {% endblock %}
 
 {% block content %}
-  <section class="section ">
+  <section class="section">
     <div class="page-body _container">
       <h1 class="project-title">S<span class="logo-slash">|</span>É Kitchen service</h1>
-      <p>Cooks: {{ count_of_cooks }}</p>
-      <p>Dishes: {{ count_of_dishes }}</p>
-      <p>Type of dishes: {{ count_of_dishes_type }}</p>
-      <p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}</p>
+      <div class="counter-info-box">
+        <p>Cooks: {{ count_of_cooks }}</p>
+        <p>Dishes: {{ count_of_dishes }}</p>
+        <p>Type of dishes: {{ count_of_dishes_type }}</p>
+        {#<p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}</p>#}
+      </div>
+
     </div>
   </section>
 {% endblock %}

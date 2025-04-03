@@ -33,13 +33,16 @@ body {
 }
 
 .wrapper {
-    min-height: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 ._container {
+    width: 100%;
     max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 10px;
 }
 
 /*HEADER------------------------------------------------*/
@@ -53,9 +56,6 @@ body {
     align-items: center;
     justify-content: space-between;
     min-height: 75px;
-    margin: 0 auto;
-    padding: 0 10px;
-    box-sizing: content-box;
 }
 
 .nav-elems {
@@ -151,13 +151,14 @@ body {
 
 
 /*BODY-----------------------------------------------*/
-.main-content {
-    flex: 1 1 auto;
-}
+/*.main-content {*/
+/*    flex: 1 1 auto;*/
+/*}*/
 
-.page-body {
-    margin: 0 auto;
-    padding: 0 10px;
+.section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
 }
 
 /*FOOTER---------------------------------------------*/
@@ -169,7 +170,6 @@ body {
 
 .footer-container{
     position: relative;
-    padding: 0 10px;
     margin: 0 auto;
     font-size: 20px;
     display: flex;
