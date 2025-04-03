@@ -39,7 +39,7 @@ body {
 }
 
 ._container {
-    max-width: 1000px;
+    max-width: 1600px;
 }
 
 /*HEADER------------------------------------------------*/
@@ -54,7 +54,7 @@ body {
     justify-content: space-between;
     min-height: 75px;
     margin: 0 auto;
-    padding: 0 50px;
+    padding: 0 10px;
     box-sizing: content-box;
 }
 
@@ -157,18 +157,31 @@ body {
 
 .page-body {
     margin: 0 auto;
+    padding: 0 10px;
 }
 
 /*FOOTER---------------------------------------------*/
 .footer {
     position: relative;
-    border-top: 1px solid rgb(132, 96, 50);
     max-width: 100%;
     /*background-color: rgba(132, 96, 50);*/
 }
 
-.footer::before {
-    transition: width 1.5s ease;
+.footer-container{
+    position: relative;
+    padding: 0 10px;
+    margin: 0 auto;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 150px;
+    border-top: 1px solid rgb(132, 96, 50);
+    color: rgb(132, 96, 50)
+}
+
+.footer-container::before {
+    transition: width 1s ease;
     position: absolute;
     content: "";
     height: 1px;
@@ -179,19 +192,8 @@ body {
     width: 0;
 }
 
-.footer:hover::before {
+.footer-container:hover::before {
     width: 100%;
-}
-
-.footer-container{
-    padding: 0 50px 0 50px;
-    font-size: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 150px;
-    /*color: #F2F2F2*/
-    color: rgb(132, 96, 50)
 }
 
 .logo-slash {
