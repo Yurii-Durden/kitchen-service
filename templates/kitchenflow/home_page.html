@@ -6,8 +6,8 @@
 {% endblock %}
 
 {% block content %}
-  <section class="section">
-    <div class="page-body _container">
+  <section class="home-main-section section">
+    <div class="home-main-page-body _container">
       <h1 class="project-title">
         SERÈNE ÉLIX
       </h1>
@@ -31,7 +31,20 @@
         </li>
         {#<p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}</p>#}
       </ul>
-
+      <div class="next-section-text-box">
+          <p class="next-section-text">describe</p>
+          <div class="next-section-text-box-limit"></div>
+      </div>
+    </div>
+  </section>
+  <section class="home-described-section section">
+    <div class="home-described-section-body _container">
+      <div class="described-restaurant-box"></div>
+      <div class="restaurant-image-box">
+        <div class="img-restaurant-box">
+          <img class="img-restaurant" src="{% static "images/brutalism-restauran.png" %}" alt="restaurant interior">
+        </div>
+      </div>
     </div>
   </section>
 {% endblock %}

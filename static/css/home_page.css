@@ -1,10 +1,11 @@
+/*first-section---------------------------------------------*/
 .project-title {
     font-family: Poppins, serif;
     margin-top: 90px;
     display: flex;
     justify-content: center;
     font-size: 100px;
-    color: rgb(132, 96, 50);
+    color: var(--primary-color);
     font-weight: normal;
 }
 
@@ -42,9 +43,73 @@
 
 .info-number {
     font-weight: bolder;
-    color: rgb(132, 96, 50);
+    color: var(--primary-color);
 }
 
 .counter-info-list .describe-info-text {
     font-size: 15px;
+}
+
+.home-main-page-body {
+    position: relative;
+}
+
+.next-section-text-box {
+    display: flex;
+    position: absolute;
+    width: calc(100% - 20px);
+    bottom: 0;
+    left: 10px;
+}
+
+.next-section-text {
+    padding-right: 10px;
+}
+
+.next-section-text-box-limit {
+    position: relative;
+    display: block;
+    font-weight: normal;
+    width: 100%;
+    overflow: hidden;
+}
+
+.next-section-text-box-limit::after {
+    position: absolute;
+    top: 50%;
+    content: "";
+    display: block;
+    height: 1px;
+    background-color: var(--primary-color);
+    width: 0;
+    transition: width 1s ease;
+}
+
+.next-section-text-box-limit:hover::after {
+    width: 100%;
+}
+
+/*second-section---------------------------------------------*/
+.home-described-section-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.described-restaurant-box {
+    width: 600px;
+    background-color: black;
+}
+
+.img-restaurant-box {
+    width: 900px;
+    height: 600px;
+}
+
+.img-restaurant {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
