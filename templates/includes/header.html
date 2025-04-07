@@ -13,11 +13,11 @@
         </li>
       </ul>
     </nav>
-
-    <div class="logo-box">
-      <a class="logo" href="{% url 'kitchenflow:index' %}">SERÈNE ÉLIX</a>
-    </div>
-
+    {% if not is_home %}
+      <div class="logo-box">
+        <a class="logo" href="{% url 'kitchenflow:index' %}">SERÈNE ÉLIX</a>
+      </div>
+    {% endif %}
     <ul class="login-list">
       {% if user.is_authenticated %}
         <li class="login-list-items user-info"><a href="{% url 'kitchenflow:cook-detail' user.id %}">USER: {{ user.username }}</a></li>
