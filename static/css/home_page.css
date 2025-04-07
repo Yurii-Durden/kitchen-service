@@ -57,13 +57,13 @@
 .next-section-text-box {
     display: flex;
     position: absolute;
-    width: calc(100% - 20px);
+    width: calc(100% - (var(--base-padding) + var(--base-padding)));
     bottom: 0;
     left: 10px;
 }
 
 .next-section-text {
-    padding-right: 10px;
+    padding-right: var(--base-padding);
 }
 
 .next-section-text-box-limit {

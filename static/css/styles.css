@@ -1,6 +1,7 @@
 /*VARIABLES--------------------------------------------*/
 :root {
     --primary-color: rgb(132, 96, 50);
+    --base-padding: 10px;
 }
 
 /*NULL-----------------------------------------------*/
@@ -47,7 +48,7 @@ body {
     width: 100%;
     max-width: 1600px;
     margin: 0 auto;
-    padding: 0 10px;
+    padding: 0 var(--base-padding);
 }
 /*HEADER------------------------------------------------*/
 .header {
