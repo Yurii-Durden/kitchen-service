@@ -25,7 +25,8 @@ def index(request) -> HttpResponse:
         "count_of_cooks": Cook.objects.count(),
         "count_of_dishes": Dish.objects.count(),
         "count_of_dishes_type": DishType.objects.count(),
-        "num_visits": num_visits
+        "num_visits": num_visits,
+        "is_home": True,
     }
 
     return render(request,"kitchenflow/home_page.html", context=context)
