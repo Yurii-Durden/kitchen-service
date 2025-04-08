@@ -28,7 +28,7 @@ body {
     height: 100%;
     line-height: 1.5;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 500;
     background-color: #F2F2F2;
     color: #66585b;
     scroll-behavior: smooth;
@@ -185,8 +185,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 150px;
-    border-top: 1px solid rgb(132, 96, 50);
+    min-height: 170px;
     color: rgb(132, 96, 50)
 }
 
@@ -207,7 +206,7 @@ body {
 }
 
 .logo-slash {
-    font-weight: 250;
+    font-weight: 350;
 }
 
 .footer-text {
