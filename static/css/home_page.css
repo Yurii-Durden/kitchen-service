@@ -199,6 +199,26 @@
 }
 
 /*fourth-section-----------------------------------------------------*/
-vision-section-body {
+.vision-section-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.vision-section-title-box {
+    font-weight: 600;
+}
+
+.big-text {
+    line-height: 1;
+    text-align: justify;
+    text-transform: uppercase;
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.vision-section-text-box {
+    width: 1000px;
+    margin: 30px auto;
+    text-align: justify;
 }
