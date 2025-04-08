@@ -4,7 +4,7 @@
     margin-top: 90px;
     display: flex;
     justify-content: center;
-    font-size: 150px;
+    font-size: 200px;
     color: var(--primary-color);
     font-weight: normal;
 }
@@ -60,7 +60,7 @@
     position: absolute;
     width: calc(100% - (var(--base-padding) + var(--base-padding)));
     bottom: 0;
-    left: 10px;
+    left: var(--base-padding);
 }
 
 .next-section-text {
@@ -96,6 +96,7 @@
 
 /*second-section---------------------------------------------*/
 .home-described-section-body {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -126,6 +127,46 @@
     height: 100%;
     object-fit: cover;
 }
+
+.next-description-section-text-box {
+    display: flex;
+    position: absolute;
+    width: calc(100% - (var(--base-padding) + var(--base-padding)));
+    bottom: 0;
+    right: var(--base-padding);
+}
+
+.next-description-section-text-box-limit {
+    position: relative;
+    display: block;
+    font-weight: normal;
+    width: 100%;
+    overflow: hidden;
+}
+
+.next-description-section-text-box-limit::before {
+    position: absolute;
+    top: 50%;
+    content: "";
+    display: block;
+    height: 1px;
+    background-color: var(--primary-color);
+    right: 0;
+    width: 0;
+    transition: width 1s ease;
+}
+
+.next-description-section-text-box-limit:hover::before {
+    width: 100%;
+}
+
+.next-description-section-text {
+    font-size: 15px;
+    color: var(--primary-color);
+    display: block;
+    white-space: nowrap;
+    padding-left: var(--base-padding);
+}
 /*third-section---------------------------------------------------*/
 .home-described-project-section-body {
     display: flex;
@@ -155,4 +196,9 @@
 
 .key-frames-item {
     padding: 5px 0 5px 0;
+}
+
+/*fourth-section-----------------------------------------------------*/
+vision-section-body {
+
 }
