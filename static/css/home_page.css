@@ -27,7 +27,7 @@
 }
 
 .info-list-item {
-    line-height: 2;
+    line-height: 1.7;
     min-height: 200px;
     padding: 20px;
     display: flex;
@@ -42,7 +42,7 @@
 }
 
 .info-number {
-    font-size: 30px;
+    font-size: 35px;
     font-weight: bolder;
     color: var(--primary-color);
 }
@@ -113,7 +113,7 @@
 
 .title-about-inspiration {
     color: var(--primary-color);
-    font-size: 40px;
+    font-size: 35px;
 }
 
 .img-restaurant-box {
@@ -145,14 +145,14 @@
 
 .title-about-project {
     color: var(--primary-color);
-    font-size: 40px;
+    font-size: 35px;
 }
 
 .key-frames-title {
     color: var(--primary-color);
-    font-size: 20px;
+    font-size: 35px;
 }
 
 .key-frames-item {
-    padding: 10px 0 10px 0;
+    padding: 5px 0 5px 0;
 }
