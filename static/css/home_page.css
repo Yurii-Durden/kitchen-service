@@ -126,3 +126,33 @@
     height: 100%;
     object-fit: cover;
 }
+/*third-section---------------------------------------------------*/
+.home-described-project-section-body {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.described-project-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: justify;
+    width: 600px;
+    height: 600px;
+}
+
+.title-about-project {
+    color: var(--primary-color);
+    font-size: 40px;
+}
+
+.key-frames-title {
+    color: var(--primary-color);
+    font-size: 20px;
+}
+
+.key-frames-item {
+    padding: 10px 0 10px 0;
+}
