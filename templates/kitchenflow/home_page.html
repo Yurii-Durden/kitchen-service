@@ -31,14 +31,14 @@
         </li>
         {#<p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}</p>#}
       </ul>
-      <div class="next-section-text-box">
-          <p class="next-section-text">design & inspiration</p>
-          <div class="next-section-text-box-limit"></div>
-      </div>
     </div>
   </section>
   <section class="home-described-section section">
     <div class="home-described-section-body _container">
+      <div class="next-design-inspiration-box">
+          <p class="next-design-inspiration-text">design & inspiration</p>
+          <div class="next-design-inspiration-box-limit"></div>
+      </div>
       <div class="described-restaurant-box">
         <h4 class="title-about-inspiration">HARMONY OF TASTE AND FORM</h4>
         <p class="description-of-inspiration">
@@ -64,10 +64,6 @@
         <div class="img-restaurant-box">
           <img class="img-restaurant" src="{% static "images/brutalism-restauran.png" %}" alt="kitchen interior">
         </div>
-      </div>
-      <div class="next-description-section-text-box">
-        <div class="next-description-section-text-box-limit"></div>
-        <p class="next-description-section-text">project description</p>
       </div>
     </div>
   </section>
@@ -98,6 +94,10 @@
         <p class="key-frames-item">COOK ASSIGMENT - assign and remove cooks from specific dishes to ensure proper staffing and smooth kitchen workflow.</p>
         <p class="key-frames-item">CHEF ACCESS - grant chefs exclusive access to update dish details, manage the kitchen team, and oversee kitchen operations.</p>
         <p class="key-frames-item">REAL-TIME UPDATES - monitor and update dish status and assignments instantly, ensuring efficient communication and workflow in the kitchen.</p>
+      </div>
+      <div class="next-project-description-box">
+        <div class="next-project-description-box-limit"></div>
+        <p class="next-project-description-text">project description</p>
       </div>
     </div>
   </section>
