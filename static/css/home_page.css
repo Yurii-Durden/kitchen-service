@@ -1,3 +1,7 @@
+.next-section-box {
+    padding: 35px 10px 35px 10px;
+}
+
 /*first-section---------------------------------------------*/
 .project-title {
     font-family: Poppins, serif;
@@ -10,8 +14,8 @@
 }
 
 .project-title-text-under {
-    font-weight: normal;
     font-size: 15px;
+    font-weight: 500;
     font-family: Poppins, serif;
     display: flex;
     justify-content: center;
@@ -52,6 +56,7 @@
 }
 
 /*second-section---------------------------------------------*/
+
 .home-described-section-body {
     position: relative;
     display: flex;
@@ -59,7 +64,6 @@
     align-items: center;
     justify-content: space-between;
 }
-
 .described-restaurant-box {
     display: flex;
     flex-direction: column;
@@ -121,7 +125,6 @@
 }
 
 .title-about-project {
-    /*color: var(--primary-color);*/
     font-size: 35px;
 }
 
@@ -134,7 +137,6 @@
 }
 
 .next-project-description-box {
-    /*background-color: #242424;*/
     display: flex;
     position: relative;
     align-items: center;
@@ -152,6 +154,7 @@
     padding-left: 5px;
     white-space: nowrap;
 }
+
 /*fourth-section-----------------------------------------------------*/
 .vision-section {
     color: #f7f7f7;
