@@ -86,41 +86,21 @@
 
 .next-design-inspiration-box {
     display: flex;
-    position: absolute;
-    width: calc(100% - (var(--base-padding) + var(--base-padding)));
-    top: 0;
-    left: var(--base-padding);
-}
-
-.next-design-inspiration-text {
-    font-size: 15px;
-    color: var(--primary-color);
-    display: block;
-    white-space: nowrap;
-    padding-right: var(--base-padding);
+    position: relative;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .next-design-inspiration-box-limit {
-    position: relative;
-    display: block;
-    font-weight: normal;
-    width: 100%;
-    overflow: hidden;
+  width: 100%;
+  height: 1px;
+  background-color: var(--primary-color);
+  transform: translateY(50%);
 }
 
-.next-design-inspiration-box-limit::after {
-    position: absolute;
-    top: 50%;
-    content: "";
-    display: block;
-    height: 1px;
-    background-color: var(--primary-color);
-    width: 100%;
-    transition: width 1s ease;
-}
-
-.next-design-inspiration-box-limit:hover::after {
-    width: 100%;
+.next-design-inspiration-text {
+    padding-right: 5px;
+    white-space: nowrap;
 }
 /*third-section---------------------------------------------------*/
 .home-described-project-section-body {
@@ -146,7 +126,6 @@
 }
 
 .key-frames-title {
-    /*color: var(--primary-color);*/
     font-size: 35px;
 }
 
@@ -155,45 +134,24 @@
 }
 
 .next-project-description-box {
+    /*background-color: #242424;*/
     display: flex;
-    position: absolute;
-    width: calc(100% - (var(--base-padding) + var(--base-padding)));
-    top: 0;
-    right: var(--base-padding);
+    position: relative;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .next-project-description-box-limit {
-    position: relative;
-    display: block;
-    font-weight: normal;
-    width: 100%;
-    overflow: hidden;
-}
-
-.next-project-description-box-limit::before {
-    position: absolute;
-    top: 50%;
-    content: "";
-    display: block;
-    height: 1px;
-    background-color: var(--primary-color);
-    right: 0;
-    width: 100%;
-    transition: width 1s ease;
-}
-
-.next-project-description-box-limit:hover::before {
-    width: 100%;
+  width: 100%;
+  height: 1px;
+  background-color: var(--primary-color);
+  transform: translateY(50%);
 }
 
 .next-project-description-text {
-    font-size: 15px;
-    color: var(--primary-color);
-    display: block;
+    padding-left: 5px;
     white-space: nowrap;
-    padding-left: var(--base-padding);
 }
-
 /*fourth-section-----------------------------------------------------*/
 .vision-section {
     color: #f7f7f7;
@@ -254,5 +212,3 @@
 .footer-container::before {
     background-color: #f7f7f7;
 }
-
-
