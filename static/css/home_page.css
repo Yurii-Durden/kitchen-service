@@ -5,7 +5,7 @@
     display: flex;
     justify-content: center;
     font-size: 200px;
-    color: var(--primary-color);
+    color: #242424;
     font-weight: normal;
 }
 
@@ -200,8 +200,8 @@
 
 /*fourth-section-----------------------------------------------------*/
 .vision-section {
-    color: #F2F2F2;
-    background-color: #0c0f0c;
+    color: #f7f7f7;
+    background-color: #141813;
     padding-top: 100px;
     padding-bottom: 150px;
 }
@@ -247,16 +247,16 @@
 .footer {
     position: relative;
     max-width: 100%;
-    background-color: #0c0f0c;
+    background-color: #141813;
     color: #F2F2F2;
 }
 
 .footer-container{
-    color: #F2F2F2;
+    color: #f7f7f7;
 }
 
 .footer-container::before {
-    background-color: #F2F2F2;
+    background-color: #f7f7f7;
 }
 
 
