@@ -39,9 +39,9 @@
   </section>
   <div class="next-section-box next-design-inspiration-box _container">
     <p class="next-design-inspiration-text">design & inspiration</p>
-    <div class="next-design-inspiration-box-limit anim_section_line"></div>
+    <div class="first_section_line"></div>
   </div>
-  <section class="home-described-section home-page-section section">
+  <section class="home-described-section home-page-section second_section section">
     <div class="home-described-section-body _container">
       <div class="described-restaurant-box">
         <h4 class="title-about-inspiration">HARMONY OF TASTE AND FORM</h4>
@@ -72,10 +72,10 @@
     </div>
   </section>
   <div class="next-section-box next-project-description-box _container">
-    <div class="next-project-description-box-limit anim_section_line"></div>
+    <div class="second_section_line"></div>
     <p class="next-project-description-text">project description</p>
   </div>
-  <section class="home-project-described-section home-page-section section">
+  <section class="home-project-described-section home-page-section third_section section">
     <div class="home-described-project-section-body _container">
       <div class="restaurant-image-box">
         <div class="img-restaurant-box">
@@ -143,7 +143,7 @@
     </div>
   </section>
 {% endblock %}
-{##}
-{#{% block extra_scripts %}#}
-{#  <script src="{% static 'js/home_page_animations.js' %}"></script>#}
-{#{% endblock %}#}
+
+{% block extra_scripts %}
+  <script src="{% static 'js/home_page_animations.js' %}"></script>
+{% endblock %}
