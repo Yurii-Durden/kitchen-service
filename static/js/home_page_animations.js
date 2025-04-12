@@ -8,7 +8,7 @@ window.addEventListener("scroll", linesScrollAnim)
 function linesScrollAnim() {
     const s_section_height = second_section.offsetHeight;
     const f_section_offset = offset(second_section).top;
-    const anim_start = 2;
+    const anim_start = 3;
 
     let s_anim_item_point = window.innerHeight - s_section_height / anim_start;
 
