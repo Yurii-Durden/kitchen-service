@@ -1,10 +1,10 @@
 const first_section_line = document.querySelector(".first_section_line");
 const second_section_line = document.querySelector(".second_section_line");
 
-const second_section = document.querySelector(".second_section")
-const third_section = document.querySelector(".third_section")
+const second_section = document.querySelector(".second_section");
+const third_section = document.querySelector(".third_section");
 
-window.addEventListener("scroll", linesScrollAnim)
+window.addEventListener("scroll", linesScrollAnim);
 function linesScrollAnim() {
     const s_section_height = second_section.offsetHeight;
     const f_section_offset = offset(second_section).top;
@@ -37,4 +37,3 @@ function linesScrollAnim() {
     }
 }
 
-// додавати значення скролу до відступу між великим текстом, доти, доки воно не буде рівне початковому

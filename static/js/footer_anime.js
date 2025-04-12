@@ -1,12 +1,12 @@
 const footer = document.querySelector(".footer");
 const footer_line = document.querySelector(".footer-line");
 
-addEventListener("scroll", footerSrollAnimation)
+addEventListener("scroll", footerSrollAnimation);
 
 function footerSrollAnimation () {
 
     if (isInViewport(footer)) {
-        footer_line.classList.add("footer-line_animate")
+        footer_line.classList.add("footer-line_animate");
     }
 
     function isInViewport(element) {
