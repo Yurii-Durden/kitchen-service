@@ -7,6 +7,8 @@ function footerSrollAnimation () {
 
     if (isInViewport(footer)) {
         footer_line.classList.add("footer-line_animate");
+    } else {
+        footer_line.classList.remove("footer-line_animate")
     }
 
     function isInViewport(element) {
