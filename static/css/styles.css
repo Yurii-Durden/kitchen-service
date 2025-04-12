@@ -185,24 +185,22 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 170px;
+    min-height: 190px;
     color: var(--primary-color);
 }
 
-.footer-container::before {
-    transition: width 1s ease;
+.footer-line {
     position: absolute;
-    content: "";
-    height: 1px;
-    display: block;
-    background-color: var(--primary-color);
-    right: 0;
     top: 0;
+    right: 10px;
     width: 0;
+    height: 1px;
+    background-color: #f7f7f7;
+    transition: width 1.5s ease;
 }
 
-.footer-container:hover::before {
-    width: 100%;
+.footer-line_animate {
+    width: calc(100% - (var(--base-padding) + var(--base-padding)));
 }
 
 .logo-slash {
