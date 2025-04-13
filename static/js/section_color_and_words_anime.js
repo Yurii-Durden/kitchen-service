@@ -71,7 +71,7 @@ function moving_words() {
 
         if (wordIsInViewport(big_text)) {
             if (x_position < stop_position) {
-                x_position += speed;
+                x_position += speed * 0.7;
                 word_to_move.setAttribute("x", x_position.toString());
             }
         } else {
