@@ -1,25 +1,35 @@
 const vision_section = document.querySelector(".vision-section");
 const words_to_move = document.querySelectorAll(".word_to_move");
-const big_text = document.querySelector(".big-text")
 
 addEventListener("scroll", () => {
-        section_color_fade();
-        moving_words();
+        section_color_fade_scroll();
     }
 )
 
-function section_color_fade() {
-    if (isInViewport(vision_section)) {
-        vision_section.classList.add("vision-section-anime")
-    } else {
-        vision_section.classList.remove("vision-section-anime")
-    }
+let current_opacity = 0;
 
-    function isInViewport(element) {
-        const rect = element.getBoundingClientRect();
-        return rect.top < 1;
+function section_color_fade_scroll() {
+    const section_top = vision_section.offsetTop;
+    const scroll_top = window.scrollY;
+    const window_height = window.innerHeight;
+
+    const start_fade = section_top;
+    const fade_range = window_height / 3;
+    const end_fade = start_fade + fade_range;
+
+    const progress = Math.min(Math.max((scroll_top - start_fade) / (end_fade - start_fade), 0), 1);
+
+    vision_section.style.backgroundColor = `rgba(20, 24, 19, ${progress})`;
+
+    if (progress > 0.7) {
+        startWordSpacingAnimation();
+    } else {
+        reverseWordSpacingAnimation();
     }
 }
+
+
+
 
 words_to_move.forEach((word_to_move, index) => {
     let stop_position, speed, primary_position;
@@ -56,33 +66,30 @@ words_to_move.forEach((word_to_move, index) => {
     word_to_move.dataset.primary_position = primary_position.toString();
 });
 
-addEventListener("scroll", () => {
-    section_color_fade();
-    moving_words();
-});
-
-function moving_words() {
+function startWordSpacingAnimation() {
     for (let index = 0; index < words_to_move.length; index++) {
-        let word_to_move = words_to_move[index];
-        let x_position = parseFloat(word_to_move.getAttribute("x"));
-        let stop_position = parseFloat(word_to_move.dataset.stopPosition);
-        let speed = parseFloat(word_to_move.dataset.speed);
-        let primary_position = parseFloat(word_to_move.dataset.primary_position);
+        let word = words_to_move[index];
+        let x = parseFloat(word.getAttribute("x"));
+        let stop = parseFloat(word.dataset.stopPosition);
+        let speed = parseFloat(word.dataset.speed);
 
-        if (wordIsInViewport(big_text)) {
-            if (x_position < stop_position) {
-                x_position += speed * 0.7;
-                word_to_move.setAttribute("x", x_position.toString());
-            }
-        } else {
-            if (x_position > primary_position)
-                x_position -= speed;
-                word_to_move.setAttribute("x", x_position.toString())
-            }
+        if (x < stop) {
+            x += speed;
+            word.setAttribute("x", x.toString());
+        }
     }
 }
 
-    function wordIsInViewport(element) {
-        const rect = element.getBoundingClientRect();
-        return rect.top < big_text.offsetHeight;
+function reverseWordSpacingAnimation() {
+    for (let index = 0; index < words_to_move.length; index++) {
+        let word = words_to_move[index];
+        let x = parseFloat(word.getAttribute("x"));
+        let start = parseFloat(word.dataset.primary_position);
+        let speed = parseFloat(word.dataset.speed);
+
+        if (x > start) {
+            x -= speed;
+            word.setAttribute("x", x.toString());
+        }
+    }
 }

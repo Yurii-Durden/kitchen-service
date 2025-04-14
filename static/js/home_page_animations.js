@@ -19,41 +19,34 @@ window.addEventListener("scroll", () => {
 
 function lines_scroll_anim() {
     const anim_start = 3;
-    const fast_scroll_range = window.innerHeight / 2; // Швидкий підйом
+    const fast_scroll_range = window.innerHeight / 2;
 
     const scroll_top = scrollY || window.scrollY;
 
-    // ========= Перша секція =========
     const s_section_height = second_section.offsetHeight;
     const s_section_offset = offset(second_section).top;
     const s_anim_item_point = window.innerHeight - s_section_height / anim_start;
 
-    // Швидкий підйом блоку
     const s_progress = (scroll_top - (s_section_offset - s_anim_item_point)) / fast_scroll_range;
     const s_clamped = Math.min(Math.max(s_progress, 0), 1);
     const s_translateY = 50 - (s_clamped * 50);
     second_section_body.style.transform = `translateY(${s_translateY}%)`;
 
-    // Контроль лінії (ширина від 0 до 100%)
-    const s_line_width = Math.min(s_clamped, 1) * 100; // Ширина лінії від 0% до 100%
+    const s_line_width = Math.min(s_clamped, 1) * 100;
     first_section_line.style.width = `${s_line_width}%`;
 
-    // ========= Друга секція =========
     const t_section_height = third_section.offsetHeight;
     const t_section_offset = offset(third_section).top;
     const t_anim_item_point = window.innerHeight - t_section_height / anim_start;
 
-    // Швидкий підйом блоку
     const t_progress = (scroll_top - (t_section_offset - t_anim_item_point)) / fast_scroll_range;
     const t_clamped = Math.min(Math.max(t_progress, 0), 1);
     const t_translateY = 50 - (t_clamped * 50);
     third_section_body.style.transform = `translateY(${t_translateY}%)`;
 
-    // Контроль лінії (ширина від 0 до 100%)
-    const t_line_width = Math.min(t_clamped, 1) * 100; // Ширина лінії від 0% до 100%
+    const t_line_width = Math.min(t_clamped, 1) * 100;
     second_section_line.style.width = `${t_line_width}%`;
 
-    // ========= Offset helper =========
     function offset(el) {
         const rect = el.getBoundingClientRect(),
             scrollLeft = window.scrollX || document.documentElement.scrollLeft,
@@ -66,7 +59,6 @@ function lines_scroll_anim() {
 function title_to_the_top() {
     const maxScroll = 300;
     const maxTranslate = -250;
-
 
     let scrollValue = Math.min(scrollY, maxScroll);
     let y_position = (scrollValue / maxScroll) * maxTranslate;
