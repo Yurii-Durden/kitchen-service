@@ -1,7 +1,9 @@
 /*VARIABLES--------------------------------------------*/
 :root {
-    --primary-color: #242424;
+    --primary-color: #121212;
+    --back-color: #f9f9f9;
     --base-padding: 10px;
+
 }
 
 /*NULL-----------------------------------------------*/
@@ -29,7 +31,7 @@ body {
     line-height: 1.5;
     font-size: 15px;
     font-weight: 400;
-    background-color: #f7f7f7;
+    background-color: var(--back-color);
     color: var(--primary-color);
     scroll-behavior: smooth;
     box-sizing: border-box;
