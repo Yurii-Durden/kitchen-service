@@ -20,7 +20,7 @@
     {% endif %}
     <ul class="login-list">
       {% if user.is_authenticated %}
-        <li class="login-list-items user-info"><a href="{% url 'kitchenflow:cook-detail' user.id %}">[ USER: {{ user.username }} ]</a></li>
+        <li class="login-list-items user-info"><a href="{% url 'kitchenflow:cook-detail' user.id %}">| USER: {{ user.username }} |</a></li>
         <li class="login-list-items"><a href="{% url 'logout' %}">LOGOUT</a></li>
       {% else %}
         <li class="login-list-items"><a href="{% url 'login' %}">LOGIN</a></li>

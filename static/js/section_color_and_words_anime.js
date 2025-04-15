@@ -1,35 +1,12 @@
 const vision_section = document.querySelector(".vision-section");
+const vision_section_body = document.querySelector(".vision-section-body");
 const words_to_move = document.querySelectorAll(".word_to_move");
+const third_section_line = document.querySelector(".vision-section-line");
 
 addEventListener("scroll", () => {
-        section_color_fade_scroll();
+        vision_scroll_anim();
     }
 )
-
-let current_opacity = 0;
-
-function section_color_fade_scroll() {
-    const section_top = vision_section.offsetTop;
-    const scroll_top = window.scrollY;
-    const window_height = window.innerHeight;
-
-    const start_fade = section_top;
-    const fade_range = window_height / 3;
-    const end_fade = start_fade + fade_range;
-
-    const progress = Math.min(Math.max((scroll_top - start_fade) / (end_fade - start_fade), 0), 1);
-
-    vision_section.style.backgroundColor = `rgba(20, 24, 19, ${progress})`;
-
-    if (progress > 0.7) {
-        startWordSpacingAnimation();
-    } else {
-        reverseWordSpacingAnimation();
-    }
-}
-
-
-
 
 words_to_move.forEach((word_to_move, index) => {
     let stop_position, speed, primary_position;
@@ -66,30 +43,76 @@ words_to_move.forEach((word_to_move, index) => {
     word_to_move.dataset.primary_position = primary_position.toString();
 });
 
-function startWordSpacingAnimation() {
-    for (let index = 0; index < words_to_move.length; index++) {
-        let word = words_to_move[index];
-        let x = parseFloat(word.getAttribute("x"));
-        let stop = parseFloat(word.dataset.stopPosition);
-        let speed = parseFloat(word.dataset.speed);
+// function section_scroll_animation() {
+//     const sectionRect = visionSection.getBoundingClientRect();
+//     const windowHeight = window.innerHeight;
+//
+//     const startTrigger = windowHeight * 0.55;
+//     const endTrigger = windowHeight * 0.2;
+//
+//     let progress = (startTrigger - sectionRect.top) / (startTrigger - endTrigger);
+//     progress = Math.min(Math.max(progress, 0), 1);
+//
+//     const liftProgress = Math.pow(progress, 0.5);
+//     const maxTranslate = 50;
+//     const translateY = maxTranslate * (1 - liftProgress);
+//     visionBody.style.transform = `translateY(${translateY}%)`;
+//
+//     const wordStart = 0.8;
+//     const wordProgress = Math.max((liftProgress - wordStart) / (1 - wordStart), 0);
+//     animateWords(wordProgress);
+//
+//     visionLine.style.width = `${progress * 100}%`;
+// }
+//
+// function animateWords(progress) {
+//     words_to_move.forEach((word) => {
+//         const startX = parseFloat(word.dataset.primary_position);
+//         const stopX = parseFloat(word.dataset.stopPosition);
+//         const distance = stopX - startX;
+//
+//         const newX = startX + distance * progress;
+//         word.setAttribute("x", newX.toString());
+//     });
+// }
 
-        if (x < stop) {
-            x += speed;
-            word.setAttribute("x", x.toString());
-        }
+function vision_scroll_anim() {
+    const anim_start = 6;
+    const fast_scroll_range = window.innerHeight / 2;
+    const scroll_top = scrollY || window.scrollY;
+
+    const v_section_height = vision_section.offsetHeight;
+    const v_section_offset = offset(vision_section).top;
+    const v_anim_item_point = window.innerHeight - v_section_height / anim_start;
+
+    const v_progress = (scroll_top - (v_section_offset - v_anim_item_point)) / fast_scroll_range;
+    const v_clamped = Math.min(Math.max(v_progress, 0), 1);
+    const v_translateY = 50 - (v_clamped * 50);
+
+    vision_section_body.style.transform = `translateY(${v_translateY}%)`;
+
+    const v_line_width = v_clamped * 100;
+    third_section_line.style.width = `${v_line_width}%`;
+
+    const word_start = 0.7;
+    const word_progress = Math.max((v_clamped - word_start) / (1 - word_start), 0);
+    animateWords(word_progress);
+
+    function offset(el) {
+        const rect = el.getBoundingClientRect(),
+            scrollLeft = window.scrollX || document.documentElement.scrollLeft,
+            scrollTop = window.scrollY || document.documentElement.scrollTop;
+        return { top: rect.top + scrollTop, left: rect.left + scrollLeft };
     }
-}
 
-function reverseWordSpacingAnimation() {
-    for (let index = 0; index < words_to_move.length; index++) {
-        let word = words_to_move[index];
-        let x = parseFloat(word.getAttribute("x"));
-        let start = parseFloat(word.dataset.primary_position);
-        let speed = parseFloat(word.dataset.speed);
+    function animateWords(progress) {
+        words_to_move.forEach((word) => {
+            const startX = parseFloat(word.dataset.primary_position);
+            const stopX = parseFloat(word.dataset.stopPosition);
+            const distance = stopX - startX;
 
-        if (x > start) {
-            x -= speed;
-            word.setAttribute("x", x.toString());
-        }
+            const newX = startX + distance * progress;
+            word.setAttribute("x", newX.toString());
+        });
     }
 }
