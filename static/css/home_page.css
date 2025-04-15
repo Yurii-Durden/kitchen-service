@@ -50,18 +50,11 @@
 
 .info-number {
     display: inline-block;
-    width: 60px;
-    height: 58px;
     font-size: 35px;
     font-weight: 600;
     color: var(--primary-color);
 }
 
-.plus-sign {
-  display: inline-block;
-  font-weight: 500;
-  font-size: 20px;
-}
 
 .counter-info-list .describe-info-text {
     font-size: 15px;

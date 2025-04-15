@@ -43,39 +43,6 @@ words_to_move.forEach((word_to_move, index) => {
     word_to_move.dataset.primary_position = primary_position.toString();
 });
 
-// function section_scroll_animation() {
-//     const sectionRect = visionSection.getBoundingClientRect();
-//     const windowHeight = window.innerHeight;
-//
-//     const startTrigger = windowHeight * 0.55;
-//     const endTrigger = windowHeight * 0.2;
-//
-//     let progress = (startTrigger - sectionRect.top) / (startTrigger - endTrigger);
-//     progress = Math.min(Math.max(progress, 0), 1);
-//
-//     const liftProgress = Math.pow(progress, 0.5);
-//     const maxTranslate = 50;
-//     const translateY = maxTranslate * (1 - liftProgress);
-//     visionBody.style.transform = `translateY(${translateY}%)`;
-//
-//     const wordStart = 0.8;
-//     const wordProgress = Math.max((liftProgress - wordStart) / (1 - wordStart), 0);
-//     animateWords(wordProgress);
-//
-//     visionLine.style.width = `${progress * 100}%`;
-// }
-//
-// function animateWords(progress) {
-//     words_to_move.forEach((word) => {
-//         const startX = parseFloat(word.dataset.primary_position);
-//         const stopX = parseFloat(word.dataset.stopPosition);
-//         const distance = stopX - startX;
-//
-//         const newX = startX + distance * progress;
-//         word.setAttribute("x", newX.toString());
-//     });
-// }
-
 function vision_scroll_anim() {
     const anim_start = 6;
     const fast_scroll_range = window.innerHeight / 2;
