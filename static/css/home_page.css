@@ -88,10 +88,11 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding: 50px;
+    padding: 0 50px 50px 50px;
     transform: translateY(50%);
     transition: transform 0.1s ease-out;
 }
+
 .described-restaurant-box {
     display: flex;
     flex-direction: column;
@@ -129,7 +130,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding: 50px;
+    padding: 0 50px 50px 50px;
     transform: translateY(50%);
     transition: transform 0.1s ease-out;
 }
@@ -275,8 +276,24 @@
 }
 
 /*media---------------------------------------------------*/
-/*@media (max-width: 1300px) {*/
-/*    .main-title-text {*/
-/*        font-size: 200px;*/
-/*    }*/
-/*}*/
+@media (max-width: 1430px) {
+    .home-described-section-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .home-described-project-section-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .described-project-box {
+        order: 1;
+    }
+
+    .restaurant-image-box {
+        order: 2;
+    }
+}
