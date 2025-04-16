@@ -179,7 +179,7 @@ body {
     margin: 0 auto;
     display: flex;
     gap: 150px;
-    font-size: 15px;
+    font-size: 14px;
     min-height: 100px;
     align-items: center;
     border-top: 2px solid var(--primary-color);
@@ -192,7 +192,7 @@ body {
 .footer-text-links {
     position: absolute;
     top: 45%;
-    right: 15px;
+    right: 14px;
     display: flex;
     gap: 30px;
 }
@@ -200,7 +200,9 @@ body {
 .footer-text-link {
     font-weight: 500;
     color: var(--primary-color);
+    text-decoration: none;
 }
+
 
 .footer-text-list {
     list-style: none;
