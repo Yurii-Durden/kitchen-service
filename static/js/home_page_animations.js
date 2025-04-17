@@ -11,9 +11,11 @@ const second_section_body = document.querySelector(".home-described-section-body
 const third_section_body = document.querySelector(".home-described-project-section-body");
 
 window.addEventListener("scroll", () => {
+    if (window.innerWidth >= 774) {
         lines_scroll_anim();
-        title_to_the_top();
-        make_section_text_transparent();
+    }
+    title_to_the_top();
+    make_section_text_transparent();
     }
 );
 

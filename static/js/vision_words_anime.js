@@ -4,7 +4,9 @@ const words_to_move = document.querySelectorAll(".word_to_move");
 const third_section_line = document.querySelector(".vision-section-line");
 
 addEventListener("scroll", () => {
-        vision_scroll_anim();
+        if (window.innerWidth >= 774 ) {
+            vision_scroll_anim();
+        }
     }
 )
 

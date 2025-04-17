@@ -116,7 +116,7 @@
 .img-restaurant {
     width: 700px;
     height: 500px;
-    /*object-fit: cover;*/
+    object-fit: cover;
 }
 
 /*third-section---------------------------------------------------*/
@@ -186,6 +186,10 @@
 .vision-section-image-box {
     width: 1000px;
     height: 700px;
+}
+
+.vision-title {
+    display: none;
 }
 
 .vision-image {
@@ -303,3 +307,214 @@
         padding-top: 20px;
     }
 }
+
+@media (max-width: 1025px) {
+    .vision-section-text-box {
+        width: 600px;
+        margin: 0 auto;
+    }
+
+    .vision-section-image-box {
+        margin-top: 30px;
+        width: 600px;
+        height: 400px;
+    }
+
+    .vision-image {
+        width: 600px;
+        height: 400px;
+    }
+
+    .vision-text-under-image {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 800px) {
+    .home-described-section-body {
+        padding: 0 10px 0 10px;
+    }
+
+    .home-described-project-section-body {
+        padding: 0 10px 0 10px;
+    }
+}
+
+@media (max-width: 774px) {
+    .home-main-section {
+        margin-bottom: 0;
+    }
+
+    .vision-section-body {
+        transform: translateY(0);
+    }
+
+    .home-described-project-section-body {
+        transform: translateY(0);
+    }
+
+    .home-described-section-body {
+        transform: translateY(0);
+    }
+
+    .counter-info-list {
+        order: 3;
+        gap: 0;
+        margin-top: 20px;
+    }
+
+    .described-restaurant-box {
+        margin-top: -100px;
+        margin-bottom: 40px;
+    }
+
+    .img-restaurant-box_first {
+        margin-top: -90px;
+    }
+
+    .img-restaurant-box {
+        width: 100%;
+        height: 600px;
+    }
+
+    .img-restaurant {
+        width: 100%;
+        height: 600px;
+    }
+
+    .img-kitchen {
+        width: 100%;
+        height: 600px;
+    }
+
+    .project-title-text-under {
+        order: 2;
+    }
+
+    .info-list-item {
+        min-height: 150px;
+    }
+
+    .info-number {
+        font-size: 25px;
+    }
+
+    .info-title {
+        font-size: 20px;
+    }
+
+    .describe-info-text {
+        font-size: 15px;
+    }
+
+    .vision-section-big-text-box {
+        margin-top: -60px;
+    }
+
+    .vision-section-text-box-first {
+        margin-top: -60px;
+    }
+
+    .described-restaurant-box {
+        width: 100%;
+    }
+
+    .described-project-box {
+        width: 100%;
+    }
+
+    .title-about-inspiration {
+        text-align: left;
+        font-size: 25px;
+    }
+
+    .title-about-project {
+        text-align: left;
+        font-size: 25px;
+    }
+
+    .vision-section-image-box {
+        margin-top: 30px;
+        width: 100%;
+        height: 400px;
+    }
+
+    .vision-image {
+        width: 100%;
+        height: 400px;
+    }
+
+    .vision-section-text-box {
+        width: 100%;
+    }
+
+    .next-section-box {
+        display: none;
+    }
+
+    .description-of-inspiration_of_me {
+        display: none;
+    }
+
+    .vision-section-text-box-first {
+        margin-top: -100px;
+    }
+}
+
+@media (max-width: 493px) {
+    .third_section {
+        margin-bottom: 50px;
+    }
+
+    .vision-section-big-text-box {
+        display: none;
+    }
+
+    .vision-section-text-box-first {
+        margin-top: 0;
+    }
+
+    .vision-title {
+        display: block;
+        color: #6a6a6a;
+        font-weight: 600;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 393px) {
+    .project-title-text-under {
+        display: none;
+    }
+
+    .img-restaurant-box {
+        width: 100%;
+        height: 400px;
+    }
+
+    .img-restaurant-box_first {
+        margin-top: 50px;
+    }
+
+    .img-restaurant {
+        width: 100%;
+        height: 400px;
+    }
+
+    .img-kitchen {
+        width: 100%;
+        height: 400px;
+    }
+
+    .third_section {
+        margin-bottom: 0;
+        margin-top: -100px;
+    }
+
+    .vision-section {
+        margin-top: -200px;
+    }
+
+}
+
+
