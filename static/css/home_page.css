@@ -150,15 +150,6 @@
     font-size: 35px;
 }
 
-.key-frames-title {
-    color: #6a6a6a;
-    font-weight: 500;
-    font-size: 35px;
-}
-.key-frames-item {
-    padding: 5px 0 5px 0;
-}
-
 .img-kitchen {
     width: 700px;
     height: 500px;
@@ -281,12 +272,15 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        gap: 20px;
+        padding-top: 20px;
+
     }
 
     .home-described-project-section-body {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: normal;
     }
 
     .described-project-box {
@@ -295,5 +289,17 @@
 
     .restaurant-image-box {
         order: 2;
+    }
+
+    .described-project-box {
+        height: 300px;
+    }
+
+    .described-restaurant-box {
+        height: 300px;
+    }
+
+    .vision-section {
+        padding-top: 20px;
     }
 }
