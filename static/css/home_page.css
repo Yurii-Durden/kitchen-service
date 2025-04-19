@@ -1,7 +1,7 @@
 /*first-section---------------------------------------------*/
-.home-main-section {
-    margin-bottom: 30vh;
-}
+/*.home-main-section {*/
+/*    margin-bottom: 30vh;*/
+/*}*/
 
 .home-main-page-body {
     margin-top: 90px;
@@ -12,14 +12,14 @@
 
 .project-title {
     display: inline-block;
-    transition: transform 0.1s ease-out;
+    transition: transform 0.2s ease-out;
 }
 
 .project-title-text-under {
     font-size: 13px;
     font-weight: 500;
     text-align: center;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.1s ease;
 }
 
 .counter-info-list {
@@ -28,7 +28,7 @@
     max-width: 1200px;
     gap: 10px;
     justify-content: center;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.1s ease;
 }
 
 .info-list-item {
@@ -88,7 +88,7 @@
     justify-content: space-between;
     padding: 0 50px 50px 50px;
     transform: translateY(50%);
-    transition: transform 0.1s ease-out;
+    transition: transform 0.2s ease-out;
 }
 
 .described-restaurant-box {
@@ -101,18 +101,23 @@
 }
 
 .title-about-inspiration {
+    text-transform: uppercase;
     color: #6a6a6a;
     font-weight: 500;
     font-size: 35px;
+    text-align: justify;
 }
 
 .description-of-inspiration {
-    font-size: 16px;
+    padding-left: 50px;
 }
 
-.img-restaurant-box {
-    width: 700px;
-    height: 500px;
+.finished-text {
+    font-size: 13px;
+    margin-top: 5px;
+    display: flex;
+    gap: 25px;
+    padding-left: 50px;
 }
 
 .img-restaurant {
@@ -134,7 +139,7 @@
     justify-content: space-between;
     padding: 0 50px 50px 50px;
     transform: translateY(50%);
-    transition: transform 0.1s ease-out;
+    transition: transform 0.2s ease-out;
 }
 
 .described-project-box {
@@ -147,13 +152,11 @@
 }
 
 .title-about-project {
+    text-transform: uppercase;
     color: #6a6a6a;
     font-weight: 500;
     font-size: 35px;
-}
-
-.description-of-project {
-    font-size: 16px;
+    margin-left: -50px;
 }
 
 .img-kitchen {
@@ -163,11 +166,14 @@
     object-position: 0 100%;
 }
 
+.finished-text-project {
+    padding: 0;
+}
+
 /*fourth-section-----------------------------------------------------*/
 .vision-section {
     color: var(--primary-color);
     padding-bottom: 150px;
-    padding-top: 120px;
     overflow: hidden;
 }
 
@@ -177,7 +183,7 @@
     align-items: center;
     gap: 15px;
     transform: translateY(50%);
-    transition: transform 0.1s ease-out;
+    transition: transform 0.2s ease-out;
 }
 
 .vision-section-title-box {
@@ -191,9 +197,8 @@
 
 .vision-section-text-box {
     width: 1000px;
-    margin: 30px auto;
+    margin: 0 auto;
     text-align: justify;
-    font-size: 16px;
 }
 
 .vision-section-image-box {
@@ -210,6 +215,14 @@
     height: 100%;
     object-fit: cover;
     object-position: center bottom;
+}
+
+.vision-section-big-text-box {
+    max-width: 1600px;
+    font-size: 3.5vw;
+    line-height: 3.3vw;
+    text-align: justify;
+    font-weight: 500;
 }
 
 .philosophy-title {
