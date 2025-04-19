@@ -2,8 +2,6 @@ const project_title = document.querySelector(".project-title");
 const text_under_project_title = document.querySelector(".counter-info-list");
 const scroll_down_text = document.querySelector(".scroll-down-text");
 
-const first_section_line = document.querySelector(".first_section_line");
-const second_section_line = document.querySelector(".second_section_line");
 const second_section = document.querySelector(".second_section");
 const third_section = document.querySelector(".third_section");
 
@@ -34,9 +32,6 @@ function lines_scroll_anim() {
     const s_translateY = 50 - (s_clamped * 50);
     second_section_body.style.transform = `translateY(${s_translateY}%)`;
 
-    const s_line_width = Math.min(s_clamped, 1) * 100;
-    first_section_line.style.width = `${s_line_width}%`;
-
     const t_section_height = third_section.offsetHeight;
     const t_section_offset = offset(third_section).top;
     const t_anim_item_point = window.innerHeight - t_section_height / anim_start;
@@ -45,9 +40,6 @@ function lines_scroll_anim() {
     const t_clamped = Math.min(Math.max(t_progress, 0), 1);
     const t_translateY = 50 - (t_clamped * 50);
     third_section_body.style.transform = `translateY(${t_translateY}%)`;
-
-    const t_line_width = Math.min(t_clamped, 1) * 100;
-    second_section_line.style.width = `${t_line_width}%`;
 
     function offset(el) {
         const rect = el.getBoundingClientRect(),

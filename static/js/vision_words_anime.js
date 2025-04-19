@@ -1,7 +1,7 @@
 const vision_section = document.querySelector(".vision-section");
 const vision_section_body = document.querySelector(".vision-section-body");
 const words_to_move = document.querySelectorAll(".word_to_move");
-const third_section_line = document.querySelector(".vision-section-line");
+// const third_section_line = document.querySelector(".vision-section-line");
 
 addEventListener("scroll", () => {
         if (window.innerWidth >= 774 ) {
@@ -59,9 +59,6 @@ function vision_scroll_anim() {
     const v_translateY = 50 - (v_clamped * 50);
 
     vision_section_body.style.transform = `translateY(${v_translateY}%)`;
-
-    const v_line_width = v_clamped * 100;
-    third_section_line.style.width = `${v_line_width}%`;
 
     const word_start = 0.7;
     const word_progress = Math.max((v_clamped - word_start) / (1 - word_start), 0);
