@@ -63,11 +63,17 @@ body {
 }
 
 .header-container {
-    position: relative;
     display: flex;
-    align-items: center;
+    text-align: center;
+    height: 80px;
     justify-content: space-between;
-    min-height: 75px;
+}
+
+.kk {
+    font-size: 40px;
+    text-decoration: none;
+    font-weight: 400;
+    color: var(--primary-color);
 }
 
 .nav-elems {
@@ -83,46 +89,49 @@ body {
 
 .nav-list {
     display: flex;
-    text-align: center;
     flex-wrap: wrap;
     gap: 20px;
 }
 
-.login-list {
+.menu-box {
     display: flex;
-    text-align: center;
     flex-wrap: wrap;
+    align-items: center;
     gap: 20px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+    font-weight: 550;
+    font-size: 15px;
+    color: var(--primary-color);
+}
+
+.menu-item::before {
+    content: "";
+    display: block;
+    width: 5px;
+    height: 5px;
+    scale: 0;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    transition: scale 0.2s ease-out;
+}
+
+.menu-item:hover::before {
+    scale: 100%;
 }
 
 .nav-items {
-    padding: 5px 0 5px 0;
     position: relative;
-    /*overflow: hidden;*/
-}
-
-.nav-items::after {
-    transition: transform 0.3s ease, color 0.3s ease;
-    position: absolute;
-    content: "";
-    height: 1px;
-    display: block;
-    background-color: var(--primary-color);
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    transform-origin: center;
-    transform: scaleX(0);
-}
-
-.nav-items:hover::after {
-    transform: scaleX(1);
 }
 
 .logo-box {
     display: flex;
     justify-content: center;
-    width: 180px;
     margin-left: -90px;
     position: absolute;
     left: 50%;
@@ -133,34 +142,6 @@ body {
     font-size: 25px;
     color: var(--primary-color);
 }
-
-.login-list-items {
-    position: relative;
-    padding: 5px 0 5px 0;
-}
-
-.login-list-items a {
-    font-weight: 550;
-    font-size: 15px;
-    color: var(--primary-color);
-}
-
-.login-list-items::after {
-    transition: width 0.3s ease;
-    position: absolute;
-    content: "";
-    height: 1px;
-    display: block;
-    background-color: var(--primary-color);
-    right: 0;
-    bottom: 0;
-    width: 0;
-}
-
-.login-list-items:hover::after {
-    width: 100%;
-}
-
 
 /*BODY-----------------------------------------------*/
 .section {
@@ -182,7 +163,7 @@ body {
     font-size: 14px;
     min-height: 100px;
     align-items: center;
-    border-top: 2px solid var(--primary-color);
+    /*border-bottom: 2px solid var(--primary-color);*/
 }
 
 .footer-text {
@@ -211,12 +192,12 @@ body {
 }
 
 .say-hi {
-    font-size: 100px;
-    font-weight: 300;
+    font-size: 55px;
+    font-weight: 400;
     justify-content: flex-end;
 }
 
 .slash-footer-logo {
-    font-weight: 300;
+    font-weight: 400;
 }
 
