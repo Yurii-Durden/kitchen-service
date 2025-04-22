@@ -4,14 +4,17 @@
 {#      <span class="header-logo-adapt">SERÈNE ÉLIX</span>#}
       <ul class="nav-list">
         <li class="nav-items">
-          <a class="nav-link" href="{% url 'kitchenflow:cook-list' %}">ALL COOKS</a>
+          <a class="kk" href="{% url 'kitchenflow:index' %}">S | É</a>
         </li>
-        <li class="nav-items">
-          <a class="nav-link" href="{% url 'kitchenflow:dish-list' %}">{{ user.is_chef|yesno:"All , MY " }}DISHES</a>
-        </li>
-        <li class="nav-items">
-          <a class="nav-link" href="{% url 'kitchenflow:dish-type-list' %}">{{ user.is_chef|yesno:"ALL , MY " }} TYPES OF DISHES</a>
-        </li>
+{#        <li class="nav-items">#}
+{#          <a class="nav-link" href="{% url 'kitchenflow:dish-type-list' %}">{{ user.is_chef|yesno:"ALL , MY " }} TYPES OF DISHES</a>#}
+{#        </li>#}
+{#        <li class="nav-items">#}
+{#          <a class="nav-link" href="{% url 'kitchenflow:cook-list' %}">ALL COOKS</a>#}
+{#        </li>#}
+{#        <li class="nav-items">#}
+{#          <a class="nav-link" href="{% url 'kitchenflow:dish-list' %}">{{ user.is_chef|yesno:"All , MY " }}DISHES</a>#}
+{#        </li>#}
       </ul>
     </nav>
     {% if not is_home %}
@@ -19,14 +22,15 @@
         <a class="logo" href="{% url 'kitchenflow:index' %}">SERÈNE ÉLIX</a>
       </div>
     {% endif %}
-    <ul class="login-list">
-      {% if user.is_authenticated %}
-        <li class="login-list-items user-info"><a href="{% url 'kitchenflow:cook-detail' user.id %}">| USER: {{ user.username }} |</a></li>
-        <li class="login-list-items"><a href="{% url 'logout' %}">LOGOUT</a></li>
-      {% else %}
-        <li class="login-list-items"><a href="{% url 'login' %}">LOGIN</a></li>
-      {% endif %}
-    </ul>
+    <div class="menu-box">
+{#      {% if user.is_authenticated %}#}
+{#        <li class="login-list-items user-info"><a href="{% url 'kitchenflow:cook-detail' user.id %}">| USER: {{ user.username }} |</a></li>#}
+{#        <li class="login-list-items"><a href="{% url 'logout' %}">LOGOUT</a></li>#}
+{#      {% else %}#}
+{#        <li class="login-list-items"><a href="{% url 'login' %}">LOGIN</a></li>#}
+        <a class="menu-item" href="#" onclick="return false;">MENU</a>
+{#      {% endif %}#}
+    </div>
   </div>
 </header>
 
