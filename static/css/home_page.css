@@ -15,6 +15,13 @@
     display: inline-block;
 }
 
+/*second-section---------------------------------------------*/
+.statistic__title {
+    font-size: 45px;
+    font-weight: 500;
+    color: #6a6a6a;
+}
+
 .counter__info__list {
     width: 100%;
     display: flex;
@@ -31,21 +38,15 @@
 }
 
 .info__title {
-    font-size: 45px;
+    font-size: 40px;
     font-weight: 500;
     color: #6a6a6a;
 }
 
 .info__number {
-    display: inline-block;
-    font-size: 45px;
+    font-size: 40px;
     font-weight: 500;
     color: #6a6a6a;
-}
-
-/*second-section---------------------------------------------*/
-.second__section {
-    overflow: hidden;
 }
 
 .home__described__section__body {
@@ -133,7 +134,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 50px;
+    gap: 40px;
 }
 
 .vision__section__title__box {
@@ -141,14 +142,17 @@
 }
 
 .vision__section__text__box {
-    width: 900px;
+    /*width: 900px;*/
+    width: 850px;
     margin: 0 auto;
     text-align: justify;
 }
 
 .vision__section__image__box {
-    width: 900px;
-    height: 700px;
+    /*width: 900px;*/
+    /*height: 700px;*/
+    width: 850px;
+    height: 650px;
 }
 
 .vision__title {
