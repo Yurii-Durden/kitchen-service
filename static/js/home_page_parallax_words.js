@@ -1,10 +1,10 @@
-const vision_section = document.querySelector(".vision-section");
-const img_vision = document.querySelector(".vision-image");
+const vision_section = document.querySelector(".vision__section");
+const img_vision = document.querySelector(".vision__image");
 
-const second_section = document.querySelector(".second_section");
-const third_section = document.querySelector(".third_section");
-const restaurant_image = document.querySelector(".img-restaurant");
-const img_kitchen = document.querySelector(".img-kitchen");
+const second_section = document.querySelector(".second__section");
+const third_section = document.querySelector(".third__section");
+const restaurant_image = document.querySelector(".img__restaurant");
+const img_kitchen = document.querySelector(".img__kitchen");
 
 ScrollTrigger.create({
   trigger: vision_section,
