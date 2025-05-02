@@ -71,7 +71,6 @@ body::-webkit-scrollbar {
   width: 100%;
   z-index: 50;
   transition: transform 0.3s ease-out;
-    display: none;
 }
 
 .header:before {
@@ -148,8 +147,7 @@ body::-webkit-scrollbar {
 .header__menu {
     position: fixed;
     z-index: 6;
-    /*display: flex;*/
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 50px;
@@ -174,6 +172,7 @@ body::-webkit-scrollbar {
     flex-direction: column;
     gap: 30px;
     margin: 0 auto;
+    padding: 0 10px;
     color: var(--primary-color);
 }
 
@@ -192,7 +191,7 @@ body::-webkit-scrollbar {
     position: relative;
     display: flex;
     flex-direction: column;
-    font-size: clamp(40px, 8vw, 80px);
+    font-size: clamp(20px, 8vw, 80px);
     text-decoration: none;
     line-height: 1;
     font-weight: 500;
@@ -365,5 +364,31 @@ body::-webkit-scrollbar {
 
 .footer__text__link {
     color: var(--back-color);
+}
+
+/*header-media-----------------------------------------*/
+@media  (max-width: 768px) {
+    .menu__click__elem {
+        display: none;
+    }
+
+    .nav__link:hover {
+        transform: translateX(0);
+    }
+
+    .login__click__elem {
+        display: none;
+    }
+}
+
+@media (max-height: 533px) {
+    .login__list__items {
+        padding-bottom: 0;
+        align-items: flex-end;
+    }
+
+    .login__list__box {
+        min-height: 50px;
+    }
 }
 
