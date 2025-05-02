@@ -4,45 +4,45 @@ ScrollSmoother.create({
   content: '.content'
 });
 
-// ScrollTrigger.create({
-//   trigger: document.querySelector(".footer__about__info"),
-//   start: "top bottom",
-//   end: "bottom top",
-//   scrub: true,
-//   onUpdate: self => {
-//     const progress = self.progress;
-//     const word = document.querySelectorAll(".about__title .about__letter");
-//     takeLetters(progress, word);
-//   }
-// });
-//
-// ScrollTrigger.create({
-//   trigger: document.querySelector(".footer__about__art"),
-//   start: "top bottom",
-//   end: "bottom top",
-//   scrub: true,
-//   onUpdate: self => {
-//     const progress = self.progress;
-//     const word = document.querySelectorAll(".art__title .art__letter");
-//     takeLetters(progress, word);
-//   }
-// });
-//
-// function takeLetters(progress, word) {
-//   const letters = word;
-//   const speedFactor = 3;
-//
-//   letters.forEach((letter) => {
-//
-//     let localProgress = Math.min(1, Math.max(0, progress));
-//     localProgress = Math.min(1, Math.max(0, localProgress * speedFactor));
-//
-//     const translateX = (1 - localProgress) * -100;
-//     letter.style.transform = `translateX(${translateX}%)`;
-//   });
-// }
-//
-//
+ScrollTrigger.create({
+  trigger: document.querySelector(".footer__about__info"),
+  start: "top bottom",
+  end: "bottom top",
+  scrub: true,
+  onUpdate: self => {
+    const progress = self.progress;
+    const word = document.querySelectorAll(".about__title .about__letter");
+    takeLetters(progress, word);
+  }
+});
+
+ScrollTrigger.create({
+  trigger: document.querySelector(".footer__about__art"),
+  start: "top bottom",
+  end: "bottom top",
+  scrub: true,
+  onUpdate: self => {
+    const progress = self.progress;
+    const word = document.querySelectorAll(".art__title .art__letter");
+    takeLetters(progress, word);
+  }
+});
+
+function takeLetters(progress, word) {
+  const letters = word;
+  const speedFactor = 3;
+
+  letters.forEach((letter) => {
+
+    let localProgress = Math.min(1, Math.max(0, progress));
+    localProgress = Math.min(1, Math.max(0, localProgress * speedFactor));
+
+    const translateX = (1 - localProgress) * -100;
+    letter.style.transform = `translateX(${translateX}%)`;
+  });
+}
+
+
 const header_menu_button = document.querySelector(".menu__item");
 const header_menu = document.querySelector(".header__menu");
 const menu_click_elem = document.querySelector(".menu__click__elem");

@@ -270,7 +270,6 @@ body::-webkit-scrollbar {
 
 /*FOOTER---------------------------------------------*/
 .footer__section {
-    display: none;
     background-color: var(--primary-color);
 }
 
@@ -282,19 +281,20 @@ body::-webkit-scrollbar {
     display: flex;
     flex-direction: column;
     font-size: 15px;
-    /*text-transform: uppercase;*/
 }
 
 /*footer-about-----------------------------------------*/
 .footer__about__info {
     color: var(--back-color);
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
 .footer__about__art {
     color: var(--back-color);
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding-bottom: 200px;
 }
@@ -302,15 +302,17 @@ body::-webkit-scrollbar {
 .about__title {
     display: flex;
     line-height: 0.86;
-    font-size: 6rem;
+    font-size: clamp(2.5rem, 8vw, 6rem);
     font-weight: 400;
+    margin-right: 50px;
 }
 
 .art__title {
     display: flex;
     line-height: 0.86;
-    font-size: 6rem;
+    font-size: clamp(2.5rem, 8vw, 6rem);
     font-weight: 400;
+    margin-right: 50px;
 }
 
 .box__to__hide {
@@ -350,7 +352,7 @@ body::-webkit-scrollbar {
 }
 
 .say__hi {
-    font-size: 90px;
+    font-size: 6rem;
     font-weight: 400;
     color: var(--back-color);
 }
@@ -392,3 +394,48 @@ body::-webkit-scrollbar {
     }
 }
 
+/*footer-media---------------------------------------------*/
+@media (max-width: 1516px) {
+    .about__title {
+        margin-bottom: 10px;
+    }
+
+    .art__title {
+        margin-bottom: 10px;
+    }
+
+    .footer__about__info {
+        flex-direction: column;
+    }
+
+    .footer__about__art {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 769px) {
+    .footer {
+        padding-top: 50px;
+         padding-bottom: 50px;
+    }
+
+    .footer__about__art {
+        padding-bottom: 50px;
+    }
+}
+
+@media (max-width: 955px) {
+    .footer__contact__info {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .say__hi {
+        font-size: 8rem;
+    }
+}
+
+@media (max-width: 388px) {
+    .say__hi {
+        font-size: 6rem;
+    }
+}
