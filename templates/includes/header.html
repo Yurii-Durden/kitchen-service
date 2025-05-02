@@ -1,38 +1,39 @@
 <header class="header">
   <div class="header__container _container">
-    <a class="logo" href="{% url 'kitchenflow:index' %}">S | É</a>
+    <a class="logo" href="{% url 'kitchenflow:index' %}">S-É</a>
     <div class="menu__box">
-      <a class="menu__item" href="#" onclick="return false;"><span class="menu__click__elem"></span> MENU</a>
+      <a class="menu__item" href="#" onclick="return false;">MENU<span class="menu__click__elem"></span></a>
     </div>
   </div>
 </header>
 <nav class="header__menu">
   <ul class="nav__list">
     <li class="nav__items">
-      <span class="position__number">01</span><a class="nav__link" href="{% url 'kitchenflow:dish-list' %}">{{ user.is_chef|yesno:"ALL , MY " }} DISHES</a>
+      <a class="nav__link" href="{% url 'kitchenflow:dish-list' %}">{{ user.is_chef|yesno:"ALL , MY " }} DISHES</a>
     </li>
-    <li class="menu__line__item"><div class="menu__line menu__line__first"></div></li>
     <li class="nav__items">
-      <span class="position__number">02</span><a class="nav__link" href="{% url 'kitchenflow:cook-list' %}">ALL COOKS</a>
+      <a class="nav__link" href="{% url 'kitchenflow:cook-list' %}">ALL COOKS</a>
     </li>
-    <li class="menu__line__item"><div class="menu__line menu__line__second"></div></li>
     <li class="nav__items">
-      <span class="position__number">03</span><a class="nav__link" href="{% url 'kitchenflow:dish-type-list' %}">{{ user.is_chef|yesno:"ALL , MY " }} TYPES OF DISHES</a>
+      <a class="nav__link" href="{% url 'kitchenflow:dish-type-list' %}">{{ user.is_chef|yesno:"ALL , MY " }}TYPES OF DISHES</a>
     </li>
   </ul>
-  <ul class="login__list">
-    {% if user.is_authenticated %}
-      <li class="login__list__items user__info">
-        <a href="{% url 'kitchenflow:cook-detail' user.id %}">USER: {{ user.username }}</a>
-        <svg class="user__arrow" xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path></svg>
-      </li>
-      <li class="login__list__items logout">
-        <svg class="logout__arrow" xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path></svg>
-        <a href="{% url 'logout' %}">LOGOUT</a>
-      </li>
-    {% else %}
-      <li class="login__list__items"><a href="{% url 'login' %}">LOGIN</a></li>
-    {% endif %}
-  </ul>
+  <div class="login__list__box">
+    <ul class="login__list _container">
+      {% if user.is_authenticated %}
+        <li class="login__list__items login__item">
+          <a class="login__list__item__link" href="{% url 'kitchenflow:cook-detail' user.id %}">USER: {{ user.username }}
+            <span class="login__click__elem"></span></a>
+        </li>
+        <li class="login__list__items login__item">
+          <a class="login__list__item__link" href="{% url 'logout' %}">LOGOUT<span class="login__click__elem"></span></a>
+        </li>
+      {% else %}
+        <li class="login__list__items login__item">
+          <a class="login__list__item__link" href="{% url 'login' %}">LOGIN<span class="login__click__elem"></span></a>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
 </nav>
 

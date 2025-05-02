@@ -10,59 +10,90 @@
     <div class="home__main__page__body _container">
         <h1 class="project__title">
           <svg width="100%" height="586" viewBox="0 0 1600 586" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <text fill="#121212" xml:space="preserve" style="white-space: pre" font-family="Poppins" font-size="256" font-weight="400" letter-spacing="0em"><tspan x="0" y="281.6">SER&#xc8;NE </tspan></text>
-            <text fill="#121212" xml:space="preserve" style="white-space: pre" font-family="Poppins" font-size="255" font-weight= "400" letter-spacing="0em"><tspan x="677" y="527.75">&#xc9;LANCE</tspan></text>
-            <text fill="#121212" xml:space="preserve" style="white-space: pre" font-family="Poppins" font-size="15" font-weight="500" letter-spacing="0em"><tspan x="1311.64" y="202.378">KITCHEN SERVICE</tspan></text>
+            <text fill="#000000" xml:space="preserve" style="white-space: pre" font-family="Poppins" font-size="256" font-weight="400" letter-spacing="0em"><tspan x="0" y="281.6">SER&#xc8;NE </tspan></text>
+            <text fill="#000000" xml:space="preserve" style="white-space: pre" font-family="Poppins" font-size="255" font-weight= "400" letter-spacing="0em"><tspan x="677" y="527.75">&#xc9;LANCE</tspan></text>
+            <text fill="#000000" xml:space="preserve" style="white-space: pre" font-family="Poppins" font-size="15" font-weight="500" letter-spacing="0em"><tspan x="1311.64" y="202.378">KITCHEN SERVICE</tspan></text>
           </svg>
         </h1>
       </div>
   </section>
-  <section class="home__described__section home__page__section second__section section">
-    <div class="home__described__section__body _container">
-      <div class="described__restaurant__box">
-        <h2 class="statistic__title">INSIDE THE KITCHEN</h2>
+  <section class="statistic__section second__section section">
+    <div class="statistic__section__body _container">
+      <div class="statistic__restaurant__box">
+        <h2 class="statistic__title titles">
+          <span class="hide__span__box">
+            <span class="hide__word hide__word__f">NUMBERS</span>
+          </span>
+        </h2>
         <ul class="counter__info__list">
           <li class="info__list__item">
-            <h3 class="info__title">TYPE OF DISHES</h3>
-            <p class="info__number">&nbsp;&nbsp;{{ count_of_dishes_type }}</p>
+            <h3 class="info__title">TYPE OF DISHES:</h3>
+            <p class="info__number">{{ count_of_dishes_type }}</p>
           </li>
           <li class="info__list__item">
-            <h3 class="info__title">COOKS</h3>
-            <p class="info__number">&nbsp;&nbsp;{{ count_of_cooks }}</p>
+            <h3 class="info__title">COOKS:</h3>
+            <p class="info__number">{{ count_of_cooks }}</p>
           </li>
           <li class="info__list__item">
-            <h3 class="info__title">DISHES</h3>
-            <p class="info__number">&nbsp;&nbsp;{{ count_of_dishes }}</p>
+            <h3 class="info__title">DISHES:</h3>
+            <p class="info__number">{{ count_of_dishes }}</p>
           </li>
         </ul>
       </div>
-      <div class="restaurant__image__box img__restaurant__box__first">
-        <div class="img__restaurant__box">
-          <img class="img__restaurant" src="{% static "images/b_w_interior.png" %}" alt="restaurant interior">
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="home-project__described__section home__page__section third__section section">
-    <div class="home__described__project__section__body _container">
-      <div class="restaurant__image__box">
-        <div class="img__restaurant__box">
-          <img class="img__kitchen" src="{% static "images/b_w_kitchen.png" %}" alt="kitchen interior">
-        </div>
-      </div>
-      <div class="described__project__box">
-        <h4 class="title__about__project">Minimalism in motion</h4>
-        <h4 class="title__about__project">Minimalism in motion</h4>
-        <p class="description__of__project">
+      <div class="structure__info__box">
+        <h4 class="structure__title titles titles">
+          <span class="hide__span__box">
+            <span class="hide__word hide__word__s">STRUCTURE</span>
+          </span>
+        </h4>
+        <p class="structure__of__project">
           This restaurant kitchen management interface combines clarity, efficiency, and elegance.
           It allows chefs to create new dishes and define types of dishes, add new cooks, and assign them
           responsibility for specific meals.
-          The restaurant is where haute cuisine meets architectural aesthetics.
-          Inspired by its brutalist-modernist concept,
-          I designed the interface using a minimalist approach
-          that removes the unnecessary and focuses entirely on efficiency—streamlining
-          workflow while reflecting the refined character of the space.
+          The system is grounded in the principles of digital brutalism — raw structure, unapologetic clarity,
+          and zero excess. Interfaces are stripped to essentials, built to serve, not to decorate.
+          On the backend, architecture mirrors this discipline. Modular components, clean separation of concerns,
+          and transparent logic keep the foundation solid, readable, and ready for scale.
         </p>
+      </div>
+      <div class="abilities__info__box">
+        <h2 class="abilities__title titles">
+          <span class="hide__span__box">
+            <span class="hide__word hide__word__t">ABILITIES</span>
+          </span>
+        </h2>
+ <ul class="abilities__info__list">
+  <li class="abilities__item">
+    <span class="abilities__text">Create new dish types</span>
+  </li>
+  <li class="abilities__item">
+    <span class="abilities__text">Edit existing dish types</span>
+  </li>
+  <li class="abilities__item">
+    <span class="abilities__text">Delete unused dish types</span>
+  </li>
+  <li class="abilities__item">
+    <span class="abilities__text">Create new dishes</span>
+  </li>
+  <li class="abilities__item">
+    <span class="abilities__text">Edit existing dishes</span>
+  </li>
+  <li class="abilities__item">
+    <span class="abilities__text">Delete dishes</span>
+  </li>
+  <li class="abilities__item">
+    <span class="abilities__text">Create new cook profiles</span>
+  </li>
+  <li class="abilities__item">
+    <span class="abilities__text">Edit or remove existing cooks</span>
+  </li>
+  <li class="abilities__item">
+    <span class="abilities__text">Assign cooks to specific dishes</span>
+  </li>
+  <li class="abilities__item">
+    <span class="abilities__text">Access restricted to chef only</span>
+  </li>
+</ul>
       </div>
     </div>
   </section>
@@ -75,21 +106,22 @@
         REFLECTION OF MY<span class="ani-t"></span>PASSION FOR BRUTALISM,
         MINIMALISM, AND MODERNISM. I CREATED A CLEAN,
         STRUCTURED ENVIRONMENT <span class="ani-t"></span>THAT EMBODIES BOTH
-        SIMPLICITY AND BOLDNESS, MIRRORING THE ESSENCE.
+        SIMPLICITY AND BOLDNESS, MIRRORING THE ESSENCE
         OF A PROFESSIONAL KITCHEN.
       </div>
-      <div class="vision__section__image__box">
-        <img class="vision__image" src="{% static 'images/b_w_forte.png' %}" alt="fortepiano in restaurant interior">
-      </div>
-      <div class="vision__section__text__box vision__text__under__image">
-        <h5 class="philosophy__title">PHILOSOPHY</h5>
+      <div class="vision__section__text__box vision__section__philosophy">
+        <h5 class="philosophy__title titles">
+          <span class="hide__span__box">
+            <span class="hide__word hide__word__vision_f">PHILOSOPHY</span>
+          </span>
+        </h5>
         <p>
           Just as every restaurant has its own unique identity, kitchen management
           can be designed in various innovative and efficient ways to enhance workflow and productivity.
           Kitchen service brings your kitchen's operations to life with a streamlined,
           functional interface that reflects your restaurant's distinct style.
-        </p>
-        <p>
+{#        </p>#}
+{#        <p>#}
           I believe a kitchen is more than just a workspace. It is a place where design and function come together with purpose.
           My approach is built on simplicity, clarity, and precision. I aim to create an environment that supports natural flow,
           where every movement feels intuitive and every element has meaning.
@@ -100,10 +132,31 @@
           It is about harmony between vision and execution, between style and purpose.
         </p>
       </div>
+      <div class="vision__section__text__box vision__section__environment">
+        <h5 class="philosophy__title titles">
+          <span class="hide__span__box">
+            <span class="hide__word hide__word__vision_s">ENVIRONMENT</span>
+          </span>
+        </h5>
+        <p>
+          The kitchen is a living ecosystem. Every action, every pause, every decision is part of a larger rhythm.
+          This interface is designed not to control that rhythm, but to move with it — to adapt, respond,
+          and support the energy of the workspace. Whether it’s a high-pressure service or a calm prep session,
+          the system remains silent but responsive — always present, never intrusive.
+        </p>
+        <p>
+          I focus on creating an operational space where chefs feel in control, yet free.
+          Where tools are not obstacles, but silent collaborators.
+        </p>
+        <br>
+        <p>
+          Everything is designed to help the team work in sync and to let creativity grow without distraction.
+          It is about harmony between vision and execution, between style and purpose.
+        </p>
+      </div>
     </div>
   </section>
 {% endblock %}
-
 {% block extra_scripts %}
-  <script src="{% static 'js/home_page_parallax_words.js' %}"></script>
+  <script src="{% static 'js/home_page_anim_words.js' %}"></script>
 {% endblock %}
