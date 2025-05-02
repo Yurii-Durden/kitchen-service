@@ -7,7 +7,10 @@ ScrollTrigger.create({
   scrub: true,
   onUpdate: self => {
     const progress = self.progress;
-    updateTextWidth(progress, 6, 45);
+    let maxWidth =
+        window.innerWidth <= 600 ? 10 :
+        window.innerWidth <= 855 ? 30 : 45;
+    updateTextWidth(progress, 6, maxWidth);
   }
 });
 

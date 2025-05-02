@@ -1,8 +1,8 @@
 /*---------------------------------------------------------*/
 .titles {
-    line-height: 1;
-    font-size: 6rem;
-    font-weight: 500;
+  line-height: 1;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 500;
 }
 /*first-section---------------------------------------------*/
 .home__main__section {
@@ -93,10 +93,9 @@
     position: relative;
     display: flex;
     align-items: center;
-    font-size: 15px;
     font-weight: 500;
     color: var(--primary-color);
-    line-height: 1.4;
+    line-height: 1.5;
     white-space: nowrap;
     width: 100%;
 }
@@ -219,12 +218,13 @@
 }
 
 .vision__section__text__box {
-    width: 700px;
+    width: 100%;
+    max-width: 700px;
     text-align: justify;
-    /*text-transform: uppercase;*/
     margin-bottom: 30vh;
 }
 
+/*big-text----------------------------------------------*/
 .vision__section__big__text__box {
     font-size: 3.8vw;
     line-height: 3.32vw;
@@ -244,3 +244,63 @@
     will-change: width;
 }
 /*media---------------------------------------------------*/
+@media (max-width: 1300px) {
+    .home__main__section {
+        margin-bottom: 10vh;
+}
+}
+
+@media (max-width: 855px) {
+    .statistic__restaurant__box {
+        margin-bottom: 20vh;
+    }
+
+    .structure__info__box {
+        margin-bottom: 20vh;
+    }
+
+    .second__section {
+        margin-bottom: 20vh;
+    }
+
+    .vision__section__big__text__box {
+        margin-bottom: 20vh;
+    }
+
+    .vision__section__text__box {
+        margin-bottom: 20vh;
+    }
+}
+
+@media (max-width: 600px) {
+    .kitchen__service__text {
+        /*display: none;*/
+        font-size: 30px;
+    }
+
+    .statistic__restaurant__box {
+        margin-bottom: 10vh;
+    }
+
+    .structure__info__box {
+        margin-bottom: 10vh;
+    }
+
+    .second__section {
+        margin-bottom: 10vh;
+    }
+
+    .vision__section__big__text__box {
+        margin-bottom: 10vh;
+    }
+
+    .vision__section__text__box {
+        margin-bottom: 10vh;
+    }
+}
+
+@media (max-width: 371px) {
+    .vision__section__big__text__box {
+        display: none;
+    }
+}
