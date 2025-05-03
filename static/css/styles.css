@@ -29,7 +29,7 @@ body {
     font-family: "Cormorant Garamond", serif;
     height: 100%;
     line-height: 1.5;
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 500;
     background-color: var(--back-color);
     color: var(--primary-color);
@@ -116,7 +116,7 @@ body::-webkit-scrollbar {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 18px;
     line-height: 1.4;
     color: var(--primary-color);

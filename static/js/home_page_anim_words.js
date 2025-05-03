@@ -50,45 +50,45 @@ function updateTextWidth(progress, speedFactor = 0.7, maxWidth = 45, delayProgre
 //     }
 // });
 
-ScrollTrigger.create({
-    trigger: document.querySelector(".abilities__info__box"),
-    start: "top bottom",
-    end: "bottom top",
-    scrub: true,
-    onUpdate: self => {
-      const progress = self.progress;
-      animateWords(progress, document.querySelector(".hide__word__t"));
-    }
-});
-
-ScrollTrigger.create({
-    trigger: document.querySelector(".vision__section__philosophy"),
-    start: "top bottom",
-    end: "bottom top",
-    scrub: true,
-    onUpdate: self => {
-      const progress = self.progress;
-      animateWords(progress, document.querySelector(".hide__word__vision_f"));
-    }
-});
-
-ScrollTrigger.create({
-    trigger: document.querySelector(".vision__section__environment"),
-    start: "top bottom",
-    end: "bottom top",
-    scrub: true,
-    onUpdate: self => {
-      const progress = self.progress;
-      animateWords(progress, document.querySelector(".hide__word__vision_s"));
-    }
-});
-
-function animateWords(progress, title) {
-  const speedFactor = 2;
-  let adjustedProgress = Math.min(1, Math.max(0, progress * speedFactor));
-  console.log(progress)
-
-  const translateY = (1 - adjustedProgress) * 100;
-  title.style.transform = `translateY(${translateY}%)`;
-}
-
+// ScrollTrigger.create({
+//     trigger: document.querySelector(".abilities__info__box"),
+//     start: "top bottom",
+//     end: "bottom top",
+//     scrub: true,
+//     onUpdate: self => {
+//       const progress = self.progress;
+//       animateWords(progress, document.querySelector(".hide__word__t"));
+//     }
+// });
+//
+// ScrollTrigger.create({
+//     trigger: document.querySelector(".vision__section__philosophy"),
+//     start: "top bottom",
+//     end: "bottom top",
+//     scrub: true,
+//     onUpdate: self => {
+//       const progress = self.progress;
+//       animateWords(progress, document.querySelector(".hide__word__vision_f"));
+//     }
+// });
+//
+// ScrollTrigger.create({
+//     trigger: document.querySelector(".vision__section__environment"),
+//     start: "top bottom",
+//     end: "bottom top",
+//     scrub: true,
+//     onUpdate: self => {
+//       const progress = self.progress;
+//       animateWords(progress, document.querySelector(".hide__word__vision_s"));
+//     }
+// });
+//
+// function animateWords(progress, title) {
+//   const speedFactor = 2;
+//   let adjustedProgress = Math.min(1, Math.max(0, progress * speedFactor));
+//   console.log(progress)
+//
+//   const translateY = (1 - adjustedProgress) * 100;
+//   title.style.transform = `translateY(${translateY}%)`;
+// }
+//
