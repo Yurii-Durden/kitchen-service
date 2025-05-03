@@ -10,7 +10,7 @@ ScrollTrigger.create({
     let maxWidth =
         window.innerWidth <= 600 ? 10 :
         window.innerWidth <= 855 ? 30 : 45;
-    updateTextWidth(progress, 6, maxWidth);
+    updateTextWidth(progress, 9, maxWidth);
   }
 });
 
@@ -28,27 +28,27 @@ function updateTextWidth(progress, speedFactor = 0.7, maxWidth = 45, delayProgre
   });
 }
 
-ScrollTrigger.create({
-    trigger: document.querySelector(".statistic__restaurant__box"),
-    start: "top 90%",
-    end: "bottom top",
-    scrub: true,
-    onUpdate: self => {
-      const progress = self.progress;
-      animateWords(progress, document.querySelector(".hide__word__f"));
-    }
-});
+// ScrollTrigger.create({
+//     trigger: document.querySelector(".statistic__restaurant__box"),
+//     start: "top 90%",
+//     end: "bottom top",
+//     scrub: true,
+//     onUpdate: self => {
+//       const progress = self.progress;
+//       animateWords(progress, document.querySelector(".hide__word__f"));
+//     }
+// });
 
-ScrollTrigger.create({
-    trigger: document.querySelector(".structure__info__box"),
-    start: "top 90%",
-    end: "bottom top",
-    scrub: true,
-    onUpdate: self => {
-      const progress = self.progress;
-      animateWords(progress, document.querySelector(".hide__word__s"));
-    }
-});
+// ScrollTrigger.create({
+//     trigger: document.querySelector(".structure__info__box"),
+//     start: "top 90%",
+//     end: "bottom top",
+//     scrub: true,
+//     onUpdate: self => {
+//       const progress = self.progress;
+//       animateWords(progress, document.querySelector(".hide__word__s"));
+//     }
+// });
 
 ScrollTrigger.create({
     trigger: document.querySelector(".abilities__info__box"),
