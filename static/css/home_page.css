@@ -82,7 +82,7 @@
 
 .info__list__item {
     font-weight: 500;
-    line-height: 1.4;
+    line-height: 1.5;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -106,7 +106,7 @@
     height: 1px;
     flex-grow: 1;
     width: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: var(--primary-color);
     margin: 0 10px;
 
 }
@@ -158,7 +158,7 @@
 .abilities__item {
     position: relative;
     /*text-transform: uppercase;*/
-    height: 50px;
+    height: 55px;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -226,7 +226,7 @@
 
 /*big-text----------------------------------------------*/
 .vision__section__big__text__box {
-    font-size: 3.8vw;
+    font-size: 3.7vw;
     line-height: 3.32vw;
     position: relative;
     font-weight: 500;
