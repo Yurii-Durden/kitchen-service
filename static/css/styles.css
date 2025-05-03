@@ -26,7 +26,7 @@ ol, ul {
 
 html,
 body {
-    font-family: Poppins, sans-serif;
+    /*font-family: sans-serif;*/
     height: 100%;
     line-height: 1.5;
     font-size: 15px;
@@ -329,7 +329,7 @@ body::-webkit-scrollbar {
 .text__about {
     width: 100%;
     max-width: 1150px;
-    font-size: 3.8vw;
+    font-size: 3.7vw;
     line-height: 3.32vw;
     position: relative;
     font-weight: 500;
