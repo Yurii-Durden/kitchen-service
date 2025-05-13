@@ -4,45 +4,6 @@ ScrollSmoother.create({
   content: '.content'
 });
 
-ScrollTrigger.create({
-  trigger: document.querySelector(".footer__about__info"),
-  start: "top bottom",
-  end: "bottom top",
-  scrub: true,
-  onUpdate: self => {
-    const progress = self.progress;
-    const word = document.querySelectorAll(".about__title .about__letter");
-    takeLetters(progress, word);
-  }
-});
-
-ScrollTrigger.create({
-  trigger: document.querySelector(".footer__about__art"),
-  start: "top bottom",
-  end: "bottom top",
-  scrub: true,
-  onUpdate: self => {
-    const progress = self.progress;
-    const word = document.querySelectorAll(".art__title .art__letter");
-    takeLetters(progress, word);
-  }
-});
-
-function takeLetters(progress, word) {
-  const letters = word;
-  const speedFactor = 3;
-
-  letters.forEach((letter) => {
-
-    let localProgress = Math.min(1, Math.max(0, progress));
-    localProgress = Math.min(1, Math.max(0, localProgress * speedFactor));
-
-    const translateX = (1 - localProgress) * -100;
-    letter.style.transform = `translateX(${translateX}%)`;
-  });
-}
-
-
 const header_menu_button = document.querySelector(".menu__item");
 const header_menu = document.querySelector(".header__menu");
 const menu_click_elem = document.querySelector(".menu__click__elem");
@@ -71,4 +32,26 @@ window.addEventListener('scroll', () => {
     header.style.transform = 'translateY(0)';
   }
   lastScroll = scrollTop;
+});
+
+const words_footer = Array.from(document.querySelectorAll(".fade__word__foot"));
+
+ScrollTrigger.create({
+  trigger: ".footer__text",
+  start: "top 45%",
+  end: "bottom top+=200",
+  scrub: true,
+  onUpdate: self => {
+    const progress = self.progress;
+
+    words_footer.forEach((word, i) => {
+      const appearAt = i * 0.013;
+      const wordProgress = (progress - appearAt) * 10;
+      const clamped = Math.min(Math.max(wordProgress, 0), 1);
+
+      word.style.opacity = clamped;
+      word.style.filter = `blur(${(1 - clamped) * 10}px)`;
+      word.style.transform = `translate3d(${(1 - clamped) * 10}px, 0, 0)`;
+    });
+  }
 });

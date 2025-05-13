@@ -1,94 +1,94 @@
-const vision_section = document.querySelector(".vision__section");
+// document.querySelectorAll(".anim__letter").forEach(textBlock => {
+//   const letters = textBlock.querySelectorAll(".letter");
+//
+//   ScrollTrigger.create({
+//     trigger: textBlock,
+//     start: "top bottom",
+//     end: "bottom top",
+//     scrub: true,
+//     onUpdate: self => {
+//       const progress = self.progress;
+//       takeLetters(progress, letters);
+//     }
+//   });
+// });
+//
+// function takeLetters(progress, letters) {
+//   const speedFactor = 3;
+//
+//   letters.forEach(letter => {
+//     let localProgress = Math.min(1, Math.max(0, progress));
+//     localProgress = Math.min(1, Math.max(0, localProgress * speedFactor));
+//
+//     const translateX = (1 - localProgress) * -100;
+//     letter.style.transform = `translateX(${translateX}%)`;
+//   });
+// }
 
-ScrollTrigger.create({
-  trigger: vision_section,
+createFadeWordsAnimation({
+  words: Array.from(document.querySelectorAll(".fade__text")),
+  triggerSelector: ".big__text__box",
+  start: "top 90%",
+  end: "bottom 20%",
+  appearAtFactor: 0.022,
+  speed: 10
+});
+
+createFadeWordsAnimation({
+  words: Array.from(document.querySelectorAll(".fade__word__info")),
+  triggerSelector: ".numbers__block__info",
+  start: "top 80%",
+  end: "bottom 10%",
+  appearAtFactor: 0.013,
+  speed: 10
+});
+
+createFadeWordsAnimation({
+  words: Array.from(document.querySelectorAll(".fade__word__title")),
+  triggerSelector: ".title__about__project",
   start: "top bottom",
-  end: "bottom top",
-  scrub: true,
-  onUpdate: self => {
-    const progress = self.progress;
-    let maxWidth =
-        window.innerWidth <= 600 ? 10 :
-        window.innerWidth <= 855 ? 30 : 45;
-    updateTextWidth(progress, 6, maxWidth);
-  }
+  end: "bottom 10%",
+  appearAtFactor: 0.03,
+  speed: 10
 });
 
-function updateTextWidth(progress, speedFactor = 0.7, maxWidth = 45, delayProgress = 0.1) {
-  const words = document.querySelectorAll(".ani-t");
-
-  let adjustedProgress = (progress - delayProgress) / (1 - delayProgress);
-  adjustedProgress = Math.max(0, adjustedProgress);
-  adjustedProgress = Math.min(1, adjustedProgress);
-
-  const newWidth = Math.min(maxWidth, speedFactor * adjustedProgress * maxWidth);
-
-  words.forEach(word => {
-    word.style.width = `${newWidth}px`;
+document.querySelectorAll(".anim__letter").forEach(block => {
+  createFadeWordsAnimation({
+    words: Array.from(block.querySelectorAll(".fade__word__about")),
+    triggerSelector: block,
+    start: "top bottom",
+    end: "bottom 10%",
+    appearAtFactor: 0.020,
+    speed: 5
   });
-}
+});
 
-ScrollTrigger.create({
-    trigger: document.querySelector(".statistic__restaurant__box"),
-    start: "top 90%",
-    end: "bottom top",
+function createFadeWordsAnimation({
+  words,
+  triggerSelector,
+  start = "top bottom",
+  end = "bottom top",
+  appearAtFactor = 0.02,
+  speed = 10,
+}) {
+  ScrollTrigger.create({
+    trigger: typeof triggerSelector === "string" ? document.querySelector(triggerSelector) : triggerSelector,
+    start: start,
+    end: end,
     scrub: true,
     onUpdate: self => {
       const progress = self.progress;
-      animateWords(progress, document.querySelector(".hide__word__f"));
+
+      words.forEach((word, i) => {
+        const appearAt = i * appearAtFactor;
+        const wordProgress = (progress - appearAt) * speed;
+        const clamped = Math.min(Math.max(wordProgress, 0), 1);
+
+        word.style.opacity = clamped;
+        word.style.filter = `blur(${(1 - clamped) * 10}px)`;
+        word.style.transform = `translate3d(${(1 - clamped) * 10}px, 0, 0)`;
+      });
     }
-});
-
-ScrollTrigger.create({
-    trigger: document.querySelector(".structure__info__box"),
-    start: "top 90%",
-    end: "bottom top",
-    scrub: true,
-    onUpdate: self => {
-      const progress = self.progress;
-      animateWords(progress, document.querySelector(".hide__word__s"));
-    }
-});
-
-ScrollTrigger.create({
-    trigger: document.querySelector(".abilities__info__box"),
-    start: "top bottom",
-    end: "bottom top",
-    scrub: true,
-    onUpdate: self => {
-      const progress = self.progress;
-      animateWords(progress, document.querySelector(".hide__word__t"));
-    }
-});
-
-ScrollTrigger.create({
-    trigger: document.querySelector(".vision__section__philosophy"),
-    start: "top bottom",
-    end: "bottom top",
-    scrub: true,
-    onUpdate: self => {
-      const progress = self.progress;
-      animateWords(progress, document.querySelector(".hide__word__vision_f"));
-    }
-});
-
-ScrollTrigger.create({
-    trigger: document.querySelector(".vision__section__environment"),
-    start: "top bottom",
-    end: "bottom top",
-    scrub: true,
-    onUpdate: self => {
-      const progress = self.progress;
-      animateWords(progress, document.querySelector(".hide__word__vision_s"));
-    }
-});
-
-function animateWords(progress, title) {
-  const speedFactor = 2;
-  let adjustedProgress = Math.min(1, Math.max(0, progress * speedFactor));
-  console.log(progress)
-
-  const translateY = (1 - adjustedProgress) * 100;
-  title.style.transform = `translateY(${translateY}%)`;
+  });
 }
 
