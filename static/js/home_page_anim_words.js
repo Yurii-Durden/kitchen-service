@@ -58,10 +58,10 @@ ScrollTrigger.matchMedia({
       createFadeWordsAnimation({
         words: Array.from(block.querySelectorAll(".fade__word__about")),
         triggerSelector: block,
-        start: "top bottom",
+        start: "top 90%",
         end: "bottom 10%",
         appearAtFactor: 0.020,
-        speed: 5
+        speed: 10
       });
     });
   }
