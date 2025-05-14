@@ -41,7 +41,7 @@ ScrollTrigger.matchMedia({
       start: "top 80%",
       end: "bottom 10%",
       appearAtFactor: 0.013,
-      speed: 10
+      speed: 11
     });
 
     createFadeWordsAnimation({

@@ -45,7 +45,7 @@
     font-size: 5.0vw;
     line-height: 4.5vw;
     position: relative;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: -.03em;
     padding-top: 33px;
     padding-bottom: 10px;
@@ -63,7 +63,7 @@
 }
 
 .about__abilities__box {
-    margin-bottom: 17vh;
+    margin-bottom: 15vh;
     text-align: justify;
 }
 
@@ -96,7 +96,7 @@
 }
 
 .numbers__block__info {
-    margin-bottom: 17vh;
+    margin-bottom: 15vh;
 }
 
 .fade__word__info {
