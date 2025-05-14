@@ -54,16 +54,8 @@
     width: 100%;
 }
 
-.fade__text {
-    display: inline-block;
-    filter: blur(10px);
-    transform: translate3d(10px, 0px, 0px);
-    opacity: 0;
-    will-change: transform, opacity, filter;
-}
-
 .about__abilities__box {
-    margin-bottom: 15vh;
+    margin-bottom: 15.9vh;
     text-align: justify;
 }
 
@@ -96,15 +88,7 @@
 }
 
 .numbers__block__info {
-    margin-bottom: 15vh;
-}
-
-.fade__word__info {
-    display: inline-block;
-    filter: blur(10px);
-    opacity: 0;
-    transform: translate3d(10px, 0px, 0px);
-    will-change: transform, opacity, filter;
+    margin-bottom: 15.9vh;
 }
 
 .title__about__project {
@@ -116,14 +100,6 @@
     line-height: 0.71;
     font-weight: 400;
     letter-spacing: -0.02em;
-}
-
-.fade__word__title {
-    display: inline-block;
-    filter: blur(10px);
-    opacity: 0;
-    transform: translate3d(10px, 0px, 0px);
-    will-change: transform, opacity, filter;
 }
 
 .title__about__project__text__f {
@@ -155,14 +131,6 @@
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: -0.04em;
-}
-
-.fade__word__about {
-    display: inline-block;
-    filter: blur(10px);
-    opacity: 0;
-    transform: translate3d(10px, 0, 0);
-    will-change: transform, opacity, filter;
 }
 
 .italic__text {
@@ -290,35 +258,11 @@
         font-weight: 500;
     }
 
-    .fade__word__about {
+    .fade {
         display: inline-block;
         filter: blur(0);
         opacity: 1;
         transform: translate3d(0, 0, 0);
-    }
-
-    .fade__text {
-        display: inline-block;
-        filter: blur(0);
-        transform: translate3d(0, 0, 0);
-        opacity: 1;
-    }
-
-    .fade__word__info {
-        display: inline-block;
-        filter: blur(0);
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-        will-change: transform, opacity, filter;
-    }
-
-
-    .fade__word__title {
-        display: inline-block;
-        filter: blur(0);
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-        will-change: transform, opacity, filter;
     }
 
     .info__section {

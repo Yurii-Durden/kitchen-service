@@ -36,22 +36,26 @@ window.addEventListener('scroll', () => {
 
 const words_footer = Array.from(document.querySelectorAll(".fade__word__foot"));
 
-ScrollTrigger.create({
-  trigger: ".footer__text",
-  start: "top 45%",
-  end: "bottom top+=200",
-  scrub: true,
-  onUpdate: self => {
-    const progress = self.progress;
+ScrollTrigger.matchMedia({
+  "(min-width: 1257px)": function () {
+    ScrollTrigger.create({
+      trigger: ".footer__text",
+      start: "top 45%",
+      end: "bottom top+=200",
+      scrub: true,
+      onUpdate: self => {
+        const progress = self.progress;
 
-    words_footer.forEach((word, i) => {
-      const appearAt = i * 0.013;
-      const wordProgress = (progress - appearAt) * 10;
-      const clamped = Math.min(Math.max(wordProgress, 0), 1);
+        words_footer.forEach((word, i) => {
+          const appearAt = i * 0.013;
+          const wordProgress = (progress - appearAt) * 10;
+          const clamped = Math.min(Math.max(wordProgress, 0), 1);
 
-      word.style.opacity = clamped;
-      word.style.filter = `blur(${(1 - clamped) * 10}px)`;
-      word.style.transform = `translate3d(${(1 - clamped) * 10}px, 0, 0)`;
+          word.style.opacity = clamped;
+          word.style.filter = `blur(${(1 - clamped) * 10}px)`;
+          word.style.transform = `translate3d(${(1 - clamped) * 10}px, 0, 0)`;
+        });
+      }
     });
   }
 });

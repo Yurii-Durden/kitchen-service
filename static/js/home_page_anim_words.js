@@ -24,6 +24,7 @@
 //     letter.style.transform = `translateX(${translateX}%)`;
 //   });
 // }
+
 ScrollTrigger.matchMedia({
   "(min-width: 769px)": function () {
     createFadeWordsAnimation({
@@ -41,7 +42,7 @@ ScrollTrigger.matchMedia({
       start: "top 80%",
       end: "bottom 10%",
       appearAtFactor: 0.013,
-      speed: 11
+      speed: 9
     });
 
     createFadeWordsAnimation({
