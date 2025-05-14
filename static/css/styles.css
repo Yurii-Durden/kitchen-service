@@ -29,7 +29,7 @@ body {
     font-family: "Cormorant Garamond", serif;
     height: 100%;
     line-height: 1.5;
-    font-size: 19px;
+    font-size: clamp(13px, 2vw, 19px);
     font-weight: 500;
     background-color: var(--back-color);
     color: var(--primary-color);
@@ -209,11 +209,6 @@ body::-webkit-scrollbar {
     transform: translateX(-10px);
 }
 
-/*.nav__list:hover .nav__link:not(:hover) {*/
-/*    !*transform: translateX(-100px);*!*/
-/*    opacity: 0.3;*/
-/*}*/
-
 .login__list__box {
     position: absolute;
     min-height: 100px;
@@ -345,51 +340,5 @@ body::-webkit-scrollbar {
 
     .login__list__box {
         min-height: 50px;
-    }
-}
-
-/*footer-media---------------------------------------------*/
-@media (max-width: 1516px) {
-    .about__title {
-        margin-bottom: 10px;
-    }
-
-    .art__title {
-        margin-bottom: 10px;
-    }
-
-    .footer__about__info {
-        flex-direction: column;
-    }
-
-    .footer__about__art {
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 769px) {
-    .footer {
-        padding-top: 50px;
-         padding-bottom: 50px;
-    }
-
-    .footer__about__art {
-        padding-bottom: 50px;
-    }
-}
-
-@media (max-width: 955px) {
-    .footer__contact__info {
-        flex-direction: column;
-        gap: 30px;
-    }
-    .say__hi {
-        font-size: 8rem;
-    }
-}
-
-@media (max-width: 388px) {
-    .say__hi {
-        font-size: 6rem;
     }
 }

@@ -24,43 +24,46 @@
 //     letter.style.transform = `translateX(${translateX}%)`;
 //   });
 // }
+ScrollTrigger.matchMedia({
+  "(min-width: 769px)": function () {
+    createFadeWordsAnimation({
+      words: Array.from(document.querySelectorAll(".fade__text")),
+      triggerSelector: ".big__text__box",
+      start: "top 90%",
+      end: "bottom 20%",
+      appearAtFactor: 0.022,
+      speed: 10
+    });
 
-createFadeWordsAnimation({
-  words: Array.from(document.querySelectorAll(".fade__text")),
-  triggerSelector: ".big__text__box",
-  start: "top 90%",
-  end: "bottom 20%",
-  appearAtFactor: 0.022,
-  speed: 10
-});
+    createFadeWordsAnimation({
+      words: Array.from(document.querySelectorAll(".fade__word__info")),
+      triggerSelector: ".numbers__block__info",
+      start: "top 80%",
+      end: "bottom 10%",
+      appearAtFactor: 0.013,
+      speed: 10
+    });
 
-createFadeWordsAnimation({
-  words: Array.from(document.querySelectorAll(".fade__word__info")),
-  triggerSelector: ".numbers__block__info",
-  start: "top 80%",
-  end: "bottom 10%",
-  appearAtFactor: 0.013,
-  speed: 10
-});
+    createFadeWordsAnimation({
+      words: Array.from(document.querySelectorAll(".fade__word__title")),
+      triggerSelector: ".title__about__project",
+      start: "top bottom",
+      end: "bottom 10%",
+      appearAtFactor: 0.03,
+      speed: 10
+    });
 
-createFadeWordsAnimation({
-  words: Array.from(document.querySelectorAll(".fade__word__title")),
-  triggerSelector: ".title__about__project",
-  start: "top bottom",
-  end: "bottom 10%",
-  appearAtFactor: 0.03,
-  speed: 10
-});
-
-document.querySelectorAll(".anim__letter").forEach(block => {
-  createFadeWordsAnimation({
-    words: Array.from(block.querySelectorAll(".fade__word__about")),
-    triggerSelector: block,
-    start: "top bottom",
-    end: "bottom 10%",
-    appearAtFactor: 0.020,
-    speed: 5
-  });
+    document.querySelectorAll(".anim__letter").forEach(block => {
+      createFadeWordsAnimation({
+        words: Array.from(block.querySelectorAll(".fade__word__about")),
+        triggerSelector: block,
+        start: "top bottom",
+        end: "bottom 10%",
+        appearAtFactor: 0.020,
+        speed: 5
+      });
+    });
+  }
 });
 
 function createFadeWordsAnimation({
@@ -73,8 +76,8 @@ function createFadeWordsAnimation({
 }) {
   ScrollTrigger.create({
     trigger: typeof triggerSelector === "string" ? document.querySelector(triggerSelector) : triggerSelector,
-    start: start,
-    end: end,
+    start,
+    end,
     scrub: true,
     onUpdate: self => {
       const progress = self.progress;
@@ -91,4 +94,3 @@ function createFadeWordsAnimation({
     }
   });
 }
-

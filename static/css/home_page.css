@@ -1,16 +1,8 @@
-/*---------------------------------------------------------*/
-.titles {
-  line-height: 1;
-  font-size: clamp(3rem, 8vw, 6rem);
-  font-weight: 500;
-}
-
 /*first-section---------------------------------------------*/
 .home__main__page__body {
     position: relative;
     display: flex;
     flex-direction: column;
-    padding-top: 17vh;
     will-change: transform;
 }
 
@@ -43,12 +35,17 @@
     text-align: right;
 }
 
+.elise__text {
+    display: inline-block;
+    transform: translate3d(-2px, 0, 0);
+}
+
 /*big-text----------------------------------------------*/
 .big__text__box {
     font-size: 5.0vw;
     line-height: 4.5vw;
     position: relative;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: -.03em;
     padding-top: 33px;
     padding-bottom: 10px;
@@ -204,13 +201,12 @@
 /*    transform: scaleY(1);*/
 /*}*/
 
-/*vision-section-----------------------------------------------------*/
+/*info-section-----------------------------------------------------*/
 .info__section__body {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
 }
 
 
@@ -233,63 +229,103 @@
     will-change: transform, opacity;
 }
 /*media---------------------------------------------------*/
-@media (max-width: 1300px) {
-    .home__main__section {
-        margin-bottom: 10vh;
-}
-}
-
-@media (max-width: 855px) {
-    .statistic__restaurant__box {
-        margin-bottom: 20vh;
+@media (max-width: 997px) {
+    .project__title {
+        bottom: -1%;
     }
 
-    .structure__info__box {
-        margin-bottom: 20vh;
+    .big__text__box {
+        padding-top: 20px;
     }
 
-    .second__section {
-        margin-bottom: 20vh;
+    .big__text__box {
+        font-size: 6.0vw;
+        line-height: 6.5vw;
     }
 
-    .vision__section__big__text__box {
-        margin-bottom: 20vh;
-    }
-
-    .vision__section__text__box {
-        margin-bottom: 20vh;
-    }
-}
-
-@media (max-width: 600px) {
-    .kitchen__service__text {
-        /*display: none;*/
-        font-size: 30px;
-    }
-
-    .statistic__restaurant__box {
+    .numbers__block__info {
         margin-bottom: 10vh;
     }
 
-    .structure__info__box {
-        margin-bottom: 10vh;
+    .title__about__project__text {
+        font-size: 18vw;
+        line-height: 0.71;
     }
 
-    .second__section {
-        margin-bottom: 10vh;
+    .title__about__project {
+        padding-bottom: 30px;
     }
 
-    .vision__section__big__text__box {
-        margin-bottom: 10vh;
+    .inner__text__con {
+        transform: translateX(0px);
     }
 
-    .vision__section__text__box {
-        margin-bottom: 10vh;
+    .about__project__text {
+        font-size: 6.0vw;
+        line-height: 10.0vw;
     }
 }
 
-@media (max-width: 371px) {
-    .vision__section__big__text__box {
+@media (max-width: 768px) {
+    .project__title {
+        bottom: -1%;
+    }
+
+    .about__abilities__box {
         display: none;
+    }
+
+    .numbers__block__info {
+        margin-bottom: 0;
+    }
+
+    .counter__info__list {
+        gap: 50px;
+        margin-bottom: 15vh;
+    }
+
+    .big__text__box {
+        padding-bottom: 0;
+        margin-bottom: 15vh;
+        font-weight: 500;
+    }
+
+    .fade__word__about {
+        display: inline-block;
+        filter: blur(0);
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+
+    .fade__text {
+        display: inline-block;
+        filter: blur(0);
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+
+    .fade__word__info {
+        display: inline-block;
+        filter: blur(0);
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        will-change: transform, opacity, filter;
+    }
+
+
+    .fade__word__title {
+        display: inline-block;
+        filter: blur(0);
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        will-change: transform, opacity, filter;
+    }
+
+    .info__section {
+        min-height: auto;
+    }
+
+    .about__project__text {
+        font-weight: 500;
     }
 }
