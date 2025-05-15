@@ -9,6 +9,9 @@
 <nav class="header__menu">
   <ul class="nav__list">
     <li class="nav__items">
+      <a class="nav__link" href="{% url 'kitchenflow:about' %}">ABOUT ME</a>
+    </li>
+    <li class="nav__items">
       <a class="nav__link" href="{% url 'kitchenflow:dish-list' %}">{{ user.is_chef|yesno:"ALL , MY " }} DISHES</a>
     </li>
     <li class="nav__items">

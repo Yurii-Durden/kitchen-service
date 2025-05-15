@@ -33,6 +33,11 @@ def index(request) -> HttpResponse:
 
 
 @login_required
+def about(request):
+    return render(request, "kitchenflow/about.html")
+
+
+@login_required
 def logout_view(request) -> HttpResponse:
     logout(request)
     return render(request, "registration/logged_out.html")

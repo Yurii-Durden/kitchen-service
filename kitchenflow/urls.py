@@ -8,6 +8,7 @@ app_name = "kitchenflow"
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("about/", views.about, name="about"),
     path("cooks/", views.CookListView.as_view(), name="cook-list"),
     path("cooks/<int:pk>", views.CookDetailView.as_view(), name="cook-detail"),
     path("cooks/create/", views.CookCreateView.as_view(), name="cook-create"),

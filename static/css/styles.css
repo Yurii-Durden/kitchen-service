@@ -204,12 +204,12 @@ body::-webkit-scrollbar {
 
 .nav__link {
     position: relative;
-    font-size: clamp(20px, 8vw, 80px);
+    font-size: clamp(20px, 8vw, 70px);
     text-decoration: none;
     line-height: 1;
     font-weight: 500;
     color: var(--primary-color);
-    transition: transform 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), opacity 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    transition: transform 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
 

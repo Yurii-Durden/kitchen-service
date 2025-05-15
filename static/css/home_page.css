@@ -45,7 +45,7 @@
     font-size: 5.0vw;
     line-height: 4.5vw;
     position: relative;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: -.03em;
     padding-top: 33px;
     padding-bottom: 10px;
@@ -76,7 +76,7 @@
 }
 
 .info__title {
-    font-weight: 800;
+    font-weight: 700;
     line-height: 1.5;
     white-space: nowrap;
 }
@@ -126,7 +126,7 @@
 }
 
 .about__project__text {
-    font-size: 6.0vw;
+    font-size: 6.1vw;
     line-height: 7.0vw;
     font-weight: 400;
     text-transform: uppercase;

@@ -61,7 +61,7 @@ ScrollTrigger.matchMedia({
         start: "top 90%",
         end: "bottom 10%",
         appearAtFactor: 0.020,
-        speed: 10
+        speed: 8
       });
     });
   }
