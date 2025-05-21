@@ -56,6 +56,8 @@
 
 .about__abilities__box {
     margin-bottom: 15.9vh;
+    font-weight: 400;
+    line-height: 1.3;
     text-align: justify;
 }
 
@@ -150,25 +152,6 @@
     text-align: right;
 }
 
-/*abilities-body--------------------------------------------*/
-/*.abilities__item::after {*/
-/*    position: absolute;*/
-/*    z-index: 14;*/
-/*    content: "";*/
-/*    display: block;*/
-/*    height: 100%;*/
-/*    width: 100%;*/
-/*    background-color: var(--primary-color);*/
-/*    bottom: 0;*/
-/*    transform: scaleY(0);*/
-/*    transform-origin: bottom center;*/
-/*    transition: transform 0.4s cubic-bezier(0.15, 0.9, 0.34, 0.95);*/
-/*}*/
-
-/*.abilities__item:hover::after {*/
-/*    transform: scaleY(1);*/
-/*}*/
-
 /*info-section-----------------------------------------------------*/
 .info__section__body {
     position: relative;
@@ -176,8 +159,6 @@
     flex-direction: column;
     align-items: center;
 }
-
-
 
 /*about-me-block------------------------------------------*/
 .about__me__box {

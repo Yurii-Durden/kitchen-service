@@ -34,28 +34,49 @@ window.addEventListener('scroll', () => {
   lastScroll = scrollTop;
 });
 
-const words_footer = Array.from(document.querySelectorAll(".fade__word__foot"));
-
 ScrollTrigger.matchMedia({
   "(min-width: 1257px)": function () {
-    ScrollTrigger.create({
-      trigger: ".footer__text",
+    createFadeWordsAnimation({
+      words: Array.from(document.querySelectorAll(".fade__word__foot")),
+      triggerSelector: ".footer__text",
       start: "top 45%",
       end: "bottom top+=200",
-      scrub: true,
-      onUpdate: self => {
-        const progress = self.progress;
-
-        words_footer.forEach((word, i) => {
-          const appearAt = i * 0.013;
-          const wordProgress = (progress - appearAt) * 10;
-          const clamped = Math.min(Math.max(wordProgress, 0), 1);
-
-          word.style.opacity = clamped;
-          word.style.filter = `blur(${(1 - clamped) * 10}px)`;
-          word.style.transform = `translate3d(${(1 - clamped) * 10}px, 0, 0)`;
-        });
-      }
+      appearAtFactor: 0.013,
+      speed: 10
     });
   }
 });
+
+function createFadeWordsAnimation({
+  words,
+  triggerSelector,
+  start = "top bottom",
+  end = "bottom top",
+  appearAtFactor = 0.02,
+  speed = 10,
+  blur = 10,
+  width = 10,
+  markers,
+
+}) {
+  ScrollTrigger.create({
+    trigger: typeof triggerSelector === "string" ? document.querySelector(triggerSelector) : triggerSelector,
+    start,
+    end,
+    scrub: true,
+    markers: markers,
+    onUpdate: self => {
+      const progress = self.progress;
+
+      words.forEach((word, i) => {
+        const appearAt = i * appearAtFactor;
+        const wordProgress = (progress - appearAt) * speed;
+        const clamped = Math.min(Math.max(wordProgress, 0), 1);
+
+        word.style.opacity = clamped;
+        word.style.filter = `blur(${(1 - clamped) * blur}px)`;
+        word.style.transform = `translate3d(${(1 - clamped) * width}px, 0, 0)`;
+      });
+    }
+  });
+}

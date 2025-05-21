@@ -1,0 +1,84 @@
+ScrollTrigger.matchMedia({
+  "(min-width: 1257px)": function () {
+    const animations = [
+      {
+        elements: ".fade__what",
+        trigger: ".what__title"
+      },
+      {
+        elements: ".fade__what__text",
+        trigger: ".what__text"
+      },
+      {
+        elements: ".fade__contact",
+        trigger: ".contacts__title"
+      },
+    ];
+
+    animations.forEach(({ elements, trigger }) => {
+      const targets = document.querySelectorAll(elements);
+      const triggerElement = document.querySelector(trigger);
+      if (!targets.length || !triggerElement) return;
+
+      gsap.fromTo(targets, {
+        opacity: 0,
+        x: 15,
+        filter: "blur(10px)"
+      }, {
+        opacity: 1,
+        x: 0,
+        filter: "blur(0px)",
+        ease: "power2.out",
+        duration: 1,
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: triggerElement,
+          start: "top bottom-=15%",
+          end: "bottom center+=15%",
+          scrub: true,
+        }
+      });
+    });
+
+    ScrollTrigger.refresh();
+  }
+});
+
+ScrollTrigger.matchMedia({
+  "(min-width: 1257px)": function () {
+    const animations = [
+      {
+        elements: ".fade__say__hi",
+        trigger: ".say_hi_text",
+      },
+    ];
+
+    animations.forEach(({ elements, trigger }) => {
+      const targets = document.querySelectorAll(elements);
+      const triggerElement = document.querySelector(trigger);
+      if (!targets.length || !triggerElement) return;
+
+      gsap.fromTo(targets, {
+        opacity: 0,
+        y: 50,
+        filter: "blur(10px)"
+      }, {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        ease: "power2.out",
+        duration: 1,
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: triggerElement,
+          start: "top 80%",
+          end: "bottom center",
+          scrub: true,
+        }
+      });
+    });
+
+    ScrollTrigger.refresh();
+  }
+});
+

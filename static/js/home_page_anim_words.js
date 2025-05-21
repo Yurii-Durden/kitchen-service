@@ -24,74 +24,56 @@
 //     letter.style.transform = `translateX(${translateX}%)`;
 //   });
 // }
-
 ScrollTrigger.matchMedia({
-  "(min-width: 769px)": function () {
-    createFadeWordsAnimation({
-      words: Array.from(document.querySelectorAll(".fade__text")),
-      triggerSelector: ".big__text__box",
-      start: "top 90%",
-      end: "bottom 20%",
-      appearAtFactor: 0.022,
-      speed: 10
-    });
+  "(min-width: 1257px)": function () {
+    const animations = [
+      {
+        elements: ".fade__text",
+        trigger: ".big__text__box"
+      },
+      {
+        elements: ".fade__word__info",
+        trigger: ".numbers__block__info"
+      },
+      {
+        elements: ".fade__word__title",
+        trigger: ".title__about__project"
+      },
+      {
+        elements: ".fade__word__about",
+        trigger: ".anim__letter"
+      },
+    ];
 
-    createFadeWordsAnimation({
-      words: Array.from(document.querySelectorAll(".fade__word__info")),
-      triggerSelector: ".numbers__block__info",
-      start: "top 80%",
-      end: "bottom 10%",
-      appearAtFactor: 0.013,
-      speed: 9
-    });
+    animations.forEach(({ elements, trigger }) => {
+      const triggerElements = document.querySelectorAll(trigger);
+      if (!triggerElements.length) return;
 
-    createFadeWordsAnimation({
-      words: Array.from(document.querySelectorAll(".fade__word__title")),
-      triggerSelector: ".title__about__project",
-      start: "top bottom",
-      end: "bottom 10%",
-      appearAtFactor: 0.03,
-      speed: 10
-    });
+      triggerElements.forEach(triggerEl => {
+        const targets = triggerEl.querySelectorAll(elements);
+        if (!targets.length) return;
 
-    document.querySelectorAll(".anim__letter").forEach(block => {
-      createFadeWordsAnimation({
-        words: Array.from(block.querySelectorAll(".fade__word__about")),
-        triggerSelector: block,
-        start: "top 90%",
-        end: "bottom 10%",
-        appearAtFactor: 0.020,
-        speed: 8
+        gsap.fromTo(targets, {
+          opacity: 0,
+          x: 15,
+          filter: "blur(10px)"
+        }, {
+          opacity: 1,
+          x: 0,
+          filter: "blur(0px)",
+          ease: "power2.out",
+          duration: 1,
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: triggerEl,
+            start: "top bottom-=15%",
+            end: "bottom center+=15%",
+            scrub: true,
+          }
+        });
       });
     });
+
+    ScrollTrigger.refresh();
   }
 });
-
-function createFadeWordsAnimation({
-  words,
-  triggerSelector,
-  start = "top bottom",
-  end = "bottom top",
-  appearAtFactor = 0.02,
-  speed = 10,
-}) {
-  ScrollTrigger.create({
-    trigger: typeof triggerSelector === "string" ? document.querySelector(triggerSelector) : triggerSelector,
-    start,
-    end,
-    scrub: true,
-    onUpdate: self => {
-      const progress = self.progress;
-
-      words.forEach((word, i) => {
-        const appearAt = i * appearAtFactor;
-        const wordProgress = (progress - appearAt) * speed;
-        const clamped = Math.min(Math.max(wordProgress, 0), 1);
-
-        word.style.opacity = clamped;
-        word.style.filter = `blur(${(1 - clamped) * 10}px)`;
-        word.style.transform = `translate3d(${(1 - clamped) * 10}px, 0, 0)`;
-      });
-    }
-  });
-}

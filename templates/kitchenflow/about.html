@@ -1,4 +1,139 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  <title>About</title>
+{% endblock %}
+
+{% block extra_styles %}
+  <link rel="stylesheet" href="{% static 'css/about_styles.css' %}">
+{% endblock %}
 
 {% block content %}
+  <section class="about__section section">
+   <div class="about__box _container">
+     <div class="about__wrapper">
+      <h1 class="title__about">ABOUT</h1>
+      <p class="about__text">
+        <em>I am a 25-year-old backend developer focused on building efficient systems and solving complex challenges, with a strong focus on the technical infrastructure behind projects to ensure scalability and performance. I'm also passionate about frontend design.</em>
+        <em>Besides my development work, I am an artist. Code is my structure, art is my instinct — I bring them together to create something that speaks.</em>
+      </p>
+     </div>
+     <div class="me__img__box">
+       <img class="me__img" src="{% static 'images/me.png' %}" alt="Me">
+     </div>
+   </div>
+  </section>
+  <section class="what__section section">
+    <div class="what__contacts _container">
+      <div class="what__wrapper">
+        <h2 class="what__title title">
+          <span class="fade fade__what">W</span><span class="fade fade__what">h</span><span class="fade fade__what">a</span><span class="fade fade__what">t</span><span class="fade fade__what"></span> <span class="fade fade__what">I</span> <span class="fade fade__what">d</span><span class="fade fade__what">o</span>
+        </h2>
+        <p class="what__text">
+          <em>
+            <span class="fade fade__what__text">I</span>
+            <span class="fade fade__what__text">primarily</span>
+            <span class="fade fade__what__text">work</span>
+            <span class="fade fade__what__text">with</span>
+            <span class="fade fade__what__text">Django</span>
+            <span class="fade fade__what__text">and</span>
+            <span class="fade fade__what__text">Django</span>
+            <span class="fade fade__what__text">REST</span>
+            <span class="fade fade__what__text">Framework,</span>
+            <span class="fade fade__what__text">building</span>
+            <span class="fade fade__what__text">well-structured</span>
+            <span class="fade fade__what__text">and</span>
+            <span class="fade fade__what__text">maintainable</span>
+            <span class="fade fade__what__text">back-end</span>
+            <span class="fade fade__what__text">systems</span>
+            <span class="fade fade__what__text">using</span>
+            <span class="fade fade__what__text">Python.</span>
+            <span class="fade fade__what__text">On</span>
+            <span class="fade fade__what__text">the</span>
+            <span class="fade fade__what__text">front-end,</span>
+            <span class="fade fade__what__text">I</span>
+            <span class="fade fade__what__text">use</span>
+            <span class="fade fade__what__text">custom</span>
+            <span class="fade fade__what__text">HTML,</span>
+            <span class="fade fade__what__text">CSS,</span>
+            <span class="fade fade__what__text">and</span>
+            <span class="fade fade__what__text">JavaScript</span>
+            <span class="fade fade__what__text">to</span>
+            <span class="fade fade__what__text">create</span>
+            <span class="fade fade__what__text">responsive</span>
+            <span class="fade fade__what__text">and</span>
+            <span class="fade fade__what__text">clean</span>
+            <span class="fade fade__what__text">user</span>
+            <span class="fade fade__what__text">interfaces.</span>
+            <span class="fade fade__what__text">I</span>
+            <span class="fade fade__what__text">also</span>
+            <span class="fade fade__what__text">rely</span>
+            <span class="fade fade__what__text">on</span>
+            <span class="fade fade__what__text">GSAP</span>
+            <span class="fade fade__what__text">to</span>
+            <span class="fade fade__what__text">craft</span>
+            <span class="fade fade__what__text">smooth,</span>
+            <span class="fade fade__what__text">scroll-based</span>
+            <span class="fade fade__what__text">animations.</span>
+            <span class="fade fade__what__text">My</span>
+            <span class="fade fade__what__text">work</span>
+            <span class="fade fade__what__text">often</span>
+            <span class="fade fade__what__text">involves</span>
+            <span class="fade fade__what__text">integrating</span>
+            <span class="fade fade__what__text">both</span>
+            <span class="fade fade__what__text">front-end</span>
+            <span class="fade fade__what__text">and</span>
+            <span class="fade fade__what__text">back-end</span>
+            <span class="fade fade__what__text">logic</span>
+            <span class="fade fade__what__text">to</span>
+            <span class="fade fade__what__text">deliver</span>
+            <span class="fade fade__what__text">seamless</span>
+            <span class="fade fade__what__text">full-stack</span>
+            <span class="fade fade__what__text">web</span>
+            <span class="fade fade__what__text">experiences.</span>
+          </em>
+        </p>
+      </div>
+      <div class="contacts__wrapper">
+        <h3 class="contacts__title title">
+          <span class="fade fade__contact">C</span><span class="fade fade__contact">o</span><span class="fade fade__contact">n</span><span class="fade fade__contact">t</span><span class="fade fade__contact">a</span><span class="fade fade__contact">c</span><span class="fade fade__contact">t</span><span class="fade fade__contact">s</span>
+        </h3>
+        <ul class="contacts__list">
+          <li class="contact__item">
+            <em><span class="text__item">E&nbsp;&nbsp;&nbsp;pollo7964132@gmail.com</span></em>
+          </li>
+          <li class="contact__item">
+            <em><span class="text__item">T&nbsp;&nbsp;&nbsp;+380 (96) 243-4*-**</span></em>
+          </li>
+          <li class="contact__item">
+            <em><span class="text__item">Instagram</span></em>
+            <a class="link" href="#" target="_blank" onclick="return false;"></a>
+            <svg class="contact__arrow" width="24" height="24" viewBox="0 0 24 24" transform="" id="injected-svg">Boxicons v3.0 https://boxicons.com | License  https://docs.boxicons.com/free<path d="M17 16V7H8v2h5.59l-6.3 6.29 1.42 1.42 6.29-6.3V16z"></path></svg>
+          </li>
+          <li class="contact__item">
+            <em><span class="text__item">GitHub</span></em>
+            <a class="link" href="https://github.com/Yurii-Durden/kitchen-service" target="_blank"></a>
+            <svg class="contact__arrow" width="24" height="24" viewBox="0 0 24 24" transform="" id="injected-svg">Boxicons v3.0 https://boxicons.com | License  https://docs.boxicons.com/free<path d="M17 16V7H8v2h5.59l-6.3 6.29 1.42 1.42 6.29-6.3V16z"></path></svg>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="say__hi__section section">
+    <div class="say__hi _container">
+      <h4>
+        <em>
+          <a href="mailto:pollo7964132@gmail.com" class="say_hi_link">
+            <span class="say_hi_text"><span class="fade__say__hi">S</span><span class="fade__say__hi">a</span><span class="fade__say__hi">y</span> <span class="fade__say__hi">H</span><span class="fade__say__hi">i</span></span>
+{#            <span class="say_hi_text">Say Hi</span>#}
+          </a>
+        </em>
+      </h4>
+    </div>
+  </section>
+{% endblock %}
+
+{% block extra_scripts %}
+  <script src="{% static 'js/about_anim.js' %}"></script>
 {% endblock %}
