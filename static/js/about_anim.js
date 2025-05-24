@@ -61,7 +61,7 @@ ScrollTrigger.matchMedia({
       gsap.fromTo(targets, {
         opacity: 0,
         y: "30%",
-        filter: "blur(20px)"
+        filter: "blur(25px)"
       }, {
         opacity: 1,
         y: 0,

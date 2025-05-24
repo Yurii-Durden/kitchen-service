@@ -139,8 +139,9 @@
 .fade__say__hi {
     display: inline-block;
     opacity: 0;
-    filter: blur(20px);
+    filter: blur(25px);
     transform: translate3d(0, 30%, 0);
     will-change: transform, opacity, filter;
 }
 
+/*media------------------------------------------------*/
