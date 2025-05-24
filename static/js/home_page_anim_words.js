@@ -1,29 +1,3 @@
-// document.querySelectorAll(".anim__letter").forEach(textBlock => {
-//   const letters = textBlock.querySelectorAll(".letter");
-//
-//   ScrollTrigger.create({
-//     trigger: textBlock,
-//     start: "top bottom",
-//     end: "bottom top",
-//     scrub: true,
-//     onUpdate: self => {
-//       const progress = self.progress;
-//       takeLetters(progress, letters);
-//     }
-//   });
-// });
-//
-// function takeLetters(progress, letters) {
-//   const speedFactor = 3;
-//
-//   letters.forEach(letter => {
-//     let localProgress = Math.min(1, Math.max(0, progress));
-//     localProgress = Math.min(1, Math.max(0, localProgress * speedFactor));
-//
-//     const translateX = (1 - localProgress) * -100;
-//     letter.style.transform = `translateX(${translateX}%)`;
-//   });
-// }
 ScrollTrigger.matchMedia({
   "(min-width: 1257px)": function () {
     const animations = [
@@ -76,4 +50,29 @@ ScrollTrigger.matchMedia({
 
     ScrollTrigger.refresh();
   }
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  const sereneLetters = document.querySelectorAll(".fade__serene");
+  const eliseText = document.querySelectorAll(".elise");
+
+  gsap.to(sereneLetters, {
+    opacity: 1,
+    x: 0,
+    filter: "blur(0px)",
+    duration: 1,
+    ease: "power2.out",
+    stagger: 0.1,
+    delay: 0.1
+  });
+
+  gsap.to(eliseText, {
+    opacity: 1,
+    x: 0,
+    filter: "blur(0px)",
+    duration: 2,
+    ease: "power2.out",
+    stagger: 0.1,
+    delay: 0.5
+  });
 });
