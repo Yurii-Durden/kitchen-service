@@ -37,7 +37,7 @@ ScrollTrigger.matchMedia({
           filter: "blur(0px)",
           ease: "power2.out",
           duration: 1,
-          stagger: 0.1,
+          stagger: 0.09,
           scrollTrigger: {
             trigger: triggerEl,
             start: "top bottom-=15%",
@@ -62,7 +62,7 @@ window.addEventListener("DOMContentLoaded", () => {
     filter: "blur(0px)",
     duration: 0.8,
     ease: "power2.out",
-    stagger: 0.1,
+    stagger: 0.09,
     delay: 0.1
   });
 

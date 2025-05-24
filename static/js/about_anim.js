@@ -31,7 +31,7 @@ ScrollTrigger.matchMedia({
         filter: "blur(0px)",
         ease: "power2.out",
         duration: 1,
-        stagger: 0.1,
+        stagger: 0.09,
         scrollTrigger: {
           trigger: triggerElement,
           start: "top bottom-=15%",
