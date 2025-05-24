@@ -1,7 +1,6 @@
 .about__box {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
     padding-top: 20vh;
 }
 
@@ -25,8 +24,10 @@
 }
 
 .me__img__box {
-    width: 700px;
-    height: 600px;
+    max-width: 700px;
+    max-height: 600px;
+    width: 100%;
+    height: 100%;
 }
 
 .me__img {
@@ -145,3 +146,16 @@
 }
 
 /*media------------------------------------------------*/
+@media (max-width: 1189px) {
+    .about__box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .about__text {
+        max-width: 100%;
+        margin-bottom: 10vh;
+    }
+}

@@ -7,7 +7,8 @@ ScrollTrigger.matchMedia({
       },
       {
         elements: ".fade__what__text",
-        trigger: ".what__text"
+        trigger: ".what__text",
+        stagger: 0.11
       },
       {
         elements: ".fade__contact",
@@ -15,7 +16,7 @@ ScrollTrigger.matchMedia({
       },
     ];
 
-    animations.forEach(({ elements, trigger }) => {
+    animations.forEach(({ elements, trigger , stagger}) => {
       const targets = document.querySelectorAll(elements);
       const triggerElement = document.querySelector(trigger);
       if (!targets.length || !triggerElement) return;
@@ -30,7 +31,7 @@ ScrollTrigger.matchMedia({
         filter: "blur(0px)",
         ease: "power2.out",
         duration: 1,
-        stagger: 0.1,
+        stagger: stagger || 0.11,
         scrollTrigger: {
           trigger: triggerElement,
           start: "top bottom-=15%",
@@ -68,11 +69,11 @@ ScrollTrigger.matchMedia({
         filter: "blur(0px)",
         ease: "power2.out",
         duration: 1,
-        stagger: 0.1,
+        stagger: 0.11,
         scrollTrigger: {
           trigger: triggerElement,
-          start: "top 80%",
-          end: "bottom center+=5%",
+          start: "top 90%",
+          end: "bottom center+=10%",
           scrub: true,
         }
       });
@@ -92,7 +93,7 @@ window.addEventListener("DOMContentLoaded", () => {
     filter: "blur(0px)",
     duration: 1,
     ease: "power2.out",
-    stagger: 0.1,
+    stagger: 0.09,
     delay: 0.1
   });
 
@@ -103,7 +104,6 @@ window.addEventListener("DOMContentLoaded", () => {
     duration: 1.2,
     ease: "power2.out",
     stagger: 0.01,
-    delay: 0.2
+    delay: 0.3
   });
 });
-

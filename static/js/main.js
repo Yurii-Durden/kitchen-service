@@ -65,7 +65,7 @@ ScrollTrigger.matchMedia({
           scrollTrigger: {
             trigger: triggerEl,
             start: "top 50%",
-            end: "bottom center+=35%",
+            end: "bottom center+=30%",
             scrub: true,
           }
         });
