@@ -8,7 +8,7 @@ ScrollTrigger.matchMedia({
       {
         elements: ".fade__what__text",
         trigger: ".what__text",
-        stagger: 0.11
+        markers: true
       },
       {
         elements: ".fade__contact",
@@ -16,7 +16,7 @@ ScrollTrigger.matchMedia({
       },
     ];
 
-    animations.forEach(({ elements, trigger , stagger}) => {
+    animations.forEach(({ elements, trigger , markers}) => {
       const targets = document.querySelectorAll(elements);
       const triggerElement = document.querySelector(trigger);
       if (!targets.length || !triggerElement) return;
@@ -31,7 +31,7 @@ ScrollTrigger.matchMedia({
         filter: "blur(0px)",
         ease: "power2.out",
         duration: 1,
-        stagger: stagger || 0.11,
+        stagger: 0.1,
         scrollTrigger: {
           trigger: triggerElement,
           start: "top bottom-=15%",
@@ -61,7 +61,7 @@ ScrollTrigger.matchMedia({
 
       gsap.fromTo(targets, {
         opacity: 0,
-        y: "30%",
+        y: "25%",
         filter: "blur(25px)"
       }, {
         opacity: 1,
@@ -69,7 +69,7 @@ ScrollTrigger.matchMedia({
         filter: "blur(0px)",
         ease: "power2.out",
         duration: 1,
-        stagger: 0.11,
+        stagger: 0.13,
         scrollTrigger: {
           trigger: triggerElement,
           start: "top 90%",

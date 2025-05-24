@@ -60,7 +60,7 @@ window.addEventListener("DOMContentLoaded", () => {
     opacity: 1,
     x: 0,
     filter: "blur(0px)",
-    duration: 1,
+    duration: 0.8,
     ease: "power2.out",
     stagger: 0.1,
     delay: 0.1
@@ -70,9 +70,9 @@ window.addEventListener("DOMContentLoaded", () => {
     opacity: 1,
     x: 0,
     filter: "blur(0px)",
-    duration: 2,
+    duration: 1.5,
     ease: "power2.out",
-    stagger: 0.1,
-    delay: 0.5
+    stagger: 0.2,
+    delay: 0.7
   });
 });
