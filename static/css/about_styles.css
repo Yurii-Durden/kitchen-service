@@ -22,7 +22,6 @@
 .about__text {
     max-width: 400px;
     width: 100%;
-    /*text-align: justify;*/
 }
 
 .me__img__box {
@@ -47,8 +46,6 @@
     font-size: 1.5rem;
     max-width: 600px;
     width: 100%;
-    /*font-weight: 700;*/
-    /*text-align: justify;*/
 }
 
 .contacts__wrapper {
@@ -58,7 +55,7 @@
 .contact__item {
     overflow: hidden;
     position: relative;
-    padding: 1.9rem 0;
+    padding: 2rem 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -142,8 +139,8 @@
 .fade__say__hi {
     display: inline-block;
     opacity: 0;
-    filter: blur(10px);
-    transform: translate3d(0, 50px, 0);
-    will-change: transform;
+    filter: blur(20px);
+    transform: translate3d(0, 30%, 0);
+    will-change: transform, opacity, filter;
 }
 

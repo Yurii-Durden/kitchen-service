@@ -36,47 +36,42 @@ window.addEventListener('scroll', () => {
 
 ScrollTrigger.matchMedia({
   "(min-width: 1257px)": function () {
-    createFadeWordsAnimation({
-      words: Array.from(document.querySelectorAll(".fade__word__foot")),
-      triggerSelector: ".footer__text",
-      start: "top 45%",
-      end: "bottom top+=200",
-      appearAtFactor: 0.013,
-      speed: 10
+    const animations = [
+      {
+        elements: ".fade__word__foot",
+        trigger: ".footer__text"
+      },
+    ];
+
+    animations.forEach(({ elements, trigger }) => {
+      const triggerElements = document.querySelectorAll(trigger);
+      if (!triggerElements.length) return;
+
+      triggerElements.forEach(triggerEl => {
+        const targets = triggerEl.querySelectorAll(elements);
+        if (!targets.length) return;
+
+        gsap.fromTo(targets, {
+          opacity: 0,
+          x: 15,
+          filter: "blur(10px)"
+        }, {
+          opacity: 1,
+          x: 0,
+          filter: "blur(0px)",
+          ease: "power2.out",
+          duration: 1.2,
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: triggerEl,
+            start: "top 50%",
+            end: "bottom center+=35%",
+            scrub: true,
+          }
+        });
+      });
     });
+
+    ScrollTrigger.refresh();
   }
 });
-
-function createFadeWordsAnimation({
-  words,
-  triggerSelector,
-  start = "top bottom",
-  end = "bottom top",
-  appearAtFactor = 0.02,
-  speed = 10,
-  blur = 10,
-  width = 10,
-  markers,
-
-}) {
-  ScrollTrigger.create({
-    trigger: typeof triggerSelector === "string" ? document.querySelector(triggerSelector) : triggerSelector,
-    start,
-    end,
-    scrub: true,
-    markers: markers,
-    onUpdate: self => {
-      const progress = self.progress;
-
-      words.forEach((word, i) => {
-        const appearAt = i * appearAtFactor;
-        const wordProgress = (progress - appearAt) * speed;
-        const clamped = Math.min(Math.max(wordProgress, 0), 1);
-
-        word.style.opacity = clamped;
-        word.style.filter = `blur(${(1 - clamped) * blur}px)`;
-        word.style.transform = `translate3d(${(1 - clamped) * width}px, 0, 0)`;
-      });
-    }
-  });
-}
