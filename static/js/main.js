@@ -6,13 +6,15 @@ ScrollSmoother.create({
 
 const header_menu_button = document.querySelector(".menu__item");
 const header_menu = document.querySelector(".header__menu");
-const menu_click_elem = document.querySelector(".menu__click__elem");
+const menu__line__f = document.querySelector(".menu__line__f");
+const menu__line__s = document.querySelector(".menu__line__s");
 const body = document.body;
 
 header_menu_button.addEventListener("click", (event) => {
   event.stopPropagation();
   header_menu.classList.toggle("header__menu__active");
-  menu_click_elem.classList.toggle("menu__button__active");
+  menu__line__f.classList.toggle("menu__line__f__active");
+  menu__line__s.classList.toggle("menu__line__s__active");
   body.classList.toggle("hide__scroll");
 });
 
