@@ -78,7 +78,7 @@
 }
 
 .info__title {
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.5;
     white-space: nowrap;
 }
@@ -86,7 +86,7 @@
 .info__number {
     font-family: "Cormorant Infant", serif;
     text-align: center;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .numbers__block__info {

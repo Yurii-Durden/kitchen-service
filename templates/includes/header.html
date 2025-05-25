@@ -1,8 +1,12 @@
 <header class="header">
   <div class="header__container _container">
       <a class="logo {% if is_home %} logo__home {% endif %}" href="{% url 'kitchenflow:index' %}">S<em>Élise</em></a>
-    <div class="menu__box">
-      <a class="menu__item" href="#" onclick="return false;">MENU<span class="menu__click__elem"></span></a>
+    <div class="menu__box menu__item">
+{#      <a class="menu__item" href="#" onclick="return false;">#}
+      <span class="menu__line"></span>
+      <span class="menu__line"></span>
+      <span class="menu__line"></span>
+{#      </a>#}
     </div>
   </div>
 </header>
