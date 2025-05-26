@@ -117,36 +117,33 @@ body::-webkit-scrollbar {
 
 .menu__box {
   position: relative;
-  height: 10px;
-  width: 27px;
   z-index: 12;
 }
 
-.menu__line {
-  position: absolute;
-  display: inline-block;
-  left: 0;
-  height: 2.3px;
-  width: 100%;
-  transform: translateZ(0);
-  background-color: var(--primary-color);
-  transition: 0.5s transform cubic-bezier(0.645, 0.045, 0.355, 1);
+.fake__menu__text {
+    font-size: 21px;
+    font-weight: 700;
+    opacity: 0;
 }
 
-.menu__line:first-child {
-    top: 0;
+.menu__text {
+    position: absolute;
+    right: 0;
+    font-size: 22px;
+    font-weight: 600;
 }
 
-.menu__line:last-child {
-    bottom: 0;
+.fade__close {
+    display: inline-block;
+    opacity: 0;
+    transform: translate3d(-15px, 0, 0);
+    filter: blur(5px);
+    pointer-events: none;
 }
 
-.menu__line__f__active {
-  transform: translate(0, 156%) rotateZ(45deg);
-}
-
-.menu__line__s__active {
-  transform: translate(0, -156%) rotateZ(-45deg);
+.fade__menu {
+    display: inline-block;
+    pointer-events: none;
 }
 
 /*header-drop-menu---------------------------------------------*/
@@ -198,7 +195,7 @@ body::-webkit-scrollbar {
 
 .nav__link {
     position: relative;
-    font-size: clamp(20px, 8vw, 70px);
+    font-size: clamp(25px, 8vw, 71px);
     text-decoration: none;
     line-height: 1;
     font-weight: 500;
@@ -261,9 +258,6 @@ body::-webkit-scrollbar {
     transform-origin: left;
     transform: scaleX(1);
 }
-
-
-
 
 /*BODY-----------------------------------------------*/
 .section {
@@ -342,6 +336,12 @@ body::-webkit-scrollbar {
 
     .login__click__elem {
         display: none;
+    }
+}
+
+@media (max-width: 627px) {
+    .nav__link {
+        font-size: 9.1vw;
     }
 }
 

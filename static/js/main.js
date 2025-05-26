@@ -77,3 +77,70 @@ ScrollTrigger.matchMedia({
     ScrollTrigger.refresh();
   }
 });
+
+const menuBox = document.querySelector(".menu__box");
+let toggled = false;
+
+menuBox.addEventListener("click", () => {
+  const menuLetters = Array.from(document.querySelectorAll(".fade__menu"));
+  const closeLetters = Array.from(document.querySelectorAll(".fade__close"));
+
+  if (!toggled) {
+    const tl = gsap.timeline();
+
+    tl.to([...menuLetters].reverse(), {
+      opacity: 0,
+      x: 15,
+      filter: "blur(5px)",
+      duration: 1,
+      ease: "power2.out",
+      stagger: 0.05,
+    }, 0);
+
+    tl.to([...closeLetters].reverse(), {
+      opacity: 1,
+      x: 0,
+      duration: 1,
+      ease: "power2.out",
+      stagger: 0.05,
+    }, 0.1);
+
+    tl.to([...closeLetters].reverse(), {
+      filter: "blur(0px)",
+      duration: 0.5,
+      ease: "power2.out",
+      stagger: 0.05,
+    }, 0.1);
+
+  } else {
+    const tl = gsap.timeline();
+
+    tl.to(menuLetters, {
+      opacity: 1,
+      x: 0,
+      filter: "blur(0px)",
+      duration: 1,
+      ease: "power2.out",
+      stagger: 0.09
+    }, 0.1);
+
+    tl.to(closeLetters, {
+      opacity: 0,
+      x: -15,
+      duration: 1,
+      ease: "power2.out",
+      stagger: 0.05,
+    }, 0);
+
+    tl.to(closeLetters, {
+      filter: "blur(5px)",
+      duration: 0.5,
+      ease: "power2.out",
+      stagger: 0.05,
+    }, 0);
+  }
+
+  toggled = !toggled;
+});
+
+
