@@ -126,7 +126,7 @@ body::-webkit-scrollbar {
 }
 
 .fake__menu__text {
-    font-size: 23px;
+    font-size: 22px;
     font-weight: 600;
     opacity: 0;
     pointer-events: none;
@@ -135,9 +135,10 @@ body::-webkit-scrollbar {
 .menu__text {
     position: absolute;
     right: 0;
-    text-transform: uppercase;
-    font-size: 14px;
-    font-weight: 800;
+    bottom: 15%;
+    /*text-transform: uppercase;*/
+    font-size: 22px;
+    font-weight: 600;
 }
 
 .fade__close {
@@ -259,7 +260,7 @@ body::-webkit-scrollbar {
     left: 0;
     top: 0;
     font-weight: 600;
-    font-size: 23px;
+    font-size: 22px;
     color: var(--primary-color);
     white-space: nowrap;
     letter-spacing: 0.02rem;
@@ -359,6 +360,13 @@ body::-webkit-scrollbar {
 @media (max-width: 627px) {
     .nav__link {
         font-size: 9.1vw;
+    }
+}
+
+@media (max-width: 408px) {
+    .nav__link {
+        font-size: 8vw;
+        font-weight: 500;
     }
 }
 
