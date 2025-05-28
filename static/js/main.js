@@ -6,16 +6,39 @@ ScrollSmoother.create({
 
 const header_menu_button = document.querySelector(".menu__item");
 const header_menu = document.querySelector(".header__menu");
-const menu__line__f = document.querySelector(".menu__line__f");
-const menu__line__s = document.querySelector(".menu__line__s");
+const nav_links = Array.from(document.querySelectorAll(".menu__fade"));
 const body = document.body;
+
+let menuIsOpen = false;
 
 header_menu_button.addEventListener("click", (event) => {
   event.stopPropagation();
-  header_menu.classList.toggle("header__menu__active");
-  menu__line__f.classList.toggle("menu__line__f__active");
-  menu__line__s.classList.toggle("menu__line__s__active");
   body.classList.toggle("hide__scroll");
+
+  if (!menuIsOpen) {
+    header_menu.classList.add("header__menu__active");
+    gsap.to(nav_links, {
+      opacity: 1,
+      x: 0,
+      filter: "blur(0px)",
+      duration: 0.6,
+      stagger: 0.02,
+      ease: "power3.out",
+      delay: 0.3
+    });
+  } else {
+    gsap.to(nav_links, {
+      opacity: 0,
+      x: 15,
+      filter: "blur(10px)",
+      duration: 0.2,
+      stagger: 0.02,
+      ease: "power2.in"
+    });
+    setTimeout(() => {header_menu.classList.remove("header__menu__active");}, 100);
+  }
+
+  menuIsOpen = !menuIsOpen;
 });
 
 let lastScroll = 0;
@@ -85,62 +108,84 @@ menuBox.addEventListener("click", () => {
   const menuLetters = Array.from(document.querySelectorAll(".fade__menu"));
   const closeLetters = Array.from(document.querySelectorAll(".fade__close"));
 
-  if (!toggled) {
-    const tl = gsap.timeline();
+  const duration = 0.9;
+  const stagger = 0.04;
+  const ease = "power2.out";
 
+  const tl = gsap.timeline();
+
+  if (!toggled) {
     tl.to([...menuLetters].reverse(), {
       opacity: 0,
       x: 15,
       filter: "blur(5px)",
-      duration: 1,
-      ease: "power2.out",
-      stagger: 0.05,
+      duration,
+      ease,
+      stagger,
     }, 0);
 
     tl.to([...closeLetters].reverse(), {
       opacity: 1,
       x: 0,
-      duration: 1,
-      ease: "power2.out",
-      stagger: 0.05,
-    }, 0.1);
-
-    tl.to([...closeLetters].reverse(), {
       filter: "blur(0px)",
-      duration: 0.5,
-      ease: "power2.out",
-      stagger: 0.05,
+      duration,
+      ease,
+      stagger,
     }, 0.1);
 
   } else {
-    const tl = gsap.timeline();
-
     tl.to(menuLetters, {
       opacity: 1,
       x: 0,
       filter: "blur(0px)",
-      duration: 1,
-      ease: "power2.out",
-      stagger: 0.09
+      duration,
+      ease,
+      stagger: 0.09,
     }, 0.1);
 
     tl.to(closeLetters, {
       opacity: 0,
       x: -15,
-      duration: 1,
-      ease: "power2.out",
-      stagger: 0.05,
-    }, 0);
-
-    tl.to(closeLetters, {
       filter: "blur(5px)",
-      duration: 0.5,
-      ease: "power2.out",
-      stagger: 0.05,
+      duration,
+      ease,
+      stagger,
     }, 0);
   }
 
   toggled = !toggled;
 });
 
+
+const loginBoxes = document.querySelectorAll(".login__item");
+
+loginBoxes.forEach((box) => {
+  box.addEventListener("mouseenter", () => {
+    const logLetters = Array.from(box.querySelectorAll(".fade__link"));
+    const tl = gsap.timeline();
+
+    tl.to(logLetters.reverse(), {
+      opacity: 0,
+      x: 15,
+      filter: "blur(5px)",
+      duration: 0.9,
+      ease: "power2.out",
+      stagger: 0.03,
+    }, 0);
+  });
+
+  box.addEventListener("mouseleave", () => {
+    const logLetters = Array.from(box.querySelectorAll(".fade__link"));
+    const tl = gsap.timeline();
+
+    tl.to(logLetters, {
+      opacity: 1,
+      x: 0,
+      filter: "blur(0px)",
+      duration: 0.9,
+      ease: "power2.out",
+      stagger: 0.03,
+    }, 0);
+  });
+});
 

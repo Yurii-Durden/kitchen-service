@@ -19,31 +19,57 @@
 <nav class="header__menu">
   <ul class="nav__list">
     <li class="nav__items">
-      <a class="nav__link" href="{% url 'kitchenflow:about' %}">ABOUT ME</a>
+      <a href="{% url 'kitchenflow:about' %}">
+        <span class="nav__link menu__fade">A</span><span class="nav__link menu__fade">B</span><span class="nav__link menu__fade">O</span><span class="nav__link menu__fade">U</span><span class="nav__link menu__fade">T</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="nav__link menu__fade">M</span><span class="nav__link menu__fade">E</span>
+      </a>
     </li>
     <li class="nav__items">
-      <a class="nav__link" href="{% url 'kitchenflow:dish-list' %}">{{ user.is_chef|yesno:"ALL , MY " }} DISHES</a>
+      <a href="{% url 'kitchenflow:cook-list' %}">
+        <span class="nav__link menu__fade">A</span><span class="nav__link menu__fade">L</span><span class="nav__link menu__fade">L</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="nav__link menu__fade">C</span><span class="nav__link menu__fade">O</span><span class="nav__link menu__fade">O</span><span class="nav__link menu__fade">K</span><span class="nav__link menu__fade">S</span>
+      </a>
     </li>
     <li class="nav__items">
-      <a class="nav__link" href="{% url 'kitchenflow:cook-list' %}">ALL COOKS</a>
+      <a href="{% url 'kitchenflow:dish-list' %}">
+        {% for all_my in  user.is_chef|yesno:"ALL , MY " %} <span class="nav__link menu__fade">{{ all_my }}</span>{% endfor %}<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="nav__link menu__fade">D</span><span class="nav__link menu__fade">I</span><span class="nav__link menu__fade">S</span><span class="nav__link menu__fade">H</span><span class="nav__link menu__fade">E</span><span class="nav__link menu__fade">S</span>
+      </a>
     </li>
     <li class="nav__items">
-      <a class="nav__link" href="{% url 'kitchenflow:dish-type-list' %}">{{ user.is_chef|yesno:"ALL , MY " }}TYPES OF DISHES</a>
+      <a href="{% url 'kitchenflow:dish-type-list' %}">
+        {% for all_my in user.is_chef|yesno:"ALL , MY " %}<span class="nav__link menu__fade">{{ all_my }}</span>{% endfor %}<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="nav__link menu__fade">T</span><span class="nav__link menu__fade">Y</span><span class="nav__link menu__fade">P</span><span class="nav__link menu__fade">E</span><span class="nav__link menu__fade">S</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="nav__link menu__fade">O</span><span class="nav__link menu__fade">F</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="nav__link menu__fade">D</span><span class="nav__link menu__fade">I</span><span class="nav__link menu__fade">S</span><span class="nav__link menu__fade">H</span><span class="nav__link menu__fade">E</span><span class="nav__link menu__fade">S</span>
+      </a>
     </li>
   </ul>
   <div class="login__list__box">
     <ul class="login__list _container">
       {% if user.is_authenticated %}
         <li class="login__list__items login__item">
-          <a class="login__list__item__link" href="{% url 'kitchenflow:cook-detail' user.id %}">USER: {{ user.username }}
-            <span class="login__click__elem"></span></a>
+          <em><a class="fake__user__name" href="{% url 'kitchenflow:cook-detail' user.id %}">{{ user.username }}</a></em>
+          <em>
+            <a class="login__list__item__link" href="{% url 'kitchenflow:cook-detail' user.id %}">
+              {% for name_letter in user.username %}<span class="fade__link">{{ name_letter }}</span>{% endfor %}
+            </a>
+          </em>
         </li>
         <li class="login__list__items login__item">
-          <a class="login__list__item__link" href="{% url 'logout' %}">LOGOUT<span class="login__click__elem"></span></a>
+          <em><span class="fake__l">logout</span></em>
+          <em>
+            <a class="login__list__item__link" href="{% url 'logout' %}">
+              <span class="fade__link">l</span><span class="fade__link">o</span><span class="fade__link">g</span><span class="fade__link">o</span><span class="fade__link">u</span><span class="fade__link">t</span>
+            </a>
+          </em>
         </li>
       {% else %}
         <li class="login__list__items login__item">
-          <a class="login__list__item__link" href="{% url 'login' %}">LOGIN<span class="login__click__elem"></span></a>
+          <em>
+            <a class="fake__login" href="{% url 'login' %}">
+              login
+            </a>
+          </em>
+          <em>
+            <a class="login__list__item__link" href="{% url 'login' %}">
+              <span class="fade__link">l</span><span class="fade__link">o</span><span class="fade__link">g</span><span class="fade__link">i</span><span class="fade__link">n</span>
+            </a>
+          </em>
         </li>
       {% endif %}
     </ul>

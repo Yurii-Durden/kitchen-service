@@ -105,7 +105,7 @@ body::-webkit-scrollbar {
   position: relative;
   font-size: 35px;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--primary-color);
   letter-spacing: -0.025em;
   z-index: 11;
@@ -121,15 +121,16 @@ body::-webkit-scrollbar {
 }
 
 .fake__menu__text {
-    font-size: 21px;
-    font-weight: 700;
+    font-size: 23px;
+    font-weight: 600;
     opacity: 0;
+    pointer-events: none;
 }
 
 .menu__text {
     position: absolute;
     right: 0;
-    font-size: 22px;
+    font-size: 23px;
     font-weight: 600;
 }
 
@@ -193,19 +194,28 @@ body::-webkit-scrollbar {
     align-items: flex-end;
 }
 
+.menu__fade {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(10px);
+    transform: translate3d(15px, 0, 0);
+}
+
 .nav__link {
     position: relative;
-    font-size: clamp(25px, 8vw, 71px);
+    font-size: clamp(25px, 8vw, 70px);
     text-decoration: none;
     line-height: 1;
     font-weight: 500;
     color: var(--primary-color);
+}
+
+.nav__items a {
     transition: transform 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
-
-.nav__link:hover {
-    transform: translateX(-10px);
+.nav__items a:hover {
+    transform: translate3d(-10px, 0, 0);
 }
 
 .login__list__box {
@@ -226,37 +236,35 @@ body::-webkit-scrollbar {
 .login__list__items {
     position: relative;
     display: flex;
-    align-items: center;
+}
+
+.fake__user__name {
+    opacity: 0;
+}
+
+.fake__login {
+    opacity: 0;
 }
 
 .login__list__item__link {
-    position: relative;
-    font-weight: 900;
-    font-size: 19px;
-    color: var(--primary-color);
-}
-
-.login__item {
-    line-height: 1.4;
-    display: flex;
-    flex-direction: column;
-}
-
-.login__click__elem {
     position: absolute;
-    bottom: 0;
-    display: block;
-    height: 1.5px;
-    width: 100%;
-    transform: scaleX(0);
-    background-color: var(--primary-color);
-    transform-origin: right;
-    transition: transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    left: 0;
+    top: 0;
+    font-weight: 600;
+    font-size: 23px;
+    color: var(--primary-color);
+    white-space: nowrap;
 }
 
-.login__list__item__link:hover .login__click__elem {
-    transform-origin: left;
-    transform: scaleX(1);
+.fake__l {
+    font-weight: 600;
+    font-size: 23px;
+    opacity: 0;
+}
+
+.fade__link {
+    display: inline-block;
+    pointer-events: none;
 }
 
 /*BODY-----------------------------------------------*/
