@@ -1,13 +1,13 @@
 <header class="header">
   <div class="header__container _container">
-    <a class="logo {% if is_home %} logo__home {% endif %}" href="{% url 'kitchenflow:index' %}">S<em>Élise</em></a>
+    <a class="logo {% if not is_home %} menu__elem {% endif %} {% if is_home %} logo__home {% endif %}" href="{% url 'kitchenflow:index' %}">S<em>Élise</em></a>
     <div class="menu__box menu__item">
       <em><span class="fake__menu__text">close</span></em> <em><span class="fake__menu__text">menu</span></em>
       <em>
-        <span class="menu__text">
+        <span class="menu__text menu__elem">
           <span class="fade__close">c</span><span class="fade__close">l</span><span class="fade__close">o</span><span class="fade__close">s</span><span class="fade__close">e</span>
         </span>
-        <span class="menu__text">
+        <span class="menu__text menu__elem">
           <span class="fade__menu">m</span><span class="fade__menu">e</span><span class="fade__menu">n</span><span class="fade__menu">u</span>
         </span>
       </em>

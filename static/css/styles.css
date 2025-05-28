@@ -99,9 +99,12 @@ body::-webkit-scrollbar {
   justify-content: space-between;
   background-color: transparent;
   padding: 10px 10px;
-  /*opacity: 0;*/
-  /*filter: blur(5px);*/
-  /*transition: all 1s ease;*/
+}
+
+.menu__elem {
+    opacity: 0;
+    filter: blur(5px);
+    transition: 1s opacity ease, 1s filter ease;
 }
 
 .logo {

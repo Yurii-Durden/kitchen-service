@@ -4,12 +4,17 @@ ScrollSmoother.create({
   content: '.content'
 });
 
-// const header_container = document.querySelector(".header__container");
-//
-// window.addEventListener("DOMContentLoaded", () => {
-//   header_container.style.filter = `blur(${0})`;
-//   header_container.style.opacity = 1;
-// })
+const menu_elems = document.querySelectorAll(".menu__elem");
+
+window.addEventListener("DOMContentLoaded", () => {
+  event.stopPropagation();
+  setTimeout(() => {
+    Array.from(menu_elems).forEach((elem) => {
+      elem.style.filter = `blur(${0})`;
+      elem.style.opacity = 1;
+    })
+  }, 900)
+})
 
 const header_menu_button = document.querySelector(".menu__item");
 const header_menu = document.querySelector(".header__menu");
