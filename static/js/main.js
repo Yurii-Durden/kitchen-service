@@ -4,6 +4,13 @@ ScrollSmoother.create({
   content: '.content'
 });
 
+// const header_container = document.querySelector(".header__container");
+//
+// window.addEventListener("DOMContentLoaded", () => {
+//   header_container.style.filter = `blur(${0})`;
+//   header_container.style.opacity = 1;
+// })
+
 const header_menu_button = document.querySelector(".menu__item");
 const header_menu = document.querySelector(".header__menu");
 const nav_links = Array.from(document.querySelectorAll(".menu__fade"));
