@@ -33,15 +33,15 @@ header_menu_button.addEventListener("click", (event) => {
       opacity: 1,
       x: 0,
       filter: "blur(0px)",
-      duration: 0.6,
+      duration: 0.7,
       stagger: 0.02,
       ease: "power3.out",
-      delay: 0.3
+      delay: 0.35
     });
   } else {
     gsap.to(nav_links, {
       opacity: 0,
-      x: 15,
+      x: 20,
       filter: "blur(10px)",
       duration: 0.2,
       stagger: 0.02,
@@ -180,9 +180,9 @@ loginBoxes.forEach((box) => {
       opacity: 0,
       x: 15,
       filter: "blur(5px)",
-      duration: 0.9,
+      duration: 1,
       ease: "power2.out",
-      stagger: 0.03,
+      stagger: 0.05,
     }, 0);
   });
 
@@ -194,9 +194,9 @@ loginBoxes.forEach((box) => {
       opacity: 1,
       x: 0,
       filter: "blur(0px)",
-      duration: 0.9,
+      duration: 1,
       ease: "power2.out",
-      stagger: 0.03,
+      stagger: 0.05,
     }, 0);
   });
 });

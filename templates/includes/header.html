@@ -19,21 +19,25 @@
     <li class="nav__items">
       <a href="{% url 'kitchenflow:about' %}">
         <span class="nav__link menu__fade">A</span><span class="nav__link menu__fade">B</span><span class="nav__link menu__fade">O</span><span class="nav__link menu__fade">U</span><span class="nav__link menu__fade">T</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="nav__link menu__fade">M</span><span class="nav__link menu__fade">E</span>
+{#        <span class="nav__link menu__fade">ABOUT ME</span>#}
       </a>
     </li>
     <li class="nav__items">
       <a href="{% url 'kitchenflow:cook-list' %}">
         <span class="nav__link menu__fade">A</span><span class="nav__link menu__fade">L</span><span class="nav__link menu__fade">L</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="nav__link menu__fade">C</span><span class="nav__link menu__fade">O</span><span class="nav__link menu__fade">O</span><span class="nav__link menu__fade">K</span><span class="nav__link menu__fade">S</span>
+{#        <span class="nav__link menu__fade">ALL COOKS</span>#}
       </a>
     </li>
     <li class="nav__items">
       <a href="{% url 'kitchenflow:dish-list' %}">
         {% for all_my in  user.is_chef|yesno:"ALL , MY " %} <span class="nav__link menu__fade">{{ all_my }}</span>{% endfor %}<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="nav__link menu__fade">D</span><span class="nav__link menu__fade">I</span><span class="nav__link menu__fade">S</span><span class="nav__link menu__fade">H</span><span class="nav__link menu__fade">E</span><span class="nav__link menu__fade">S</span>
+{#        <span class="nav__link menu__fade">ALL DISHES</span>#}
       </a>
     </li>
     <li class="nav__items">
       <a href="{% url 'kitchenflow:dish-type-list' %}">
         {% for all_my in user.is_chef|yesno:"ALL , MY " %}<span class="nav__link menu__fade">{{ all_my }}</span>{% endfor %}<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="nav__link menu__fade">T</span><span class="nav__link menu__fade">Y</span><span class="nav__link menu__fade">P</span><span class="nav__link menu__fade">E</span><span class="nav__link menu__fade">S</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="nav__link menu__fade">O</span><span class="nav__link menu__fade">F</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="nav__link menu__fade">D</span><span class="nav__link menu__fade">I</span><span class="nav__link menu__fade">S</span><span class="nav__link menu__fade">H</span><span class="nav__link menu__fade">E</span><span class="nav__link menu__fade">S</span>
+{#        <span class="nav__link menu__fade">ALL TYPES OF DISHES</span>#}
       </a>
     </li>
   </ul>

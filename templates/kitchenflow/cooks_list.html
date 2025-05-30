@@ -1,4 +1,13 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  <title>Cooks</title>
+{% endblock %}
+
+{% block extra_styles %}
+  <link rel="stylesheet" href="{% static 'css/all_cooks.css' %}">
+{% endblock %}
 
 {% block content %}
   <h1>Cooks</h1>

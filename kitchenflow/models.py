@@ -19,7 +19,8 @@ class Cook(AbstractUser):
 
     def __str__(self) -> str:
         return (f""
-                f"{self.first_name} {self.last_name} "
+                f"{self.first_name} {self.last_name} - "
+                f"{self.username} "
                 f"({self.years_of_experience} years_of_experience)"
             )
 
