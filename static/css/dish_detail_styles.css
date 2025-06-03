@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Bodoni";
-    src: url("/fonts/bodoni-serial-bold.ttf") format("truetype");
+    src: url("/static/fonts/bodoni-serial-bold.ttf") format("truetype");
 }
 
 .dish-name {

@@ -1,7 +1,7 @@
 .about__box {
     display: flex;
     justify-content: space-between;
-    padding-top: 20vh;
+    padding-top: 10vh;
 }
 
 .title {
@@ -38,7 +38,7 @@
 }
 
 .what__contacts {
-    padding-top: 20vh;
+    padding-top: 10vh;
     display: flex;
     flex-direction: column;
 }

@@ -4,17 +4,20 @@ ScrollSmoother.create({
   content: '.content'
 });
 
-const menu_elems = document.querySelectorAll(".menu__elem");
-
 window.addEventListener("DOMContentLoaded", () => {
-  event.stopPropagation();
-  setTimeout(() => {
-    Array.from(menu_elems).forEach((elem) => {
-      elem.style.filter = `blur(${0})`;
-      elem.style.opacity = 1;
-    })
-  }, 900)
-})
+  const headerLetters = document.querySelectorAll(".fade__header");
+
+  gsap.to(headerLetters, {
+    opacity: 1,
+    x: 0,
+    filter: "blur(0px)",
+    duration: 1.2,
+    ease: "power2.out",
+    stagger: 0.01,
+    delay: 1.05
+  });
+
+});
 
 const header_menu_button = document.querySelector(".menu__item");
 const header_menu = document.querySelector(".header__menu");
@@ -33,10 +36,10 @@ header_menu_button.addEventListener("click", (event) => {
       opacity: 1,
       x: 0,
       filter: "blur(0px)",
-      duration: 0.7,
+      duration: 0.9,
       stagger: 0.02,
       ease: "power3.out",
-      delay: 0.35
+      delay: 0.3
     });
   } else {
     gsap.to(nav_links, {
@@ -121,7 +124,7 @@ menuBox.addEventListener("click", () => {
   const closeLetters = Array.from(document.querySelectorAll(".fade__close"));
 
   const duration = 0.9;
-  const stagger = 0.04;
+  const stagger = 0.03;
   const ease = "power2.out";
 
   const tl = gsap.timeline();
@@ -176,13 +179,13 @@ loginBoxes.forEach((box) => {
     const logLetters = Array.from(box.querySelectorAll(".fade__link"));
     const tl = gsap.timeline();
 
-    tl.to(logLetters.reverse(), {
+    tl.to(logLetters, {
       opacity: 0,
       x: 15,
       filter: "blur(5px)",
       duration: 1,
       ease: "power2.out",
-      stagger: 0.05,
+      stagger: 0.04,
     }, 0);
   });
 
@@ -196,7 +199,7 @@ loginBoxes.forEach((box) => {
       filter: "blur(0px)",
       duration: 1,
       ease: "power2.out",
-      stagger: 0.05,
+      stagger: 0.04,
     }, 0);
   });
 });

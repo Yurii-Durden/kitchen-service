@@ -10,32 +10,46 @@
 {% endblock %}
 
 {% block content %}
-  <h1>Cooks</h1>
-  {% if user.is_chef %}
-    <div class="create-button">
-      <a href="{% url 'kitchenflow:cook-create' %}">Create</a>
-    </div>
-  {% endif %}
-  {% include "includes/search_form.html" %}
-  {% if cooks_list %}
-    <table class="table">
-      <tr>
-        <th>Username</th>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Years of experience</th>
-      </tr>
-    {% for cook in cooks_list %}
-      <tr>
-        <td><a href="{% url 'kitchenflow:cook-detail' cook.id %}">{{ cook.username }}</a></td>
-        <td>{{ cook.first_name }}</td>
-        <td>{{ cook.last_name }}</td>
-        <td>{{ cook.years_of_experience }}</td>
-      </tr>
-    {% endfor %}
-    </table>
-  {% else %}
-    <p>Here aren`t cooks</p>
-  {% endif %}
+  <section class="page__list__section section">
+  <div class="cooks__box _container">
   {% include "includes/pagination.html" %}
+    <div class="main__cooks">
+      <h1 class="page__all__title cooks__title">
+        <span class="fade__title__all">A</span><span class="fade__title__all">L</span><span class="fade__title__all">L</span> <span class="fade__title__all">C</span><span class="fade__title__all">O</span><span class="fade__title__all">O</span><span class="fade__title__all">K</span><span class="fade__title__all">S</span>
+      </h1>
+      {% include "includes/search_form.html" %}
+      <em>
+      </em>
+      {% if user.is_chef %}
+        <div>
+          <em>
+            <a class="create__button" href="{% url 'kitchenflow:cook-create' %}">
+              <span class="create__fade">C</span><span class="create__fade">r</span><span class="create__fade">e</span><span class="create__fade">a</span><span class="create__fade">t</span><span class="create__fade">e</span> <span class="create__fade">c</span><span class="create__fade">o</span><span class="create__fade">o</span><span class="create__fade">k</span>
+            </a>
+          </em>
+        </div>
+      {% endif %}
+      </div>
+{#      <div class="cooks__list__box">#}
+{#        {% if cooks_list %}#}
+{#          <ul class="cooks__list">#}
+{#          {% for cook in cooks_list %}#}
+{#            <li>#}
+{#              <a href="{% url 'kitchenflow:cook-detail' cook.id %}">{{ cook.username }}</a></td>#}
+{#              <p>{{ cook.first_name }}</p>#}
+{#              <p>{{ cook.last_name }}</p>#}
+{#              <p>{{ cook.years_of_experience }}</p>#}
+{#            </li>#}
+{#          {% endfor %}#}
+{#          </ul>#}
+{#        {% else %}#}
+{#        <p>Here aren`t cooks</p>#}
+{#        {% endif %}#}
+{#      </div>#}
+    </div>
+  </section>
+{% endblock %}
+
+{% block extra_scripts %}
+  <script src="{% static 'js/list_page_anim.js' %}"></script>
 {% endblock %}
