@@ -1,5 +1,5 @@
 .cooks__box {
-    margin-top: 10vh;
+
 }
 
 .page__all__title {
@@ -16,14 +16,9 @@
     transform: translate3d(25px, 0, 0);
 }
 
-.total__c {
-    font-size: 23px;
-    font-weight: 600;
-}
-
-.cooks__list__box {
+.main__cooks {
+    margin-top: 10vh;
     display: none;
-    /*opacity: 0;*/
 }
 
 /*search-form--------------------------------------*/
@@ -80,9 +75,61 @@
     transform: translate3d(15px, 0, 0);
 }
 
+/*cooks-list-block---------------------------------*/
+
+.cooks__list__box {
+    position: relative;
+    height: 100%;
+    display: flex;
+    padding-top: 35vh;
+    z-index: 20;
+}
+
+.cooks__list {
+    position: relative;
+    display: flex;
+}
+
+.cooks__list__item {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cooks__list__item:not(:first-child) {
+    margin-left: 5.2rem;
+}
+
+.f__s__name {
+    display: inline-block;
+    transform: translate3d(-0.08rem, 0, 0);
+    font-size: 3.9vw;
+    line-height: 1;
+    letter-spacing: -0.07rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.first__name {
+    font-style: italic;
+}
+
+.second__name {
+    text-transform: uppercase;
+}
+
+.username {
+    color: var(--primary-color);
+    font-size: 21px;
+    font-weight: 600;
+    text-align: left;
+    display: block;
+}
+
 /*pagination---------------------------------------------*/
 .pagination__box {
     position: absolute;
+    z-index: 21;
     width: 100%;
     bottom: 0;
     left: 0;
@@ -95,7 +142,7 @@
 }
 
 .page__count {
-    font-family: "Cormorant Infant", serif;;
+    font-family: "Cormorant Infant", serif;
     font-size: 23px;
     font-weight: 550;
 }

@@ -30,22 +30,22 @@
         </div>
       {% endif %}
       </div>
-{#      <div class="cooks__list__box">#}
-{#        {% if cooks_list %}#}
-{#          <ul class="cooks__list">#}
-{#          {% for cook in cooks_list %}#}
-{#            <li>#}
-{#              <a href="{% url 'kitchenflow:cook-detail' cook.id %}">{{ cook.username }}</a></td>#}
-{#              <p>{{ cook.first_name }}</p>#}
-{#              <p>{{ cook.last_name }}</p>#}
-{#              <p>{{ cook.years_of_experience }}</p>#}
-{#            </li>#}
-{#          {% endfor %}#}
-{#          </ul>#}
-{#        {% else %}#}
-{#        <p>Here aren`t cooks</p>#}
-{#        {% endif %}#}
-{#      </div>#}
+      <div class="cooks__list__box">
+        {% if cooks_list %}
+          <ul class="cooks__list">
+          {% for cook in cooks_list %}
+            <li class="cooks__list__item">
+              <p class="f__s__name"><span class="first__name">{{ cook.first_name }}</span> <span class="second__name">{{ cook.last_name }}</span></p>
+              <em>
+                <a class="username" href="{% url 'kitchenflow:cook-detail' cook.id %}">{{ cook.username }}</a>
+              </em>
+            </li>
+          {% endfor %}
+          </ul>
+        {% else %}
+        <p>Here aren`t cooks</p>
+        {% endif %}
+      </div>
     </div>
   </section>
 {% endblock %}
