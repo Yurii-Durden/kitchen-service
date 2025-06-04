@@ -1,4 +1,8 @@
-.cooks__box {
+.section__container {
+
+}
+
+.list__section {
 
 }
 
@@ -16,9 +20,12 @@
     transform: translate3d(25px, 0, 0);
 }
 
+.page__list__main__section {
+    display: none;
+}
+
 .main__cooks {
     margin-top: 10vh;
-    display: none;
 }
 
 /*search-form--------------------------------------*/
@@ -76,18 +83,19 @@
 }
 
 /*cooks-list-block---------------------------------*/
-
 .cooks__list__box {
     position: relative;
     height: 100%;
     display: flex;
-    padding-top: 35vh;
+    flex-direction: column;
+    justify-content: center;
     z-index: 20;
 }
 
 .cooks__list {
-    position: relative;
     display: flex;
+    /*flex-direction: column;*/
+    align-items: center;
 }
 
 .cooks__list__item {
@@ -97,7 +105,7 @@
 }
 
 .cooks__list__item:not(:first-child) {
-    margin-left: 5.2rem;
+    margin-left: 5rem;
 }
 
 .f__s__name {
@@ -119,11 +127,11 @@
 }
 
 .username {
+    display: block;
     color: var(--primary-color);
     font-size: 21px;
     font-weight: 600;
     text-align: left;
-    display: block;
 }
 
 /*pagination---------------------------------------------*/
@@ -138,7 +146,7 @@
 .pagination__list {
     display: flex;
     justify-content: space-between;
-    padding: 1rem 0;
+    padding: 1rem 10px;
 }
 
 .page__count {
@@ -156,6 +164,7 @@
     opacity: 0;
     filter: blur(10px);
     transform: translate3d(25px, 0, 0);
+    will-change: tramsform, opacity, filter;
 }
 
 .pagination__item {

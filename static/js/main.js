@@ -14,7 +14,7 @@ window.addEventListener("DOMContentLoaded", () => {
     duration: 1.2,
     ease: "power2.out",
     stagger: 0.01,
-    delay: 1.05
+    delay: 1
   });
 
 });

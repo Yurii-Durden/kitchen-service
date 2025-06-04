@@ -1,3 +1,18 @@
+//scroll
+// const container = document.querySelector(".container");
+// const sections = gsap.utils.toArray(".section__container section");
+//
+// let scrollTween = gsap.to(sections, {
+//   xPercent: -100 * (sections.length - 1),
+//   ease: "none",
+//   scrollTrigger: {
+//     trigger: ".section__container",
+//     pin: true,
+//     scrub: 1,
+//     end: "+=3000"
+//   }
+// });
+
 //page load anim
 window.addEventListener("DOMContentLoaded", () => {
   const titleAllLetters = document.querySelectorAll(".fade__title__all");
