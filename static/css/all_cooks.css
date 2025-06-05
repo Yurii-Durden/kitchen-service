@@ -14,6 +14,8 @@
 
 .main__cooks {
     padding-top: 10vh;
+    /*filter: blur(15px);*/
+    /*opacity: 0;*/
 }
 
 /*search-form--------------------------------------*/
@@ -58,6 +60,7 @@
 
 /*create-button-------------------------------------------*/
 .create__button {
+
     color: var(--primary-color);
     font-size: clamp(16px, 2vw, 23px);
     font-weight: 600;
@@ -77,7 +80,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    z-index: 20;
 }
 
 .cooks__list {
@@ -99,10 +101,10 @@
 .f__s__name {
     display: inline-block;
     transform: translate3d(-0.08rem, 0, 0);
-    font-size: 3.9vw;
+    font-size: 4vw;
     line-height: 1;
     letter-spacing: -0.07rem;
-    font-weight: 500;
+    font-weight: 400;
     white-space: nowrap;
 }
 
@@ -124,15 +126,13 @@
 
 /*pagination---------------------------------------------*/
 .pagination__box {
-    /*position: absolute;*/
-    /*z-index: 21;*/
+    padding-top: 10vh;
     width: 100%;
-    /*bottom: 0;*/
-    /*left: 0;*/
 }
 
 .pagination__list {
     display: flex;
+    margin-top: 10vh;
     justify-content: space-between;
     padding: 1rem 5px;
 }
@@ -141,7 +141,6 @@
     font-family: "Cormorant Infant", serif;
     font-size: 23px;
     font-weight: 550;
-    /*display: none;*/
 }
 
 .page__link {
@@ -150,10 +149,10 @@
 
 .fade__pag {
     display: inline-block;
-    opacity: 0;
-    filter: blur(10px);
-    transform: translate3d(25px, 0, 0);
-    will-change: tramsform, opacity, filter;
+    /*opacity: 0;*/
+    /*filter: blur(10px);*/
+    /*transform: translate3d(25px, 0, 0);*/
+    will-change: transform, opacity, filter;
 }
 
 .pagination__item {

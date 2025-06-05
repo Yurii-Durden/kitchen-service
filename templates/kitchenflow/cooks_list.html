@@ -9,9 +9,13 @@
   <link rel="stylesheet" href="{% static 'css/all_cooks.css' %}">
 {% endblock %}
 
+{% block extra_section %}
+{% endblock %}
+
 {% block content %}
   <section class="pinned__section section">
       <div class="main__cooks _container">
+{#        <p class="pls__scroll"><em>pls scroll</em></p>#}
         <h1 class="page__all__title cooks__title">
           <span class="fade__title__all">A</span><span class="fade__title__all">L</span><span class="fade__title__all">L</span> <span class="fade__title__all">C</span><span class="fade__title__all">O</span><span class="fade__title__all">O</span><span class="fade__title__all">K</span><span class="fade__title__all">S</span>
         </h1>
@@ -45,7 +49,7 @@
         {% else %}
           <p>Here arent cooks</p>
         {% endif %}
-      {% include "includes/pagination.html" %}
+        {% include "includes/pagination.html" %}
       </div>
   </section>
 {% endblock %}

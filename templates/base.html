@@ -18,27 +18,27 @@
   {% block header %}
     {% include "includes/header.html" %}
   {% endblock %}
-  <div class="content">
     <main class="main__content">
-      {% block content %}{% endblock %}
-    </main>
-  {% if is_home %}
-    <footer class="footer">
-      <div class="footer__box _container">
-        <p class="footer__text">
-          <span class="fake__letter">É</span>
-          <span class="project__right">&#xa9;</span><span class="inner__footer__text">S<em>Élise<span class="k__s__text"><span class="fade__word__foot fade">k</span><span class="fade__word__foot fade">i</span><span class="fade__word__foot fade">t</span><span class="fade__word__foot fade">c</span><span class="fade__word__foot fade">h</span><span class="fade__word__foot fade">e</span><span class="fade__word__foot fade">n</span> <span class="fade__word__foot fade">s</span><span class="fade__word__foot fade">e</span><span class="fade__word__foot fade">r</span><span class="fade__word__foot fade">v</span><span class="fade__word__foot fade">i</span><span class="fade__word__foot fade">c</span><span class="fade__word__foot fade">e</span></span></em></span>
-        </p>
+      <div class="content">
+        {% block content %}{% endblock %}
+        {% if is_home %}
+        <footer class="footer">
+          <div class="footer__box _container">
+            <p class="footer__text">
+              <span class="fake__letter">É</span>
+              <span class="project__right">&#xa9;</span><span class="inner__footer__text">S<em>Élise<span class="k__s__text"><span class="fade__word__foot fade">k</span><span class="fade__word__foot fade">i</span><span class="fade__word__foot fade">t</span><span class="fade__word__foot fade">c</span><span class="fade__word__foot fade">h</span><span class="fade__word__foot fade">e</span><span class="fade__word__foot fade">n</span> <span class="fade__word__foot fade">s</span><span class="fade__word__foot fade">e</span><span class="fade__word__foot fade">r</span><span class="fade__word__foot fade">v</span><span class="fade__word__foot fade">i</span><span class="fade__word__foot fade">c</span><span class="fade__word__foot fade">e</span></span></em></span>
+            </p>
+          </div>
+        </footer>
+        {% endif %}
       </div>
-    </footer>
-  {% endif %}
+    </main>
     <script src="{% static 'gsap/gsap.min.js' %}"></script>
     <script src="{% static 'gsap/ScrollTrigger.min.js' %}"></script>
     <script src="{% static 'gsap/ScrollSmoother.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
     {% block extra_scripts %}
     {% endblock %}
-  </div>
 </div>
 </body>
 </html>

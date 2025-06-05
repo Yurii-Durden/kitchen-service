@@ -59,6 +59,8 @@ body::-webkit-scrollbar {
 }
 
 .wrapper {
+    position: relative;
+    z-index: 1;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
