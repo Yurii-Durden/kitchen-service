@@ -1,16 +1,12 @@
 //scroll
-// const container = document.querySelector(".container");
-// const sections = gsap.utils.toArray(".section__container section");
+// gsap.registerPlugin(ScrollTrigger);
 //
-// let scrollTween = gsap.to(sections, {
-//   xPercent: -100 * (sections.length - 1),
-//   ease: "none",
-//   scrollTrigger: {
-//     trigger: ".section__container",
-//     pin: true,
-//     scrub: 1,
-//     end: "+=3000"
-//   }
+// ScrollTrigger.create({
+//   trigger: ".pinned__section",
+//   start: "top top",
+//   end: "bottom+=100 top",
+//   pin: true,
+//   pinSpacing: false
 // });
 
 //page load anim

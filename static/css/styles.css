@@ -46,12 +46,12 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    /*scrollbar-width: none;*/
-    /*-ms-overflow-style: none;*/
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 body::-webkit-scrollbar {
-  /*display: none;*/
+  display: none;
 }
 
 .hide__scroll {
@@ -62,7 +62,7 @@ body::-webkit-scrollbar {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    /*overflow-x: hidden;*/
+    overflow-x: hidden;
 }
 
 ._container {

@@ -10,54 +10,44 @@
 {% endblock %}
 
 {% block content %}
-<div class="section__wrapper">
-  <div class="section__container">
-  <section class="page__list__main__section list__section">
-    <div class="c control__box _container">
-      <p>First</p>
-{#    {% include "includes/pagination.html" %}#}
-{#      <div class="main__cooks">#}
-{#        <h1 class="page__all__title cooks__title">#}
-{#          <span class="fade__title__all">A</span><span class="fade__title__all">L</span><span class="fade__title__all">L</span> <span class="fade__title__all">C</span><span class="fade__title__all">O</span><span class="fade__title__all">O</span><span class="fade__title__all">K</span><span class="fade__title__all">S</span>#}
-{#        </h1>#}
-{#        {% include "includes/search_form.html" %}#}
-{#        <em>#}
-{#        </em>#}
-{#        {% if user.is_chef %}#}
-{#          <div>#}
-{#            <em>#}
-{#              <a class="create__button" href="{% url 'kitchenflow:cook-create' %}">#}
-{#                <span class="create__fade">C</span><span class="create__fade">r</span><span class="create__fade">e</span><span class="create__fade">a</span><span class="create__fade">t</span><span class="create__fade">e</span> <span class="create__fade">c</span><span class="create__fade">o</span><span class="create__fade">o</span><span class="create__fade">k</span>#}
-{#              </a>#}
-{#            </em>#}
-{#          </div>#}
-{#        {% endif %}#}
-{#        </div>#}
-    </div>
+  <section class="pinned__section section">
+      <div class="main__cooks _container">
+        <h1 class="page__all__title cooks__title">
+          <span class="fade__title__all">A</span><span class="fade__title__all">L</span><span class="fade__title__all">L</span> <span class="fade__title__all">C</span><span class="fade__title__all">O</span><span class="fade__title__all">O</span><span class="fade__title__all">K</span><span class="fade__title__all">S</span>
+        </h1>
+        {% include "includes/search_form.html" %}
+        <em>
+        </em>
+        {% if user.is_chef %}
+          <div>
+            <em>
+              <a class="create__button" href="{% url 'kitchenflow:cook-create' %}">
+                <span class="create__fade">C</span><span class="create__fade">r</span><span class="create__fade">e</span><span class="create__fade">a</span><span class="create__fade">t</span><span class="create__fade">e</span> <span class="create__fade">c</span><span class="create__fade">o</span><span class="create__fade">o</span><span class="create__fade">k</span>
+              </a>
+            </em>
+          </div>
+        {% endif %}
+        </div>
+    </section>
+    <section class="scrollable__section section">
+      <div class="cooks__list__box _container">
+        {% if cooks_list %}
+          <ul class="cooks__list">
+            {% for cook in cooks_list %}
+              <li class="swiper-slider cooks__list__item">
+                <p class="f__s__name"><span class="first__name">{{ cook.first_name }}</span> <span class="second__name">{{ cook.last_name }}</span></p>
+                <em>
+                  <a class="username" href="{% url 'kitchenflow:cook-detail' cook.id %}">{{ cook.username }}</a>
+                </em>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>Here arent cooks</p>
+        {% endif %}
+      {% include "includes/pagination.html" %}
+      </div>
   </section>
-  <section class="cooks__cards__section list__section">
-    <div class="c cooks__list__body _container">
-        <p>Second</p>
-{#      <div class="cooks__list__box">#}
-{#        {% if cooks_list %}#}
-{#          <ul class="cooks__list">#}
-{#            {% for cook in cooks_list %}#}
-{#              <li class="swiper-slider cooks__list__item">#}
-{#                <p class="f__s__name"><span class="first__name">{{ cook.first_name }}</span> <span class="second__name">{{ cook.last_name }}</span></p>#}
-{#                <em>#}
-{#                  <a class="username" href="{% url 'kitchenflow:cook-detail' cook.id %}">{{ cook.username }}</a>#}
-{#                </em>#}
-{#              </li>#}
-{#            {% endfor %}#}
-{#          </ul>#}
-{#        {% else %}#}
-{#          <p>Here arent cooks</p>#}
-{#        {% endif %}#}
-{#      </div>#}
-    </div>
-  </section>
-  </div>
-</div>
 {% endblock %}
 
 {% block extra_scripts %}

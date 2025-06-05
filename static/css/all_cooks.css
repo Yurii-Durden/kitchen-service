@@ -1,11 +1,3 @@
-.section__container {
-
-}
-
-.list__section {
-
-}
-
 .page__all__title {
     display: inline-block;
     font-size: 10vw;
@@ -20,12 +12,8 @@
     transform: translate3d(25px, 0, 0);
 }
 
-.page__list__main__section {
-    display: none;
-}
-
 .main__cooks {
-    margin-top: 10vh;
+    padding-top: 10vh;
 }
 
 /*search-form--------------------------------------*/
@@ -94,7 +82,7 @@
 
 .cooks__list {
     display: flex;
-    /*flex-direction: column;*/
+    flex-direction: column;
     align-items: center;
 }
 
@@ -104,8 +92,8 @@
     gap: 20px;
 }
 
-.cooks__list__item:not(:first-child) {
-    margin-left: 5rem;
+.cooks__list__item:not(:last-child) {
+    margin-bottom: 10rem;
 }
 
 .f__s__name {
@@ -131,28 +119,29 @@
     color: var(--primary-color);
     font-size: 21px;
     font-weight: 600;
-    text-align: left;
+    text-align: center;
 }
 
 /*pagination---------------------------------------------*/
 .pagination__box {
-    position: absolute;
-    z-index: 21;
+    /*position: absolute;*/
+    /*z-index: 21;*/
     width: 100%;
-    bottom: 0;
-    left: 0;
+    /*bottom: 0;*/
+    /*left: 0;*/
 }
 
 .pagination__list {
     display: flex;
     justify-content: space-between;
-    padding: 1rem 10px;
+    padding: 1rem 5px;
 }
 
 .page__count {
     font-family: "Cormorant Infant", serif;
     font-size: 23px;
     font-weight: 550;
+    /*display: none;*/
 }
 
 .page__link {
