@@ -1,8 +1,17 @@
+ScrollTrigger.create({
+  trigger: ".pinned__section",
+  start: "top top",
+  end: "+=99999",
+  pin: true,
+  pinSpacing: false,
+  markers: true
+});
+
 //page load anim
 window.addEventListener("DOMContentLoaded", () => {
   const titleAllLetters = document.querySelectorAll(".fade__title__all");
   const searchForm = document.querySelector(".search__form");
-  // const paginationLetters = document.querySelectorAll(".fade__pag");
+  const paginationLetters = document.querySelectorAll(".fade__pag");
 
   gsap.to(titleAllLetters, {
     opacity: 1,
@@ -34,15 +43,15 @@ window.addEventListener("DOMContentLoaded", () => {
     delay: 0.5
   });
 
-  // gsap.to(paginationLetters, {
-  //   opacity: 1,
-  //   x: 0,
-  //   filter: "blur(0px)",
-  //   duration: 1.2,
-  //   ease: "power2.out",
-  //   stagger: 0.01,
-  //   delay: 0.8
-  // });
+  gsap.to(paginationLetters, {
+    opacity: 1,
+    x: 0,
+    filter: "blur(0px)",
+    duration: 1.2,
+    ease: "power2.out",
+    stagger: 0.01,
+    delay: 0.8
+  });
 });
 
 //hover

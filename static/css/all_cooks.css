@@ -1,3 +1,7 @@
+.scrollable__section {
+    padding-bottom: 50vh;
+}
+
 .page__all__title {
     display: inline-block;
     font-size: 10vw;
@@ -126,6 +130,10 @@
 
 /*pagination---------------------------------------------*/
 .pagination__box {
+    position: absolute;
+    left: 0;
+    bottom: 3%;
+    z-index: 100;
     padding-top: 10vh;
     width: 100%;
 }

@@ -14,6 +14,7 @@
 
 {% block content %}
   <section class="pinned__section section">
+      {% include "includes/pagination.html" %}
       <div class="main__cooks _container">
 {#        <p class="pls__scroll"><em>pls scroll</em></p>#}
         <h1 class="page__all__title cooks__title">
@@ -49,7 +50,6 @@
         {% else %}
           <p>Here arent cooks</p>
         {% endif %}
-        {% include "includes/pagination.html" %}
       </div>
   </section>
 {% endblock %}
