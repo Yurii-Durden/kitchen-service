@@ -3,6 +3,7 @@
     --primary-color: #000000;
     --back-color: #eeede9;
     --base-padding: 10px;
+    --primary-animation: cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
 .fade {
@@ -222,7 +223,7 @@ body::-webkit-scrollbar {
 }
 
 .nav__items a {
-    transition: transform 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    transition: transform 1.5s var(--primary-animation);
 }
 
 .nav__items a:hover {
