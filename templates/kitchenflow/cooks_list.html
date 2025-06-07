@@ -16,7 +16,6 @@
   <section class="pinned__section section">
       {% include "includes/pagination.html" %}
       <div class="main__cooks _container">
-{#        <p class="pls__scroll"><em>pls scroll</em></p>#}
         <h1 class="page__all__title cooks__title">
           <span class="fade__title__all">A</span><span class="fade__title__all">L</span><span class="fade__title__all">L</span> <span class="fade__title__all">C</span><span class="fade__title__all">O</span><span class="fade__title__all">O</span><span class="fade__title__all">K</span><span class="fade__title__all">S</span>
         </h1>
@@ -40,9 +39,13 @@
           <ul class="cooks__list">
             {% for cook in cooks_list %}
               <li class="swiper-slider cooks__list__item">
-                <p class="f__s__name"><span class="first__name">{{ cook.first_name }}</span> <span class="second__name">{{ cook.last_name }}</span></p>
+                <p class="f__s__name">
+                  <span class="first__name fade__f__n">{{ cook.first_name }}</span> <span class="second__name">{{ cook.last_name }}</span>
+                </p>
                 <em>
-                  <a class="username" href="{% url 'kitchenflow:cook-detail' cook.id %}">{{ cook.username }}</a>
+                  <a class="username" href="{% url 'kitchenflow:cook-detail' cook.id %}">
+                    {% for user_letter in cook.username %}<span class="user__letters">{{ user_letter }}</span>{% endfor %}
+                  </a>
                 </em>
               </li>
             {% endfor %}
