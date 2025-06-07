@@ -60,7 +60,8 @@ let lastScroll = 0;
 const header = document.querySelector('.header');
 const firstSection = document.querySelector('.first__section');
 
-window.addEventListener('scroll', () => {
+if (firstSection) {
+  window.addEventListener('scroll', () => {
   const scrollTop = window.scrollY;
   const firstSectionTop = firstSection.getBoundingClientRect().top;
 
@@ -71,8 +72,9 @@ window.addEventListener('scroll', () => {
   } else if (scrollTop < lastScroll - 5) {
     header.style.transform = 'translateY(0)';
   }
-  lastScroll = scrollTop;
-});
+    lastScroll = scrollTop;
+  });
+}
 
 ScrollTrigger.matchMedia({
   "(min-width: 1257px)": function () {
