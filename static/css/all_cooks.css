@@ -1,5 +1,7 @@
 .scrollable__section {
     padding-bottom: 50vh;
+    width: max-content;
+    margin: 0 auto;
 }
 
 .page__all__title {
@@ -18,8 +20,7 @@
 
 .main__cooks {
     padding-top: 10vh;
-    /*filter: blur(15px);*/
-    /*opacity: 0;*/
+    will-change: filter;
 }
 
 /*search-form--------------------------------------*/
@@ -53,7 +54,7 @@
     background-color: var(--back-color);
     display: flex;
     align-items: center;
-    transition: transform 1.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    transition: transform 1.2s var(--primary-animation);
 }
 
 .search__form:focus-within .search__button,
@@ -96,6 +97,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    text-align: center;
 }
 
 .cooks__list__item:not(:last-child) {
@@ -105,11 +107,12 @@
 .f__s__name {
     display: inline-block;
     transform: translate3d(-0.08rem, 0, 0);
-    font-size: 4vw;
+    font-size: 4.5vw;
     line-height: 1;
     letter-spacing: -0.07rem;
     font-weight: 400;
     white-space: nowrap;
+    will-change: transform, opacity, filter;
 }
 
 .first__name {
@@ -121,20 +124,24 @@
 }
 
 .username {
-    display: block;
     color: var(--primary-color);
     font-size: 21px;
     font-weight: 600;
+    padding: 1rem 0;
     text-align: center;
+}
+
+.user__letters {
+    display: inline-block;
+    will-change: transfrom, opacity, filter;
 }
 
 /*pagination---------------------------------------------*/
 .pagination__box {
     position: absolute;
     left: 0;
-    bottom: 3%;
+    bottom: 0;
     z-index: 100;
-    padding-top: 10vh;
     width: 100%;
 }
 
@@ -147,7 +154,7 @@
 
 .page__count {
     font-family: "Cormorant Infant", serif;
-    font-size: 23px;
+    font-size: 22px;
     font-weight: 550;
 }
 
@@ -157,9 +164,9 @@
 
 .fade__pag {
     display: inline-block;
-    /*opacity: 0;*/
-    /*filter: blur(10px);*/
-    /*transform: translate3d(25px, 0, 0);*/
+    opacity: 0;
+    filter: blur(10px);
+    transform: translate3d(25px, 0, 0);
     will-change: transform, opacity, filter;
 }
 
@@ -170,4 +177,16 @@
 
 .fade__p {
     display: inline-block;
+}
+
+.pls__scroll {
+    display: flex;
+    width: 100%;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    bottom: 6%;
+    left: 0;
+    z-index: 120;
 }
