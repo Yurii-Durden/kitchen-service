@@ -1,10 +1,43 @@
+//scroll to the top
 ScrollTrigger.create({
   trigger: ".pinned__section",
   start: "top top",
   end: "+=99999",
   pin: true,
   pinSpacing: false,
-  markers: true
+  scrub: true
+});
+
+const elementsToBlur = [
+  ".main__cooks",
+  ".page__count"
+];
+
+const angleDown = document.querySelector(".angle__down");
+
+//blur first section
+gsap.to(elementsToBlur, {
+  filter: "blur(15px)",
+  ease: "none",
+  scrollTrigger: {
+    trigger: ".scrollable__section",
+    start: 0,
+    end: 500,
+    scrub: true,
+  }
+});
+
+gsap.to(angleDown, {
+  filter: "blur(10px)",
+  opacity: 0,
+  y: "25px",
+  ease: "none",
+  scrollTrigger: {
+    trigger: ".scrollable__section",
+    start: 0,
+    end: 100,
+    scrub: true,
+  }
 });
 
 //page load anim
@@ -54,7 +87,7 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-//hover
+//cook create button hover
 const createButton = document.querySelector(".create__button");
 const buttonLetters = Array.from(document.querySelectorAll(".create__fade"));
 
@@ -84,6 +117,38 @@ createButton.addEventListener("mouseleave", () => {
   }, 0);
 });
 
+// cook links hover
+const userNicks = document.querySelectorAll(".username");
+
+userNicks.forEach(userNick => {
+  const userLetters = Array.from(userNick.querySelectorAll(".user__letters"));
+
+  userNick.addEventListener("mouseenter", () => {
+    gsap.to(userLetters, {
+      opacity: 0,
+      x: 15,
+      filter: "blur(5px)",
+      duration: 0.9,
+      ease: "power2.out",
+      stagger: 0.05,
+      overwrite: "auto"
+    });
+  });
+
+  userNick.addEventListener("mouseleave", () => {
+    gsap.to(userLetters, {
+      opacity: 1,
+      x: 0,
+      filter: "blur(0px)",
+      duration: 0.8,
+      ease: "power2.out",
+      stagger: 0.05,
+      overwrite: "auto"
+    });
+  });
+});
+
+//pagination hover
 const paginationButtons = document.querySelectorAll(".page__link");
 
 paginationButtons.forEach((box) => {
