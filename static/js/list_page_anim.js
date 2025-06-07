@@ -45,6 +45,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const titleAllLetters = document.querySelectorAll(".fade__title__all");
   const searchForm = document.querySelector(".search__form");
   const paginationLetters = document.querySelectorAll(".fade__pag");
+  const plsScroll = document.querySelector(".pls__scroll");
 
   gsap.to(titleAllLetters, {
     opacity: 1,
@@ -84,6 +85,16 @@ window.addEventListener("DOMContentLoaded", () => {
     ease: "power2.out",
     stagger: 0.01,
     delay: 0.8
+  });
+
+    gsap.to(plsScroll, {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    duration: 1.2,
+    ease: "power2.out",
+    stagger: 0.01,
+    delay: 1.1
   });
 });
 

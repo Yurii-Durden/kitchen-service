@@ -186,10 +186,14 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    transform: translate3d(0, 25px, 0);
+    opacity: 0;
+    filter: blur(10px);
     bottom: 5%;
     left: 0;
     z-index: 120;
 }
+
 
 /*no-data-text----------------------*/
 .no__data__text {
