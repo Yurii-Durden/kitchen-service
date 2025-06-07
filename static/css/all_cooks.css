@@ -190,3 +190,12 @@
     left: 0;
     z-index: 120;
 }
+
+/*no-data-text----------------------*/
+.no__data__text {
+    position: absolute;
+    display: block;
+    bottom: 5%;
+    width: 100%;
+    text-align: center;
+}
