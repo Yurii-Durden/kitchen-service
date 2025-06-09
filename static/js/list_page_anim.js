@@ -128,36 +128,36 @@ createButton.addEventListener("mouseleave", () => {
   }, 0);
 });
 
-// cook links hover
-const userNicks = document.querySelectorAll(".username");
-
-userNicks.forEach(userNick => {
-  const userLetters = Array.from(userNick.querySelectorAll(".user__letters"));
-
-  userNick.addEventListener("mouseenter", () => {
-    gsap.to(userLetters, {
-      opacity: 0,
-      x: 15,
-      filter: "blur(5px)",
-      duration: 0.9,
-      ease: "power2.out",
-      stagger: 0.05,
-      overwrite: "auto"
-    });
-  });
-
-  userNick.addEventListener("mouseleave", () => {
-    gsap.to(userLetters, {
-      opacity: 1,
-      x: 0,
-      filter: "blur(0px)",
-      duration: 0.8,
-      ease: "power2.out",
-      stagger: 0.05,
-      overwrite: "auto"
-    });
-  });
-});
+// // cook links hover
+// const userNicks = document.querySelectorAll(".username");
+//
+// userNicks.forEach(userNick => {
+//   const userLetters = Array.from(userNick.querySelectorAll(".user__letters"));
+//
+//   userNick.addEventListener("mouseenter", () => {
+//     gsap.to(userLetters, {
+//       opacity: 0,
+//       x: 15,
+//       filter: "blur(5px)",
+//       duration: 0.9,
+//       ease: "power2.out",
+//       stagger: 0.05,
+//       overwrite: "auto"
+//     });
+//   });
+//
+//   userNick.addEventListener("mouseleave", () => {
+//     gsap.to(userLetters, {
+//       opacity: 1,
+//       x: 0,
+//       filter: "blur(0px)",
+//       duration: 0.8,
+//       ease: "power2.out",
+//       stagger: 0.05,
+//       overwrite: "auto"
+//     });
+//   });
+// });
 
 //pagination hover
 const paginationButtons = document.querySelectorAll(".page__link");
