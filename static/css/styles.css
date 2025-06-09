@@ -107,7 +107,7 @@ body::-webkit-scrollbar {
 
 .logo {
   position: relative;
-  font-size: 34px;
+  font-size: clamp(20px, 4vw, 34px);
   text-decoration: none;
   font-weight: 500;
   color: var(--primary-color);
@@ -133,7 +133,7 @@ body::-webkit-scrollbar {
 }
 
 .fake__menu__text {
-    font-size: 23px;
+    font-size: clamp(16px, 2.2vw, 23px);
     font-weight: 600;
     opacity: 0;
     pointer-events: none;
@@ -143,7 +143,7 @@ body::-webkit-scrollbar {
     position: absolute;
     right: 0;
     bottom: 15%;
-    font-size: 23px;
+    font-size: clamp(16px, 2.2vw, 23px);
     font-weight: 600;
 }
 
