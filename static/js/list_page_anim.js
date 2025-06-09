@@ -9,7 +9,7 @@ ScrollTrigger.create({
 });
 
 const elementsToBlur = [
-  ".main__cooks",
+  ".main__block",
   ".page__count"
 ];
 
