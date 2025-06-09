@@ -2,7 +2,6 @@
     padding-bottom: 50vh;
     width: max-content;
     margin: 0 auto;
-    display: none;
 }
 
 .page__all__title {
@@ -125,7 +124,7 @@
 
 .username {
     color: var(--primary-color);
-    font-size: 21px;
+    font-size: clamp(15px, 2vw, 21px);
     font-weight: 600;
     padding: 1rem 0;
     text-align: center;
@@ -268,5 +267,17 @@
 
     .search__input {
         min-width: 400px;
+    }
+}
+
+@media (max-width: 970px) {
+    .f__s__name {
+        font-size: 5vw;
+    }
+}
+
+@media (max-width: 535px) {
+    .f__s__name {
+        font-size: 7vw;
     }
 }

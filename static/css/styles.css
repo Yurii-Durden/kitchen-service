@@ -68,6 +68,10 @@ body::-webkit-scrollbar {
     overflow-x: hidden;
 }
 
+.content {
+    will-change: transform;
+}
+
 ._container {
     width: 100%;
     max-width: 1600px;
