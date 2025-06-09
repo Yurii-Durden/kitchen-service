@@ -37,9 +37,8 @@
     background-color: var(--back-color);
     font-family: "Cormorant Garamond", serif;
     font-size: clamp(16px, 2vw, 21px);
-    min-width: 600px;
     font-weight: 600;
-    width: 100%;
+    min-width: 600px;
     padding: 0.13rem 0;
     font-style: italic;
     border-bottom: 1.2px solid rgba(0,0,0,0.1);
@@ -209,5 +208,65 @@
 @media (max-width: 813px) {
     .pls__scroll {
         bottom: 1%;
+    }
+}
+
+@media (max-width: 1380px) {
+    .search__input {
+        min-width: 400px;
+    }
+}
+
+@media (max-width: 961px) {
+    .search__input {
+        min-width: 300px;
+    }
+}
+
+@media (max-width: 716px) {
+    .page__all__title {
+        font-size: 15vw;
+    }
+
+    .search__input {
+        min-width: 300px;
+    }
+}
+
+@media (max-width: 487px) {
+    .page__all__title {
+        font-size: 17vw;
+    }
+
+    .search__input {
+        min-width: 200px;
+    }
+}
+
+@media (max-width: 363px) {
+    .main__cooks {
+        padding-top: 20vh;
+    }
+
+    .page__all__title {
+        font-size: 17vw;
+    }
+
+    .search__input {
+        min-width: 100px;
+    }
+}
+
+@media (min-height: 1000px) {
+    .main__cooks {
+        padding-top: 20vh;
+    }
+
+    .page__all__title {
+        font-size: 15vw;
+    }
+
+    .search__input {
+        min-width: 400px;
     }
 }
