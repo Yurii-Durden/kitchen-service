@@ -91,7 +91,7 @@ window.addEventListener("DOMContentLoaded", () => {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    duration: 1.2,
+    duration: 1.0,
     ease: "power2.out",
     stagger: 0.01,
     delay: 1.1
