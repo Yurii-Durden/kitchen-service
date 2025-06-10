@@ -245,7 +245,7 @@
     text-align: center;
 }
 
-/*media-----------------------------*/
+/*cook-media-----------------------------*/
 @media (max-width: 813px) {
     .pls__scroll {
         bottom: 1%;
@@ -321,5 +321,19 @@
 @media (max-width: 535px) {
     .f__s__name {
         font-size: 7vw;
+    }
+}
+
+/*dish-media*/
+@media (max-width: 988px) {
+    .dish {
+        font-size: 5vw;
+        letter-spacing: 0;
+    }
+}
+
+@media (max-width: 578px) {
+    .dish {
+        font-size: 5.7vw;
     }
 }

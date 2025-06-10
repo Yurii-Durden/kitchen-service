@@ -129,7 +129,6 @@ createButton.addEventListener("mouseleave", () => {
 });
 
 // cook links hover
-
 const userNicks = document.querySelectorAll(".username");
 
 if (userNicks) {
