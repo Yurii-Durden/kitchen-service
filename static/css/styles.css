@@ -269,7 +269,7 @@ body::-webkit-scrollbar {
     left: 0;
     top: 0;
     font-weight: 600;
-    font-size: 23px;
+    font-size: clamp(16px, 2.2vw, 23px);
     color: var(--primary-color);
     white-space: nowrap;
     letter-spacing: 0.02rem;
@@ -277,7 +277,7 @@ body::-webkit-scrollbar {
 
 .fake__l {
     font-weight: 600;
-    font-size: 23px;
+    font-size: clamp(16px, 2.2vw, 23px);
     opacity: 0;
 }
 

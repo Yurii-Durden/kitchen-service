@@ -57,8 +57,6 @@ class CookListView(LoginRequiredMixin, generic.ListView):
         context["search_form"] = CookSearchForm(
             initial={"username": username}
         )
-        context["general_list"] = context["cooks_list"]
-
         return context
 
     def get_queryset(self):
@@ -118,7 +116,6 @@ class DishListView(LoginRequiredMixin, generic.ListView):
         context["search_form"] = DishSearchForm(
             initial={"name":name}
         )
-        context["general_list"] = context["dish_list"]
 
         return context
 
@@ -168,7 +165,6 @@ class DishTypeListView(LoginRequiredMixin, generic.ListView):
         context["search_form"] = DishTypeSearchForm(
             initial={"name": name}
         )
-        context["general_list"] = context["dish_type_list"]
 
         return context
 

@@ -54,8 +54,7 @@
           <span class="fade__title__all">A</span><span class="fade__title__all">L</span><span class="fade__title__all">L</span> <span class="fade__title__all">D</span><span class="fade__title__all">I</span><span class="fade__title__all">S</span><span class="fade__title__all">H</span><span class="fade__title__all">E</span><span class="fade__title__all">S</span>
         </h1>
         {% include "includes/search_form.html" %}
-        <em>
-        </em>
+{#        <p class="sort__by"><em>sort by type of dish</em></p>#}
         {% if user.is_chef %}
           <div>
             <em>
@@ -72,9 +71,10 @@
         {% if dish_list %}
           <ul class="data__list">
             {% for dish in dish_list %}
-              <li class="swiper-slider cooks__list__item">
-                <a class="username" href="{% url 'kitchenflow:dish-detail' dish.id %}">
-                  <span class="dish">{{ dish.name }}</span>
+              <li class="swiper-slider dish__list__item">
+                <a class="dish__link" href="{% url 'kitchenflow:dish-detail' dish.id %}">
+                  <p class="dish">{{ dish.name }}</p>
+                  <p class="dish__type"><em>{{ dish.dish_type }}</em></p>
                 </a>
               </li>
             {% endfor %}

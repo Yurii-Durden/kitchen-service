@@ -13,9 +13,9 @@ const elementsToBlur = [
   ".page__count"
 ];
 
+//blur first section
 const angleDown = document.querySelector(".angle__down");
 
-//blur first section
 gsap.to(elementsToBlur, {
   filter: "blur(15px)",
   ease: "none",
@@ -128,36 +128,74 @@ createButton.addEventListener("mouseleave", () => {
   }, 0);
 });
 
-// // cook links hover
-// const userNicks = document.querySelectorAll(".username");
-//
-// userNicks.forEach(userNick => {
-//   const userLetters = Array.from(userNick.querySelectorAll(".user__letters"));
-//
-//   userNick.addEventListener("mouseenter", () => {
-//     gsap.to(userLetters, {
-//       opacity: 0,
-//       x: 15,
-//       filter: "blur(5px)",
-//       duration: 0.9,
-//       ease: "power2.out",
-//       stagger: 0.05,
-//       overwrite: "auto"
-//     });
-//   });
-//
-//   userNick.addEventListener("mouseleave", () => {
-//     gsap.to(userLetters, {
-//       opacity: 1,
-//       x: 0,
-//       filter: "blur(0px)",
-//       duration: 0.8,
-//       ease: "power2.out",
-//       stagger: 0.05,
-//       overwrite: "auto"
-//     });
-//   });
-// });
+// cook links hover
+
+const userNicks = document.querySelectorAll(".username");
+
+if (userNicks) {
+  userNicks.forEach(userNick => {
+    const userLetters = Array.from(userNick.querySelectorAll(".user__letters"));
+
+    userNick.addEventListener("mouseenter", () => {
+      gsap.to(userLetters, {
+        opacity: 0,
+        x: 15,
+        filter: "blur(5px)",
+        duration: 0.9,
+        ease: "power2.out",
+        stagger: 0.05,
+        overwrite: "auto"
+      });
+    });
+
+    userNick.addEventListener("mouseleave", () => {
+      gsap.to(userLetters, {
+        opacity: 1,
+        x: 0,
+        filter: "blur(0px)",
+        duration: 0.8,
+        ease: "power2.out",
+        stagger: 0.05,
+        overwrite: "auto"
+      });
+    });
+  });
+}
+
+//dish hover
+const dish = document.querySelectorAll(".dish__list__item");
+
+if (dish) {
+  dish.forEach(dishName => {
+    const dishLink = dishName.querySelector(".dish__link");
+    console.log(dishLink)
+
+    dishName.addEventListener("mouseenter", () => {
+      gsap.to(dishLink, {
+        opacity: 0,
+        x: 15,
+        filter: "blur(10px)",
+        duration: 1,
+        ease: "power2.out",
+        stagger: 0.1,
+        overwrite: "auto"
+      });
+    });
+
+    dishName.addEventListener("mouseleave", () => {
+      gsap.to(dishLink, {
+        opacity: 1,
+        x: 0,
+        filter: "blur(0px)",
+        duration: 1,
+        ease: "power2.out",
+        stagger: 0.1,
+        overwrite: "auto"
+      });
+    });
+  });
+}
+
 
 //pagination hover
 const paginationButtons = document.querySelectorAll(".page__link");
