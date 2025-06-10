@@ -57,6 +57,8 @@ class CookListView(LoginRequiredMixin, generic.ListView):
         context["search_form"] = CookSearchForm(
             initial={"username": username}
         )
+        context["general_list"] = context["cooks_list"]
+
         return context
 
     def get_queryset(self):
@@ -106,7 +108,7 @@ class DishListView(LoginRequiredMixin, generic.ListView):
     model = Dish
     template_name = "kitchenflow/dishes_list.html"
     context_object_name = "dish_list"
-    paginate_by = 5
+    paginate_by = 7
 
     def get_context_data(
         self, *, object_list = ..., **kwargs
@@ -116,6 +118,7 @@ class DishListView(LoginRequiredMixin, generic.ListView):
         context["search_form"] = DishSearchForm(
             initial={"name":name}
         )
+        context["general_list"] = context["dish_list"]
 
         return context
 
@@ -165,6 +168,7 @@ class DishTypeListView(LoginRequiredMixin, generic.ListView):
         context["search_form"] = DishTypeSearchForm(
             initial={"name": name}
         )
+        context["general_list"] = context["dish_type_list"]
 
         return context
 
