@@ -153,7 +153,7 @@ if (userNicks) {
         opacity: 1,
         x: 0,
         filter: "blur(0px)",
-        duration: 0.8,
+        duration: 0.9,
         ease: "power2.out",
         stagger: 0.05,
         overwrite: "auto"
