@@ -76,5 +76,9 @@ class DishTypeSearchForm(forms.Form):
         max_length=255,
         label="",
         required=False,
-        widget=forms.TextInput(attrs={"placeholder": "search by dish type name"})
+        widget=forms.TextInput(attrs={
+            "placeholder": "search by dish type name",
+            "class": "search__input",
+            "autocomplete": "off",
+        })
     )
