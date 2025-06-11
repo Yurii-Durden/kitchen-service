@@ -4,6 +4,7 @@ ScrollSmoother.create({
   content: '.content'
 });
 
+
 window.addEventListener("DOMContentLoaded", () => {
   const headerLetters = document.querySelectorAll(".fade__header");
 
@@ -16,7 +17,6 @@ window.addEventListener("DOMContentLoaded", () => {
     stagger: 0.01,
     delay: 1
   });
-
 });
 
 const header_menu_button = document.querySelector(".menu__item");

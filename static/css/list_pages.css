@@ -187,7 +187,7 @@
 }
 
 .dish__type__list__item:not(:last-child) {
-    margin-bottom: 20vh;
+    margin-bottom: 25vh;
 }
 
 .dish__type__link {
@@ -197,7 +197,6 @@
     letter-spacing: -0.07rem;
     font-weight: 400;
     white-space: nowrap;
-    /*font-style: italic;*/
     text-transform: uppercase;
 }
 
