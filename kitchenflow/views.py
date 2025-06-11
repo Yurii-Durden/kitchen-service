@@ -106,7 +106,7 @@ class DishListView(LoginRequiredMixin, generic.ListView):
     model = Dish
     template_name = "kitchenflow/dishes_list.html"
     context_object_name = "dish_list"
-    paginate_by = 7
+    paginate_by = 6
 
     def get_context_data(
         self, *, object_list = ..., **kwargs
