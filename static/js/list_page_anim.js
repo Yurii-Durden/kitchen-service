@@ -77,17 +77,19 @@ window.addEventListener("DOMContentLoaded", () => {
     delay: 0.5
   });
 
-  gsap.to(paginationLetters, {
-    opacity: 1,
-    x: 0,
-    filter: "blur(0px)",
-    duration: 1.2,
-    ease: "power2.out",
-    stagger: 0.01,
-    delay: 0.8
-  });
+  if (paginationLetters.length > 0) {
+    gsap.to(paginationLetters, {
+      opacity: 1,
+      x: 0,
+      filter: "blur(0px)",
+      duration: 1.2,
+      ease: "power2.out",
+      stagger: 0.01,
+      delay: 0.8
+    });
+  }
 
-    gsap.to(plsScroll, {
+  gsap.to(plsScroll, {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
@@ -161,18 +163,17 @@ if (userNicks) {
   });
 }
 
-//dish hover
-const dish = document.querySelectorAll(".dish__list__item");
+//dish and dish type hover
+const dish = document.querySelectorAll(".target__block");
 
 if (dish) {
   dish.forEach(dishName => {
-    const dishLink = dishName.querySelector(".dish__link");
-    console.log(dishLink)
+    const dishLink = dishName.querySelector(".to__anim__elem");
 
     dishName.addEventListener("mouseenter", () => {
       gsap.to(dishLink, {
         opacity: 0,
-        x: 15,
+        x: 20,
         filter: "blur(10px)",
         duration: 1,
         ease: "power2.out",
@@ -199,35 +200,38 @@ if (dish) {
 //pagination hover
 const paginationButtons = document.querySelectorAll(".page__link");
 
-paginationButtons.forEach((box) => {
-  const paginationLetters = Array.from(box.querySelectorAll(".fade__p"));
+if (paginationButtons.length > 0) {
 
-  box.addEventListener("mouseenter", () => {
-    const tl = gsap.timeline();
+  paginationButtons.forEach((box) => {
+    const paginationLetters = Array.from(box.querySelectorAll(".fade__p"));
 
-    tl.to([...paginationLetters].reverse(), {
-      opacity: 0,
-      x: 15,
-      filter: "blur(5px)",
-      duration: 0.8,
-      ease: "power2.inOut",
-      stagger: 0.1,
-    }, 0);
+    box.addEventListener("mouseenter", () => {
+      const tl = gsap.timeline();
+
+      tl.to([...paginationLetters].reverse(), {
+        opacity: 0,
+        x: 15,
+        filter: "blur(5px)",
+        duration: 0.8,
+        ease: "power2.inOut",
+        stagger: 0.1,
+      }, 0);
+    });
+
+    box.addEventListener("mouseleave", () => {
+      const tl = gsap.timeline();
+
+      tl.to(paginationLetters, {
+        opacity: 1,
+        x: 0,
+        filter: "blur(0px)",
+        duration: 1,
+        ease: "power2.out",
+        stagger: 0.1,
+      }, 0);
+    });
   });
-
-  box.addEventListener("mouseleave", () => {
-    const tl = gsap.timeline();
-
-    tl.to(paginationLetters, {
-      opacity: 1,
-      x: 0,
-      filter: "blur(0px)",
-      duration: 1,
-      ease: "power2.out",
-      stagger: 0.1,
-    }, 0);
-  });
-});
+}
 
 //search form
 const searchInput = document.querySelector(".search__input");
