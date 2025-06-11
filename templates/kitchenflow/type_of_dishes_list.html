@@ -1,26 +1,54 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  <title>Type of dish</title>
+{% endblock %}
+
+{% block extra_styles %}
+  <link rel="stylesheet" href="{% static 'css/list_pages.css' %}">
+{% endblock %}
 
 {% block content %}
-  <h1>Type of Dishes</h1>
-  {% if user.is_chef %}
-    <div>
-      <a href="{% url 'kitchenflow:dish-type-create' %}">Create</a>
-    </div>
-  {% endif %}
-  {% include "includes/search_form.html" %}
-  {% if dish_type_list %}
-    <table class="table">
-      <tr>
-        <th>Name</th>
-      </tr>
-    {% for dish_type in dish_type_list %}
-      <tr>
-        <td><a href="{% url 'kitchenflow:dish-type-detail' dish_type.id %}">{{ dish_type.name }}</a></td>
-      </tr>
-    {% endfor %}
-    </table>
-  {% else %}
-    <p>Here aren`t types of dish</p>
-  {% endif %}
-  {% include "includes/pagination.html" %}
+  <section class="pinned__section section">
+      {% include "includes/pagination.html" %}
+      <div class="main__block _container">
+      {% if not dish_type_list %}
+        <p class="no__data__text">
+          <em>Here aren`t types of dish</em>
+        </p>
+      {% endif %}
+        <h1 class="page__all__title dish__type__title">
+          <span class="fade__title__all">A</span><span class="fade__title__all">L</span><span class="fade__title__all">L</span> <span class="fade__title__all">T</span><span class="fade__title__all">Y</span><span class="fade__title__all">P</span><span class="fade__title__all">E</span><span class="fade__title__all">S</span> <span class="fade__title__all">O</span><span class="fade__title__all">F</span> <span class="fade__title__all">D</span><span class="fade__title__all">I</span><span class="fade__title__all">S</span><span class="fade__title__all">H</span><span class="fade__title__all">E</span><span class="fade__title__all">S</span>
+        </h1>
+        {% include "includes/search_form.html" %}
+{#        <p class="sort__by"><em>sort by type of dish</em></p>#}
+        {% if user.is_chef %}
+          <div>
+            <em>
+              <a class="create__button" href="{% url 'kitchenflow:cook-create' %}">
+                <span class="create__fade">C</span><span class="create__fade">r</span><span class="create__fade">e</span><span class="create__fade">a</span><span class="create__fade">t</span><span class="create__fade">e</span> <span class="create__fade">d</span><span class="create__fade">i</span><span class="create__fade">s</span><span class="create__fade">h</span> <span class="create__fade">t</span><span class="create__fade">y</span><span class="create__fade">p</span><span class="create__fade">e</span>
+              </a>
+            </em>
+          </div>
+        {% endif %}
+        </div>
+    </section>
+    <section class="scrollable__section section">
+      <div class="page__list__box _container">
+        {% if dish_type_list %}
+          <ul class="data__list">
+            {% for dish_type in dish_type_list %}
+              <li class="swiper-slider dish__type__list__item target__block">
+                <a class="dish__type__link to__anim__elem" href="{% url 'kitchenflow:dish-type-detail' dish_type.id %}">{{ dish_type.name }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+  </section>
+{% endblock %}
+
+{% block extra_scripts %}
+  <script src="{% static 'js/list_page_anim.js' %}"></script>
 {% endblock %}
