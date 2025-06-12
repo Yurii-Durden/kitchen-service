@@ -116,6 +116,7 @@ class DishListView(LoginRequiredMixin, generic.ListView):
         context["search_form"] = DishSearchForm(
             initial={"name":name}
         )
+        context["dish_types"] = DishType.objects.all()
 
         return context
 
@@ -126,8 +127,12 @@ class DishListView(LoginRequiredMixin, generic.ListView):
         else:
             queryset = Dish.objects.select_related("dish_type").filter(cooks=user)
         name = self.request.GET.get("name")
+        type = self.request.GET.get("type")
         if name:
             return queryset.filter(name__icontains=name)
+        if type:
+            print(type)
+            return queryset.filter(dish_type__name__icontains=type)
         return queryset
 
 
