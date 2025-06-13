@@ -46,23 +46,16 @@
       {% include "includes/pagination.html" %}
       <div class="main__block _container">
       {% if not dish_list %}
-        <p class="no__data__text">
+        <p class="no__data__text to__opacity">
           <em>Here aren`t dishes</em>
         </p>
       {% endif %}
-        <h1 class="page__all__title main__title">
+        <h1 class="page__all__title main__title to__opacity">
           <span class="fade__title__all">A</span><span class="fade__title__all">L</span><span class="fade__title__all">L</span> <span class="fade__title__all">D</span><span class="fade__title__all">I</span><span class="fade__title__all">S</span><span class="fade__title__all">H</span><span class="fade__title__all">E</span><span class="fade__title__all">S</span>
         </h1>
         {% include "includes/search_form.html" %}
-{#        <p class="sort__by"><em>sort by type of dish</em></p>#}
+        {% include "includes/filter_by.html" %}
         {% if user.is_chef %}
-          <div>
-            <em>
-              <a class="create__button" href="{% url 'kitchenflow:cook-create' %}">
-                <span class="create__fade">C</span><span class="create__fade">r</span><span class="create__fade">e</span><span class="create__fade">a</span><span class="create__fade">t</span><span class="create__fade">e</span> <span class="create__fade">d</span><span class="create__fade">i</span><span class="create__fade">s</span><span class="create__fade">h</span>
-              </a>
-            </em>
-          </div>
         {% endif %}
         </div>
     </section>

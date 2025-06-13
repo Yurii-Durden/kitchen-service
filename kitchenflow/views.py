@@ -106,7 +106,7 @@ class DishListView(LoginRequiredMixin, generic.ListView):
     model = Dish
     template_name = "kitchenflow/dishes_list.html"
     context_object_name = "dish_list"
-    paginate_by = 6
+    paginate_by = 5
 
     def get_context_data(
         self, *, object_list = ..., **kwargs
@@ -117,6 +117,7 @@ class DishListView(LoginRequiredMixin, generic.ListView):
             initial={"name":name}
         )
         context["dish_types"] = DishType.objects.all()
+        context["dish_page"] = "dish_page"
 
         return context
 
@@ -125,14 +126,21 @@ class DishListView(LoginRequiredMixin, generic.ListView):
         if user.is_chef:
             queryset = Dish.objects.select_related("dish_type")
         else:
-            queryset = Dish.objects.select_related("dish_type").filter(cooks=user)
+            cook = getattr(user, "cook", None)
+            if cook:
+                queryset = Dish.objects.select_related("dish_type").filter(cooks=cook)
+            else:
+                queryset = Dish.objects.none()
+
         name = self.request.GET.get("name")
-        type = self.request.GET.get("type")
+        type_param = self.request.GET.get("type")
+
         if name:
-            return queryset.filter(name__icontains=name)
-        if type:
-            print(type)
-            return queryset.filter(dish_type__name__icontains=type)
+            queryset = queryset.filter(name__icontains=name)
+
+        if type_param:
+            queryset = queryset.filter(dish_type__name=type_param)
+
         return queryset
 
 
