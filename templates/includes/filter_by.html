@@ -1,0 +1,36 @@
+<div class="filter__by__box">
+  <p class="filter__by__text filter__buttons to__opacity">
+    {% for letter in "filter by dish type"|make_list %}<span class="type_name_letter">{{ letter }}</span>{% endfor %}
+  </p>
+  <div class="dish__choose__box">
+    <ul class="choose__type__list">
+      <li class="choose__type__item">
+        <em>
+          <a class="filter__by__link" href="{% url 'kitchenflow:dish-list' %}">
+            All types
+          </a>
+        </em>
+      </li>
+      {% for type in dish_types %}
+      	<li class="choose__type__item">
+          <em>
+            <a class="filter__by__link" href="{% url 'kitchenflow:dish-list' %}?type={{ type.name }}">
+             {{ type.name }}
+            </a>
+          </em>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div>
+    <em>
+      <a class="create__button to__opacity" href="{% url 'kitchenflow:cook-create' %}">
+        <span class="create__fade">C</span><span class="create__fade">r</span><span class="create__fade">e</span><span class="create__fade">a</span><span class="create__fade">t</span><span class="create__fade">e</span> <span class="create__fade">d</span><span class="create__fade">i</span><span class="create__fade">s</span><span class="create__fade">h</span>
+      </a>
+    </em>
+  </div>
+  <svg class="arrow__down" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="3" x2="12" y2="17" />
+    <polyline points="8 13, 12 17, 16 13" />
+  </svg>
+</div>
