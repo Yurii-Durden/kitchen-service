@@ -1,35 +1,3 @@
-{#{% extends "base.html" %}#}
-{##}
-{#{% block content %}#}
-{#  <h1>Dishes</h1>#}
-{#  {% if user.is_chef %}#}
-{#    <div>#}
-{#      <a href="{% url 'kitchenflow:dish-create' %}">Create</a>#}
-{#    </div>#}
-{#  {% endif %}#}
-{#  {% include "includes/search_form.html" %}#}
-{#  {% if dish_list %}#}
-{#    <table class="table">#}
-{#      <tr>#}
-{#        <th>Name</th>#}
-{#        <th>Price</th>#}
-{#        <th>Dish type</th>#}
-{#      </tr>#}
-{#    {% for dish in dish_list %}#}
-{#      <tr>#}
-{#        <td><a href="{% url 'kitchenflow:dish-detail' dish.id %}">{{ dish.name }}</a></td>#}
-{#        <td>{{ dish.price }}$</td>#}
-{#        <td>{{ dish.dish_type }}</td>#}
-{#      </tr>#}
-{#    {% endfor %}#}
-{#    </table>#}
-{#  {% else %}#}
-{#    <p>Here aren`t dishes</p>#}
-{#  {% endif %}#}
-{#  {% include "includes/pagination.html" %}#}
-{#{% endblock %}#}
-{##}
-{#///////////////////////////////#}
 {% extends "base.html" %}
 {% load static %}
 
@@ -60,20 +28,40 @@
       </div>
     </section>
     <section class="scrollable__section section">
-      <div class="page__list__box _container">
-        {% if dish_list %}
-          <ul class="data__list">
-            {% for dish in dish_list %}
-              <li class="swiper-slider dish__list__item target__block">
-                <a class="dish__link to__anim__elem" href="{% url 'kitchenflow:dish-detail' dish.id %}">
-                  <p class="dish">{{ dish.name }}</p>
-                  <p class="dish__type"><em>{{ dish.dish_type }}</em></p>
-                </a>
-              </li>
-            {% endfor %}
-          </ul>
-        {% endif %}
-      </div>
+      <div class="dish__choose__box _container">
+        <ul class="choose__type__list">
+          <li class="choose__type__item">
+            <em>
+              <a class="filter__by__link" href="{% url 'kitchenflow:dish-list' %}">
+                All types
+              </a>
+            </em>
+          </li>
+          {% for type in dish_types %}
+      	  <li class="choose__type__item">
+            <em>
+              <a class="filter__by__link" href="{% url 'kitchenflow:dish-list' %}?type={{ type.name }}">
+                {{ type.name }}
+              </a>
+            </em>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="page__list__box _container">
+      {% if dish_list %}
+        <ul class="data__list">
+          {% for dish in dish_list %}
+            <li class="swiper-slider dish__list__item target__block">
+              <a class="dish__link to__anim__elem" href="{% url 'kitchenflow:dish-detail' dish.id %}">
+                <p class="dish">{{ dish.name }}</p>
+                <p class="dish__type"><em>{{ dish.dish_type }}</em></p>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
   </section>
 {% endblock %}
 

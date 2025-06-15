@@ -2,26 +2,6 @@
   <p class="filter__by__text filter__buttons to__opacity">
     {% for letter in "filter by dish type"|make_list %}<span class="type_name_letter">{{ letter }}</span>{% endfor %}
   </p>
-  <div class="dish__choose__box">
-    <ul class="choose__type__list">
-      <li class="choose__type__item">
-        <em>
-          <a class="filter__by__link" href="{% url 'kitchenflow:dish-list' %}">
-            All types
-          </a>
-        </em>
-      </li>
-      {% for type in dish_types %}
-      	<li class="choose__type__item">
-          <em>
-            <a class="filter__by__link" href="{% url 'kitchenflow:dish-list' %}?type={{ type.name }}">
-             {{ type.name }}
-            </a>
-          </em>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
   <div>
     <em>
       <a class="create__button to__opacity" href="{% url 'kitchenflow:cook-create' %}">

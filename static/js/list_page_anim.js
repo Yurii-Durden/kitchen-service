@@ -18,6 +18,7 @@ const angleDown = document.querySelector(".angle__down");
 
 gsap.to(elementsToBlur, {
   filter: "blur(15px)",
+  pointerEvents: "none",
   ease: "none",
   scrollTrigger: {
     trigger: ".scrollable__section",
@@ -153,7 +154,8 @@ const filter_by_button = document.querySelector(".filter__by__text");
 const filter_links = Array.from(document.querySelectorAll(".choose__type__item"));
 const opacityElements = document.querySelectorAll(".to__opacity");
 const dishChooseLink = document.querySelector(".filter__by__link");
-const arrow = document.querySelector(".arrow__down");
+const pageListBox = document.querySelector(".page__list__box");
+const scrollableSection = document.querySelector(".scrollable__section");
 
 let isOpen = false;
 
@@ -173,18 +175,34 @@ function toggleMenu() {
   const tl = gsap.timeline();
 
   if (!isOpen) {
-    body.classList.add("hide__scroll");
-    setTimeout(() => {arrow.style.opacity = 1;}, 500)
+    // Приховати page__list__box
+    if (pageListBox) pageListBox.style.display = "none";
 
-    tl.to(filter_links, {
-      y: 0,
-      opacity: 1,
-      duration: 0.8,
-      pointerEvents: "auto",
-      ease: "power2.out",
-      stagger: 0.08,
-    }, 0);
+    // Підняти scrollable__section на 30% його висоти
+    if (scrollableSection) {
+      const shiftY = scrollableSection.offsetHeight * 0.2;
+      tl.to(scrollableSection, {
+        y: -shiftY,
+        duration: 0.8,
+        ease: "power2.out"
+      }, 0);
+    }
 
+    // Поява елементів для фільтрації
+    tl.fromTo(filter_links,
+      { y: 20, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        pointerEvents: "auto",
+        ease: "power2.out",
+        stagger: 0.08
+      },
+      0.1
+    );
+
+    // Приховати to__opacity елементи
     if (opacityElements.length > 0) {
       tl.to(opacityElements, {
         opacity: 0,
@@ -195,9 +213,16 @@ function toggleMenu() {
     }
 
   } else {
-    body.classList.remove("hide__scroll");
-    setTimeout(() => {arrow.style.opacity = 0;}, 200)
+    // Повернути scrollable__section назад
+    if (scrollableSection) {
+      tl.to(scrollableSection, {
+        y: 0,
+        duration: 0.6,
+        ease: "power2.inOut"
+      }, 0);
+    }
 
+    // Зникнення елементів для фільтрації
     tl.to([...filter_links].reverse(), {
       y: 20,
       opacity: 0,
@@ -207,6 +232,7 @@ function toggleMenu() {
       stagger: 0.05,
     }, 0);
 
+    // Показати to__opacity елементи
     if (opacityElements.length > 0) {
       tl.to(opacityElements, {
         opacity: 1,
@@ -215,10 +241,18 @@ function toggleMenu() {
         ease: "power2.inOut"
       }, 0.7);
     }
+
+    // Показати page__list__box після анімації
+    if (pageListBox) {
+      tl.add(() => {
+        pageListBox.style.display = "block";
+      }, ">"); // після всіх анімацій
+    }
   }
 
   isOpen = !isOpen;
 }
+
 
 //type link hover
 const typeLinks = document.querySelectorAll(".filter__buttons");
