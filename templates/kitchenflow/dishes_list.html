@@ -43,13 +43,13 @@
 
 {% block content %}
   <section class="pinned__section section">
-      {% include "includes/pagination.html" %}
-      <div class="main__block _container">
-      {% if not dish_list %}
-        <p class="no__data__text to__opacity">
-          <em>Here aren`t dishes</em>
-        </p>
-      {% endif %}
+    {% include "includes/pagination.html" %}
+    <div class="main__block _container">
+        {% if not dish_list %}
+          <p class="no__data__text to__opacity">
+            <em>Here aren`t dishes</em>
+          </p>
+        {% endif %}
         <h1 class="page__all__title main__title to__opacity">
           <span class="fade__title__all">A</span><span class="fade__title__all">L</span><span class="fade__title__all">L</span> <span class="fade__title__all">D</span><span class="fade__title__all">I</span><span class="fade__title__all">S</span><span class="fade__title__all">H</span><span class="fade__title__all">E</span><span class="fade__title__all">S</span>
         </h1>
@@ -57,7 +57,7 @@
         {% include "includes/filter_by.html" %}
         {% if user.is_chef %}
         {% endif %}
-        </div>
+      </div>
     </section>
     <section class="scrollable__section section">
       <div class="page__list__box _container">

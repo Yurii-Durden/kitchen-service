@@ -151,8 +151,8 @@ searchInput.addEventListener("input", () => {
 // filter open
 const filter_by_button = document.querySelector(".filter__by__text");
 const filter_links = Array.from(document.querySelectorAll(".choose__type__item"));
-const blurElements = document.querySelectorAll(".to__opacity");
-const dishChooseBox = document.querySelector(".dish__choose__box");
+const opacityElements = document.querySelectorAll(".to__opacity");
+const dishChooseLink = document.querySelector(".filter__by__link");
 const arrow = document.querySelector(".arrow__down");
 
 let isOpen = false;
@@ -164,7 +164,7 @@ if (filter_by_button) {
 }
 
 document.addEventListener("click", (event) => {
-  if (isOpen && !dishChooseBox.contains(event.target) && !filter_by_button.contains(event.target)) {
+  if (isOpen && !dishChooseLink.contains(event.target) && !filter_by_button.contains(event.target)) {
     toggleMenu();
   }
 });
@@ -174,10 +174,7 @@ function toggleMenu() {
 
   if (!isOpen) {
     body.classList.add("hide__scroll");
-    arrow.style.opacity = 1;
-    setTimeout(() => {
-      filter_by_button.style.display = "none";
-    }, 1000);
+    setTimeout(() => {arrow.style.opacity = 1;}, 500)
 
     tl.to(filter_links, {
       y: 0,
@@ -188,8 +185,8 @@ function toggleMenu() {
       stagger: 0.08,
     }, 0);
 
-    if (blurElements.length > 0) {
-      tl.to(blurElements, {
+    if (opacityElements.length > 0) {
+      tl.to(opacityElements, {
         opacity: 0,
         duration: 0.8,
         pointerEvents: "none",
@@ -200,7 +197,6 @@ function toggleMenu() {
   } else {
     body.classList.remove("hide__scroll");
     setTimeout(() => {arrow.style.opacity = 0;}, 200)
-    filter_by_button.style.display = "inline-block";
 
     tl.to([...filter_links].reverse(), {
       y: 20,
@@ -211,8 +207,8 @@ function toggleMenu() {
       stagger: 0.05,
     }, 0);
 
-    if (blurElements.length > 0) {
-      tl.to(blurElements, {
+    if (opacityElements.length > 0) {
+      tl.to(opacityElements, {
         opacity: 1,
         duration: 1,
         pointerEvents: "auto",
@@ -223,7 +219,6 @@ function toggleMenu() {
 
   isOpen = !isOpen;
 }
-
 
 //type link hover
 const typeLinks = document.querySelectorAll(".filter__buttons");
