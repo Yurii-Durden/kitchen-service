@@ -30,17 +30,17 @@
     <section class="scrollable__section section">
       <div class="dish__choose__box _container">
         <ul class="choose__type__list">
-          <li class="choose__type__item">
+          <li class="choose__type__item target__block">
             <em>
-              <a class="filter__by__link" href="{% url 'kitchenflow:dish-list' %}">
+              <a class="filter__by__link to__anim__elem" href="{% url 'kitchenflow:dish-list' %}">
                 All types
               </a>
             </em>
           </li>
           {% for type in dish_types %}
-      	  <li class="choose__type__item">
+      	  <li class="choose__type__item target__block">
             <em>
-              <a class="filter__by__link" href="{% url 'kitchenflow:dish-list' %}?type={{ type.name }}">
+              <a class="filter__by__link to__anim__elem" href="{% url 'kitchenflow:dish-list' %}?type={{ type.name }}">
                 {{ type.name }}
               </a>
             </em>

@@ -89,7 +89,7 @@
 }
 
 .choose__type__item:not(:last-child) {
-    margin-bottom: 10vh;
+    margin-bottom: 13vh;
 }
 
 .filter__by__link {
@@ -100,11 +100,6 @@
     letter-spacing: -0.07rem;
     font-weight: 400;
     white-space: nowrap;
-    transition: transform 1.5s var(--primary-animation);
-}
-
-.filter__by__link:hover {
-    transform: translate3d(10px, 0, 0);
 }
 
 .type_name_letter {
@@ -405,6 +400,10 @@
 @media (max-width: 932px) {
     .filter__by__link {
         font-size: 5vw;
+    }
+
+    .choose__type__item:not(:last-child) {
+        margin-bottom: 10vh;
     }
 }
 
