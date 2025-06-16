@@ -1,4 +1,5 @@
 .scrollable__section {
+    position: relative;
     padding-bottom: 50vh;
     width: max-content;
     margin: 0 auto;
@@ -67,9 +68,8 @@
 }
 
 /*filter-by-dish--------------------------------------------*/
-.to__opacity {
-    opacity: 1;
-    will-change: opacity;
+.dish__choose__box {
+    display: flex;
 }
 
 .filter__by__text {
@@ -94,7 +94,6 @@
 
 .filter__by__link {
     display: inline-block;
-    /*text-transform: uppercase;*/
     color: var(--primary-color);
     font-size: 3.7vw;
     line-height: 1;
@@ -115,7 +114,6 @@
 
 /*create-button-------------------------------------------*/
 .create__button {
-
     color: var(--primary-color);
     font-size: clamp(18px, 2vw, 23px);
     font-weight: 600;
@@ -132,8 +130,7 @@
 .page__list__box {
     position: relative;
     height: 100%;
-    display: none;
-    /*display: flex;*/
+    display: flex;
     flex-direction: column;
     justify-content: center;
 }
@@ -405,32 +402,17 @@
     }
 }
 
-@media (max-width: 1435px) {
-    .dish__choose__box {
-        min-height: 300px;
-    }
-
-    .choose__type__item {
-        text-align: center;
-    }
-
-    .choose__type__item:not(:last-child) {
-        padding-bottom: 1rem;
-    }
-
+@media (max-width: 932px) {
     .filter__by__link {
-        margin-left: 0;
-    }
-
-    .dish__choose__box {
-        top: -20%;
+        font-size: 5vw;
     }
 }
 
-@media (max-height: 560px) {
-    
+@media (max-width: 500px) {
+    .filter__by__link {
+        font-size: 7vw;
+    }
 }
-
 /*dish-type-media-----------------------------*/
 
 @media (max-width: 988px) {
