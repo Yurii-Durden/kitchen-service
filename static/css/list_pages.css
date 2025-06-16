@@ -1,4 +1,5 @@
 .scrollable__section {
+    position: relative;
     padding-bottom: 50vh;
     width: max-content;
     margin: 0 auto;
@@ -67,16 +68,8 @@
 }
 
 /*filter-by-dish--------------------------------------------*/
-.to__opacity {
-    opacity: 1;
-    will-change: opacity;
-}
-
-.filter__by__box {
-    position: relative;
-    max-height: 250px;
-    width: 100%;
-    height: 100%;
+.dish__choose__box {
+    display: flex;
 }
 
 .filter__by__text {
@@ -91,39 +84,22 @@
     margin-bottom: 8vh;
 }
 
-.dish__choose__box {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-height: 250px;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    font-size: clamp(16px, 2vw, 21px);
-    font-weight: 600;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    pointer-events: none;
-}
-
-.choose__type__list {
-    width: 100%;
-}
-
 .choose__type__item {
-    opacity: 0;
-    transform: translate3d(0, 20px, 0);
-    will-change: transform, opacity;
+    text-align: center;
 }
 
 .choose__type__item:not(:last-child) {
-    padding-bottom: 0.7rem;
+    margin-bottom: 10vh;
 }
 
 .filter__by__link {
-    margin-left: 200px;
     display: inline-block;
     color: var(--primary-color);
+    font-size: 3.7vw;
+    line-height: 1;
+    letter-spacing: -0.07rem;
+    font-weight: 400;
+    white-space: nowrap;
     transition: transform 1.5s var(--primary-animation);
 }
 
@@ -138,7 +114,6 @@
 
 /*create-button-------------------------------------------*/
 .create__button {
-
     color: var(--primary-color);
     font-size: clamp(18px, 2vw, 23px);
     font-weight: 600;
@@ -427,32 +402,17 @@
     }
 }
 
-@media (max-width: 1435px) {
-    .dish__choose__box {
-        min-height: 300px;
-    }
-
-    .choose__type__item {
-        text-align: center;
-    }
-
-    .choose__type__item:not(:last-child) {
-        padding-bottom: 1rem;
-    }
-
+@media (max-width: 932px) {
     .filter__by__link {
-        margin-left: 0;
-    }
-
-    .dish__choose__box {
-        top: -20%;
+        font-size: 5vw;
     }
 }
 
-@media (max-height: 560px) {
-    
+@media (max-width: 500px) {
+    .filter__by__link {
+        font-size: 7vw;
+    }
 }
-
 /*dish-type-media-----------------------------*/
 
 @media (max-width: 988px) {

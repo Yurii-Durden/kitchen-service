@@ -8,6 +8,21 @@ ScrollTrigger.create({
   scrub: true
 });
 
+const scrollableSection = document.querySelector(".scrollable__section");
+
+document.addEventListener("click", (e) => {
+  const scrollTop = window.scrollY;
+
+  if (!scrollableSection.contains(e.target)) {
+    if (scrollTop > 0) {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+  }
+});
+
 const elementsToBlur = [
   ".main__block",
   ".page__count"
@@ -18,6 +33,7 @@ const angleDown = document.querySelector(".angle__down");
 
 gsap.to(elementsToBlur, {
   filter: "blur(15px)",
+  pointerEvents: "none",
   ease: "none",
   pointerEvents: "none",
   scrollTrigger: {
@@ -150,22 +166,30 @@ searchInput.addEventListener("input", () => {
 });
 
 // filter open
+window.addEventListener("load", () => {
+  document.querySelector(".dish__choose__box").style.display = "none";
+});
+
 const filter_by_button = document.querySelector(".filter__by__text");
 const filter_links = Array.from(document.querySelectorAll(".choose__type__item"));
-const opacityElements = document.querySelectorAll(".to__opacity");
-const dishChooseLink = document.querySelector(".filter__by__link");
-const arrow = document.querySelector(".arrow__down");
+const dishChooseBox = document.querySelector(".dish__choose__box");
+const pageListBox = document.querySelector(".page__list__box");
 
 let isOpen = false;
+let previousScroll = 0;
 
 if (filter_by_button) {
-  filter_by_button.addEventListener("click", () => {
-    toggleMenu();
-  });
+  filter_by_button.addEventListener("click", toggleMenu);
 }
 
 document.addEventListener("click", (event) => {
-  if (isOpen && !dishChooseLink.contains(event.target) && !filter_by_button.contains(event.target)) {
+  if (isOpen && !dishChooseBox.contains(event.target) && !filter_by_button.contains(event.target)) {
+    toggleMenu();
+  }
+});
+
+window.addEventListener("scroll", () => {
+  if (isOpen && window.scrollY <= previousScroll) {
     toggleMenu();
   }
 });
@@ -174,54 +198,63 @@ function toggleMenu() {
   const tl = gsap.timeline();
 
   if (!isOpen) {
-    body.classList.add("hide__scroll");
-    setTimeout(() => {arrow.style.opacity = 1;}, 500)
+    previousScroll = window.scrollY;
+    const shiftY = window.innerHeight * 0.7;
 
-    tl.to(filter_links, {
-      y: 0,
-      opacity: 1,
-      duration: 0.8,
-      pointerEvents: "auto",
-      ease: "power2.out",
-      stagger: 0.08,
-    }, 0);
+    window.scrollTo({
+      top: previousScroll + shiftY,
+      behavior: "smooth"
+    });
 
-    if (opacityElements.length > 0) {
-      tl.to(opacityElements, {
-        opacity: 0,
-        duration: 0.8,
-        pointerEvents: "none",
-        ease: "power2.out"
-      }, 0);
+    if (pageListBox) pageListBox.style.display = "none";
+    if (dishChooseBox) dishChooseBox.style.display = "block";
+
+    if (filter_links.length > 0) {
+      tl.fromTo(filter_links,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.3,
+          ease: "power2.out",
+          stagger: 0.1
+        },
+        0
+      );
     }
 
   } else {
-    body.classList.remove("hide__scroll");
-    setTimeout(() => {arrow.style.opacity = 0;}, 200)
+    window.scrollTo({
+      top: previousScroll,
+      behavior: "smooth"
+    });
 
-    tl.to([...filter_links].reverse(), {
-      y: 20,
-      opacity: 0,
-      duration: 0.5,
-      pointerEvents: "none",
-      ease: "power2.inOut",
-      stagger: 0.05,
-    }, 0);
+    if (filter_links.length > 0) {
+      tl.to([...filter_links].reverse(), {
+        y: 20,
+        opacity: 0,
+        duration: 0.5,
+        ease: "power2.inOut",
+        stagger: 0.05
+      }, 0);
+    }
 
-    if (opacityElements.length > 0) {
-      tl.to(opacityElements, {
-        opacity: 1,
-        duration: 1,
-        pointerEvents: "auto",
-        ease: "power2.inOut"
-      }, 0.7);
+    if (pageListBox) {
+      tl.add(() => {
+        pageListBox.style.display = "flex";
+      }, ">");
+    }
+
+    if (dishChooseBox) {
+      tl.add(() => {
+        dishChooseBox.style.display = "none";
+      }, ">");
     }
   }
 
   isOpen = !isOpen;
 }
 
-//type link hover
 const typeLinks = document.querySelectorAll(".filter__buttons");
 
 if (typeLinks.length > 0) {
