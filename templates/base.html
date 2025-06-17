@@ -21,16 +21,6 @@
     <main class="main__content">
       <div class="content">
         {% block content %}{% endblock %}
-        {% if is_home %}
-        <footer class="footer">
-          <div class="footer__box _container">
-            <p class="footer__text">
-              <span class="fake__letter">É</span>
-              <span class="project__right">&#xa9;</span><span class="inner__footer__text">S<em>Élise<span class="k__s__text"><span class="fade__word__foot fade">k</span><span class="fade__word__foot fade">i</span><span class="fade__word__foot fade">t</span><span class="fade__word__foot fade">c</span><span class="fade__word__foot fade">h</span><span class="fade__word__foot fade">e</span><span class="fade__word__foot fade">n</span> <span class="fade__word__foot fade">s</span><span class="fade__word__foot fade">e</span><span class="fade__word__foot fade">r</span><span class="fade__word__foot fade">v</span><span class="fade__word__foot fade">i</span><span class="fade__word__foot fade">c</span><span class="fade__word__foot fade">e</span></span></em></span>
-            </p>
-          </div>
-        </footer>
-        {% endif %}
       </div>
     </main>
     <script src="{% static 'gsap/gsap.min.js' %}"></script>

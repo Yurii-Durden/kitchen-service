@@ -76,48 +76,6 @@ if (firstSection) {
   });
 }
 
-ScrollTrigger.matchMedia({
-  "(min-width: 1257px)": function () {
-    const animations = [
-      {
-        elements: ".fade__word__foot",
-        trigger: ".footer__text"
-      },
-    ];
-
-    animations.forEach(({ elements, trigger }) => {
-      const triggerElements = document.querySelectorAll(trigger);
-      if (!triggerElements.length) return;
-
-      triggerElements.forEach(triggerEl => {
-        const targets = triggerEl.querySelectorAll(elements);
-        if (!targets.length) return;
-
-        gsap.fromTo(targets, {
-          opacity: 0,
-          x: 15,
-          filter: "blur(10px)"
-        }, {
-          opacity: 1,
-          x: 0,
-          filter: "blur(0px)",
-          ease: "power2.out",
-          duration: 1.2,
-          stagger: 0.1,
-          scrollTrigger: {
-            trigger: triggerEl,
-            start: "top 50%",
-            end: "bottom center+=30%",
-            scrub: true,
-          }
-        });
-      });
-    });
-
-    ScrollTrigger.refresh();
-  }
-});
-
 const menuBox = document.querySelector(".menu__box");
 let toggled = false;
 
