@@ -2,6 +2,7 @@ from django.contrib.auth import logout, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ObjectDoesNotExist
+from django.db.models import Prefetch
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
@@ -70,6 +71,11 @@ class CookListView(LoginRequiredMixin, generic.ListView):
 
 class CookDetailView(LoginRequiredMixin, generic.DetailView):
     model = Cook
+
+    def get_queryset(self):
+        return Cook.objects.prefetch_related(
+            Prefetch("dishes", queryset=Dish.objects.select_related("dish_type").order_by("dish_type__name", "name"))
+        )
 
 
 class CookCreateView(LoginRequiredMixin, generic.CreateView):
