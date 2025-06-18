@@ -2,6 +2,7 @@ from django.contrib.auth import logout, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.paginator import Paginator
 from django.db.models import Prefetch
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
@@ -76,6 +77,19 @@ class CookDetailView(LoginRequiredMixin, generic.DetailView):
         return Cook.objects.prefetch_related(
             Prefetch("dishes", queryset=Dish.objects.select_related("dish_type").order_by("dish_type__name", "name"))
         )
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        dishes = self.object.dishes.all()
+
+        paginator = Paginator(dishes, 7)
+        page_number = self.request.GET.get("page")
+        page_obj = paginator.get_page(page_number)
+
+        context["page_obj"] = page_obj
+        context["is_paginated"] = page_obj.has_other_pages()
+        context["paginator"] = paginator
+        return context
 
 
 class CookCreateView(LoginRequiredMixin, generic.CreateView):
