@@ -299,6 +299,7 @@
 .no__data__text {
     position: absolute;
     display: block;
+    left: 0;
     bottom: 5%;
     width: 100%;
     text-align: center;

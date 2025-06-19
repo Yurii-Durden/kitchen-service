@@ -33,7 +33,6 @@ const angleDown = document.querySelector(".angle__down");
 
 gsap.to(elementsToBlur, {
   filter: "blur(15px)",
-  pointerEvents: "none",
   ease: "none",
   pointerEvents: "none",
   scrollTrigger: {

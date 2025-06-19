@@ -54,4 +54,4 @@ class Dish(models.Model):
         ordering = ["name"]
 
     def __str__(self) -> str:
-        return f"{self.name} - {self.price}$"
+        return f"{self.name} — {self.dish_type}"
