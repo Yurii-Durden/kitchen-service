@@ -78,7 +78,7 @@
     left: 0;
     padding-left: 10px;
     position: absolute;
-    font-size: clamp(18px, 2vw, 23px);
+    font-size: clamp(16px, 2vw, 23px);
     font-style: italic;
     color: var(--primary-color);
     transition: color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -165,4 +165,55 @@
 
 .pls__scroll {
     display: none;
+}
+
+/*media-------------------------------------------*/
+@media (max-width: 950px) {
+    .y__o__experience {
+        margin-bottom: 5vh;
+    }
+
+    .button__item__f {
+        margin-bottom: 5vh;
+    }
+
+    .button__item__s {
+        margin-bottom: 10vh;
+    }
+
+    .cook__dish__item::before {
+        display: none;
+    }
+
+    .personal__box {
+        margin-bottom: 15vh;
+    }
+
+    .cook__dish__item:hover .cook__dish {
+        color: var(--primary-color);
+    }
+
+    .personal__title {
+        font-size: 13vw;
+        white-space: nowrap;
+    }
+
+    .cook__dishes__title {
+        font-size: 10.5vw;
+    }
+}
+
+@media (max-width: 597px) {
+    .personal__title {
+        font-size: 17vw;
+        white-space: nowrap;
+    }
+
+    .cook__dishes__title {
+        font-size: 15vw;
+    }
+
+    .cook__dish__item {
+        padding: 2.0rem 0;
+    }
 }
