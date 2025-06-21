@@ -34,23 +34,22 @@
 }
 
 .dish__description {
-    font-size: clamp(16px, 2vw, 23px);
+    font-size: clamp(16px, 2vw, 22px);
     font-weight: 500;
-    margin-bottom: 6vh;
 }
 
 .dish__type, .dish__price {
+    text-transform: lowercase;
     font-size: clamp(16px, 2vw, 22px);
     font-weight: 500;
 }
 
 .dish__price {
     font-family: "Cormorant Infant", serif;
-    margin-bottom: 10vh;
+    margin-bottom: 8vh;
 }
 
 /*buttons----------------------------------------*/
-
 .delete__update__button {
     display: inline-block;
     font-size: clamp(16px, 2vw, 22px);
@@ -158,12 +157,11 @@
 }
 
 .remove__button {
-    transform: translate3d(-15px, 0, 0);
     transition: transform 1.5s var(--primary-animation);
 }
 
 .remove__button:hover {
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(-15px, 0, 0);
 }
 
 /*cook-list--------------------------------------*/
@@ -245,12 +243,11 @@
 .add__cook__plus {
     font-size: clamp(16px, 2vw, 27px);
     font-weight: 600;
-    transform: translate3d(-15px, 0, 0);
     transition: transform 1.5s var(--primary-animation);
 }
 
 .cook__list__item:hover .add__cook__plus {
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(-15px, 0, 0);
 }
 
 /*media----------------------------------------------*/
