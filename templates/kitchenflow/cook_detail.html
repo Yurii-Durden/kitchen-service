@@ -5,6 +5,10 @@
   <link rel="stylesheet" href="{% static 'css/personal_page.css' %}">
 {% endblock %}
 
+{% block title %}
+  <title>{{ cook.first_name }} {{ cook.last_name }}</title>
+{% endblock %}
+
 {% block content %}
   <section class="first__section section">
     <div class="personal__box _container">

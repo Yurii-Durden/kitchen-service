@@ -5,6 +5,10 @@
   <link rel="stylesheet" href="{% static 'css/dish_detail_styles.css' %}">
 {% endblock %}
 
+{% block title %}
+  <title>{{ dish.name }}</title>
+{% endblock %}
+
 {% block content %}
   <section class="first__section section">
     <div class="personal__box _container">
@@ -20,12 +24,12 @@
       {% endif %}
       <p class="dish__type anim__item">
         <em>
-          dish type — {{ dish.dish_type.name }}
+          {{ dish.dish_type.name }}
         </em>
       </p>
       <p class="dish__price anim__item">
         <em>
-          price — {{ dish.price }}$
+          {{ dish.price }}$
         </em>
       </p>
           {% if user.is_chef %}

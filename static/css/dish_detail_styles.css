@@ -39,7 +39,6 @@
 }
 
 .dish__type, .dish__price {
-    text-transform: lowercase;
     font-size: clamp(16px, 2vw, 22px);
     font-weight: 500;
 }
@@ -74,7 +73,7 @@
 }
 
 .button__item__s {
-    margin-bottom: 12vh;
+    margin-bottom: 15vh;
 }
 
 /*lists------------------------------------------*/
