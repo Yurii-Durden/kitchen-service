@@ -49,19 +49,24 @@
     margin-bottom: 10vh;
 }
 
+/*buttons----------------------------------------*/
+
 .delete__update__button {
     display: inline-block;
     font-size: clamp(16px, 2vw, 22px);
     color: var(--primary-color);
     font-weight: 600;
-    opacity: 0;
-    transform: translateX(15px);
-    filter: blur(10px);
-    will-change: opacity, transform, filter;
 }
 
 .anim__button {
     display: inline-block;
+    will-change: opacity, transform, filter;
+}
+
+.button__item {
+    opacity: 0;
+    transform: translateX(15px);
+    filter: blur(10px);
     will-change: opacity, transform, filter;
 }
 
@@ -73,33 +78,13 @@
     margin-bottom: 12vh;
 }
 
+/*lists------------------------------------------*/
 .cooks__title {
     display: inline-block;
     font-size: 7vw;
     font-weight: 400;
     letter-spacing: -0.03em;
     will-change: transform;
-}
-
-.add__cook__button {
-    display: block;
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(16px, 2vw, 22px);
-    color: var(--primary-color);
-    margin-left: 10px;
-    font-weight: 600;
-    margin-bottom: 4vh;
-    background-color: var(--back-color);
-}
-
-.arrow__down {
-    transform: translateY(3px);
-    transition: transform 1s var(--primary-animation);
-    transform-origin: center;
-}
-
-.arrow__down__active {
-    transform: translateY(2px) rotate(-180deg);
 }
 
 .no__text {
@@ -110,6 +95,10 @@
     bottom: 5%;
     width: 100%;
     text-align: center;
+    opacity: 0;
+    transform: translateX(15px);
+    filter: blur(10px);
+    will-change: opacity, transform, filter;
 }
 
 /*added-cooks-----------------------------------------*/
@@ -122,6 +111,9 @@
     width: 100%;
     top: 0;
     left: 0;
+    opacity: 0;
+    filter: blur(10px);
+    will-change: opacity, transform, filter;
 }
 
 .added__cook__link {
@@ -175,8 +167,28 @@
 }
 
 /*cook-list--------------------------------------*/
+.add__cook__button {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(16px, 2vw, 22px);
+    color: var(--primary-color);
+    margin-left: 10px;
+    font-weight: 600;
+    margin-bottom: 4vh;
+    background-color: var(--back-color);
+}
+
+.arrow__down {
+    transform: translateY(3px);
+    transition: transform 1s var(--primary-animation);
+    transform-origin: center;
+}
+
+.arrow__down__active {
+    transform: translateY(2px) rotate(-180deg);
+}
+
 .cooks__list {
-    /*display: none;*/
     pointer-events: none;
     opacity: 0;
     max-height: 500px;
@@ -232,6 +244,7 @@
 
 .add__cook__plus {
     font-size: clamp(16px, 2vw, 27px);
+    font-weight: 600;
     transform: translate3d(-15px, 0, 0);
     transition: transform 1.5s var(--primary-animation);
 }
@@ -239,3 +252,65 @@
 .cook__list__item:hover .add__cook__plus {
     transform: translate3d(0, 0, 0);
 }
+
+/*media----------------------------------------------*/
+@media (max-width: 1025px) {
+    .dish__price {
+        margin-bottom: 5vh;
+    }
+
+    .dish__description {
+        margin-bottom: 5vh;
+    }
+
+    .button__item__f {
+        margin-bottom: 5vh;
+    }
+
+    .cook__list__link {
+        padding: 1.7rem 0;
+    }
+
+    .added__cook__link {
+        padding: 1.7rem 0;
+    }
+
+    .add__cook__button {
+        margin-left: 0;
+    }
+
+    .add__cook__plus {
+        transform: translate3d(0, 0, 0);
+    }
+
+    .cook__list__item:hover::before {
+        transform: scaleY(0);
+    }
+
+    .cook__list__item:hover .cook__list__link {
+        color: var(--primary-color);
+    }
+
+    .remove__button {
+        transform: translate3d(0, 0, 0);
+    }
+    .added__cook__item:hover::before {
+        transform: scaleY(0);
+    }
+
+    .added__cook__item:hover .added__cook__link {
+        color: var(--primary-color);
+    }
+}
+
+@media (max-width: 550px) {
+    .personal__title {
+        font-size: 9vw;
+        margin-bottom: 2vh;
+    }
+
+    .cooks__title {
+        font-size: 8vw;
+    }
+}
+

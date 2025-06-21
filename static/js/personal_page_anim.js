@@ -81,16 +81,28 @@ window.addEventListener("DOMContentLoaded", () => {
   //cook
   const titleAnimItems = document.querySelectorAll(".title__anim__item");
   const loadAnimItems = document.querySelectorAll(".load__anim__item");
-  const loadAnimButton = document.querySelectorAll(".delete__update__button");
+  const loadAnimButton = document.querySelectorAll(".button__item");
+  const dishList = document.querySelector(".dish__list");
+  const noText = document.querySelector(".no__text");
 
   //dish
   const animItem = document.querySelectorAll(".anim__item");
+  const cooksList = document.querySelector(".added__cooks__list");
 
   if(animItem.length > 0 && animItem.length > 0) {
 
     gsap.to(animItem, {
       opacity: 1,
       x: 0,
+      filter: "blur(0px)",
+      duration: 1.2,
+      ease: "power2.out",
+      stagger: 0.01,
+      delay: 0.4
+    });
+
+    gsap.to(cooksList, {
+      opacity: 1,
       filter: "blur(0px)",
       duration: 1.2,
       ease: "power2.out",
@@ -119,6 +131,14 @@ window.addEventListener("DOMContentLoaded", () => {
     delay: 0.4
   });
 
+  gsap.to(dishList, {
+    opacity: 1,
+    filter: "blur(0px)",
+    duration: 1.2,
+    ease: "power2.out",
+    stagger: 0.01,
+    delay: 0.4
+  });
 
   gsap.to(loadAnimButton, {
     opacity: 1,
@@ -129,6 +149,18 @@ window.addEventListener("DOMContentLoaded", () => {
     stagger: 0.01,
     delay: 0.4
   });
+
+  if (noText) {
+    gsap.to(noText, {
+      opacity: 1,
+      x: 0,
+      filter: "blur(0px)",
+      duration: 1.2,
+      ease: "power2.out",
+      stagger: 0.01,
+      delay: 0.4
+    });
+  }
 });
 
 //pagination

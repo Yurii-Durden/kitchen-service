@@ -41,13 +41,17 @@
 
 .delete__update__button {
     display: inline-block;
-    opacity: 0;
-    transform: translateX(15px);
-    filter: blur(10px);
     will-change: opacity, transform, filter;
     font-size: clamp(18px, 2vw, 22px);
     color: var(--primary-color);
     font-weight: 600;
+}
+
+.button__item {
+    opacity: 0;
+    transform: translateX(15px);
+    filter: blur(10px);
+    will-change: opacity, transform, filter;
 }
 
 .anim__button {
@@ -63,6 +67,11 @@
     font-size: 7.5vw;
     font-weight: 500;
     letter-spacing: -0.02em;
+}
+
+.dish__list {
+    opacity: 0;
+    filter: blur(10px);
 }
 
 .cook__dish {
@@ -163,6 +172,21 @@
 }
 
 /*media-------------------------------------------*/
+@media (max-width: 1025px) {
+    .cook__dish {
+        padding-left: 0;
+    }
+
+    .cook__dish__item::before {
+        display: none;
+    }
+
+    .cook__dish__item:hover .cook__dish {
+        color: var(--primary-color);
+    }
+
+}
+
 @media (max-width: 950px) {
     .y__o__experience {
         margin-bottom: 5vh;
@@ -176,16 +200,8 @@
         margin-bottom: 10vh;
     }
 
-    .cook__dish__item::before {
-        display: none;
-    }
-
     .personal__box {
         margin-bottom: 15vh;
-    }
-
-    .cook__dish__item:hover .cook__dish {
-        color: var(--primary-color);
     }
 
     .personal__title {
