@@ -3,60 +3,88 @@
 
 {% block extra_styles %}
   <link rel="stylesheet" href="{% static 'css/dish_detail_styles.css' %}">
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 {% endblock %}
 
 {% block content %}
-  <section class="section">
-    <div class="page-body _container">
-      <h1 class="dish-name">
-        {{ dish.name }}
+  <section class="first__section section">
+    <div class="personal__box _container">
+      <h1 class="personal__title">
+        <span class="title__anim__item">{{ dish.name }}</span>
       </h1>
-      {% if user.is_chef %}
-        <div>
-          <a href="{% url 'kitchenflow:dish-update' dish.id %}">Update</a>
-        </div>
-        <div>
-          <a href="{% url 'kitchenflow:dish-delete' dish.id %}">Delete</a>
-        </div>
-      {% endif %}
-      <p>price - {{ dish.price }}$</p>
-      <p>dish type - {{ dish.dish_type.name }}</p>
       {% if dish.description %}
-        <p>{{ dish.description }}</p>
+        <p class="dish__description anim__item">
+          <em>
+            {{ dish.description }}
+          </em>
+        </p>
       {% endif %}
-      <h3 class="cooks-title">Cooks</h3>
+      <p class="dish__type anim__item">
+        <em>
+          dish type - {{ dish.dish_type.name }}
+        </em>
+      </p>
+      <p class="dish__price anim__item">
+        <em>
+          price - {{ dish.price }}$
+        </em>
+      </p>
+          {% if user.is_chef %}
+        <div class="button__item button__item__f">
+          <a class="delete__update__button" href="{% url 'kitchenflow:dish-update' dish.id %}">
+            <em>
+              <span class="anim__button">U</span><span class="anim__button">p</span><span class="anim__button">d</span><span class="anim__button">a</span><span class="anim__button">t</span><span class="anim__button">e</span> <span class="anim__button">d</span><span class="anim__button">i</span><span class="anim__button">s</span><span class="anim__button">h</span>
+            </em>
+          </a>
+        </div>
+        <div class="button__item button__item__s">
+          <a class="delete__update__button" href="{% url 'kitchenflow:dish-delete' dish.id %}">
+            <em>
+              <span class="anim__button">D</span><span class="anim__button">e</span><span class="anim__button">l</span><span class="anim__button">e</span><span class="anim__button">t</span><span class="anim__button">e</span> <span class="anim__button">d</span><span class="anim__button">i</span><span class="anim__button">s</span><span class="anim__button">h</span>
+            </em>
+          </a>
+        </div>
+      {% endif %}
       {% if user.is_chef %}
-      <ul class="cook-list-box">
-        <li class="add-cook-button"><span class="button-text">Add cook <i class='bx bx-chevron-down'></i></span>
-          <ul class="cook-list">
-            {% for cook in cooks %}
-              {% if cook not in dish.cooks.all %}
-                <li class="cook-list-items">
-                  <a class="cook-list-link" href="{% url 'kitchenflow:remove-from-cooking' dish.id cook.id %}">
-                    <span>{{ cook.first_name }} {{ cook.last_name }}</span><span class="add-cook">+</span>
-                  </a>
+        <h3 class="cooks__title title__anim__item">
+          <span class="title__anim__item">Cooks</span>
+        </h3>
+          <button type="button" class="add__cook__button">
+            <em>
+              <span class="anim__button">A</span><span class="anim__button">d</span><span class="anim__button">d</span> <span class="anim__button">c</span><span class="anim__button">o</span><span class="anim__button">o</span><span class="anim__button">k</span> <span class="anim__button"><svg class="arrow__down" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </em>
+          </button>
+          <div class="cooks__box">
+            <ul class="cooks__list">
+              {% for cook in cooks %}
+                {% if cook not in dish.cooks.all %}
+                  <li class="cook__list__item">
+                    <a class="cook__list__link" href="{% url 'kitchenflow:remove-from-cooking' dish.id cook.id %}">
+                      <span>{{ cook.first_name }} {{ cook.last_name }}</span><span class="add__cook__plus">+</span>
+                    </a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          {% endif %}
+          {% if dish.cooks.all %}
+            <ul class="added__cooks__list">
+              {% for cook in dish.cooks.all %}
+                <li class="added__cook__item">
+                  <a class="added__cook__link" href="{% url 'kitchenflow:cook-detail' cook.id %}">{{ cook.first_name }} {{ cook.last_name }}</a>
+                  {% if user.is_chef %}
+                    <a class="added__cook__link remove__button" href="{% url 'kitchenflow:remove-from-cooking' dish.id cook.id %}">remove from cooking</a>
+                  {% endif %}
                 </li>
-              {% endif %}
-            {% endfor %}
-          </ul>
-        </li>
-      </ul>
-      {% endif %}
-      {% if dish.cooks.all %}
-      <ul class="added-cooks-list">
-        {% for cook in dish.cooks.all %}
-          <li class="added-cook">
-            <a class="added-cook-link" href="{% url 'kitchenflow:cook-detail' cook.id %}">{{ cook.first_name }} {{ cook.last_name }}</a>
-            {% if user.is_chef %}
-              <a class="added-cook-link" href="{% url 'kitchenflow:remove-from-cooking' dish.id cook.id %}">Remove from cooking</a>
-            {% endif %}
-          </li>
-        {% endfor %}
-      </ul>
+              {% endfor %}
+            </ul>
+          </div>
       {% else %}
-        <p>No cooks</p>
+        <p class="no__text">No cooks</p>
       {% endif %}
     </div>
   </section>
+{% endblock %}
+
+{% block extra_scripts %}
+  <script src="{% static 'js/personal_page_anim.js' %}"></script>
 {% endblock %}

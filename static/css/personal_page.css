@@ -14,7 +14,7 @@
 
 .personal__box {
     margin-top: 10vh;
-    margin-bottom: 25vh;
+    margin-bottom: 20vh;
 }
 
 .personal__title {
@@ -26,14 +26,9 @@
 }
 
 .y__o__experience {
-    font-size: clamp(16px, 2vw, 21px);
-    font-weight: 600;
+    font-size: clamp(16px, 2vw, 22px);
+    font-weight: 500;
     margin-bottom: 8vh;
-}
-
-.dot {
-    font-size: clamp(16px, 2vw, 19px);;
-    font-weight: 400;
 }
 
 .button__item__f {
@@ -46,16 +41,17 @@
 
 .delete__update__button {
     display: inline-block;
-    font-size: clamp(18px, 2vw, 23px);
-    color: var(--primary-animation);
+    opacity: 0;
+    transform: translateX(15px);
+    filter: blur(10px);
+    will-change: opacity, transform, filter;
+    font-size: clamp(18px, 2vw, 22px);
+    color: var(--primary-color);
     font-weight: 600;
 }
 
 .anim__button {
     display: inline-block;
-    opacity: 0;
-    transform: translateX(15px);
-    filter: blur(10px);
     will-change: opacity, transform, filter;
 }
 
@@ -78,21 +74,20 @@
     left: 0;
     padding-left: 10px;
     position: absolute;
-    font-size: clamp(16px, 2vw, 23px);
+    font-size: clamp(16px, 2vw, 22px);
     font-style: italic;
     color: var(--primary-color);
     transition: color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
     z-index: 2;
 }
 
-.cook__dish__item:hover .cook__dish {
-    color: var(--back-color);
-}
-
 .cook__dish__item {
     position: relative;
-    font-size: 1.05rem;
-    padding: 2.5rem 0;
+    padding: 2.6rem 0;
+}
+
+.cook__dish__item:hover .cook__dish {
+    color: var(--back-color);
 }
 
 .cook__dish__item::before {

@@ -115,6 +115,9 @@ class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
 class DishDetailView(LoginRequiredMixin, generic.DetailView):
     model = Dish
 
+    def get_queryset(self):
+        return Dish.objects.prefetch_related("dish_type")
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["cooks"] = get_user_model().objects.all()
