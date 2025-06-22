@@ -1,35 +1,41 @@
-//update delete buttons hover
-const updateDeleteButtons = document.querySelectorAll(".delete__update__button");
+ScrollTrigger.matchMedia({
 
-updateDeleteButtons.forEach((button) => {
-  const letters = Array.from(button.querySelectorAll(".anim__button"));
+  "(min-width: 1024px)": function () {
+    const updateDeleteButtons = document.querySelectorAll(".delete__update__button");
 
-  button.addEventListener("mouseenter", () => {
-    const tl = gsap.timeline();
-    tl.to(letters, {
-      opacity: 0,
-      x: 15,
-      filter: "blur(5px)",
-      duration: 0.9,
-      ease: "power2.out",
-      stagger: 0.05,
+    updateDeleteButtons.forEach((button) => {
+      const letters = Array.from(button.querySelectorAll(".anim__button"));
+
+      button.addEventListener("mouseenter", () => {
+        const tl = gsap.timeline();
+        tl.to(letters, {
+          opacity: 0,
+          x: 15,
+          filter: "blur(5px)",
+          duration: 0.9,
+          ease: "power2.out",
+          stagger: 0.05,
+        });
+      });
+
+      button.addEventListener("mouseleave", () => {
+        const tl = gsap.timeline();
+        tl.to(letters, {
+          opacity: 1,
+          x: 0,
+          filter: "blur(0px)",
+          duration: 0.9,
+          ease: "power2.out",
+          stagger: 0.05,
+        });
+      });
     });
-  });
+  }
 
-  button.addEventListener("mouseleave", () => {
-    const tl = gsap.timeline();
-    tl.to(letters, {
-      opacity: 1,
-      x: 0,
-      filter: "blur(0px)",
-      duration: 0.9,
-      ease: "power2.out",
-      stagger: 0.05,
-    });
-  });
 });
 
-//add button hover
+
+//add button click
 const addButton = document.querySelector(".add__cook__button");
 
 if (addButton) {
@@ -89,19 +95,18 @@ if (addButton) {
 
 //page load anim
 window.addEventListener("DOMContentLoaded", () => {
-  //cook
+  // cook
   const titleAnimItems = document.querySelectorAll(".title__anim__item");
   const loadAnimItems = document.querySelectorAll(".load__anim__item");
   const loadAnimButton = document.querySelectorAll(".button__item");
   const dishList = document.querySelector(".dish__list");
   const noText = document.querySelector(".no__text");
 
-  //dish
+  // dish
   const animItem = document.querySelectorAll(".anim__item");
   const cooksList = document.querySelector(".added__cooks__list");
 
-  if(animItem.length > 0 && animItem.length > 0) {
-
+  if (animItem.length > 0 && cooksList) {
     gsap.to(animItem, {
       opacity: 1,
       x: 0,
@@ -109,7 +114,7 @@ window.addEventListener("DOMContentLoaded", () => {
       duration: 1.2,
       ease: "power2.out",
       stagger: 0.01,
-      delay: 0.4
+      delay: 0.4,
     });
 
     gsap.to(cooksList, {
@@ -117,49 +122,55 @@ window.addEventListener("DOMContentLoaded", () => {
       filter: "blur(0px)",
       duration: 1.2,
       ease: "power2.out",
-      stagger: 0.01,
-      delay: 0.4
+      delay: 0.4,
     });
   }
 
-  gsap.to(titleAnimItems, {
-    opacity: 1,
-    x: 0,
-    filter: "blur(0px)",
-    duration: 1.6,
-    ease: "power2.out",
-    stagger: 0.1,
-    delay: 0.1
-  });
+  if (titleAnimItems.length > 0) {
+    gsap.to(titleAnimItems, {
+      opacity: 1,
+      x: 0,
+      filter: "blur(0px)",
+      duration: 1.6,
+      ease: "power2.out",
+      stagger: 0.1,
+      delay: 0.1,
+    });
+  }
 
-  gsap.to(loadAnimItems, {
-    opacity: 1,
-    x: 0,
-    filter: "blur(0px)",
-    duration: 1.2,
-    ease: "power2.out",
-    stagger: 0.01,
-    delay: 0.4
-  });
+  if (loadAnimItems.length > 0) {
+    gsap.to(loadAnimItems, {
+      opacity: 1,
+      x: 0,
+      filter: "blur(0px)",
+      duration: 1.2,
+      ease: "power2.out",
+      stagger: 0.01,
+      delay: 0.4,
+    });
+  }
 
-  gsap.to(dishList, {
-    opacity: 1,
-    filter: "blur(0px)",
-    duration: 1.2,
-    ease: "power2.out",
-    stagger: 0.01,
-    delay: 0.4
-  });
+  if (dishList) {
+    gsap.to(dishList, {
+      opacity: 1,
+      filter: "blur(0px)",
+      duration: 1.2,
+      ease: "power2.out",
+      delay: 0.4,
+    });
+  }
 
-  gsap.to(loadAnimButton, {
-    opacity: 1,
-    x: 0,
-    filter: "blur(0px)",
-    duration: 1.2,
-    ease: "power2.out",
-    stagger: 0.01,
-    delay: 0.4
-  });
+  if (loadAnimButton.length > 0) {
+    gsap.to(loadAnimButton, {
+      opacity: 1,
+      x: 0,
+      filter: "blur(0px)",
+      duration: 1.2,
+      ease: "power2.out",
+      stagger: 0.01,
+      delay: 0.4,
+    });
+  }
 
   if (noText) {
     gsap.to(noText, {
@@ -168,8 +179,7 @@ window.addEventListener("DOMContentLoaded", () => {
       filter: "blur(0px)",
       duration: 1.2,
       ease: "power2.out",
-      stagger: 0.01,
-      delay: 0.4
+      delay: 0.4,
     });
   }
 });

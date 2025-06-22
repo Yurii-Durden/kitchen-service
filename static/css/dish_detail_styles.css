@@ -29,7 +29,7 @@
     display: inline-block;
     opacity: 0;
     filter: blur(10px);
-    transform: translate3d(15px, 0, 0);
+    transform: translate3d(25px, 0, 0);
     will-change: opacity, transform, filter;
 }
 
@@ -38,15 +38,14 @@
     font-weight: 500;
 }
 
-.dish__type, .dish__price {
-    text-transform: lowercase;
+.dish__type {
     font-size: clamp(16px, 2vw, 22px);
     font-weight: 500;
+    margin-bottom: 8vh;
 }
 
-.dish__price {
+.num__price {
     font-family: "Cormorant Infant", serif;
-    margin-bottom: 8vh;
 }
 
 /*buttons----------------------------------------*/
@@ -252,11 +251,7 @@
 
 /*media----------------------------------------------*/
 @media (max-width: 1025px) {
-    .dish__price {
-        margin-bottom: 5vh;
-    }
-
-    .dish__description {
+    .dish__type {
         margin-bottom: 5vh;
     }
 
