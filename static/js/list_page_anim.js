@@ -4,6 +4,7 @@ ScrollTrigger.create({
   start: "top top",
   end: "+=99999",
   pin: true,
+  pinType: "transform",
   pinSpacing: false,
   scrub: true
 });

@@ -222,11 +222,11 @@ if (paginationButtons.length > 0) {
 
 //scroll to  appear
 ScrollTrigger.matchMedia({
-  "(min-width: 1257px)": function () {
+  "(min-width: 1025px)": function () {
     const animations = [
       {
         elements: ".fade",
-        trigger: ".cook__dishes__title"
+        trigger: ".second__title"
       },
     ];
 

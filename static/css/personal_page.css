@@ -1,9 +1,4 @@
-.personal__box {
-    margin-top: 10vh;
-    margin-bottom: 20vh;
-}
-
-/*general-info----------------------------*/
+/*START-----general--------------------------------------------*/
 .title__anim__item {
     display: inline-block;
     transform: translate3d(25px, 0, 0);
@@ -11,21 +6,38 @@
     filter: blur(10px);
 }
 
+.load__anim__item {
+    display: inline-block;
+    transform: translateX(15px);
+    opacity: 0;
+    filter: blur(10px);
+}
+
+.personal__box {
+    margin-top: 10vh;
+}
+
 .personal__title {
-    font-size: 7.5vw;
+    display: inline-block;
+    padding-right: 10px;
+    font-size: 9vw;
     font-weight: 400;
     letter-spacing: -0.03em;
     will-change: transform;
-    margin-bottom: 1vh;
 }
 
-/*buttons--------------------------------------------*/
+/*buttons----------------------------------------*/
+
+.button__item__f {
+    margin-bottom: 8vh;
+}
+
 .delete__update__button {
     display: inline-block;
-    font-size: clamp(16px, 2vw, 22px);
+    will-change: opacity, transform, filter;
+    font-size: clamp(18px, 2vw, 22px);
     color: var(--primary-color);
     font-weight: 600;
-    margin-bottom: 8vh;
 }
 
 .button__item {
@@ -40,25 +52,18 @@
     will-change: opacity, transform, filter;
 }
 
-.button__item__s {
-    margin-bottom: 10vh;
+/*list------------------------------------------------*/
+.list__box {
+    margin-bottom: 20vh;
 }
 
-/*dishes----------------------------------------------*/
-.dish__list {
-    opacity: 0;
-    filter: blur(10px);
+.second__title {
+    font-size: 7.5vw;
+    font-weight: 500;
+    letter-spacing: -0.02em;
 }
 
-.dishes_title {
-    font-size: 7.0vw;
-    font-weight: 400;
-    letter-spacing: -0.03em;
-    will-change: transform;
-    margin-bottom: 1vh;
-}
-
-.dish {
+.list__link {
     display: flex;
     align-items: center;
     width: 100%;
@@ -74,16 +79,16 @@
     z-index: 2;
 }
 
-.dish__item {
+.list__item {
     position: relative;
     padding: 2.6rem 0;
 }
 
-.dish__item:hover .dish {
+.list__item:hover .list__link {
     color: var(--back-color);
 }
 
-.dish__item::before {
+.list__item::before {
     content: "";
     display: block;
     position: absolute;
@@ -99,11 +104,11 @@
     transition: transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
-.dish__item:hover::before {
+.list__item:hover::before {
     transform: scaleY(1);
 }
 
-/*no-text---------------------------------------------*/
+/*no-text--------------------------------------*/
 .no__text {
     position: absolute;
     font-style: italic;
@@ -112,11 +117,25 @@
     bottom: 5%;
     width: 100%;
     text-align: center;
-    opacity: 0;
-    transform: translateX(15px);
-    filter: blur(10px);
-    will-change: opacity, transform, filter;
 }
+/*END-------general--------------------------------------------*/
+
+/*cook-personal------------------------------*/
+.y__o__experience {
+    font-size: clamp(16px, 2vw, 22px);
+    font-weight: 500;
+
+}
+
+.y {
+    margin-bottom: 8vh;
+}
+
+.exp__number {
+    font-family: "Cormorant Infant", serif;
+}
+
+/*dish-personal------------------------------*/
 
 /*pagination---------------------------------*/
 .pagination__box {
@@ -160,47 +179,51 @@
     display: none;
 }
 
-/*media-----------------------------------------*/
-@media (max-width: 1024px) {
-    .personal__box {
-        margin-bottom: 10vh;
+/*media-------------------------------------------*/
+@media (max-width: 1025px) {
+    .fade {
+        opacity: 1;
+        filter: blur(0);
+        transform: translate3d(0, 0, 0);
     }
 
-    .dish {
+    .list__link {
         padding-left: 0;
     }
 
-    .dish__item {
-        padding: 2rem 0;
-    }
-
-    .dish__item::before {
+    .list__item::before {
         display: none;
     }
 
-    .dish__item:hover .dish {
+    .list__item:hover .list__link {
         color: var(--primary-color);
     }
 
-    .button__item__s {
-        margin-bottom: 8vh;
+    .list__box {
+        margin-bottom: 0;
     }
 
-    .delete__update__button {
-        margin-bottom: 5vh;
-    }
+}
 
+@media (max-width: 950px) {
     .personal__title {
-        margin-bottom: 3vh;
+        font-size: 13vw;
+        white-space: nowrap;
+    }
+
+    .second__title {
+        font-size: 10.5vw;
     }
 }
 
-@media (max-width: 550px) {
-    .personal__title {
-        font-size: 10vw;
+@media (max-height: 701px) {
+    .list__box {
+        margin-bottom: 15vh;
     }
+}
 
-    .dishes_title {
-        font-size: 9vw;
+@media (max-width: 597px) {
+    .list__item {
+        padding: 2.0rem 0;
     }
 }

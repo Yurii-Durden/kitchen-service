@@ -1,5 +1,5 @@
 ScrollTrigger.matchMedia({
-  "(min-width: 1257px)": function () {
+  "(min-width: 1025px)": function () {
     const animations = [
       {
         elements: ".fade__what",
@@ -45,7 +45,7 @@ ScrollTrigger.matchMedia({
 });
 
 ScrollTrigger.matchMedia({
-  "(min-width: 1257px)": function () {
+  "(min-width: 1024px)": function () {
     const animations = [
       {
         elements: ".fade__say__hi",
