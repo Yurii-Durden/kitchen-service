@@ -221,6 +221,24 @@ class DishTypeDetailView(LoginRequiredMixin, generic.DetailView):
     template_name = "kitchenflow/dish_type_detail.html"
     context_object_name = "dish_type_detail"
 
+    def get_queryset(self):
+        return DishType.objects.prefetch_related(
+            Prefetch("dishes", queryset=Dish.objects.select_related("dish_type").order_by("dish_type__name", "name"))
+        )
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        dishes = Dish.objects.filter(dish_type=self.object)
+
+        paginator = Paginator(dishes, 7)
+        page_number = self.request.GET.get("page")
+        page_obj = paginator.get_page(page_number)
+
+        context["page_obj"] = page_obj
+        context["is_paginated"] = page_obj.has_other_pages()
+        context["paginator"] = paginator
+        return context
+
 
 class DishTypeCreateView(LoginRequiredMixin, generic.CreateView):
     model = DishType
