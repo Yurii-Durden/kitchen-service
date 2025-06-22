@@ -14,7 +14,6 @@
 
 .personal__box {
     margin-top: 10vh;
-    margin-bottom: 20vh;
 }
 
 .personal__title {
@@ -28,15 +27,15 @@
 .y__o__experience {
     font-size: clamp(16px, 2vw, 22px);
     font-weight: 500;
+
+}
+
+.y {
     margin-bottom: 8vh;
 }
 
 .button__item__f {
     margin-bottom: 8vh;
-}
-
-.button__item__s {
-    margin-bottom: 15vh;
 }
 
 .delete__update__button {
@@ -63,15 +62,16 @@
     font-family: "Cormorant Infant", serif;
 }
 
+
+/*list------------------------------------------*/
+.list__box {
+    margin-bottom: 20vh;
+}
+
 .cook__dishes__title {
     font-size: 7.5vw;
     font-weight: 500;
     letter-spacing: -0.02em;
-}
-
-.dish__list {
-    opacity: 0;
-    filter: blur(10px);
 }
 
 .cook__dish {
@@ -173,6 +173,12 @@
 
 /*media-------------------------------------------*/
 @media (max-width: 1025px) {
+    .fade {
+        opacity: 1;
+        filter: blur(0);
+        transform: translate3d(0, 0, 0);
+    }
+
     .cook__dish {
         padding-left: 0;
     }
@@ -185,25 +191,13 @@
         color: var(--primary-color);
     }
 
+    .list__box {
+        margin-bottom: 0;
+    }
+
 }
 
 @media (max-width: 950px) {
-    .y__o__experience {
-        margin-bottom: 5vh;
-    }
-
-    .button__item__f {
-        margin-bottom: 5vh;
-    }
-
-    .button__item__s {
-        margin-bottom: 10vh;
-    }
-
-    .personal__box {
-        margin-bottom: 15vh;
-    }
-
     .personal__title {
         font-size: 13vw;
         white-space: nowrap;
@@ -211,6 +205,12 @@
 
     .cook__dishes__title {
         font-size: 10.5vw;
+    }
+}
+
+@media (max-height: 701px) {
+    .list__box {
+        margin-bottom: 15vh;
     }
 }
 

@@ -8,7 +8,6 @@ ScrollTrigger.matchMedia({
       {
         elements: ".fade__what__text",
         trigger: ".what__text",
-        markers: true
       },
       {
         elements: ".fade__contact",

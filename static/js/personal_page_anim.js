@@ -220,3 +220,42 @@ if (paginationButtons.length > 0) {
   });
 }
 
+//scroll to  appear
+ScrollTrigger.matchMedia({
+  "(min-width: 1257px)": function () {
+    const animations = [
+      {
+        elements: ".fade",
+        trigger: ".cook__dishes__title"
+      },
+    ];
+
+    animations.forEach(({ elements, trigger , markers}) => {
+      const targets = document.querySelectorAll(elements);
+      const triggerElement = document.querySelector(trigger);
+      if (!targets.length || !triggerElement) return;
+
+      gsap.fromTo(targets, {
+        opacity: 0,
+        x: 15,
+        filter: "blur(10px)"
+      }, {
+        opacity: 1,
+        x: 0,
+        filter: "blur(0px)",
+        ease: "power2.out",
+        duration: 1,
+        stagger: 0.09,
+        scrollTrigger: {
+          trigger: triggerElement,
+          start: "top bottom-=15%",
+          end: "bottom center+=15%",
+          scrub: true,
+        }
+      });
+    });
+
+    ScrollTrigger.refresh();
+  }
+});
+
