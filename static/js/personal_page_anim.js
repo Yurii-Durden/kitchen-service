@@ -35,8 +35,12 @@ const addButton = document.querySelector(".add__cook__button");
 if (addButton) {
   const addedCookList = document.querySelector(".added__cooks__list");
   const cooksList = document.querySelector(".cooks__list");
+  let isAnimating = false;
 
   addButton.addEventListener("click", () => {
+    if (isAnimating) return;
+    isAnimating = true;
+
     const arrowDown = document.querySelector(".arrow__down");
     arrowDown.classList.toggle("arrow__down__active");
 
@@ -54,6 +58,9 @@ if (addButton) {
             opacity: 1,
             duration: 2,
             ease: "power2.out",
+            onComplete: () => {
+              isAnimating = false;
+            }
           });
         }
       });
@@ -69,12 +76,16 @@ if (addButton) {
             opacity: 1,
             duration: 2,
             ease: "power2.out",
+            onComplete: () => {
+              isAnimating = false;
+            }
           });
         }
       });
     }
   });
 }
+
 
 //page load anim
 window.addEventListener("DOMContentLoaded", () => {
