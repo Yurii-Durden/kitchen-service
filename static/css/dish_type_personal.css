@@ -1,0 +1,206 @@
+.personal__box {
+    margin-top: 10vh;
+    margin-bottom: 20vh;
+}
+
+/*general-info----------------------------*/
+.title__anim__item {
+    display: inline-block;
+    transform: translate3d(25px, 0, 0);
+    opacity: 0;
+    filter: blur(10px);
+}
+
+.personal__title {
+    font-size: 7.5vw;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    will-change: transform;
+    margin-bottom: 1vh;
+}
+
+/*buttons--------------------------------------------*/
+.delete__update__button {
+    display: inline-block;
+    font-size: clamp(16px, 2vw, 22px);
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 8vh;
+}
+
+.button__item {
+    opacity: 0;
+    transform: translateX(15px);
+    filter: blur(10px);
+    will-change: opacity, transform, filter;
+}
+
+.anim__button {
+    display: inline-block;
+    will-change: opacity, transform, filter;
+}
+
+.button__item__s {
+    margin-bottom: 10vh;
+}
+
+/*dishes----------------------------------------------*/
+.dish__list {
+    opacity: 0;
+    filter: blur(10px);
+}
+
+.dishes_title {
+    font-size: 7.0vw;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    will-change: transform;
+    margin-bottom: 1vh;
+}
+
+.dish {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding-left: 10px;
+    position: absolute;
+    font-size: clamp(16px, 2vw, 22px);
+    font-style: italic;
+    color: var(--primary-color);
+    transition: color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    z-index: 2;
+}
+
+.dish__item {
+    position: relative;
+    padding: 2.6rem 0;
+}
+
+.dish__item:hover .dish {
+    color: var(--back-color);
+}
+
+.dish__item::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    will-change: transform;
+    transform: scaleY(0);
+    transform-origin: bottom center;
+    transition: transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+
+.dish__item:hover::before {
+    transform: scaleY(1);
+}
+
+/*no-text---------------------------------------------*/
+.no__text {
+    position: absolute;
+    font-style: italic;
+    display: block;
+    left: 0;
+    bottom: 5%;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transform: translateX(15px);
+    filter: blur(10px);
+    will-change: opacity, transform, filter;
+}
+
+/*pagination---------------------------------*/
+.pagination__box {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-top: 10vh;
+    z-index: 100;
+    width: 100%;
+}
+
+.pagination__list {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 1rem;
+}
+
+.page__count {
+    font-family: "Cormorant Infant", serif;
+    font-size: clamp(16px, 2.5vw, 22px);
+    font-weight: 550;
+}
+
+.page__link {
+    color: var(--primary-color);
+}
+
+
+.pagination__item {
+    font-size: clamp(34px, 6vw, 75px);
+    font-weight: 400;
+}
+
+.fade__p {
+    display: inline-block;
+}
+
+.pls__scroll {
+    display: none;
+}
+
+/*media-----------------------------------------*/
+@media (max-width: 1024px) {
+    .personal__box {
+        margin-bottom: 10vh;
+    }
+
+    .dish {
+        padding-left: 0;
+    }
+
+    .dish__item {
+        padding: 2rem 0;
+    }
+
+    .dish__item::before {
+        display: none;
+    }
+
+    .dish__item:hover .dish {
+        color: var(--primary-color);
+    }
+
+    .button__item__s {
+        margin-bottom: 8vh;
+    }
+
+    .delete__update__button {
+        margin-bottom: 5vh;
+    }
+
+    .personal__title {
+        margin-bottom: 3vh;
+    }
+}
+
+@media (max-width: 550px) {
+    .personal__title {
+        font-size: 10vw;
+    }
+
+    .dishes_title {
+        font-size: 9vw;
+    }
+}

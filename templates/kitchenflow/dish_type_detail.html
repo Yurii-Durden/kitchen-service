@@ -10,27 +10,45 @@
 {% endblock %}
 
 {% block content %}
-  <h1>
-    {{ dish_type_detail }}
-  </h1>
-  {% if user.is_chef %}
-    <div>
-      <a href="{% url 'kitchenflow:dish-type-update' dish_type_detail.id %}">Update</a>
-    </div>
-    <div>
-      <a href="{% url 'kitchenflow:dish-type-delete' dish_type_detail.id %}">Delete</a>
-    </div>
-  {% endif %}
+  <section class="first__section section">
+    <div class="personal__box _container">
+      <h1 class="personal__title">
+        <span class="title__anim__item">{{ dish_type_detail }}</span>
+      </h1>
+      {% if user.is_chef %}
+        <div class="button__item">
+          <a class="delete__update__button" href="{% url 'kitchenflow:dish-type-update' dish_type_detail.id %}">
+            <em>
+              <span class="anim__button">U</span><span class="anim__button">p</span><span class="anim__button">d</span><span class="anim__button">a</span><span class="anim__button">t</span><span class="anim__button">e</span> <span class="anim__button">t</span><span class="anim__button">y</span><span class="anim__button">p</span><span class="anim__button">e</span>
+            </em>
+          </a>
+        </div>
+        <div class="button__item button__item__s">
+          <a class="delete__update__button" href="{% url 'kitchenflow:dish-type-delete' dish_type_detail.id %}">
+            <em>
+              <span class="anim__button">D</span><span class="anim__button">e</span><span class="anim__button">l</span><span class="anim__button">e</span><span class="anim__button">t</span><span class="anim__button">e</span> <span class="anim__button">t</span><span class="anim__button">y</span><span class="anim__button">p</span><span class="anim__button">e</span>
+            </em>
+          </a>
+        </div>
+      {% endif %}
 
-  {% if dish_type_detail.dishes.all %}
-    <ul>
-      {% for dish in dish_type_detail.dishes.all %}
-        <li><a href="{% url 'kitchenflow:dish-detail' dish.id %}">{{ dish }}</a></li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>No dishes</p>
-  {% endif %}
+      {% if dish_type_detail.dishes.all %}
+        <h3 class="dishes_title">
+          <span class="title__anim__item">Dishes</span>
+        </h3>
+        <ul class="dish__list">
+          {% for dish in page_obj %}
+            <li class="dish__item">
+              <a class="dish" href="{% url 'kitchenflow:dish-detail' dish.id %}">{{ dish }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="no__text">No dishes</p>
+      {% endif %}
+    </div>
+    {% include 'includes/pagination.html' %}
+  </section>
 {% endblock %}
 
 {% block extra_scripts %}

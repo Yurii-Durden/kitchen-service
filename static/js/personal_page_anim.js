@@ -106,6 +106,18 @@ window.addEventListener("DOMContentLoaded", () => {
   const animItem = document.querySelectorAll(".anim__item");
   const cooksList = document.querySelector(".added__cooks__list");
 
+  if (titleAnimItems.length > 0) {
+    gsap.to(titleAnimItems, {
+      opacity: 1,
+      x: 0,
+      filter: "blur(0px)",
+      duration: 1.6,
+      ease: "power2.out",
+      stagger: 0.1,
+      delay: 0.1,
+    });
+  }
+
   if (animItem.length > 0 && cooksList) {
     gsap.to(animItem, {
       opacity: 1,
@@ -123,18 +135,6 @@ window.addEventListener("DOMContentLoaded", () => {
       duration: 1.2,
       ease: "power2.out",
       delay: 0.4,
-    });
-  }
-
-  if (titleAnimItems.length > 0) {
-    gsap.to(titleAnimItems, {
-      opacity: 1,
-      x: 0,
-      filter: "blur(0px)",
-      duration: 1.6,
-      ease: "power2.out",
-      stagger: 0.1,
-      delay: 0.1,
     });
   }
 
