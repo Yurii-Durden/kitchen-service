@@ -134,7 +134,7 @@ window.addEventListener("DOMContentLoaded", () => {
       filter: "blur(0px)",
       duration: 1.2,
       ease: "power2.out",
-      delay: 0.4,
+      delay: 0.5,
     });
   }
 
@@ -156,7 +156,7 @@ window.addEventListener("DOMContentLoaded", () => {
       filter: "blur(0px)",
       duration: 1.2,
       ease: "power2.out",
-      delay: 0.4,
+      delay: 0.5,
     });
   }
 
