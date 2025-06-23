@@ -28,6 +28,17 @@ class CookPersonalInfoUpdateForm(ModelForm):
         ]
 
 
+class DishTypeCreatingForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['name'].widget.attrs.update({'class': 'dish__type__name__input'})
+
+    class Meta:
+        model = DishType
+        fields = "__all__"
+
+
+
 class DishCreatingForm(ModelForm):
     cooks = forms.ModelMultipleChoiceField(
         queryset=get_user_model().objects.all(),
