@@ -35,12 +35,12 @@ ScrollTrigger.matchMedia({
 });
 
 
-//add button click
 const addButton = document.querySelector(".add__cook__button");
 
 if (addButton) {
   const addedCookList = document.querySelector(".added__cooks__list");
   const cooksList = document.querySelector(".cooks__list");
+  const noTextDish = document.querySelector(".no__text__dish");
   let isAnimating = false;
 
   addButton.addEventListener("click", () => {
@@ -49,6 +49,47 @@ if (addButton) {
 
     const arrowDown = document.querySelector(".arrow__down");
     arrowDown.classList.toggle("arrow__down__active");
+
+    if (!addedCookList) {
+      const isHidden = getComputedStyle(cooksList).opacity === "0";
+
+      if (isHidden) {
+        gsap.to(noTextDish, {
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          onComplete: () => {
+            cooksList.style.pointerEvents = "auto";
+            gsap.to(cooksList, {
+              opacity: 1,
+              duration: 1.2,
+              ease: "power2.out",
+              onComplete: () => {
+                isAnimating = false;
+              }
+            });
+          }
+        });
+      } else {
+        cooksList.style.pointerEvents = "none";
+        gsap.to(cooksList, {
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          onComplete: () => {
+            gsap.to(noTextDish, {
+              opacity: 1,
+              duration: 1.2,
+              ease: "power2.out",
+              onComplete: () => {
+                isAnimating = false;
+              }
+            });
+          }
+        });
+      }
+      return;
+    }
 
     const isHidden = getComputedStyle(addedCookList).opacity === "0";
 
@@ -227,6 +268,10 @@ ScrollTrigger.matchMedia({
       {
         elements: ".fade",
         trigger: ".second__title"
+      },
+      {
+        elements: ".fade",
+        trigger: ".dish__second__title"
       },
     ];
 
