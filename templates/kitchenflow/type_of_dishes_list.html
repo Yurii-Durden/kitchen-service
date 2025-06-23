@@ -22,11 +22,10 @@
           <span class="fade__title__all">A</span><span class="fade__title__all">L</span><span class="fade__title__all">L</span> <span class="fade__title__all">T</span><span class="fade__title__all">Y</span><span class="fade__title__all">P</span><span class="fade__title__all">E</span><span class="fade__title__all">S</span> <span class="fade__title__all">O</span><span class="fade__title__all">F</span> <span class="fade__title__all">D</span><span class="fade__title__all">I</span><span class="fade__title__all">S</span><span class="fade__title__all">H</span><span class="fade__title__all">E</span><span class="fade__title__all">S</span>
         </h1>
         {% include "includes/search_form.html" %}
-{#        <p class="sort__by"><em>sort by type of dish</em></p>#}
         {% if user.is_chef %}
           <div>
             <em>
-              <a class="create__button" href="{% url 'kitchenflow:cook-create' %}">
+              <a class="create__button" href="{% url 'kitchenflow:dish-type-create' %}">
                 <span class="create__fade">C</span><span class="create__fade">r</span><span class="create__fade">e</span><span class="create__fade">a</span><span class="create__fade">t</span><span class="create__fade">e</span> <span class="create__fade">d</span><span class="create__fade">i</span><span class="create__fade">s</span><span class="create__fade">h</span> <span class="create__fade">t</span><span class="create__fade">y</span><span class="create__fade">p</span><span class="create__fade">e</span>
               </a>
             </em>

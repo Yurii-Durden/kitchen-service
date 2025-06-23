@@ -4,10 +4,23 @@
 
 .dish__type__form__title {
     text-transform: uppercase;
-    font-size: 7.5vw;
-    font-weight: 300;
+    font-size: 8vw;
+    font-weight: 400;
     margin-bottom: 3vh;
+    letter-spacing: -0.25rem;
     color: var(--back-color);
+}
+
+.title__letter, .another__letter {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(10px);
+    transform: translate3d(15px, 0, 0);
+}
+
+/*form----------------------------------------------*/
+.form__group {
+    display: flex;
 }
 
 .form__body {
@@ -18,18 +31,24 @@
 
 .dish__type__name__label {
     color: var(--back-color);
+    white-space: nowrap;
 }
 
 .dish__type__name__input {
     font-family: "Cormorant Garamond", serif;
     font-size: clamp(16px, 2vw, 21px);
+    width: 100%;
     font-weight: 500;
+    white-space: nowrap;
     padding: 0.13rem 0;
     font-style: italic;
     color: var(--back-color);
     background-color: var(--primary-color);
     outline: none;
     margin-bottom: 8vh;
+    opacity: 0;
+    filter: blur(10px);
+    transform: translate3d(15px, 0, 0);
     /*border-bottom: 1px solid rgba(238, 237, 233, 0.5);*/
 }
 
@@ -48,16 +67,20 @@
     outline: none;
 }
 
+/*header---------------------------------------------*/
 .logo {
     color: var(--back-color);
+    font-weight: 400;
 }
 
 .menu__text {
     color: var(--back-color);
+    font-weight: 500;
 }
 
 .fade__close {
     color: var(--back-color);
+    font-weight: 500;
 }
 
 .header__menu {
@@ -70,8 +93,21 @@
 
 .nav__link {
     color: var(--back-color);
+    font-weight: 500;
 }
 
 .login__list__item__link {
     color: var(--back-color);
+}
+
+/*media----------------------------------------*/
+@media (max-width: 1025px) {
+    .form__body {
+        justify-content: start;
+    }
+
+    .dish__type__form__title {
+        font-size: 10vw;
+        letter-spacing: 0;
+    }
 }
