@@ -14,6 +14,7 @@ from kitchenflow.forms import (
     CookCreationForm,
     CookPersonalInfoUpdateForm,
     DishCreatingForm,
+    DishTypeCreatingForm,
     CookSearchForm,
     DishSearchForm,
     DishTypeSearchForm
@@ -242,15 +243,15 @@ class DishTypeDetailView(LoginRequiredMixin, generic.DetailView):
 
 class DishTypeCreateView(LoginRequiredMixin, generic.CreateView):
     model = DishType
+    form_class = DishTypeCreatingForm
     template_name = "kitchenflow/dish_type_form.html"
     success_url = reverse_lazy("kitchenflow:dish-type-list")
-    fields = "__all__"
 
 
 class DishTypeUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = DishType
+    form_class = DishTypeCreatingForm
     template_name = "kitchenflow/dish_type_form.html"
-    fields = "__all__"
 
     def get_success_url(self):
         return reverse("kitchenflow:dish-type-detail", args=[self.object.id])
