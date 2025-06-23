@@ -21,6 +21,8 @@
 /*form----------------------------------------------*/
 .form__group {
     display: flex;
+    align-items: center;
+    margin-bottom: 8vh;
 }
 
 .form__body {
@@ -30,6 +32,7 @@
 }
 
 .dish__type__name__label {
+    max-height: max-content;
     color: var(--back-color);
     white-space: nowrap;
 }
@@ -45,11 +48,9 @@
     color: var(--back-color);
     background-color: var(--primary-color);
     outline: none;
-    margin-bottom: 8vh;
     opacity: 0;
     filter: blur(10px);
     transform: translate3d(15px, 0, 0);
-    /*border-bottom: 1px solid rgba(238, 237, 233, 0.5);*/
 }
 
 .form__button {
@@ -98,6 +99,13 @@
 
 .login__list__item__link {
     color: var(--back-color);
+}
+
+/*errors*/
+.error__item {
+    font-style: italic;
+    color: var(--back-color);
+    margin-bottom: 0.5rem;
 }
 
 /*media----------------------------------------*/

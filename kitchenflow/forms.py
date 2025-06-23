@@ -37,6 +37,19 @@ class DishTypeCreatingForm(ModelForm):
         model = DishType
         fields = "__all__"
 
+    def clean_name(self):
+        name = self.cleaned_data['name'].strip()
+
+        if len(name) < 2:
+            raise forms.ValidationError("The name must be at least 2 characters long")
+
+        if any(letter.isdigit() for letter in name):
+            raise forms.ValidationError("The name should not contain numbers")
+
+        if DishType.objects.filter(name__iexact=name).exists():
+            raise forms.ValidationError("A dish type with this name already exists")
+
+        return name
 
 
 class DishCreatingForm(ModelForm):
