@@ -17,7 +17,7 @@
       </h1>
 
       {% if user.is_chef %}
-        <div>
+        <div class="button__item">
           <a class="delete__update__button button__item__f" href="{% url 'kitchenflow:dish-type-update' dish_type_detail.id %}">
             <em>
               <span class="anim__button">U</span><span class="anim__button">p</span><span class="anim__button">d</span><span class="anim__button">a</span><span class="anim__button">t</span><span class="anim__button">e</span> <span class="anim__button">t</span><span class="anim__button">y</span><span class="anim__button">p</span><span class="anim__button">e</span>
@@ -25,7 +25,7 @@
           </a>
         </div>
 
-        <div class="button__item__s">
+        <div class="button__item button__item__s">
           <a class="delete__update__button" href="{% url 'kitchenflow:dish-type-delete' dish_type_detail.id %}">
             <em>
               <span class="anim__button">D</span><span class="anim__button">e</span><span class="anim__button">l</span><span class="anim__button">e</span><span class="anim__button">t</span><span class="anim__button">e</span> <span class="anim__button">t</span><span class="anim__button">y</span><span class="anim__button">p</span><span class="anim__button">e</span>
