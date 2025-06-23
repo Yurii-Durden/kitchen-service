@@ -1,6 +1,32 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block extra_styles %}
+  <link rel="stylesheet" href="{% static 'css/dish_type_form.css' %}">
+{% endblock %}
+
+{% block title %}
+  <title>{{ object|yesno:"Update , Create " }}dish type</title>
+{% endblock %}
 
 {% block content %}
-  <h1>{{ object|yesno:"Update, Create " }}Dish type</h1>
-  {% include "includes/form.html" %}
+  <section class="section">
+    <div class="form__body _container">
+      <div class="form__wrapper">
+        <div class="form__box">
+          <h1 class="dish__type__form__title">{{ object|yesno:"Update , Create " }}dish type</h1>
+          <form action="" method="post" class="dish__type__form">
+            {% csrf_token %}
+            <div class="form__group">
+              <label for="{{ form.name.id_for_label }}" class="dish__type__name__label">
+                <em>{{ form.name.label }}:</em>
+              </label>
+              {{ form.name }}
+            </div>
+            <input type="submit" class="form__button" value="{{ object|yesno:'Update,Create' }}">
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 {% endblock %}
