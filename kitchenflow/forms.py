@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.hashers import make_password
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.forms.models import ModelForm
 
@@ -77,13 +78,91 @@ class CookCreationForm(UserCreationForm):
 
 
 class CookPersonalInfoUpdateForm(ModelForm):
+    password1 = forms.CharField(
+        label="New password",
+        widget=forms.PasswordInput(attrs={"class": "form_input password1_input"}),
+        required=False
+    )
+    password2 = forms.CharField(
+        label="Confirm new password",
+        widget=forms.PasswordInput(attrs={"class": "form_input password2_input"}),
+        required=False
+    )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.update({'class': 'form_input'})
+        self.fields['first_name'].widget.attrs.update({'class': 'form_input'})
+        self.fields['last_name'].widget.attrs.update({'class': 'form_input'})
+        self.fields['years_of_experience'].widget.attrs.update({'class': 'years_of_experience_input'})
+        self.fields['is_chef'].widget.attrs.update({'class': 'is_chef_input'})
+
     class Meta:
         model = Cook
-        fields = [
+        fields = (
+            "username",
             "first_name",
             "last_name",
-            "years_of_experience"
-        ]
+            "years_of_experience",
+            "is_chef",
+        )
+
+    def clean(self):
+        cleaned_data = super().clean()
+        password1 = cleaned_data.get("password1")
+        password2 = cleaned_data.get("password2")
+
+        if password1 or password2:
+            if not password1:
+                raise forms.ValidationError("New password is required")
+            if not password2:
+                raise forms.ValidationError("Please confirm the new password")
+            if password1 != password2:
+                raise forms.ValidationError("Passwords do not match")
+            if len(password1) < 8:
+                raise forms.ValidationError("Password must be at least 8 characters long")
+
+        return cleaned_data
+
+    def save(self, commit=True):
+        cook = super().save(commit=False)
+        password = self.cleaned_data.get("password1")
+        if password:
+            cook.password = make_password(password)
+        if commit:
+            cook.save()
+        return cook
+
+    def clean_username(self):
+        username = self.cleaned_data.get("username")
+        if not username:
+            raise forms.ValidationError("Username is required")
+        if len(username) < 3:
+            raise forms.ValidationError("Username must be at least 3 characters long")
+        return username
+
+    def clean_first_name(self):
+        first_name = self.cleaned_data.get("first_name")
+        if not first_name:
+            raise forms.ValidationError("First name is required")
+        return first_name
+
+    def clean_last_name(self):
+        last_name = self.cleaned_data.get("last_name")
+        if not last_name:
+            raise forms.ValidationError("Last name is required")
+        return last_name
+
+    def clean_years_of_experience(self):
+        years = self.cleaned_data.get("years_of_experience")
+        if years is None:
+            raise forms.ValidationError("Years of experience is required")
+        if years < 0:
+            raise forms.ValidationError("Experience cannot be negative")
+        if years > 70:
+            raise forms.ValidationError("Experience is unrealistically high")
+        return years
+
 
 
 class DishTypeCreatingForm(ModelForm):
