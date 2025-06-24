@@ -3,7 +3,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const titleLetters = document.querySelectorAll(".title__letter");
   const buttonLetters = document.querySelectorAll(".another__letter");
-  const inputText = document.querySelectorAll(".dish__type__name__input");
+  const inputText = document.querySelectorAll(".form_input");
+  const experience = document.querySelector(".years_of_experience_input");
+  const isChef = document.querySelector(".is_chef_input");
 
   gsap.to(titleLetters, {
     opacity: 1,
@@ -32,6 +34,31 @@ window.addEventListener("DOMContentLoaded", () => {
     stagger: 0.01,
     delay: 0.3
   });
+
+  if (experience) {
+      gsap.to(experience, {
+        opacity: 1,
+        x: 0,
+        filter: "blur(0px)",
+        duration: 1.2,
+        ease: "power2.out",
+        stagger: 0.01,
+        delay: 0.3
+      });
+  }
+
+    if (isChef) {
+      gsap.to(isChef, {
+        opacity: 1,
+        x: 0,
+        filter: "blur(0px)",
+        duration: 1.2,
+        ease: "power2.out",
+        stagger: 0.01,
+        delay: 0.3
+      });
+  }
+
 });
 
 //button hover

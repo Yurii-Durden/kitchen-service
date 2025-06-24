@@ -4,8 +4,8 @@
 
 .dish__type__form__title {
     text-transform: uppercase;
-    font-size: 8vw;
-    font-weight: 400;
+    font-size: 9vw;
+    font-weight: 300;
     margin-bottom: 3vh;
     letter-spacing: -0.25rem;
     color: var(--back-color);
@@ -19,25 +19,121 @@
 }
 
 /*form----------------------------------------------*/
-.form__group {
+.form__body {
+    display: flex;
+    margin-top: 10vh;
+    justify-content: center;
+    margin-bottom: 15vh;
+}
+
+/*dish-type-----------------------------------------*/
+.form__group__dish__type {
     display: flex;
     align-items: center;
     margin-bottom: 8vh;
 }
 
-.form__body {
+/*cook----------------------------------------------*/
+.form__group__cook {
     display: flex;
-    margin-top: 10vh;
-    justify-content: center;
+    align-items: center;
+    margin-bottom: 4vh;
 }
 
-.dish__type__name__label {
+.years_of_experience_input {
+    font-size: clamp(16px, 2vw, 21px);
+    width: 100%;
+    font-style: italic;
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 0.13rem 0;
+    font-family: "Cormorant Infant", serif;
+    opacity: 0;
+    filter: blur(10px);
+    transform: translate3d(15px, 0, 0);
+    background-color: var(--primary-color);
+    color: var(--back-color);
+    border-bottom: 1px solid rgba(238, 237, 233, 0.2);
+}
+
+.years_of_experience_input:hover,
+.years_of_experience_input:focus {
+    outline: none;
+}
+
+.years_of_experience_input {
+  -moz-appearance: textfield;
+}
+
+.years_of_experience_input::-webkit-outer-spin-button,
+.years_of_experience_input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/*check-box----------------------------------------------------*/
+.is_chef_input {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translate3d(15px, 0, 0);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    display: flex;
+    align-items: center;
+    width: 23px;
+    height: 23px;
+    border: none;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    position: relative;
+}
+
+.is_chef_input::before {
+    position: absolute;
+    top: -5%;
+    left: 0;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(16px, 2vw, 21px);
+    font-weight: 500;
+    font-style: italic;
+    content: "no";
+    display: inline-block;
+    color: var(--back-color);
+    opacity: 0;
+    transition: all 1.5s var(--primary-animation);
+}
+
+.is_chef_input:not(:checked)::before {
+    opacity: 1;
+}
+
+.is_chef_input::after {
+    position: absolute;
+    top: -5%;
+    left: 0;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(16px, 2vw, 21px);
+    font-weight: 500;
+    font-style: italic;
+    content: "yes";
+    color: var(--back-color);
+    opacity: 0;
+    transition: opacity 1.5s var(--primary-animation);
+}
+
+.is_chef_input:checked::after {
+    opacity: 1;
+}
+
+/*label-input-------------------------------------------*/
+.form__label {
     max-height: max-content;
     color: var(--back-color);
     white-space: nowrap;
 }
 
-.dish__type__name__input {
+.form_input {
     font-family: "Cormorant Garamond", serif;
     font-size: clamp(16px, 2vw, 21px);
     width: 100%;
@@ -51,20 +147,24 @@
     opacity: 0;
     filter: blur(10px);
     transform: translate3d(15px, 0, 0);
+    border-bottom: 1px solid rgba(238, 237, 233, 0.3);
+}
+
+.last__input {
+    margin-bottom: 5vh;
 }
 
 .form__button {
     font-family: "Cormorant Garamond", serif;
     font-style: italic;
-    font-size: clamp(18px, 2vw, 23px);
+    font-size: clamp(18px, 2vw, 25px);
     font-weight: 500;
     color: var(--back-color);
     background-color: var(--primary-color);
 }
 
-.dish__type__name__input:hover,
-.dish__type__name__input:focus {
-    border: none;
+.form_input:hover,
+.form_input:focus {
     outline: none;
 }
 

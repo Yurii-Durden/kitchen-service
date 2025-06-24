@@ -8,6 +8,17 @@ from kitchenflow.models import Cook, Dish, DishType
 
 
 class CookCreationForm(UserCreationForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.update({'class': 'form_input'})
+        self.fields['first_name'].widget.attrs.update({'class': 'form_input'})
+        self.fields['last_name'].widget.attrs.update({'class': 'form_input'})
+        self.fields['years_of_experience'].widget.attrs.update({'class': 'years_of_experience_input'})
+        self.fields['is_chef'].widget.attrs.update({'class': 'is_chef_input'})
+        self.fields['password1'].widget.attrs.update({'class': 'form_input password1_input'})
+        self.fields['password2'].widget.attrs.update({'class': 'form_input password2_input'})
+
+
     class Meta(UserCreationForm.Meta):
         model = Cook
         fields = UserCreationForm.Meta.fields + (
@@ -31,7 +42,7 @@ class CookPersonalInfoUpdateForm(ModelForm):
 class DishTypeCreatingForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['name'].widget.attrs.update({'class': 'dish__type__name__input'})
+        self.fields['name'].widget.attrs.update({'class': 'form_input'})
 
     class Meta:
         model = DishType
