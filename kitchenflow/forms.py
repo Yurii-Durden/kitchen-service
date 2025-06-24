@@ -10,6 +10,7 @@ from kitchenflow.models import Cook, Dish, DishType
 class CookCreationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
         self.fields['username'].widget.attrs.update({'class': 'form_input'})
         self.fields['first_name'].widget.attrs.update({'class': 'form_input'})
         self.fields['last_name'].widget.attrs.update({'class': 'form_input'})
@@ -17,7 +18,6 @@ class CookCreationForm(UserCreationForm):
         self.fields['is_chef'].widget.attrs.update({'class': 'is_chef_input'})
         self.fields['password1'].widget.attrs.update({'class': 'form_input password1_input'})
         self.fields['password2'].widget.attrs.update({'class': 'form_input password2_input'})
-
 
     class Meta(UserCreationForm.Meta):
         model = Cook
@@ -27,6 +27,53 @@ class CookCreationForm(UserCreationForm):
             "years_of_experience",
             "is_chef",
         )
+
+    def clean_username(self):
+        username = self.cleaned_data.get("username")
+        if not username:
+            raise forms.ValidationError("Username is required")
+        if len(username) < 3:
+            raise forms.ValidationError("Username must be at least 3 characters long")
+        return username
+
+    def clean_first_name(self):
+        first_name = self.cleaned_data.get("first_name")
+        if not first_name:
+            raise forms.ValidationError("First name is required")
+        return first_name
+
+    def clean_last_name(self):
+        last_name = self.cleaned_data.get("last_name")
+        if not last_name:
+            raise forms.ValidationError("Last name is required")
+        return last_name
+
+    def clean_years_of_experience(self):
+        years = self.cleaned_data.get("years_of_experience")
+        if years is None:
+            raise forms.ValidationError("Years of experience is required")
+        if years < 0:
+            raise forms.ValidationError("Experience cannot be negative")
+        if years > 70:
+            raise forms.ValidationError("Experience is unrealistically high")
+        return years
+
+    def clean_password1(self):
+        password = self.cleaned_data.get("password1")
+        if not password:
+            raise forms.ValidationError("Password is required")
+        if len(password) < 8:
+            raise forms.ValidationError("Password must be at least 8 characters long")
+        return password
+
+    def clean_password2(self):
+        password1 = self.cleaned_data.get("password1")
+        password2 = self.cleaned_data.get("password2")
+        if not password2:
+            raise forms.ValidationError("Please confirm your password")
+        if password1 and password2 and password1 != password2:
+            raise forms.ValidationError("Passwords do not match")
+        return password2
 
 
 class CookPersonalInfoUpdateForm(ModelForm):
