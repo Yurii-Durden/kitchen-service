@@ -190,22 +190,68 @@ class DishTypeCreatingForm(ModelForm):
 
 
 class DishCreatingForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['name'].widget.attrs.update({'class': 'form_input'})
+        self.fields['price'].widget.attrs.update({'class': 'form_input price_input'})
+        self.fields['description'].widget.attrs.update({
+            'class': 'form_input',
+            'wrap': 'soft',
+            'rows': 10,
+        })
+        self.fields['dish_type'].widget.attrs.update({'class': 'dish__check'})
+        self.fields['cooks'].widget.attrs.update({'class': 'cooks__multi'})
+
     cooks = forms.ModelMultipleChoiceField(
         queryset=get_user_model().objects.all(),
         widget=forms.CheckboxSelectMultiple,
     )
 
+    dish_type = forms.Select(attrs={'class': 'custom__select'})
+
     class Meta:
         model = Dish
-        fields = "__all__"
+        fields = (
+            "name",
+            "price",
+            "description",
+            "dish_type",
+            "cooks",
+        )
+
+    def clean_name(self):
+        name = self.cleaned_data.get("name")
+        if not name:
+            raise forms.ValidationError("Name is required")
+        if len(name.strip()) < 3:
+            raise forms.ValidationError("Name must be at least 3 characters")
+        return name
+
+    def clean_price(self):
+        price = self.cleaned_data.get("price")
+        if price is None:
+            raise forms.ValidationError("Price is required")
+        if price < 0:
+            raise forms.ValidationError("Price cannot be negative")
+        if price > 10000:
+            raise forms.ValidationError("Price is unrealistically high")
+        return price
 
     def clean_description(self):
         price = self.cleaned_data.get("price")
         description = self.cleaned_data.get("description")
 
-        if price >= 100 and not description:
-            raise forms.ValidationError("Description is required for expensive dishes.")
+        if price and price >= 100 and not description:
+            raise forms.ValidationError("Description is required for expensive dishes")
+        if description and len(description.strip()) < 10:
+            raise forms.ValidationError("Description must be at least 10 characters")
         return description
+
+    def clean_dish_type(self):
+        dish_type = self.cleaned_data.get("dish_type")
+        if not dish_type:
+            raise forms.ValidationError("Dish type is required")
+        return dish_type
 
 
 class CookSearchForm(forms.Form):

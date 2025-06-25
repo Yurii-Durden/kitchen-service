@@ -1,6 +1,113 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block extra_styles %}
+  <link rel="stylesheet" href="{% static 'css/create_update_form.css' %}">
+{% endblock %}
+
+{% block title %}
+  <title>{{ object|yesno:"Update , Create " }}dish</title>
+{% endblock %}
 
 {% block content %}
-	<h1>{{ object|yesno:"Update ,Create " }}Dish</h1>
-  {% include "includes/form.html" %}
+  <section class="section">
+    <div class="form__body _container">
+      <div class="form__wrapper">
+        <div class="form__box">
+          <h1 class="dish__type__form__title to__opacity">
+            {% for letter in object|yesno:"Update dish,Create dish" %}{% if letter == " " %}<span class="title__letter">&nbsp;</span>{% else %}<span class="title__letter">{{ letter }}</span>{% endif %}{% endfor %}
+          </h1>
+
+          <form action="" method="post" class="dish__type__form">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+              <ul class="error__list">
+                {% for error in form.non_field_errors %}
+                  <li class="error__item another__letter">{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+
+            {% for error in form.name.errors %}
+              <div class="error__item another__letter">{{ error }}</div>
+            {% endfor %}
+
+            <div class="dish__group to__opacity">
+              <label for="{{ form.name.id_for_label }}" class="form__label another__letter"><em>{{ form.name.label }}:&nbsp;</em></label>
+              {{ form.name }}
+            </div>
+
+            {% for error in form.price.errors %}
+              <div class="error__item another__letter">{{ error }}</div>
+            {% endfor %}
+
+            <div class="dish__group to__opacity">
+              <label for="{{ form.price.id_for_label }}" class="form__label another__letter"><em>{{ form.price.label }}:&nbsp;</em></label>
+              {{ form.price }}
+            </div>
+
+            {% for error in form.description.errors %}
+              <div class="error__item another__letter">{{ error }}</div>
+            {% endfor %}
+
+            <div class="dish__group__description to__opacity">
+              <label for="{{ form.description.id_for_label }}" class="form__label another__letter"><em>{{ form.description.label }}:&nbsp;</em></label>
+              {{ form.description }}
+            </div>
+
+            {% for error in form.dish_type.errors %}
+              <div class="error__item another__letter">{{ error }}</div>
+            {% endfor %}
+
+            <div class="dish__group__selected__list">
+              <label class="form__label check__box another__letter">
+                <em>{{ form.dish_type.label }}:&nbsp;</em>
+              </label>
+              <div class="select__list__button">
+                <span class="checked__elem"><span class="selected__text">
+                  {% if object %}
+                    {{ object.dish_type }}
+                  {% else %}
+                    ---------
+                  {% endif %}
+                </span><svg class="arrow__down" width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <ul class="dish__type__list">
+                  <li class="dish__type__item" data-id="{{ choice.id }}">
+                    ---------
+                  </li>
+                  {% for choice in form.dish_type.field.queryset %}
+                    <li class="dish__type__item" data-id="{{ choice.id }}">
+                      <label>
+                        <input type="checkbox" name="dish_type" value="{{ choice.id }}" hidden>
+                        <em class="item__text">{{ choice.name }}</em>
+                      </label>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+
+            {% for error in form.cooks.errors %}
+                <div class="error__item another__letter">{{ error }}</div>
+            {% endfor %}
+
+            <div class="dish__group__cook to__opacity">
+              <label for="{{ form.cooks.id_for_label }}" class="form__label another__letter"><em>{{ form.cooks.label }}:&nbsp;</em></label>
+              {{ form.cooks }}
+            </div>
+
+            <button type="submit" class="form__button to__opacity">
+              {% for button_letter in object|yesno:'Update,Create' %}<span class="another__letter">{{ button_letter }}</span>{% endfor %}
+            </button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block extra_scripts %}
+  <script src="{% static 'js/form_anim.js' %}"></script>
 {% endblock %}

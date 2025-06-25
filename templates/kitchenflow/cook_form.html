@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_styles %}
-  <link rel="stylesheet" href="{% static 'css/dish_type_form.css' %}">
+  <link rel="stylesheet" href="{% static 'css/create_update_form.css' %}">
 {% endblock %}
 
 {% block title %}
@@ -29,60 +29,67 @@
               </ul>
             {% endif %}
 
+            {% for error in form.username.errors %}
+              <div class="error__item another__letter">{{ error }}</div>
+            {% endfor %}
+
             <div class="form__group__cook">
               <label for="{{ form.username.id_for_label }}" class="form__label another__letter"><em>{{ form.username.label }}:&nbsp;</em></label>
               {{ form.username }}
-              {% for error in form.username.errors %}
-                <div class="error__item another__letter">{{ error }}</div>
-              {% endfor %}
             </div>
+
+            {% for error in form.first_name.errors %}
+              <div class="error__item another__letter">{{ error }}</div>
+            {% endfor %}
 
             <div class="form__group__cook">
               <label for="{{ form.first_name.id_for_label }}" class="form__label another__letter"><em>{{ form.first_name.label }}:&nbsp;</em></label>
               {{ form.first_name }}
-              {% for error in form.first_name.errors %}
-                <div class="error__item another__letter">{{ error }}</div>
-              {% endfor %}
             </div>
+
+            {% for error in form.last_name.errors %}
+              <div class="error__item another__letter">{{ error }}</div>
+            {% endfor %}
 
             <div class="form__group__cook">
               <label for="{{ form.last_name.id_for_label }}" class="form__label another__letter"><em>{{ form.last_name.label }}:&nbsp;</em></label>
               {{ form.last_name }}
-              {% for error in form.last_name.errors %}
-                <div class="error__item another__letter">{{ error }}</div>
-              {% endfor %}
             </div>
+
+            {% for error in form.years_of_experience.errors %}
+              <div class="error__item another__letter">{{ error }}</div>
+            {% endfor %}
 
             <div class="form__group__cook">
               <label for="{{ form.years_of_experience.id_for_label }}" class="form__label another__letter"><em>{{ form.years_of_experience.label }}:&nbsp;</em></label>
               {{ form.years_of_experience }}
-              {% for error in form.years_of_experience.errors %}
-                <div class="error__item another__letter">{{ error }}</div>
-              {% endfor %}
             </div>
+
+            {% for error in form.is_chef.errors %}
+              <div class="error__item another__letter">{{ error }}</div>
+            {% endfor %}
 
             <div class="form__group__cook">
               <label for="{{ form.is_chef.id_for_label }}" class="form__label another__letter"><em>{{ form.is_chef.label }}&nbsp;-&nbsp;</em></label>
               {{ form.is_chef }}
-              {% for error in form.is_chef.errors %}
-                <div class="error__item another__letter">{{ error }}</div>
-              {% endfor %}
             </div>
+
+            {% for error in form.password1.errors %}
+              <div class="error__item another__letter">{{ error }}</div>
+            {% endfor %}
 
             <div class="form__group__cook">
               <label for="{{ form.password1.id_for_label }}" class="form__label another__letter"><em>{{ form.password1.label }}:&nbsp;</em></label>
               {{ form.password1 }}
-              {% for error in form.password1.errors %}
-                <div class="error__item another__letter">{{ error }}</div>
-              {% endfor %}
             </div>
+
+            {% for error in form.password2.errors %}
+              <div class="error__item another__letter">{{ error }}</div>
+            {% endfor %}
 
             <div class="form__group__cook last__input">
               <label for="{{ form.password2.id_for_label }}" class="form__label another__letter"><em>{{ form.password2.label }}:&nbsp;</em></label>
               {{ form.password2 }}
-              {% for error in form.password2.errors %}
-                <div class="error__item another__letter">{{ error }}</div>
-              {% endfor %}
             </div>
 
             <button type="submit" class="form__button">
