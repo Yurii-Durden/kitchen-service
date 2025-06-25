@@ -21,7 +21,7 @@ class Cook(AbstractUser):
         return (f""
                 f"{self.first_name} {self.last_name} - "
                 f"{self.username} "
-                f"({self.years_of_experience} years_of_experience)"
+                # f"({self.years_of_experience} years_of_experience)"
             )
 
 
@@ -55,3 +55,8 @@ class Dish(models.Model):
 
     def __str__(self) -> str:
         return f"{self.name} — {self.dish_type}"
+
+    def save(self, *args, **kwargs):
+        if self.name:
+            self.name = self.name.title()
+        super().save(*args, **kwargs)
