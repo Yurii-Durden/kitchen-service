@@ -185,6 +185,7 @@
 
 .fade__serene,
 .elise {
+  display: inline-block;
   opacity: 0;
   filter: blur(10px);
   transform: translate3d(15px, 0, 0);

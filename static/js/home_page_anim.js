@@ -94,6 +94,7 @@ ScrollTrigger.matchMedia({
   }
 });
 
+//load page anim
 window.addEventListener("DOMContentLoaded", () => {
   const sereneLetters = document.querySelectorAll(".fade__serene");
   const eliseText = document.querySelectorAll(".elise");
