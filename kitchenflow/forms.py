@@ -261,7 +261,7 @@ class CookSearchForm(forms.Form):
         required=False,
         widget=forms.TextInput(attrs={
             "placeholder": "search by username",
-            "class": "search__input",
+            "class": "search__input hover__elem",
             "autocomplete": "off",
         })
     )
@@ -273,7 +273,7 @@ class DishSearchForm(forms.Form):
         required=False,
         widget=forms.TextInput(attrs={
             "placeholder": "search by dish name",
-            "class": "search__input",
+            "class": "search__input hover__elem",
             "autocomplete": "off",
         })
     )
@@ -285,7 +285,7 @@ class DishTypeSearchForm(forms.Form):
         required=False,
         widget=forms.TextInput(attrs={
             "placeholder": "search by dish type name",
-            "class": "search__input",
+            "class": "search__input hover__elem",
             "autocomplete": "off",
         })
     )

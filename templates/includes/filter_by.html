@@ -1,10 +1,10 @@
 <div class="filter__by__box">
-  <p class="filter__by__text filter__buttons to__opacity">
+  <p class="filter__by__text filter__buttons to__opacity hover__elem">
     {% for letter in "filter by dish type"|make_list %}<span class="type_name_letter">{{ letter }}</span>{% endfor %}
   </p>
   <div>
     <em>
-      <a class="create__button to__opacity" href="{% url 'kitchenflow:dish-create' %}">
+      <a class="create__button to__opacity hover__elem" href="{% url 'kitchenflow:dish-create' %}">
         <span class="create__fade">C</span><span class="create__fade">r</span><span class="create__fade">e</span><span class="create__fade">a</span><span class="create__fade">t</span><span class="create__fade">e</span> <span class="create__fade">d</span><span class="create__fade">i</span><span class="create__fade">s</span><span class="create__fade">h</span>
       </a>
     </em>

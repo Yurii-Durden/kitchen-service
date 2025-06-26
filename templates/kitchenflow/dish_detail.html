@@ -37,14 +37,14 @@
 
       {% if user.is_chef %}
         <div class="button__item b__d button__item__f">
-          <a class="delete__update__button d__but" href="{% url 'kitchenflow:dish-update' dish.id %}">
+          <a class="delete__update__button d__but hover__elem" href="{% url 'kitchenflow:dish-update' dish.id %}">
             <em>
               <span class="anim__button">U</span><span class="anim__button">p</span><span class="anim__button">d</span><span class="anim__button">a</span><span class="anim__button">t</span><span class="anim__button">e</span> <span class="anim__button">d</span><span class="anim__button">i</span><span class="anim__button">s</span><span class="anim__button">h</span>
             </em>
           </a>
         </div>
         <div class="button__item b__d button__item__s">
-          <a class="delete__update__button d__but" href="{% url 'kitchenflow:dish-delete' dish.id %}">
+          <a class="delete__update__button d__but hover__elem" href="{% url 'kitchenflow:dish-delete' dish.id %}">
             <em>
               <span class="anim__button">D</span><span class="anim__button">e</span><span class="anim__button">l</span><span class="anim__button">e</span><span class="anim__button">t</span><span class="anim__button">e</span> <span class="anim__button">d</span><span class="anim__button">i</span><span class="anim__button">s</span><span class="anim__button">h</span>
             </em>
@@ -61,7 +61,7 @@
       </h3>
 
       {% if user.is_chef %}
-        <button type="button" class="add__cook__button button__item">
+        <button type="button" class="add__cook__button button__item hover__elem">
           <em>
             <span class="anim__button">A</span><span class="anim__button">d</span><span class="anim__button">d</span> <span class="anim__button">c</span><span class="anim__button">o</span><span class="anim__button">o</span><span class="anim__button">k</span>
             <span class="anim__button">
@@ -78,8 +78,8 @@
           <ul class="cooks__list">
             {% for cook in cooks %}
               {% if cook not in dish.cooks.all %}
-                <li class="cook__list__item">
-                  <a class="cook__list__link" href="{% url 'kitchenflow:remove-from-cooking' dish.id cook.id %}">
+                <li class="cook__list__item hover__list">
+                  <a class="cook__list__link hover__elem" href="{% url 'kitchenflow:remove-from-cooking' dish.id cook.id %}">
                     <span>{{ cook.first_name }} {{ cook.last_name }}</span><span class="add__cook__plus">+</span>
                   </a>
                 </li>
@@ -91,10 +91,10 @@
         {% if dish.cooks.exists %}
           <ul class="added__cooks__list">
             {% for cook in dish.cooks.all %}
-              <li class="added__cook__item">
-                <a class="added__cook__link" href="{% url 'kitchenflow:cook-detail' cook.id %}">{{ cook.first_name }} {{ cook.last_name }}</a>
+              <li class="added__cook__item hover__list">
+                <a class="added__cook__link hover__elem" href="{% url 'kitchenflow:cook-detail' cook.id %}">{{ cook.first_name }} {{ cook.last_name }}</a>
                 {% if user.is_chef %}
-                  <a class="added__cook__link remove__button" href="{% url 'kitchenflow:remove-from-cooking' dish.id cook.id %}">remove from cooking</a>
+                  <a class="added__cook__link remove__button hover__elem" href="{% url 'kitchenflow:remove-from-cooking' dish.id cook.id %}">remove from cooking</a>
                 {% endif %}
               </li>
             {% endfor %}

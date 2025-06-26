@@ -32,7 +32,7 @@
         <ul class="choose__type__list">
           <li class="choose__type__item target__block">
             <em>
-              <a class="filter__by__link to__anim__elem" href="{% url 'kitchenflow:dish-list' %}">
+              <a class="filter__by__link to__anim__elem hover__elem" href="{% url 'kitchenflow:dish-list' %}">
                 All types
               </a>
             </em>
@@ -40,7 +40,7 @@
           {% for type in dish_types %}
       	  <li class="choose__type__item target__block">
             <em>
-              <a class="filter__by__link to__anim__elem" href="{% url 'kitchenflow:dish-list' %}?type={{ type.name }}">
+              <a class="filter__by__link to__anim__elem hover__elem" href="{% url 'kitchenflow:dish-list' %}?type={{ type.name }}">
                 {{ type.name }}
               </a>
             </em>
@@ -53,7 +53,7 @@
         <ul class="data__list">
           {% for dish in dish_list %}
             <li class="swiper-slider dish__list__item target__block">
-              <a class="dish__link to__anim__elem" href="{% url 'kitchenflow:dish-detail' dish.id %}">
+              <a class="dish__link to__anim__elem hover__elem" href="{% url 'kitchenflow:dish-detail' dish.id %}">
                 <p class="dish">{{ dish.name }}</p>
                 <p class="dish__type"><em>{{ dish.dish_type }}</em></p>
               </a>

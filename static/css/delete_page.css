@@ -1,4 +1,9 @@
 /*body-form--------------------------------------*/
+#cursor {
+    background-color: var(--back-color);
+    mix-blend-mode: difference;
+}
+
 section {
     background-color: var(--primary-color);
 }

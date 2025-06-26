@@ -19,10 +19,10 @@
       <form class="delete__form" action="" method="post">
         {% csrf_token %}
 
-        <button class="delete__button d__b__button" type="submit">
+        <button class="delete__button d__b__button hover__elem" type="submit">
           <span class="button__fade">Y</span><span class="button__fade">e</span><span class="button__fade">s</span>
         </button>
-        <button class="back__button d__b__button" type="button">
+        <button class="back__button d__b__button hover__elem" type="button">
           <a class="back__link" href="{% url 'kitchenflow:dish-type-detail' object.id %}">
             <span class="button__fade">B</span><span class="button__fade">a</span><span class="button__fade">c</span><span class="button__fade">k</span><span class="button__fade"><span class="button__fade">&nbsp;</span></span><span class="button__fade">t</span><span class="button__fade">o</span><span class="button__fade">&nbsp;</span><span class="button__fade">p</span><span class="button__fade">a</span><span class="button__fade">g</span><span class="button__fade">e</span>
           </a>

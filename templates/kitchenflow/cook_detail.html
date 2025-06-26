@@ -27,7 +27,7 @@
       </p>
 
       {% if cook == user or user.is_chef %}
-        <div class="button__item button__item__f">
+        <div class="button__item button__item__f hover__elem">
           <a class="delete__update__button button__to__anim" href="{% url 'kitchenflow:cook-update' cook.id %}">
             <em>
               <span class="anim__button">U</span><span class="anim__button">p</span><span class="anim__button">d</span><span class="anim__button">a</span><span class="anim__button">t</span><span class="anim__button">e</span>
@@ -36,7 +36,7 @@
           </a>
         </div>
 
-        <div class="button__item">
+        <div class="button__item hover__elem">
           <a class="delete__update__button button__to__anim" href="{% url 'kitchenflow:cook-delete' cook.id %}">
             <em>
               <span class="anim__button">D</span><span class="anim__button">e</span><span class="anim__button">l</span><span class="anim__button">e</span><span class="anim__button">t</span><span class="anim__button">e</span>
@@ -57,8 +57,8 @@
 
         <ul class="personal__list">
           {% for dish in page_obj %}
-            <li class="list__item">
-              <a class="list__link" href="{% url 'kitchenflow:dish-detail' dish.id %}">{{ dish }}</a>
+            <li class="list__item hover__list">
+              <a class="list__link hover__elem" href="{% url 'kitchenflow:dish-detail' dish.id %}">{{ dish }}</a>
             </li>
           {% endfor %}
         </ul>

@@ -14,7 +14,7 @@
       {% if page_obj.has_previous %}
         <li class="pagination__item">
           <em>
-            <a href="?{% query_transform request page=page_obj.previous_page_number %}" class="page__link">
+            <a href="?{% query_transform request page=page_obj.previous_page_number %}" class="page__link hover__elem">
               <span class="fade__pag fade__p">p</span><span class="fade__pag fade__p">r</span><span class="fade__pag fade__p">e</span><span class="fade__pag fade__p">v</span>
             </a>
           </em>
@@ -30,7 +30,7 @@
       {% if page_obj.has_next %}
         <li class="pagination__item">
           <em>
-            <a href="?{% query_transform request page=page_obj.next_page_number %}" class="page__link">
+            <a href="?{% query_transform request page=page_obj.next_page_number %}" class="page__link hover__elem">
               <span class="fade__pag fade__p">n</span><span class="fade__pag fade__p">e</span><span class="fade__pag fade__p">x</span><span class="fade__pag fade__p">t</span>
             </a>
           </em>

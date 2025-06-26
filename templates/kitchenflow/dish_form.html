@@ -64,7 +64,7 @@
               <label class="form__label check__box another__letter">
                 <em>{{ form.dish_type.label }}:&nbsp;</em>
               </label>
-              <div class="select__list__button">
+              <div class="select__list__button hover__elem">
                 <span class="checked__elem"><span class="selected__text">
                   {% if object %}
                     {{ object.dish_type }}
@@ -97,7 +97,7 @@
               {{ form.cooks }}
             </div>
 
-            <button type="submit" class="form__button to__opacity">
+            <button type="submit" class="form__button to__opacity hover__elem">
               {% for button_letter in object|yesno:'Update,Create' %}<span class="another__letter">{{ button_letter }}</span>{% endfor %}
             </button>
           </form>

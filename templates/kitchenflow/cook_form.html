@@ -92,7 +92,7 @@
               {{ form.password2 }}
             </div>
 
-            <button type="submit" class="form__button">
+            <button type="submit" class="form__button hover__elem">
               {% for button_letter in object|yesno:'Update,Create' %}<span class="another__letter">{{ button_letter }}</span>{% endfor %}
             </button>
           </form>

@@ -165,30 +165,53 @@ loginBoxes.forEach((box) => {
 });
 
 //cursor
-// body.addEventListener("mousemove", e => {
-//   mouseCoords(e)
-// })
-//
-// const cursor = document.getElementById("cursor")
-//
-// let mouseX = 0, mouseY = 0, posX = 0, posY = 0
-//
-// function mouseCoords(e) {
-//   mouseX = e.pageX
-//   mouseY = e.pageY
-// }
-//
-// gsap.to({}, .01, {
-//     repeat: -1,
-//     onRepeat: () => {
-//       gsap.set(cursor, {
-//         css: {
-//           left: mouseX - 23,
-//           top: mouseY - 23
-//         }
-//       })
-//     }
-//   }
-// )
+const cursor = document.getElementById("cursor");
+
+let mouseX = 0, mouseY = 0;
+let posX = 0, posY = 0;
+
+document.addEventListener("mousemove", e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+gsap.ticker.add(() => {
+  posX += (mouseX - posX) * 0.15;
+  posY += (mouseY - posY) * 0.15;
+
+  gsap.set(cursor, {
+    x: posX,
+    y: posY
+  });
+});
+
+//cursor hover
+const scaleTargets = [
+  ".hover__elem",
+  ".dish__group__cook label",
+  "input",
+  "textarea"
+];
+
+scaleTargets.forEach(selector => {
+  document.querySelectorAll(selector).forEach(elem => {
+    elem.addEventListener("mouseenter", () => {
+      gsap.to(cursor, { scale: 0.65, duration: 0.3, ease: "power2.out" });
+    });
+    elem.addEventListener("mouseleave", () => {
+      gsap.to(cursor, { scale: 1, duration: 0.3, ease: "power2.out" });
+    });
+  });
+});
+
+document.querySelectorAll(".hover__list").forEach(elem => {
+  elem.addEventListener("mouseenter", () => {
+    cursor.classList.add("cursor__list__hover");
+  });
+  elem.addEventListener("mouseleave", () => {
+    cursor.classList.remove("cursor__list__hover");
+  });
+});
+
 
 

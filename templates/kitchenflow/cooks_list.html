@@ -24,9 +24,8 @@
         {% include "includes/search_form.html" %}
         {% if user.is_chef %}
           <div>
-            {% include 'includes/cursor.html' %}
             <em>
-              <a class="create__button" href="{% url 'kitchenflow:cook-create' %}">
+              <a class="create__button hover__elem" href="{% url 'kitchenflow:cook-create' %}">
                 <span class="create__fade">C</span><span class="create__fade">r</span><span class="create__fade">e</span><span class="create__fade">a</span><span class="create__fade">t</span><span class="create__fade">e</span> <span class="create__fade">c</span><span class="create__fade">o</span><span class="create__fade">o</span><span class="create__fade">k</span>
               </a>
             </em>
@@ -44,7 +43,7 @@
                   <span class="first__name fade__f__n">{{ cook.first_name }}</span> <span class="second__name">{{ cook.last_name }}</span>
                 </p>
                 <em>
-                  <a class="username" href="{% url 'kitchenflow:cook-detail' cook.id %}">
+                  <a class="username hover__elem" href="{% url 'kitchenflow:cook-detail' cook.id %}">
                     {% for user_letter in cook.username %}<span class="user__letters">{{ user_letter }}</span>{% endfor %}
                   </a>
                 </em>
