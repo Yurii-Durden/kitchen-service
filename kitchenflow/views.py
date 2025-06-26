@@ -1,11 +1,10 @@
 from django.contrib.auth import logout, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator
 from django.db.models import Prefetch
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 
@@ -20,6 +19,7 @@ from kitchenflow.forms import (
     DishTypeSearchForm
 )
 
+
 @login_required
 def index(request) -> HttpResponse:
     num_visits = request.session.get("num_visits", 0) + 1
@@ -32,7 +32,7 @@ def index(request) -> HttpResponse:
         "is_home": True,
     }
 
-    return render(request,"kitchenflow/home_page.html", context=context)
+    return render(request, "kitchenflow/home_page.html", context=context)
 
 
 @login_required
@@ -70,13 +70,19 @@ class CookListView(LoginRequiredMixin, generic.ListView):
         return queryset
 
 
-
-class CookDetailView(LoginRequiredMixin, generic.DetailView):
+class CookDetailView(
+    LoginRequiredMixin,
+    generic.DetailView
+):
     model = Cook
 
     def get_queryset(self):
         return Cook.objects.prefetch_related(
-            Prefetch("dishes", queryset=Dish.objects.select_related("dish_type").order_by("dish_type__name", "name"))
+            Prefetch(
+                "dishes",
+                queryset=Dish.objects.select_related(
+                    "dish_type"
+                ).order_by("dish_type__name", "name"))
         )
 
     def get_context_data(self, **kwargs):
@@ -133,12 +139,12 @@ class DishListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 5
 
     def get_context_data(
-        self, *, object_list = ..., **kwargs
+        self, *, object_list=..., **kwargs
     ):
         context = super(DishListView, self).get_context_data(**kwargs)
         name = self.request.GET.get("name")
         context["search_form"] = DishSearchForm(
-            initial={"name":name}
+            initial={"name": name}
         )
         context["dish_types"] = DishType.objects.all()
         context["dish_page"] = "dish_page"
@@ -152,7 +158,9 @@ class DishListView(LoginRequiredMixin, generic.ListView):
         else:
             cook = getattr(user, "cook", None)
             if cook:
-                queryset = Dish.objects.select_related("dish_type").filter(cooks=cook)
+                queryset = Dish.objects.select_related(
+                    "dish_type"
+                ).filter(cooks=cook)
             else:
                 queryset = Dish.objects.none()
 
@@ -195,7 +203,7 @@ class DishTypeListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 5
 
     def get_context_data(
-        self, *, object_list = ..., **kwargs
+        self, *, object_list=..., **kwargs
     ):
         context = super(DishTypeListView, self).get_context_data(**kwargs)
         name = self.request.GET.get("name")
@@ -224,7 +232,12 @@ class DishTypeDetailView(LoginRequiredMixin, generic.DetailView):
 
     def get_queryset(self):
         return DishType.objects.prefetch_related(
-            Prefetch("dishes", queryset=Dish.objects.select_related("dish_type").order_by("dish_type__name", "name"))
+            Prefetch(
+                "dishes",
+                queryset=Dish.objects.select_related(
+                    "dish_type"
+                ).order_by("dish_type__name", "name")
+            )
         )
 
     def get_context_data(self, **kwargs):
@@ -263,11 +276,17 @@ class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy("kitchenflow:dish-type-list")
 
 
-def remove_from_cooking(request, dish_pk: int, cook_pk: int) -> HttpResponseRedirect:
+def remove_from_cooking(
+        request,
+        dish_pk: int,
+        cook_pk: int
+) -> HttpResponseRedirect:
     cook = get_user_model().objects.get(id=cook_pk)
     dish = Dish.objects.get(id=dish_pk)
     if cook in dish.cooks.all():
         dish.cooks.remove(cook)
     else:
         dish.cooks.add(cook)
-    return HttpResponseRedirect(reverse_lazy("kitchenflow:dish-detail", args=[dish_pk]))
+    return HttpResponseRedirect(
+        reverse_lazy("kitchenflow:dish-detail", args=[dish_pk])
+    )

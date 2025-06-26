@@ -9,6 +9,7 @@ from kitchenflow.models import Dish, DishType
 
 DISH_TYPE_LIST_URL = reverse("kitchenflow:dish-type-list")
 
+
 class PublicDishTypeListViewTest(TestCase):
     def test_public_access_to_manufacturer_list(self):
         DishType.objects.create(name="test1")
@@ -16,6 +17,7 @@ class PublicDishTypeListViewTest(TestCase):
 
         response = self.client.get(DISH_TYPE_LIST_URL)
         self.assertNotEquals(response.status_code, 200)
+
 
 class PrivateDishTypeListViewTest(TestCase):
     def setUp(self):
@@ -37,7 +39,10 @@ class PrivateDishTypeListViewTest(TestCase):
             list(response.context["dish_type_list"]),
             list(dish_types)
         )
-        self.assertTemplateUsed(response, "kitchenflow/type_of_dishes_list.html")
+        self.assertTemplateUsed(
+            response,
+            "kitchenflow/type_of_dishes_list.html"
+        )
 
 
 class SearchTest(TestCase):
@@ -90,12 +95,12 @@ class SearchTest(TestCase):
 
     def test_search_for_dish_list(self):
         dish_type = DishType.objects.create(name="test_type_name")
-        cook = get_user_model().objects.create(username="test_name_user")
         Dish.objects.create(name="test1", price=10, dish_type=dish_type)
         Dish.objects.create(name="dish2", price=10, dish_type=dish_type)
         Dish.objects.create(name="test3", price=10, dish_type=dish_type)
 
-        full_url = f"{reverse('kitchenflow:dish-list')}?{urlencode({'name':'test'})}"
+        full_url = (f"{reverse('kitchenflow:dish-list')}"
+                    f"?{urlencode({'name':'test'})}")
         response = self.client.get(full_url)
 
         self.assertEquals(

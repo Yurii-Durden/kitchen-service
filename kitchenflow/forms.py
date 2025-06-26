@@ -2,7 +2,6 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.hashers import make_password
-from django.core.validators import MinValueValidator, MaxValueValidator
 from django.forms.models import ModelForm
 
 from kitchenflow.models import Cook, Dish, DishType
@@ -15,10 +14,16 @@ class CookCreationForm(UserCreationForm):
         self.fields['username'].widget.attrs.update({'class': 'form_input'})
         self.fields['first_name'].widget.attrs.update({'class': 'form_input'})
         self.fields['last_name'].widget.attrs.update({'class': 'form_input'})
-        self.fields['years_of_experience'].widget.attrs.update({'class': 'years_of_experience_input'})
+        self.fields['years_of_experience'].widget.attrs.update({
+            'class': 'years_of_experience_input'
+        })
         self.fields['is_chef'].widget.attrs.update({'class': 'is_chef_input'})
-        self.fields['password1'].widget.attrs.update({'class': 'form_input password1_input'})
-        self.fields['password2'].widget.attrs.update({'class': 'form_input password2_input'})
+        self.fields['password1'].widget.attrs.update({
+            'class': 'form_input password1_input'
+        })
+        self.fields['password2'].widget.attrs.update({
+            'class': 'form_input password2_input'
+        })
 
     class Meta(UserCreationForm.Meta):
         model = Cook
@@ -34,7 +39,9 @@ class CookCreationForm(UserCreationForm):
         if not username:
             raise forms.ValidationError("Username is required")
         if len(username) < 3:
-            raise forms.ValidationError("Username must be at least 3 characters long")
+            raise forms.ValidationError(
+                "Username must be at least 3 characters long"
+            )
         return username
 
     def clean_first_name(self):
@@ -64,7 +71,9 @@ class CookCreationForm(UserCreationForm):
         if not password:
             raise forms.ValidationError("Password is required")
         if len(password) < 8:
-            raise forms.ValidationError("Password must be at least 8 characters long")
+            raise forms.ValidationError(
+                "Password must be at least 8 characters long"
+            )
         return password
 
     def clean_password2(self):
@@ -80,12 +89,16 @@ class CookCreationForm(UserCreationForm):
 class CookPersonalInfoUpdateForm(ModelForm):
     password1 = forms.CharField(
         label="New password",
-        widget=forms.PasswordInput(attrs={"class": "form_input password1_input"}),
+        widget=forms.PasswordInput(attrs={
+            "class": "form_input password1_input"
+        }),
         required=False
     )
     password2 = forms.CharField(
         label="Confirm new password",
-        widget=forms.PasswordInput(attrs={"class": "form_input password2_input"}),
+        widget=forms.PasswordInput(attrs={
+            "class": "form_input password2_input"
+        }),
         required=False
     )
 
@@ -94,7 +107,9 @@ class CookPersonalInfoUpdateForm(ModelForm):
         self.fields['username'].widget.attrs.update({'class': 'form_input'})
         self.fields['first_name'].widget.attrs.update({'class': 'form_input'})
         self.fields['last_name'].widget.attrs.update({'class': 'form_input'})
-        self.fields['years_of_experience'].widget.attrs.update({'class': 'years_of_experience_input'})
+        self.fields['years_of_experience'].widget.attrs.update({
+            'class': 'years_of_experience_input'
+        })
         self.fields['is_chef'].widget.attrs.update({'class': 'is_chef_input'})
 
     class Meta:
@@ -120,7 +135,9 @@ class CookPersonalInfoUpdateForm(ModelForm):
             if password1 != password2:
                 raise forms.ValidationError("Passwords do not match")
             if len(password1) < 8:
-                raise forms.ValidationError("Password must be at least 8 characters long")
+                raise forms.ValidationError(
+                    "Password must be at least 8 characters long"
+                )
 
         return cleaned_data
 
@@ -138,7 +155,9 @@ class CookPersonalInfoUpdateForm(ModelForm):
         if not username:
             raise forms.ValidationError("Username is required")
         if len(username) < 3:
-            raise forms.ValidationError("Username must be at least 3 characters long")
+            raise forms.ValidationError(
+                "Username must be at least 3 characters long"
+            )
         return username
 
     def clean_first_name(self):
@@ -164,7 +183,6 @@ class CookPersonalInfoUpdateForm(ModelForm):
         return years
 
 
-
 class DishTypeCreatingForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -178,13 +196,17 @@ class DishTypeCreatingForm(ModelForm):
         name = self.cleaned_data['name'].strip()
 
         if len(name) < 2:
-            raise forms.ValidationError("The name must be at least 2 characters long")
+            raise forms.ValidationError(
+                "The name must be at least 2 characters long"
+            )
 
         if any(letter.isdigit() for letter in name):
             raise forms.ValidationError("The name should not contain numbers")
 
         if DishType.objects.filter(name__iexact=name).exists():
-            raise forms.ValidationError("A dish type with this name already exists")
+            raise forms.ValidationError(
+                "A dish type with this name already exists"
+            )
 
         return name
 
@@ -193,7 +215,9 @@ class DishCreatingForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['name'].widget.attrs.update({'class': 'form_input'})
-        self.fields['price'].widget.attrs.update({'class': 'form_input price_input'})
+        self.fields['price'].widget.attrs.update({
+            'class': 'form_input price_input'
+        })
         self.fields['description'].widget.attrs.update({
             'class': 'form_input',
             'wrap': 'soft',
@@ -242,9 +266,13 @@ class DishCreatingForm(ModelForm):
         description = self.cleaned_data.get("description")
 
         if price and price >= 100 and not description:
-            raise forms.ValidationError("Description is required for expensive dishes")
+            raise forms.ValidationError(
+                "Description is required for expensive dishes"
+            )
         if description and len(description.strip()) < 10:
-            raise forms.ValidationError("Description must be at least 10 characters")
+            raise forms.ValidationError(
+                "Description must be at least 10 characters"
+            )
         return description
 
     def clean_dish_type(self):
@@ -266,6 +294,7 @@ class CookSearchForm(forms.Form):
         })
     )
 
+
 class DishSearchForm(forms.Form):
     name = forms.CharField(
         max_length=255,
@@ -277,6 +306,7 @@ class DishSearchForm(forms.Form):
             "autocomplete": "off",
         })
     )
+
 
 class DishTypeSearchForm(forms.Form):
     name = forms.CharField(

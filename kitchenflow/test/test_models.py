@@ -1,5 +1,4 @@
-from django.contrib.auth import get_user, get_user_model
-from django.template.defaultfilters import first
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 
 from kitchenflow.models import Dish, DishType
@@ -28,7 +27,7 @@ class TestModels(TestCase):
             )
             self.assertEquals(str(dish), f"{dish.name} - {dish.price}$")
 
-        def test_str_method_for_dish_type_model_and_if_first_letter_in_uppercase(self):
+        def test_str_method_for_dish_type_model_and_if_first_letter_in_uppercase(self):  # noqa: E501
             dish_type = DishType.objects.create(name="test_type".title())
             self.assertEquals(str(dish_type), dish_type.name)
 

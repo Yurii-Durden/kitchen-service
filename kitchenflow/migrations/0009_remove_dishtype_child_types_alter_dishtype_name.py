@@ -6,7 +6,10 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("kitchenflow", "0008_remove_dishtype_parent_dishtype_child_types_and_more"),
+        (
+            "kitchenflow",
+            "0008_remove_dishtype_parent_dishtype_child_types_and_more"
+        ),
     ]
 
     operations = [

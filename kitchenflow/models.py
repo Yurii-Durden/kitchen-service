@@ -12,17 +12,16 @@ class Cook(AbstractUser):
     )
     is_chef = models.BooleanField(default=False)
 
-
     class Meta:
         verbose_name = "cook"
         verbose_name_plural = "cooks"
 
     def __str__(self) -> str:
-        return (f""
-                f"{self.first_name} {self.last_name} - "
-                f"{self.username} "
-                # f"({self.years_of_experience} years_of_experience)"
-            )
+        return (
+            f""
+            f"{self.first_name} {self.last_name} - "
+            f"{self.username} "
+        )
 
 
 class DishType(models.Model):
@@ -47,7 +46,11 @@ class Dish(models.Model):
         validators=[MinValueValidator(1)]
     )
     description = models.TextField(blank=True, null=True)
-    dish_type = models.ForeignKey(DishType, on_delete=models.CASCADE, related_name="dishes")
+    dish_type = models.ForeignKey(
+        DishType,
+        on_delete=models.CASCADE,
+        related_name="dishes"
+    )
     cooks = models.ManyToManyField(Cook, related_name="dishes")
 
     class Meta:
