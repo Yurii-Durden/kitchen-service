@@ -164,3 +164,31 @@ loginBoxes.forEach((box) => {
   });
 });
 
+//cursor
+// body.addEventListener("mousemove", e => {
+//   mouseCoords(e)
+// })
+//
+// const cursor = document.getElementById("cursor")
+//
+// let mouseX = 0, mouseY = 0, posX = 0, posY = 0
+//
+// function mouseCoords(e) {
+//   mouseX = e.pageX
+//   mouseY = e.pageY
+// }
+//
+// gsap.to({}, .01, {
+//     repeat: -1,
+//     onRepeat: () => {
+//       gsap.set(cursor, {
+//         css: {
+//           left: mouseX - 23,
+//           top: mouseY - 23
+//         }
+//       })
+//     }
+//   }
+// )
+
+

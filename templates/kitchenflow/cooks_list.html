@@ -24,6 +24,7 @@
         {% include "includes/search_form.html" %}
         {% if user.is_chef %}
           <div>
+            {% include 'includes/cursor.html' %}
             <em>
               <a class="create__button" href="{% url 'kitchenflow:cook-create' %}">
                 <span class="create__fade">C</span><span class="create__fade">r</span><span class="create__fade">e</span><span class="create__fade">a</span><span class="create__fade">t</span><span class="create__fade">e</span> <span class="create__fade">c</span><span class="create__fade">o</span><span class="create__fade">o</span><span class="create__fade">k</span>
