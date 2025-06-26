@@ -62,10 +62,6 @@ input:-webkit-autofill {
     border-bottom: 1px solid rgba(238, 237, 233, 0.3);
 }
 
-.last__input {
-    margin-bottom: 6vh;
-}
-
 .form__button {
     font-family: "Cormorant Garamond", serif;
     font-style: italic;
@@ -94,6 +90,11 @@ input:-webkit-autofill {
     align-items: center;
     margin-bottom: 4vh;
 }
+
+.last__input {
+    margin-bottom: 6vh;
+}
+
 
 .years_of_experience_input {
     font-size: clamp(16px, 2vw, 21px);
