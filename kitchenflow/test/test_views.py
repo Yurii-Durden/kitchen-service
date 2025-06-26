@@ -51,7 +51,7 @@ class SearchTest(TestCase):
         user = get_user_model().objects.create(
             username="test_name",
             password="test_password12345",
-            is_chef = True
+            is_chef=True
         )
         self.client.force_login(user)
 
