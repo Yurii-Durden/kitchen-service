@@ -1,23 +1,44 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  <title>Login</title>
+{% endblock %}
+
+{% block extra_styles %}
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
 
 {% block content %}
+<section class="section">
+  <div class="log__wrapper _container">
+    <div class="log__body">
+      {% if form.errors %}
+        <p class="help__text">Your username and password didn't match. Please try again</p>
+      {% endif %}
 
-{% if form.errors %}
-  <p>Your username and password didn't match. Please try again.</p>
-{% endif %}
+      <h1 class="login__title">
+        <span class="title__letter">L</span><span class="title__letter">o</span><span class="title__letter">g</span><span class="title__letter">i</span><span class="title__letter">n</span>
+      </h1>
 
-<h1>Login</h1>
+      {% if next %}
+        <p class="help__text">Please login to see this page</p>
+      {% endif %}
 
-{% if next %}
-  <p>Please login to see this page.</p>
-{% endif %}
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{ form }}
 
-<form method="post" action="{% url 'login' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
+        <button class="login__button button__anim__elem" type="submit">
+          <span class="button__fade">L</span><span class="button__fade">o</span><span class="button__fade">g</span><span class="button__fade">i</span><span class="button__fade">n</span>
+        </button>
+        <input type="hidden" name="next" value="{{ next }}"/>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}
 
-  <input type="submit" value="Login" class="btn btn-primary"/>
-  <input type="hidden" name="next" value="{{ next }}"/>
-</form>
-
+{% block extra_scripts %}
+	<script src="{% static 'js/login_anim.js' %}"></script>
 {% endblock %}

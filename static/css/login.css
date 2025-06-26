@@ -1,0 +1,105 @@
+.log__wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.log__body {
+    margin-top: 10vh;
+}
+
+.login__title {
+    text-transform: uppercase;
+    font-size: 7.0vw;
+    font-weight: 400;
+    letter-spacing: -0.25rem;
+    /*margin-bottom: 2.5vh;*/
+}
+
+.title__letter {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(10px);
+    transform: translate3d(15px, 0, 0);
+}
+
+.help__text {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(10px);
+    transform: translate3d(15px, 0, 0);
+    font-style: italic;
+    margin-bottom: 2vh;
+}
+
+.login__button {
+    display: block;
+    cursor: pointer;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: clamp(18px, 2vw, 25px);
+    font-weight: 500;
+    margin-top: 2vh;
+    color: var(--primary-color);
+    background-color: var(--back-color);
+}
+
+.button__fade {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(10px);
+    transform: translate3d(15px, 0, 0);
+}
+
+/*form---------------------------------------*/
+label {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(10px);
+    transform: translate3d(15px, 0, 0);
+    font-style: italic;
+}
+
+input {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translate3d(15px, 0, 0);
+    background-color: #eeede9;
+    font-style: italic;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(16px, 2vw, 21px);
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 0.13rem 0;
+    margin-bottom: 3vh;
+}
+
+input:-webkit-autofill {
+    background-color: var(--back-color);
+    font-style: italic;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(16px, 2vw, 21px);
+    font-weight: 500;
+    -webkit-text-fill-color: var(--primary-color);
+    );
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+input:hover,
+input:focus {
+    outline: none;
+}
+
+/*logged-out----------------------------*/
+.logged__out__body {
+    padding-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login__again__link {
+    color: var(--primary-color);
+    font-style: italic;
+    font-size: clamp(18px, 2vw, 23px);
+    font-weight: 500;
+}

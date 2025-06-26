@@ -2,9 +2,9 @@
 ScrollTrigger.matchMedia({
 
   "(min-width: 1024px)": function () {
-    const deleteButton = document.querySelectorAll(".d__b__button");
+    const loginButton = document.querySelectorAll(".button__anim__elem");
 
-    deleteButton.forEach((button) => {
+    loginButton.forEach((button) => {
       const letters = Array.from(button.querySelectorAll(".button__fade"));
 
       button.addEventListener("mouseenter", () => {
@@ -36,9 +36,11 @@ ScrollTrigger.matchMedia({
 
 //page load anim
 window.addEventListener("DOMContentLoaded", () => {
-  const titleLetters = document.querySelector(".title__letter");
+  const titleLetters = document.querySelectorAll(".title__letter");
   const buttonLetters = document.querySelectorAll(".button__fade");
-  const dangerText = document.querySelector(".danger__text");
+  const label = document.querySelectorAll("label");
+  const input = document.querySelectorAll("input");
+  const helpText = document.querySelectorAll(".help__text");
 
   gsap.to(titleLetters, {
     opacity: 1,
@@ -60,8 +62,32 @@ window.addEventListener("DOMContentLoaded", () => {
     delay: 0.3
   });
 
-  if (dangerText) {
-   gsap.to(dangerText, {
+  if (label) {
+   gsap.to(label, {
+      opacity: 1,
+      x: 0,
+      filter: "blur(0px)",
+      duration: 1.2,
+      ease: "power2.out",
+      stagger: 0.01,
+      delay: 0.3
+    });
+  }
+
+  if (input) {
+    gsap.to(input, {
+      opacity: 1,
+      x: 0,
+      filter: "blur(0px)",
+      duration: 1.2,
+      ease: "power2.out",
+      stagger: 0.01,
+      delay: 0.3
+    });
+  }
+
+  if (helpText) {
+    gsap.to(helpText, {
       opacity: 1,
       x: 0,
       filter: "blur(0px)",

@@ -3,6 +3,17 @@
     background-color: var(--primary-color);
 }
 
+input:-webkit-autofill {
+    background-color: var(--primary-color);
+    font-style: italic;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(16px, 2vw, 21px);
+    font-weight: 500;
+    -webkit-text-fill-color: var(--back-color);
+    );
+    transition: background-color 5000s ease-in-out 0s;
+}
+
 .dish__type__form__title {
     text-transform: uppercase;
     font-size: 9vw;
