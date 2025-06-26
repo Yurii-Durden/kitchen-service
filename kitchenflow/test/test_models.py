@@ -15,8 +15,7 @@ class TestModels(TestCase):
         )
         self.assertEquals(
             str(cook),
-            f"{cook.first_name} {cook.last_name} "
-            f"({cook.years_of_experience} years_of_experience)"
+            f"{cook.first_name} {cook.last_name} - {cook.username}"
         )
 
         def test_str_method_for_dish_model(self):

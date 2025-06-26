@@ -23,13 +23,14 @@ class PrivateDishTypeListViewTest(TestCase):
     def setUp(self):
         user = get_user_model().objects.create(
             username="test_name",
-            password="password_test12345"
+            password="password_test12345",
+            is_chef=True
         )
         self.client.force_login(user)
 
-    def test_private_access_to_manufacturer_list(self):
-        DishType.objects.create(name="test1")
-        DishType.objects.create(name="test2")
+    def test_private_access_to_dish_types_list(self):
+        DishType.objects.create(name="testone")
+        DishType.objects.create(name="testtwo")
 
         dish_types = DishType.objects.all()
         response = self.client.get(DISH_TYPE_LIST_URL)
@@ -49,20 +50,21 @@ class SearchTest(TestCase):
     def setUp(self):
         user = get_user_model().objects.create(
             username="test_name",
-            password="test_password12345"
+            password="test_password12345",
+            is_chef = True
         )
         self.client.force_login(user)
 
     def test_search_for_dish_type_list(self):
-        DishType.objects.create(name="name1")
-        DishType.objects.create(name="name2")
-        DishType.objects.create(name="name3")
-        query_params = {"name": "name1"}
+        DishType.objects.create(name="nameone")
+        DishType.objects.create(name="name")
+        DishType.objects.create(name="namethree")
+        query_params = {"name": "Nameone"}
 
         full_url = f"{DISH_TYPE_LIST_URL}?{urlencode(query_params)}"
         response = self.client.get(full_url)
         self.assertEquals(
-            list(DishType.objects.filter(name__icontains="name1")),
+            list(DishType.objects.filter(name__icontains="nameone")),
             list(response.context["dish_type_list"])
         )
 
@@ -89,15 +91,15 @@ class SearchTest(TestCase):
         )
         response = self.client.get(full_url)
         self.assertEquals(
-            list(get_user_model().objects.filter(username__icontains="u")[:2]),
+            list(get_user_model().objects.filter(username__icontains="u")[:3]),
             list(response.context["cooks_list"])
         )
 
     def test_search_for_dish_list(self):
         dish_type = DishType.objects.create(name="test_type_name")
-        Dish.objects.create(name="test1", price=10, dish_type=dish_type)
-        Dish.objects.create(name="dish2", price=10, dish_type=dish_type)
-        Dish.objects.create(name="test3", price=10, dish_type=dish_type)
+        Dish.objects.create(name="test", price=10, dish_type=dish_type)
+        Dish.objects.create(name="dish", price=10, dish_type=dish_type)
+        Dish.objects.create(name="testt", price=10, dish_type=dish_type)
 
         full_url = (f"{reverse('kitchenflow:dish-list')}"
                     f"?{urlencode({'name':'test'})}")
@@ -113,5 +115,5 @@ class SearchTest(TestCase):
 
         self.assertEquals(
             list(response_without_filters.context["dish_list"]),
-            list(Dish.objects.all()[:2])
+            list(Dish.objects.all()[:3])
         )

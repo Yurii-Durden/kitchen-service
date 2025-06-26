@@ -10,6 +10,7 @@ DATA_COOK = {
     "password1": "testpassword12345",
     "password2": "testpassword12345",
     "first_name": "First name",
+    'is_chef': False,
     "last_name": "Last name",
     "years_of_experience": 10
 }

@@ -20,7 +20,7 @@ class Cook(AbstractUser):
         return (
             f""
             f"{self.first_name} {self.last_name} - "
-            f"{self.username} "
+            f"{self.username}"
         )
 
 
