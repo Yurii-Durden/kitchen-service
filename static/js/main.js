@@ -212,3 +212,14 @@ document.querySelectorAll(".hover__list").forEach(elem => {
     cursor.classList.remove("cursor__list__hover");
   });
 });
+
+img = document.querySelector("img");
+
+if(img) {
+  img.addEventListener("mouseenter", () => {
+    gsap.to(cursor, { opacity: 0.3, duration: 0.3, ease: "power2.out" });
+  });
+  img.addEventListener("mouseleave", () => {
+    gsap.to(cursor, { opacity: 1, duration: 0.3, ease: "power2.out" });
+  });
+}
