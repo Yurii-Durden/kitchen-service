@@ -4,7 +4,6 @@ ScrollSmoother.create({
   content: '.content'
 });
 
-
 window.addEventListener("DOMContentLoaded", () => {
   const headerLetters = document.querySelectorAll(".fade__header");
 
@@ -213,6 +212,3 @@ document.querySelectorAll(".hover__list").forEach(elem => {
     cursor.classList.remove("cursor__list__hover");
   });
 });
-
-
-

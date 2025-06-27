@@ -304,4 +304,3 @@ ScrollTrigger.matchMedia({
     ScrollTrigger.refresh();
   }
 });
-

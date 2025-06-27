@@ -71,5 +71,4 @@ window.addEventListener("DOMContentLoaded", () => {
       delay: 0.3
     });
   }
-
 });

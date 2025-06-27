@@ -288,7 +288,6 @@ ScrollTrigger.matchMedia({
   }
 });
 
-
 //page load anim
 window.addEventListener("DOMContentLoaded", () => {
   const titleAllLetters = document.querySelectorAll(".fade__title__all");
