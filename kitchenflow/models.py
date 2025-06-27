@@ -30,7 +30,6 @@ class Cook(AbstractUser):
         super().save(*args, **kwargs)
 
 
-
 class DishType(models.Model):
     name = models.CharField(max_length=255, unique=True)
 
