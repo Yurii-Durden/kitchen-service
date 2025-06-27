@@ -27,6 +27,7 @@
     filter: blur(10px);
     transform: translate3d(15px, 0, 0);
     font-style: italic;
+    font-weight: 500;
     margin-bottom: 2vh;
 }
 
