@@ -23,6 +23,13 @@ class Cook(AbstractUser):
             f"{self.username}"
         )
 
+    def save(self, *args, **kwargs):
+        if self.first_name and self.last_name:
+            self.first_name = self.first_name.title()
+            self.last_name = self.last_name.title()
+        super().save(*args, **kwargs)
+
+
 
 class DishType(models.Model):
     name = models.CharField(max_length=255, unique=True)
