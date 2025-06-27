@@ -49,23 +49,25 @@
   </section>
 
   {% if cook.dishes.exists %}
-    <section class="section">
-      <div class="list__box _container">
-        <h3 class="second__title">
-          <span class="fade">D</span><span class="fade">i</span><span class="fade">s</span><span class="fade">h</span><span class="fade">e</span><span class="fade">s</span>
-        </h3>
+    {% if user.username == cook.username or user.is_chef %}
+      <section class="section">
+        <div class="list__box _container">
+          <h3 class="second__title">
+            <span class="fade">D</span><span class="fade">i</span><span class="fade">s</span><span class="fade">h</span><span class="fade">e</span><span class="fade">s</span>
+          </h3>
 
-        <ul class="personal__list">
-          {% for dish in page_obj %}
-            <li class="list__item hover__list">
-              <a class="list__link hover__elem" href="{% url 'kitchenflow:dish-detail' dish.id %}">{{ dish }}</a>
-            </li>
-          {% endfor %}
-        </ul>
+          <ul class="personal__list">
+            {% for dish in page_obj %}
+              <li class="list__item hover__list">
+                <a class="list__link hover__elem" href="{% url 'kitchenflow:dish-detail' dish.id %}">{{ dish }}</a>
+              </li>
+            {% endfor %}
+          </ul>
 
-        {% include 'includes/pagination.html' %}
-      </div>
-    </section>
+          {% include 'includes/pagination.html' %}
+        </div>
+      </section>
+    {% endif %}
   {% else %}
     <span class="no__text">No dishes</span>
   {% endif %}
