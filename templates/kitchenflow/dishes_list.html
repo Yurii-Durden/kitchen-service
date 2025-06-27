@@ -14,17 +14,20 @@
     {% include "includes/pagination.html" %}
     <div class="main__block _container">
         {% if not dish_list %}
-          <p class="no__data__text ">
+          <p class="no__data__text">
             <em>Here aren`t dishes</em>
           </p>
         {% endif %}
         <h1 class="page__all__title main__title ">
-          <span class="fade__title__all">A</span><span class="fade__title__all">L</span><span class="fade__title__all">L</span> <span class="fade__title__all">D</span><span class="fade__title__all">I</span><span class="fade__title__all">S</span><span class="fade__title__all">H</span><span class="fade__title__all">E</span><span class="fade__title__all">S</span>
+          {% if user.is_chef %}
+          	<span class="fade__title__all">A</span><span class="fade__title__all">L</span><span class="fade__title__all">L</span> <span class="fade__title__all">D</span><span class="fade__title__all">I</span><span class="fade__title__all">S</span><span class="fade__title__all">H</span><span class="fade__title__all">E</span><span class="fade__title__all">S</span>
+          {% else %}
+            <span class="fade__title__all">M</span><span class="fade__title__all">Y</span> <span class="fade__title__all">D</span><span class="fade__title__all">I</span><span class="fade__title__all">S</span><span class="fade__title__all">H</span><span class="fade__title__all">E</span><span class="fade__title__all">S</span>
+          {% endif %}
+
         </h1>
         {% include "includes/search_form.html" %}
         {% include "includes/filter_by.html" %}
-        {% if user.is_chef %}
-        {% endif %}
       </div>
     </section>
     <section class="scrollable__section section">

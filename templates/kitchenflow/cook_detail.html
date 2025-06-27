@@ -26,7 +26,7 @@
         <em class="load__anim__item">{{ cook.username }}</em>
       </p>
 
-      {% if cook == user or user.is_chef %}
+      {% if user.is_chef %}
         <div class="button__item button__item__f hover__elem">
           <a class="delete__update__button button__to__anim" href="{% url 'kitchenflow:cook-update' cook.id %}">
             <em>

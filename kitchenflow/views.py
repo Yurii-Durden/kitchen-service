@@ -76,18 +76,9 @@ class CookDetailView(
 ):
     model = Cook
 
-    def get_queryset(self):
-        return Cook.objects.prefetch_related(
-            Prefetch(
-                "dishes",
-                queryset=Dish.objects.select_related(
-                    "dish_type"
-                ).order_by("dish_type__name", "name"))
-        )
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        dishes = self.object.dishes.all()
+        dishes = self.object.dishes.all().select_related("dish_type")
 
         paginator = Paginator(dishes, 7)
         page_number = self.request.GET.get("page")
@@ -128,7 +119,6 @@ class DishDetailView(LoginRequiredMixin, generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["cooks"] = get_user_model().objects.all()
-
         return context
 
 
@@ -156,13 +146,9 @@ class DishListView(LoginRequiredMixin, generic.ListView):
         if user.is_chef:
             queryset = Dish.objects.select_related("dish_type")
         else:
-            cook = getattr(user, "cook", None)
-            if cook:
-                queryset = Dish.objects.select_related(
-                    "dish_type"
-                ).filter(cooks=cook)
-            else:
-                queryset = Dish.objects.none()
+            queryset = Dish.objects.select_related(
+                "dish_type"
+            ).filter(cooks=user)
 
         name = self.request.GET.get("name")
         type_param = self.request.GET.get("type")
@@ -230,19 +216,17 @@ class DishTypeDetailView(LoginRequiredMixin, generic.DetailView):
     template_name = "kitchenflow/dish_type_detail.html"
     context_object_name = "dish_type_detail"
 
-    def get_queryset(self):
-        return DishType.objects.prefetch_related(
-            Prefetch(
-                "dishes",
-                queryset=Dish.objects.select_related(
-                    "dish_type"
-                ).order_by("dish_type__name", "name")
-            )
-        )
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        dishes = Dish.objects.filter(dish_type=self.object)
+        user = self.request.user
+        if user.is_chef:
+            dishes = Dish.objects.filter(
+                dish_type=self.object
+            ).select_related("dish_type")
+        else:
+            dishes = Dish.objects.filter(
+                dish_type=self.object, cooks=user
+            ).select_related("dish_type")
 
         paginator = Paginator(dishes, 7)
         page_number = self.request.GET.get("page")

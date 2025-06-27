@@ -305,6 +305,13 @@
     text-align: center;
 }
 
+.no__data__text em {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(10px);
+    transform: translate3d(15px, 0, 0);
+}
+
 /*cook-media-----------------------------*/
 @media (max-width: 813px) {
     .pls__scroll {

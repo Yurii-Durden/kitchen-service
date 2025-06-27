@@ -57,101 +57,98 @@ gsap.to(angleDown, {
   }
 });
 
-//cook create button hover
 const createButton = document.querySelector(".create__button");
 const buttonLetters = Array.from(document.querySelectorAll(".create__fade"));
-
-createButton.addEventListener("mouseenter", () => {
-  const tl = gsap.timeline();
-
-  tl.to(buttonLetters, {
-    opacity: 0,
-    x: 15,
-    filter: "blur(5px)",
-    duration: 0.9,
-    ease: "power2.out",
-    stagger: 0.05,
-  }, 0);
-});
-
-createButton.addEventListener("mouseleave", () => {
-  const tl = gsap.timeline();
-
-  tl.to(buttonLetters, {
-    opacity: 1,
-    x: 0,
-    filter: "blur(0px)",
-    duration: 0.9,
-    ease: "power2.out",
-    stagger: 0.05,
-  }, 0);
-});
-
-// cook links hover
-const userNicks = document.querySelectorAll(".username");
-
-if (userNicks) {
-  userNicks.forEach(userNick => {
-    const userLetters = Array.from(userNick.querySelectorAll(".user__letters"));
-
-    userNick.addEventListener("mouseenter", () => {
-      gsap.to(userLetters, {
+ScrollTrigger.matchMedia({
+  "(min-width: 1024px)": function () {
+    // cook create button hover
+    createButton?.addEventListener("mouseenter", () => {
+      const tl = gsap.timeline();
+      tl.to(buttonLetters, {
         opacity: 0,
         x: 15,
         filter: "blur(5px)",
         duration: 0.9,
         ease: "power2.out",
         stagger: 0.05,
-        overwrite: "auto"
-      });
+      }, 0);
     });
 
-    userNick.addEventListener("mouseleave", () => {
-      gsap.to(userLetters, {
+    createButton?.addEventListener("mouseleave", () => {
+      const tl = gsap.timeline();
+      tl.to(buttonLetters, {
         opacity: 1,
         x: 0,
         filter: "blur(0px)",
         duration: 0.9,
         ease: "power2.out",
         stagger: 0.05,
-        overwrite: "auto"
-      });
-    });
-  });
-}
-
-//dish and dish type hover
-const dish = document.querySelectorAll(".target__block");
-
-if (dish) {
-  dish.forEach(dishName => {
-    const dishLink = dishName.querySelector(".to__anim__elem");
-
-    dishName.addEventListener("mouseenter", () => {
-      gsap.to(dishLink, {
-        opacity: 0,
-        x: 20,
-        filter: "blur(10px)",
-        duration: 1,
-        ease: "power2.out",
-        stagger: 0.1,
-        overwrite: "auto"
-      });
+      }, 0);
     });
 
-    dishName.addEventListener("mouseleave", () => {
-      gsap.to(dishLink, {
-        opacity: 1,
-        x: 0,
-        filter: "blur(0px)",
-        duration: 1,
-        ease: "power2.out",
-        stagger: 0.1,
-        overwrite: "auto"
+    // cook links hover
+    const userNicks = document.querySelectorAll(".username");
+
+    userNicks.forEach(userNick => {
+      const userLetters = Array.from(userNick.querySelectorAll(".user__letters"));
+
+      userNick.addEventListener("mouseenter", () => {
+        gsap.to(userLetters, {
+          opacity: 0,
+          x: 15,
+          filter: "blur(5px)",
+          duration: 0.9,
+          ease: "power2.out",
+          stagger: 0.05,
+          overwrite: "auto"
+        });
+      });
+
+      userNick.addEventListener("mouseleave", () => {
+        gsap.to(userLetters, {
+          opacity: 1,
+          x: 0,
+          filter: "blur(0px)",
+          duration: 0.9,
+          ease: "power2.out",
+          stagger: 0.05,
+          overwrite: "auto"
+        });
       });
     });
-  });
-}
+
+    // dish and dish type hover
+    const dish = document.querySelectorAll(".target__block");
+
+    dish.forEach(dishName => {
+      const dishLink = dishName.querySelector(".to__anim__elem");
+
+      dishName.addEventListener("mouseenter", () => {
+        gsap.to(dishLink, {
+          opacity: 0,
+          x: 20,
+          filter: "blur(10px)",
+          duration: 1,
+          ease: "power2.out",
+          stagger: 0.1,
+          overwrite: "auto"
+        });
+      });
+
+      dishName.addEventListener("mouseleave", () => {
+        gsap.to(dishLink, {
+          opacity: 1,
+          x: 0,
+          filter: "blur(0px)",
+          duration: 1,
+          ease: "power2.out",
+          stagger: 0.1,
+          overwrite: "auto"
+        });
+      });
+    });
+  }
+});
 
 //search form
 const searchInput = document.querySelector(".search__input");
@@ -256,36 +253,41 @@ function toggleMenu() {
 }
 
 const typeLinks = document.querySelectorAll(".filter__buttons");
+ScrollTrigger.matchMedia({
+  "(min-width: 1024px)": function () {
 
-if (typeLinks.length > 0) {
-  typeLinks.forEach(typeLink => {
-    const typeNameLetters = typeLink.querySelectorAll(".type_name_letter");
+    if (typeLinks.length > 0) {
+      typeLinks.forEach(typeLink => {
+        const typeNameLetters = typeLink.querySelectorAll(".type_name_letter");
 
-    typeLink.addEventListener("mouseenter", () => {
-      gsap.to(typeNameLetters, {
-        opacity: 0,
-        x: 15,
-        filter: "blur(5px)",
-        duration: 0.9,
-        ease: "power2.out",
-        stagger: 0.05,
-        overwrite: "auto"
+        typeLink.addEventListener("mouseenter", () => {
+          gsap.to(typeNameLetters, {
+            opacity: 0,
+            x: 15,
+            filter: "blur(5px)",
+            duration: 0.9,
+            ease: "power2.out",
+            stagger: 0.05,
+            overwrite: "auto"
+          });
+        });
+
+        typeLink.addEventListener("mouseleave", () => {
+          gsap.to(typeNameLetters, {
+            opacity: 1,
+            x: 0,
+            filter: "blur(0px)",
+            duration: 0.9,
+            ease: "power2.out",
+            stagger: 0.05,
+            overwrite: "auto"
+          });
+        });
       });
-    });
+    }
+  }
+});
 
-    typeLink.addEventListener("mouseleave", () => {
-      gsap.to(typeNameLetters, {
-        opacity: 1,
-        x: 0,
-        filter: "blur(0px)",
-        duration: 0.9,
-        ease: "power2.out",
-        stagger: 0.05,
-        overwrite: "auto"
-      });
-    });
-  });
-}
 
 //page load anim
 window.addEventListener("DOMContentLoaded", () => {
@@ -293,6 +295,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const searchForm = document.querySelector(".search__form");
   const paginationLetters = document.querySelectorAll(".fade__pag");
   const plsScroll = document.querySelector(".pls__scroll");
+  const noText = document.querySelector(".no__data__text em");
 
   gsap.to(titleAllLetters, {
     opacity: 1,
@@ -326,6 +329,18 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if(filter_by_button) {
     gsap.to(filter_by_button, {
+      opacity: 1,
+      x: 0,
+      filter: "blur(0px)",
+      duration: 1.2,
+      ease: "power2.out",
+      stagger: 0.01,
+      delay: 0.5
+    });
+  }
+
+  if(noText) {
+    gsap.to(noText, {
       opacity: 1,
       x: 0,
       filter: "blur(0px)",
