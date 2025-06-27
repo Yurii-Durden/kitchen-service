@@ -49,12 +49,25 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--back-color);
 }
 
+html::-webkit-scrollbar,
 body::-webkit-scrollbar {
-  display: none;
+  width: 7px;
+  height: 7px;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: var(--back-color);
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 10px;
 }
 
 .hide__scroll {
