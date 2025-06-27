@@ -204,14 +204,17 @@ scaleTargets.forEach(selector => {
   });
 });
 
-document.querySelectorAll(".hover__list").forEach(elem => {
-  elem.addEventListener("mouseenter", () => {
-    cursor.classList.add("cursor__list__hover");
+hoverList = document.querySelectorAll(".hover__list")
+if (hoverList.length > 0) {
+  hoverList.forEach(elem => {
+    elem.addEventListener("mouseenter", () => {
+      cursor.classList.add("cursor__list__hover");
+    });
+    elem.addEventListener("mouseleave", () => {
+      cursor.classList.remove("cursor__list__hover");
+    });
   });
-  elem.addEventListener("mouseleave", () => {
-    cursor.classList.remove("cursor__list__hover");
-  });
-});
+}
 
 img = document.querySelector("img");
 
