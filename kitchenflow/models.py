@@ -85,7 +85,7 @@ class IngredientType(models.Model):
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    ingredient_type = models.ForeignKey(IngredientType, on_delete=models.CASCADE, related_name="ingredients", default=None)
+    type = models.ForeignKey(IngredientType, on_delete=models.CASCADE, related_name="ingredients", default=None)
 
     def __str__(self):
         return self.name

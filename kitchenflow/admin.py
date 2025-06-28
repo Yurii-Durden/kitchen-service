@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .models import Cook, DishType, Dish, Ingredient, DishIngredient
+from .models import Cook, DishType, Dish, Ingredient, DishIngredient, IngredientType
 
 
 @admin.register(Cook)
@@ -42,9 +42,10 @@ class DishAdmin(admin.ModelAdmin):
 
 @admin.register(Ingredient)
 class IngredientAdmin(admin.ModelAdmin):
-    list_display = ("name",)
+    list_display = ("name", "type")
     search_fields = ("name",)
     list_filter = ("name",)
 
 
 admin.site.register(DishType)
+admin.site.register(IngredientType)
