@@ -164,12 +164,12 @@ searchInput.addEventListener("input", () => {
 
 // filter open
 window.addEventListener("load", () => {
-  document.querySelector(".dish__choose__box").style.display = "none";
+  document.querySelector(".choose__box").style.display = "none";
 });
 
 const filter_by_button = document.querySelector(".filter__by__text");
 const filter_links = Array.from(document.querySelectorAll(".choose__type__item"));
-const dishChooseBox = document.querySelector(".dish__choose__box");
+const dishChooseBox = document.querySelector(".choose__box");
 const pageListBox = document.querySelector(".page__list__box");
 
 let isOpen = false;
