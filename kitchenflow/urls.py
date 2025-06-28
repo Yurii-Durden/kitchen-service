@@ -79,8 +79,23 @@ urlpatterns = [
         name="ingredients-list"
     ),
     path(
-        "ingredients/<int:pk>",
+        "ingredients/<int:pk>/",
         views.IngredientsDetailView.as_view(),
         name="ingredient-detail"
+    ),
+    path(
+        "ingredients/create/",
+        views.IngredientCreateView.as_view(),
+        name="ingredients-create"
+    ),
+    path(
+        "ingredients/update/<int:pk>/",
+        views.IngredientUpdateView.as_view(),
+        name="ingredients-update"
+    ),
+    path(
+        "ingredients/delete/<int:pk>/",
+        views.IngredientDeleteView.as_view(),
+        name="ingredients-delete"
     ),
 ]
