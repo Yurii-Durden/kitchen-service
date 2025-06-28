@@ -7,7 +7,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 
-from kitchenflow.models import Cook, Dish, DishType
+from kitchenflow.models import Cook, Dish, DishType, Ingredient
 from kitchenflow.forms import (
     CookCreationForm,
     CookPersonalInfoUpdateForm,
@@ -257,6 +257,14 @@ class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = DishType
     template_name = "kitchenflow/dish_type_delete.html"
     success_url = reverse_lazy("kitchenflow:dish-type-list")
+
+
+class IngredientsView(LoginRequiredMixin, generic.ListView):
+    model = Ingredient
+    context_object_name = "ingredients_list"
+    template_name = "kitchenflow/ingredients_list.html"
+    paginate_by = 7
+
 
 
 def remove_from_cooking(
