@@ -76,8 +76,16 @@ class Dish(models.Model):
         super().save(*args, **kwargs)
 
 
+class IngredientType(models.Model):
+    name = models.CharField(max_length=255, unique=True)
+
+    def __str__(self):
+        return f"{self.name}"
+
+
 class Ingredient(models.Model):
     name = models.CharField(max_length=100, unique=True)
+    ingredient_type = models.ForeignKey(IngredientType, on_delete=models.CASCADE, related_name="ingredients", default=None)
 
     def __str__(self):
         return self.name
