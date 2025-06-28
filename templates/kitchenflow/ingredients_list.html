@@ -36,8 +36,11 @@
         {% if ingredients_list %}
           <ul class="data__list">
             {% for ingredient in ingredients_list %}
-              <li class="dish__type__list__item target__block">
-                <a class="to__anim__elem hover__elem" href="#">{{ ingredient.name }} {{ ingredient.ingredient_type }}</a>
+              <li class="ingredient__list__item target__block">
+                <a class="ingredient__link to__anim__elem hover__elem" href="#">
+                  <span class="ingredient">{{ ingredient.name }}</span>
+                  <span class="ingredient__type">{{ ingredient.ingredient_type }}</span>
+                </a>
               </li>
             {% endfor %}
           </ul>

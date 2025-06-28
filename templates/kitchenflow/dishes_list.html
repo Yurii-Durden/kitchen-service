@@ -57,8 +57,8 @@
           {% for dish in dish_list %}
             <li class="swiper-slider dish__list__item target__block">
               <a class="dish__link to__anim__elem hover__elem" href="{% url 'kitchenflow:dish-detail' dish.id %}">
-                <p class="dish">{{ dish.name }}</p>
-                <p class="dish__type"><em>{{ dish.dish_type }}</em></p>
+                <span class="dish">{{ dish.name }}</span>
+                <span class="dish__type"><em>{{ dish.dish_type }}</em></span>
               </a>
             </li>
           {% endfor %}

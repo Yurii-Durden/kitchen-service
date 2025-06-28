@@ -191,7 +191,9 @@
 }
 
 .dish__link {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     color: var(--primary-color);
 }
 
@@ -214,7 +216,7 @@
 }
 
 /*dish-types-data-list-----------------------------------*/
-.dish__type__list__item {
+.dish__type__list__item, .ingredient__list__item {
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -234,6 +236,34 @@
     text-transform: uppercase;
 }
 
+/*INGREDIENTS-------------------------------------------*/
+.ingredient {
+    font-size: 3.7vw;
+    line-height: 1;
+    letter-spacing: -0.07rem;
+    font-weight: 400;
+    white-space: nowrap;
+    font-style: italic;
+}
+
+.ingredient__link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--primary-color);
+}
+
+.ingredient__type {
+    text-align: center;
+    font-style: italic;
+    font-size: clamp(15px, 2vw, 21px);
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.ingredient__list__item:not(:last-child) {
+    margin-bottom: 10rem;
+}
 
 /*pagination---------------------------------------------*/
 .pagination__box {
