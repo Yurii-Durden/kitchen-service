@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.hashers import make_password
 from django.forms.models import ModelForm
 
-from kitchenflow.models import Cook, Dish, DishType
+from kitchenflow.models import Cook, Dish, DishType, Ingredient
 
 
 class CookCreationForm(UserCreationForm):
@@ -280,6 +280,16 @@ class DishCreatingForm(ModelForm):
         if not dish_type:
             raise forms.ValidationError("Dish type is required")
         return dish_type
+
+
+class IngredientCreatingForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['name'].widget.attrs.update({'class': 'form_input'})
+
+    class Meta:
+        model = Ingredient
+        fields = "__all__"
 
 
 class CookSearchForm(forms.Form):
