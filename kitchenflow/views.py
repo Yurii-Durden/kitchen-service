@@ -279,12 +279,12 @@ class IngredientsView(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         queryset = Ingredient.objects.all()
         name = self.request.GET.get("name")
-        type = self.request.GET.get("type")
+        ing_type = self.request.GET.get("type")
         if name:
             return queryset.filter(name__icontains=name)
 
         if type:
-            return queryset.filter(type__icontains=type)
+            return queryset.filter(type__icontains=ing_type)
 
         return queryset
 
