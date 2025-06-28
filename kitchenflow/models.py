@@ -82,6 +82,11 @@ class IngredientType(models.Model):
     def __str__(self):
         return f"{self.name}"
 
+    def save(self, *args, **kwargs):
+        if self.name:
+            self.name = self.name.title()
+        super().save(*args, **kwargs)
+
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -89,6 +94,11 @@ class Ingredient(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if self.name:
+            self.name = self.name.title()
+        super().save(*args, **kwargs)
 
 
 class DishIngredient(models.Model):
