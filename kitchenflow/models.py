@@ -84,8 +84,16 @@ class Ingredient(models.Model):
 
 
 class DishIngredient(models.Model):
-    dish = models.ForeignKey(Dish, on_delete=models.CASCADE, related_name="dishes")
-    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, related_name="dish_ingredients")
+    dish = models.ForeignKey(
+        Dish,
+        on_delete=models.CASCADE,
+        related_name="dishes"
+    )
+    ingredient = models.ForeignKey(
+        Ingredient,
+        on_delete=models.CASCADE,
+        related_name="dish_ingredients"
+    )
 
     amount = models.DecimalField(max_digits=6, decimal_places=2)
     unit = models.CharField(
@@ -102,7 +110,10 @@ class DishIngredient(models.Model):
     )
 
     def __str__(self):
-        return f"{self.ingredient.name} {self.amount} {self.unit} in {self.dish.name}"
+        return (f""
+                f"{self.ingredient.name} "
+                f"{self.amount} "
+                f"{self.unit} in {self.dish.name}")
 
 
 # class Ingredients(models.Model):

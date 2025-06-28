@@ -47,5 +47,4 @@ class IngredientAdmin(admin.ModelAdmin):
     list_filter = ("name",)
 
 
-
 admin.site.register(DishType)
