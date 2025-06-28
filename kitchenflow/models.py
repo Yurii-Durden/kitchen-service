@@ -90,10 +90,13 @@ class IngredientType(models.Model):
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    type = models.ForeignKey(IngredientType, on_delete=models.CASCADE, related_name="ingredients", default=None)
+    ingredient_type = models.ForeignKey(IngredientType, on_delete=models.CASCADE, related_name="ingredients", default=None)
+
+    class Meta:
+        ordering = ["ingredient_type", "name"]
 
     def __str__(self):
-        return self.name
+        return f"{self.name} - {self.ingredient_type}"
 
     def save(self, *args, **kwargs):
         if self.name:
