@@ -24,7 +24,7 @@
 
       {% if user.is_chef %}
         <div class="button__item b__d button__item__f">
-          <a class="delete__update__button d__but hover__elem" href="#">
+          <a class="delete__update__button d__but hover__elem" href="{% url 'kitchenflow:ingredients-update' ingredient_detail.id %}">
             <em>
               <span class="anim__button">U</span><span class="anim__button">p</span><span class="anim__button">d</span><span class="anim__button">a</span><span class="anim__button">t</span><span class="anim__button">e</span> <span class="anim__button">i</span><span class="anim__button">n</span><span class="anim__button">g</span><span class="anim__button">r</span><span class="anim__button">e</span><span class="anim__button">d</span><span class="anim__button">i</span><span class="anim__button">e</span><span class="anim__button">n</span><span class="anim__button">t</span>
             </em>
