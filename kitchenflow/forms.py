@@ -319,3 +319,16 @@ class DishTypeSearchForm(forms.Form):
             "autocomplete": "off",
         })
     )
+
+
+class IngredientSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        label="",
+        required=False,
+        widget=forms.TextInput(attrs={
+            "placeholder": "search by ingredient name",
+            "class": "search__input hover__elem",
+            "autocomplete": "off",
+        })
+    )
