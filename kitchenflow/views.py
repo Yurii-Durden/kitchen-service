@@ -7,7 +7,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 
-from kitchenflow.models import Cook, Dish, DishType, Ingredient
+from kitchenflow.models import Cook, Dish, DishType, Ingredient, IngredientType
 from kitchenflow.forms import (
     CookCreationForm,
     CookPersonalInfoUpdateForm,
@@ -274,6 +274,7 @@ class IngredientsListView(LoginRequiredMixin, generic.ListView):
         context["search_form"] = IngredientSearchForm(
             initial={"name": name}
         )
+        context["ingredients_types"] = IngredientType.objects.all()
         context["ingredients"] = True
 
         return context
@@ -287,7 +288,7 @@ class IngredientsListView(LoginRequiredMixin, generic.ListView):
             return queryset.filter(name__icontains=name)
 
         if ing_type:
-            return queryset.filter(ingredient_type=ing_type)
+            return queryset.filter(ingredient_type__name__icontains=ing_type)
 
         return queryset
 
