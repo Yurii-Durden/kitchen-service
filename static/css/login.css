@@ -73,22 +73,6 @@ input {
     margin-bottom: 3vh;
 }
 
-input:-webkit-autofill {
-    background-color: var(--back-color);
-    font-style: italic;
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(16px, 2vw, 21px);
-    font-weight: 500;
-    -webkit-text-fill-color: var(--primary-color);
-    );
-    transition: background-color 5000s ease-in-out 0s;
-}
-
-input:hover,
-input:focus {
-    outline: none;
-}
-
 /*logged-out----------------------------*/
 .logged__out__body {
     padding-top: 10vh;
