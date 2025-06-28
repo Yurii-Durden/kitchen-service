@@ -293,6 +293,27 @@ class IngredientsListView(LoginRequiredMixin, generic.ListView):
         return queryset
 
 
+class IngredientsDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Ingredient
+    template_name = "kitchenflow/ingredient_detail.html"
+    context_object_name = "ingredient_detail"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        dishes = Dish.objects.filter(
+            ingredients=self.object
+        ).select_related("dish_type")
+
+        paginator = Paginator(dishes, 10)
+        page_number = self.request.GET.get("page")
+        page_obj = paginator.get_page(page_number)
+
+        context["page_obj"] = page_obj
+        context["is_paginated"] = page_obj.has_other_pages()
+        context["paginator"] = paginator
+        return context
+
+
 def remove_from_cooking(
         request,
         dish_pk: int,
