@@ -10,11 +10,11 @@
 {% endblock %}
 
 {% block content %}
-  <section class="section">
+  <section class="section ing__section">
     <div class="form__body _container">
       <div class="form__wrapper">
         <div class="form__box">
-          <h1 class="dish__type__form__title">
+          <h1 class="dish__type__form__title to__opacity">
             {% for letter in object|yesno:"Update ingredient,Create ingredient" %}{% if letter == " " %}<span class="title__letter">&nbsp;</span>{% else %}<span class="title__letter">{{ letter }}</span>{% endif %}{% endfor %}
           </h1>
           <form action="" method="post" class="ingredient__form">
@@ -28,7 +28,7 @@
               </ul>
             {% endif %}
 
-            <div class="form__group__dish__type">
+            <div class="form__group__dish__type to__opacity">
               <label for="{{ form.name.id_for_label }}" class="form__label">
                 <em>
                   {% for label_letter in form.name.label %}<span class="another__letter">{{ label_letter }}</span>{% endfor %}<span class="another__letter">:&nbsp;</span>
@@ -36,7 +36,43 @@
               </label>
               {{ form.name }}
             </div>
-            <button type="submit" class="form__button hover__elem">
+
+            {% if form.ingredient_type.errors %}
+              <ul class="error__list">
+                {% for error in form.ingredient_type.errors %}
+                  <li class="error__item">{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+
+            <div class="dish__group__selected__list">
+              <label class="form__label check__box another__letter">
+                <em>{{ form.ingredient_type.label }}:&nbsp;</em>
+              </label>
+              <div class="select__list__button select__list__button__ing hover__elem">
+                <span class="checked__elem"><span class="selected__text">
+                  {% if object %}
+                    {{ object.ingredient_type }}
+                  {% else %}
+                    ---------
+                  {% endif %}
+                </span><svg class="arrow__down" width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <ul class="dish__type__list">
+                  <li class="dish__type__item" data-id="{{ choice.id }}">
+                    ---------
+                  </li>
+                  {% for choice in form.ingredient_type.field.queryset %}
+                    <li class="dish__type__item" data-id="{{ choice.id }}">
+                      <label>
+                        <input type="checkbox" name="ingredient_type" value="{{ choice.id }}" hidden>
+                        <em class="item__text">{{ choice.name }}</em>
+                      </label>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+            <button type="submit" class="form__button ing__button hover__elem to__opacity">
               {% for button_letter in object|yesno:'Update,Create' %}<span class="another__letter">{{ button_letter }}</span>{% endfor %}
             </button>
           </form>

@@ -90,7 +90,7 @@ class IngredientType(models.Model):
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    ingredient_type = models.ForeignKey(IngredientType, on_delete=models.CASCADE, related_name="ingredients", default=None)
+    ingredient_type = models.ForeignKey(IngredientType, on_delete=models.CASCADE, related_name="ingredients")
 
     class Meta:
         ordering = ["ingredient_type", "name"]

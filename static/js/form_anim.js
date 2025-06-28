@@ -82,6 +82,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const isChef = document.querySelector(".is_chef_input");
   const checkElem = document.querySelector(".checked__elem");
   const cooksMulti = document.querySelectorAll(".dish__group__cook label");
+  const errors = document.querySelectorAll(".error__item");
 
   gsap.to(titleLetters, {
     opacity: 1,
@@ -137,6 +138,17 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (checkElem) {
     gsap.to(checkElem, {
+      opacity: 1,
+      x: 0,
+      filter: "blur(0px)",
+      duration: 1.2,
+      ease: "power2.out",
+      stagger: 0.01,
+      delay: 0.3
+    });
+  }
+  if (errors.length > 0) {
+    gsap.to(errors, {
       opacity: 1,
       x: 0,
       filter: "blur(0px)",
