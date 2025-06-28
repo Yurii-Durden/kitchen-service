@@ -375,6 +375,14 @@
     display: none;
 }
 
+/*INGREDIENTS-------------------------------------*/
+.ingredient__type {
+    font-size: clamp(16px, 2vw, 22px);
+    font-weight: 500;
+    margin-top: 2vh;
+    margin-bottom: 8vh;
+}
+
 /*media-------------------------------------------*/
 @media (max-width: 1025px) {
     .button__item__f {
