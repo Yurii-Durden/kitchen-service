@@ -264,7 +264,7 @@ class IngredientsListView(LoginRequiredMixin, generic.ListView):
     model = Ingredient
     context_object_name = "ingredients_list"
     template_name = "kitchenflow/ingredients_list.html"
-    paginate_by = 7
+    paginate_by = 10
 
     def get_context_data(
         self, *, object_list=..., **kwargs
