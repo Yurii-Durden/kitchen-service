@@ -49,7 +49,7 @@ header_menu_button.addEventListener("click", (event) => {
       stagger: 0.02,
       ease: "power2.in"
     });
-    setTimeout(() => {body.classList.remove("hide__scroll");}, 1000)
+    setTimeout(() => {body.classList.remove("hide__scroll");}, 1200)
     setTimeout(() => {header_menu.classList.remove("header__menu__active");}, 100);
   }
 
