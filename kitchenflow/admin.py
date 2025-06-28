@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .models import Cook, DishType, Dish
+from .models import Cook, DishType, Dish, Ingredient, DishIngredient
 
 
 @admin.register(Cook)
@@ -27,11 +27,25 @@ class CookAdmin(UserAdmin):
     )
 
 
+class DishIngredientInline(admin.TabularInline):
+    model = DishIngredient
+    extra = 1
+
+
 @admin.register(Dish)
 class DishAdmin(admin.ModelAdmin):
-    list_display = ("name", "price")
+    list_display = ("name", "price", )
     search_fields = ("name", )
     list_filter = ("dish_type", )
+    inlines = [DishIngredientInline]
+
+
+@admin.register(Ingredient)
+class IngredientAdmin(admin.ModelAdmin):
+    list_display = ("name",)
+    search_fields = ("name",)
+    list_filter = ("name",)
+
 
 
 admin.site.register(DishType)
