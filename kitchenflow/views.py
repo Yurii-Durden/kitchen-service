@@ -50,7 +50,7 @@ class CookListView(LoginRequiredMixin, generic.ListView):
     model = Cook
     template_name = "kitchenflow/cooks_list.html"
     context_object_name = "cooks_list"
-    paginate_by = 4
+    paginate_by = 5
 
     def get_context_data(
             self, *, object_list=..., **kwargs
