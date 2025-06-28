@@ -43,7 +43,7 @@
         {% if dish_type_list %}
           <ul class="data__list">
             {% for dish_type in dish_type_list %}
-              <li class="swiper-slider dish__type__list__item target__block">
+              <li class="dish__type__list__item target__block">
                 <a class="dish__type__link to__anim__elem hover__elem" href="{% url 'kitchenflow:dish-type-detail' dish_type.id %}">{{ dish_type.name }}</a>
               </li>
             {% endfor %}

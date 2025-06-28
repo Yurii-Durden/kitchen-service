@@ -42,7 +42,7 @@ class DishAdmin(admin.ModelAdmin):
 
 @admin.register(Ingredient)
 class IngredientAdmin(admin.ModelAdmin):
-    list_display = ("name", "type")
+    list_display = ("name", "ingredient_type")
     search_fields = ("name",)
     list_filter = ("name",)
 

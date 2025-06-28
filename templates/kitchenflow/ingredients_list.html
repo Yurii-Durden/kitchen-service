@@ -13,7 +13,7 @@
   <section class="pinned__section section">
     {% include "includes/pagination.html" %}
     <div class="main__block _container">
-      {% if not dish_type_list %}
+      {% if not ingredients_list %}
         <p class="no__data__text">
           <em>Here aren`t ingredients</em>
         </p>
@@ -33,11 +33,11 @@
     </section>
     <section class="scrollable__section section">
       <div class="page__list__box _container">
-        {% if dish_type_list %}
+        {% if ingredients_list %}
           <ul class="data__list">
             {% for ingredient in ingredients_list %}
-              <li class="swiper-slider dish__type__list__item target__block">
-                <a class="dish__type__link to__anim__elem hover__elem" href="#">{{ ingredient.name }}</a>
+              <li class="dish__type__list__item target__block">
+                <a class="to__anim__elem hover__elem" href="#">{{ ingredient.name }} {{ ingredient.ingredient_type }}</a>
               </li>
             {% endfor %}
           </ul>

@@ -15,7 +15,8 @@ from kitchenflow.forms import (
     DishTypeCreatingForm,
     CookSearchForm,
     DishSearchForm,
-    DishTypeSearchForm
+    DishTypeSearchForm,
+    IngredientSearchForm
 )
 
 
@@ -259,7 +260,7 @@ class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy("kitchenflow:dish-type-list")
 
 
-class IngredientsView(LoginRequiredMixin, generic.ListView):
+class IngredientsListView(LoginRequiredMixin, generic.ListView):
     model = Ingredient
     context_object_name = "ingredients_list"
     template_name = "kitchenflow/ingredients_list.html"
@@ -268,23 +269,24 @@ class IngredientsView(LoginRequiredMixin, generic.ListView):
     def get_context_data(
         self, *, object_list=..., **kwargs
     ):
-        context = super(IngredientsView, self).get_context_data(**kwargs)
+        context = super(IngredientsListView, self).get_context_data(**kwargs)
         name = self.request.GET.get("name")
-        context["search_form"] = DishTypeSearchForm(
+        context["search_form"] = IngredientSearchForm(
             initial={"name": name}
         )
 
         return context
 
     def get_queryset(self):
-        queryset = Ingredient.objects.all()
+        queryset = Ingredient.objects.select_related("ingredient_type")
+        print(queryset)
         name = self.request.GET.get("name")
         ing_type = self.request.GET.get("type")
         if name:
             return queryset.filter(name__icontains=name)
 
-        if type:
-            return queryset.filter(type__icontains=ing_type)
+        if ing_type:
+            return queryset.filter(ingredient_type=ing_type)
 
         return queryset
 

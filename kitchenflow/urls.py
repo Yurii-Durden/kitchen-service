@@ -75,7 +75,7 @@ urlpatterns = [
     ),
     path(
         "ingredients/",
-        views.IngredientsView.as_view(),
+        views.IngredientsListView.as_view(),
         name="ingredients-list"
     )
 ]
