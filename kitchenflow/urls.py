@@ -77,5 +77,10 @@ urlpatterns = [
         "ingredients/",
         views.IngredientsListView.as_view(),
         name="ingredients-list"
-    )
+    ),
+    path(
+        "ingredients/<int:pk>",
+        views.IngredientsDetailView.as_view(),
+        name="ingredient-detail"
+    ),
 ]
