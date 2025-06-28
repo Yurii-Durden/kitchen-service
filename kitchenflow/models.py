@@ -58,6 +58,11 @@ class Dish(models.Model):
         related_name="dishes"
     )
     cooks = models.ManyToManyField(Cook, related_name="dishes")
+    ingredients = models.ManyToManyField(
+        "Ingredient",
+        through="DishIngredient",
+        related_name="dishes"
+    )
 
     class Meta:
         ordering = ["name"]
@@ -69,3 +74,55 @@ class Dish(models.Model):
         if self.name:
             self.name = self.name.title()
         super().save(*args, **kwargs)
+
+
+class Ingredient(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
+
+
+class DishIngredient(models.Model):
+    dish = models.ForeignKey(Dish, on_delete=models.CASCADE, related_name="dishes")
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, related_name="dish_ingredients")
+
+    amount = models.DecimalField(max_digits=6, decimal_places=2)
+    unit = models.CharField(
+        max_length=10,
+        choices=[
+            ("g", "gram"),
+            ("kg", "kilogram"),
+            ("ml", "milliliter"),
+            ("l", "liter"),
+            ("pcs", "pieces"),
+            ("tbsp", "tablespoon"),
+            ("tsp", "teaspoon"),
+        ]
+    )
+
+    def __str__(self):
+        return f"{self.ingredient.name} {self.amount} {self.unit} in {self.dish.name}"
+
+
+# class Ingredients(models.Model):
+#     UNIT_CHOICES = [
+#         ("g", "gram"),
+#         ("kg", "kilogram"),
+#         ("ml", "milliliter"),
+#         ("l", "liter"),
+#         ("pcs", "pieces"),
+#         ("tbsp", "tablespoon"),
+#         ("tsp", "teaspoon"),
+#     ]
+#
+#     name = models.CharField(max_length=255, unique=True, default=None)
+#     unit = models.CharField(max_length=10, choices=UNIT_CHOICES, default="g")
+#
+#     class Meta:
+#         ordering = ["name"]
+#
+#     def save(self, *args, **kwargs):
+#         if self.name:
+#             self.name = self.name.title()
+#         super().save(*args, **kwargs)
