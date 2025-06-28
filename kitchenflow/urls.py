@@ -73,4 +73,9 @@ urlpatterns = [
         views.DishTypeDeleteView.as_view(),
         name="dish-type-delete"
     ),
+    path(
+        "ingredients/",
+        views.IngredientsView.as_view(),
+        name="ingredients-list"
+    )
 ]
