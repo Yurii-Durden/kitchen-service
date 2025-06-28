@@ -385,6 +385,15 @@ textarea {
     cursor: none; !important;
 }
 
+/*INGREDIENTS----------------------------------------*/
+.ing__button {
+    margin-top: 2vh;
+}
+
+.select__list__button__ing {
+    min-width: 200px;
+}
+
 
 /*header---------------------------------------------*/
 .logo {
@@ -421,6 +430,10 @@ textarea {
 
 /*errors------------------------------------*/
 .error__item {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translate3d(15px, 0, 0);
+    display: block;
     font-style: italic;
     color: var(--back-color);
     margin-bottom: 0.5rem;
