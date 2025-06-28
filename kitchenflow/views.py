@@ -277,7 +277,7 @@ class IngredientsView(LoginRequiredMixin, generic.ListView):
         return context
 
     def get_queryset(self):
-        queryset = DishType.objects.all()
+        queryset = Ingredient.objects.all()
         name = self.request.GET.get("name")
         type = self.request.GET.get("type")
         if name:
