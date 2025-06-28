@@ -286,6 +286,7 @@ class IngredientCreatingForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['name'].widget.attrs.update({'class': 'form_input'})
+        self.fields['ingredient_type'].widget.attrs.update({'class': 'form_input'})
 
     class Meta:
         model = Ingredient
