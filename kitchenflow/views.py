@@ -274,6 +274,7 @@ class IngredientsListView(LoginRequiredMixin, generic.ListView):
         context["search_form"] = IngredientSearchForm(
             initial={"name": name}
         )
+        context["ingredients"] = True
 
         return context
 

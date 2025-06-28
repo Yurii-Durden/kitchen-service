@@ -22,13 +22,14 @@
           <span class="fade__title__all">A</span><span class="fade__title__all">L</span><span class="fade__title__all">L</span> <span class="fade__title__all">I</span><span class="fade__title__all">N</span><span class="fade__title__all">G</span><span class="fade__title__all">R</span><span class="fade__title__all">E</span><span class="fade__title__all">D</span><span class="fade__title__all">I</span><span class="fade__title__all">E</span><span class="fade__title__all">N</span><span class="fade__title__all">T</span><span class="fade__title__all">S</span>
         </h1>
         {% include "includes/search_form.html" %}
-        <div>
-          <em>
-            <a class="create__button hover__elem" href="{% url 'kitchenflow:dish-type-create' %}">
-              <span class="create__fade">C</span><span class="create__fade">r</span><span class="create__fade">e</span><span class="create__fade">a</span><span class="create__fade">t</span><span class="create__fade">e</span> <span class="create__fade">i</span><span class="create__fade">n</span><span class="create__fade">g</span><span class="create__fade">r</span><span class="create__fade">e</span><span class="create__fade">d</span><span class="create__fade">i</span><span class="create__fade">e</span><span class="create__fade">n</span><span class="create__fade">t</span>
-              </a>
-          </em>
-        </div>
+        {% include 'includes/filter_by.html' %}
+{#        <div>#}
+{#          <em>#}
+{#            <a class="create__button hover__elem" href="{% url 'kitchenflow:dish-type-create' %}">#}
+{#              <span class="create__fade">C</span><span class="create__fade">r</span><span class="create__fade">e</span><span class="create__fade">a</span><span class="create__fade">t</span><span class="create__fade">e</span> <span class="create__fade">i</span><span class="create__fade">n</span><span class="create__fade">g</span><span class="create__fade">r</span><span class="create__fade">e</span><span class="create__fade">d</span><span class="create__fade">i</span><span class="create__fade">e</span><span class="create__fade">n</span><span class="create__fade">t</span>#}
+{#            </a>#}
+{#          </em>#}
+{#        </div>#}
       </div>
     </section>
     <section class="scrollable__section section">
