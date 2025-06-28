@@ -156,7 +156,7 @@ class DishListView(LoginRequiredMixin, generic.ListView):
             queryset = queryset.filter(name__icontains=name)
 
         if type_param:
-            queryset = queryset.filter(dish_type__name=type_param)
+            queryset = queryset.filter(dish_type__name__icontains=type_param)
 
         return queryset
 
@@ -275,6 +275,18 @@ class IngredientsView(LoginRequiredMixin, generic.ListView):
         )
 
         return context
+
+    def get_queryset(self):
+        queryset = DishType.objects.all()
+        name = self.request.GET.get("name")
+        type = self.request.GET.get("type")
+        if name:
+            return queryset.filter(name__icontains=name)
+
+        if type:
+            return queryset.filter(type__icontains=type)
+
+        return queryset
 
 
 def remove_from_cooking(
