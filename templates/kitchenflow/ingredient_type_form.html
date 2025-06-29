@@ -15,7 +15,7 @@
       <div class="form__wrapper">
         <div class="form__box">
           <h1 class="dish__type__form__title">
-            {% for letter in object|yesno:"Update ingredient type,Create ingredient type" %}{% if letter == " " %}<span class="title__letter">&nbsp;</span>{% else %}<span class="title__letter">{{ letter }}</span>{% endif %}{% endfor %}
+            {% for letter in object|yesno:"Update ingredient type,Create ing. type" %}{% if letter == " " %}<span class="title__letter">&nbsp;</span>{% else %}<span class="title__letter">{{ letter }}</span>{% endif %}{% endfor %}
           </h1>
           <form action="" method="post" class="dish__type__form">
             {% csrf_token %}
