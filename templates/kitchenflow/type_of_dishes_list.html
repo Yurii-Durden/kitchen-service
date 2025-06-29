@@ -38,9 +38,9 @@
         {% endif %}
         </div>
     </section>
+    {% if dish_type_list %}
     <section class="scrollable__section section">
       <div class="page__list__box _container">
-        {% if dish_type_list %}
           <ul class="data__list">
             {% for dish_type in dish_type_list %}
               <li class="dish__type__list__item target__block">
@@ -48,9 +48,9 @@
               </li>
             {% endfor %}
           </ul>
-        {% endif %}
       </div>
   </section>
+  {% endif %}
 {% endblock %}
 
 {% block extra_scripts %}

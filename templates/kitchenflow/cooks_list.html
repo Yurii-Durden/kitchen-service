@@ -33,9 +33,9 @@
         {% endif %}
         </div>
     </section>
+    {% if cooks_list %}
     <section class="scrollable__section section">
       <div class="page__list__box _container">
-        {% if cooks_list %}
           <ul class="data__list">
             {% for cook in cooks_list %}
               <li class="swiper-slider cooks__list__item">
@@ -50,9 +50,9 @@
               </li>
             {% endfor %}
           </ul>
-        {% endif %}
       </div>
   </section>
+  {% endif %}
 {% endblock %}
 
 {% block extra_scripts %}
