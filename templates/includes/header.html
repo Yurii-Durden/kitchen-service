@@ -19,40 +19,42 @@
 <nav class="header__menu">
   <ul class="nav__list">
     <li class="nav__items">
-      <a href="{% url 'kitchenflow:about' %}" class="hover__elem">
-        <span class="nav__link menu__fade">A</span><span class="nav__link menu__fade">B</span><span class="nav__link menu__fade">O</span><span class="nav__link menu__fade">U</span><span class="nav__link menu__fade">T</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="nav__link menu__fade">M</span><span class="nav__link menu__fade">E</span>
+      <a href="{% url 'kitchenflow:about' %}" class="hover__elem {% if user.is_chef %}nav__link{% else %}nav__link my__nav__link{% endif %}">
+        <span class="menu__fade">A</span><span class="menu__fade">B</span><span class="menu__fade">O</span><span class="menu__fade">U</span><span class="menu__fade">T</span><span>&nbsp;</span><span class="menu__fade">M</span><span class="menu__fade">E</span>
       </a>
     </li>
+
+    <li class="nav__items">
+      <a href="{% url 'kitchenflow:dish-list' %}" class="hover__elem {% if user.is_chef %}nav__link{% else %}nav__link my__nav__link{% endif %}">
+        {% for all_my in  user.is_chef|yesno:"ALL,MY" %}<span class="menu__fade">{{ all_my }}</span>{% endfor %}<span>&nbsp;</span><span class="menu__fade">D</span><span class="menu__fade">I</span><span class="menu__fade">S</span><span class="menu__fade">H</span><span class="menu__fade">E</span><span class="menu__fade">S</span>
+      </a>
+    </li>
+
     {% if user.is_chef %}
       <li class="nav__items">
-        <a href="{% url 'kitchenflow:cook-list' %}" class="hover__elem">
-          <span class="nav__link menu__fade">A</span><span class="nav__link menu__fade">L</span><span class="nav__link menu__fade">L</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="nav__link menu__fade">C</span><span class="nav__link menu__fade">O</span><span class="nav__link menu__fade">O</span><span class="nav__link menu__fade">K</span><span class="nav__link menu__fade">S</span>
+        <a href="{% url 'kitchenflow:cook-list' %}" class="hover__elem nav__link">
+          <span class="menu__fade">A</span><span class="menu__fade">L</span><span class="menu__fade">L</span><span>&nbsp;</span><span class="menu__fade">C</span><span class="menu__fade">O</span><span class="menu__fade">O</span><span class="menu__fade">K</span><span class="menu__fade">S</span>
         </a>
       </li>
     {% endif %}
 
     <li class="nav__items">
-      <a href="{% url 'kitchenflow:dish-list' %}" class="hover__elem">
-        {% for all_my in  user.is_chef|yesno:"ALL , MY " %} <span class="nav__link menu__fade">{{ all_my }}</span>{% endfor %}<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="nav__link menu__fade">D</span><span class="nav__link menu__fade">I</span><span class="nav__link menu__fade">S</span><span class="nav__link menu__fade">H</span><span class="nav__link menu__fade">E</span><span class="nav__link menu__fade">S</span>
+      <a href="{% url 'kitchenflow:dish-type-list' %}" class="hover__elem {% if user.is_chef %}nav__link{% else %}nav__link my__nav__link{% endif %}">
+        {% for all_my in user.is_chef|yesno:"ALL,MY" %}<span class="menu__fade">{{ all_my }}</span>{% endfor %}<span>&nbsp;</span><span class="menu__fade">D</span><span class="menu__fade">I</span><span class="menu__fade">S</span><span class="menu__fade">H</span><span>&nbsp;</span><span class="menu__fade">T</span><span class="menu__fade">Y</span><span class="menu__fade">P</span><span class="menu__fade">E</span><span class="menu__fade">S</span>
       </a>
     </li>
     {% if user.is_chef %}
       <li class="nav__items">
-        <a href="{% url 'kitchenflow:ingredients-list' %}" class="hover__elem">
-          <span class="nav__link menu__fade">A</span><span class="nav__link menu__fade">L</span><span class="nav__link menu__fade">L</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="nav__link menu__fade">I</span><span class="nav__link menu__fade">N</span><span class="nav__link menu__fade">G</span><span class="nav__link menu__fade">R</span><span class="nav__link menu__fade">E</span><span class="nav__link menu__fade">D</span><span class="nav__link menu__fade">I</span><span class="nav__link menu__fade">E</span><span class="nav__link menu__fade">N</span><span class="nav__link menu__fade">T</span><span class="nav__link menu__fade">S</span>
+        <a href="{% url 'kitchenflow:ingredients-list' %}" class="hover__elem nav__link">
+          <span class="menu__fade">A</span><span class="menu__fade">L</span><span class="menu__fade">L</span><span>&nbsp;</span><span class="menu__fade">I</span><span class="menu__fade">N</span><span class="menu__fade">G</span><span class="menu__fade">R</span><span class="menu__fade">E</span><span class="menu__fade">D</span><span class="menu__fade">I</span><span class="menu__fade">E</span><span class="menu__fade">N</span><span class="menu__fade">T</span><span class="menu__fade">S</span>
+        </a>
+      </li>
+      <li class="nav__items">
+        <a href="{% url 'kitchenflow:ingredients-types-list' %}" class="hover__elem nav__link">
+          <span class="menu__fade">A</span><span class="menu__fade">L</span><span class="menu__fade">L</span><span>&nbsp;</span><span class="menu__fade">I</span><span class="menu__fade">N</span><span class="menu__fade">G</span><span class="menu__fade">R</span><span class="menu__fade">E</span><span class="menu__fade">D</span><span class="menu__fade">I</span><span class="menu__fade">E</span><span class="menu__fade">N</span><span class="menu__fade">T</span><span class="menu__fade"><span>&nbsp;</span></span><span class="menu__fade">T</span><span class="menu__fade">Y</span><span class="menu__fade">P</span><span class="menu__fade">E</span><span class="menu__fade">S</span>
         </a>
       </li>
     {% endif %}
-    <li class="nav__items">
-      <a href="{% url 'kitchenflow:dish-type-list' %}" class="hover__elem">
-        {% for all_my in user.is_chef|yesno:"ALL , MY " %}<span class="nav__link menu__fade">{{ all_my }}</span>{% endfor %}<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="nav__link menu__fade">T</span><span class="nav__link menu__fade">Y</span><span class="nav__link menu__fade">P</span><span class="nav__link menu__fade">E</span><span class="nav__link menu__fade">S</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="nav__link menu__fade">O</span><span class="nav__link menu__fade">F</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="nav__link menu__fade">D</span><span class="nav__link menu__fade">I</span><span class="nav__link menu__fade">S</span><span class="nav__link menu__fade">H</span><span class="nav__link menu__fade">E</span><span class="nav__link menu__fade">S</span>
-      </a>
-    </li>
-    <li class="nav__items">
-      <a href="{% url 'kitchenflow:ingredients-types-list' %}" class="hover__elem">
-        <span class="nav__link menu__fade">A</span><span class="nav__link menu__fade">L</span><span class="nav__link menu__fade">L</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="nav__link menu__fade">T</span><span class="nav__link menu__fade">Y</span><span class="nav__link menu__fade">P</span><span class="nav__link menu__fade">E</span><span class="nav__link menu__fade">S</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="nav__link menu__fade">O</span><span class="nav__link menu__fade">F</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="nav__link menu__fade">I</span><span class="nav__link menu__fade">N</span><span class="nav__link menu__fade">G</span><span class="nav__link menu__fade">R</span><span class="nav__link menu__fade">E</span><span class="nav__link menu__fade">D</span><span class="nav__link menu__fade">I</span><span class="nav__link menu__fade">E</span><span class="nav__link menu__fade">N</span><span class="nav__link menu__fade">T</span><span class="nav__link menu__fade">S</span>
-      </a>
-    </li>
   </ul>
   <div class="login__list__box">
     <ul class="login__list _container">
