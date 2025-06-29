@@ -400,6 +400,11 @@ class IngredientTypeUpdateView(LoginRequiredMixin, generic.UpdateView):
         return reverse("kitchenflow:ingredient-type-detail", args=[self.object.id])
 
 
+class IngredientTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = IngredientType
+    template_name = "kitchenflow/ingredient_type_delete.html"
+    success_url = reverse_lazy("kitchenflow:ingredients-types-list")
+
 def remove_from_cooking(
         request,
         dish_pk: int,
