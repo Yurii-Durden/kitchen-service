@@ -394,6 +394,11 @@ textarea {
     min-width: 200px;
 }
 
+/*INGREDIENTS TYPE----------------------------------*/
+.ing__type__form__title {
+    font-size: 8vw;
+}
+
 
 /*header---------------------------------------------*/
 .logo {

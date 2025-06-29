@@ -196,7 +196,7 @@ const scaleTargets = [
 scaleTargets.forEach(selector => {
   document.querySelectorAll(selector).forEach(elem => {
     elem.addEventListener("mouseenter", () => {
-      gsap.to(cursor, { scale: 0.65, duration: 0.3, ease: "power2.out" });
+      gsap.to(cursor, { scale: 0.6, duration: 0.3, ease: "power2.out" });
     });
     elem.addEventListener("mouseleave", () => {
       gsap.to(cursor, { scale: 1, duration: 0.3, ease: "power2.out" });
