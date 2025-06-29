@@ -251,11 +251,14 @@ body::-webkit-scrollbar-thumb {
 .nav__link {
     position: relative;
     font-size: clamp(20px, 8vw, 60px);
-    /*font-size: clamp(25px, 8vw, 70px);*/
     text-decoration: none;
     line-height: 1;
     font-weight: 500;
     color: var(--primary-color);
+}
+
+.my__nav__link {
+    font-size: clamp(20px, 8vw, 70px);
 }
 
 .nav__items a {
@@ -367,7 +370,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 @media (max-width: 627px) {
-    .nav__link {
+    .nav__link, .my__nav__link {
         font-size: 9.1vw;
     }
 }
@@ -376,7 +379,7 @@ body::-webkit-scrollbar-thumb {
     .nav__list {
         gap: 20px;
     }
-    .nav__link {
+    .nav__link, .my__nav__link {
         font-size: 6vw;
         font-weight: 500;
     }
