@@ -193,8 +193,16 @@ window.addEventListener("scroll", () => {
   }
 });
 
+const hasData = document.querySelector(".data__list");
+
+if (!hasData) {
+  body.style.overflow = "hidden";
+}
+
 function toggleMenu() {
   const tl = gsap.timeline();
+  const hasData = document.querySelector(".data__list");
+  const body = document.body;
 
   elementsToBlur.push(".page__link");
 
@@ -209,6 +217,8 @@ function toggleMenu() {
 
     if (pageListBox) pageListBox.style.display = "none";
     if (dishChooseBox) dishChooseBox.style.display = "block";
+
+    body.style.overflow = "auto";
 
     if (filter_links.length > 0) {
       tl.fromTo(filter_links,
@@ -251,10 +261,15 @@ function toggleMenu() {
         dishChooseBox.style.display = "none";
       }, ">");
     }
+
+    if (!hasData) {
+      body.style.overflow = "hidden";
+    }
   }
 
   isOpen = !isOpen;
 }
+
 
 const typeLinks = document.querySelectorAll(".filter__buttons");
 ScrollTrigger.matchMedia({

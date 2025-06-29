@@ -352,6 +352,10 @@ body::-webkit-scrollbar-thumb {
     #cursor {
         display: none;
     }
+
+    * {
+        cursor: auto;
+    }
 }
 
 /*header-media-----------------------------------------*/
