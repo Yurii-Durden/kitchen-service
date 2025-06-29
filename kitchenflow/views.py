@@ -391,6 +391,15 @@ class IngredientTypeCreateView(LoginRequiredMixin, generic.CreateView):
     success_url = reverse_lazy("kitchenflow:ingredients-types-list")
 
 
+class IngredientTypeUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = IngredientType
+    form_class = IngredientTypeCreatingForm
+    template_name = "kitchenflow/ingredient_type_form.html"
+
+    def get_success_url(self):
+        return reverse("kitchenflow:ingredient-type-detail", args=[self.object.id])
+
+
 def remove_from_cooking(
         request,
         dish_pk: int,
