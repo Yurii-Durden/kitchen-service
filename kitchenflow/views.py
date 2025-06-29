@@ -18,7 +18,8 @@ from kitchenflow.forms import (
     DishTypeSearchForm,
     IngredientSearchForm,
     IngredientCreatingForm,
-    IngredientTypeSearchForm
+    IngredientTypeSearchForm,
+    IngredientTypeCreatingForm
 )
 
 
@@ -338,8 +339,6 @@ class IngredientDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy("kitchenflow:ingredients-list")
 
 
-
-
 class IngredientTypeListView(LoginRequiredMixin, generic.ListView):
     model = IngredientType
     context_object_name = "ing_type_list"
@@ -383,6 +382,13 @@ class IngredientTypeDetailView(LoginRequiredMixin, generic.DetailView):
         context["is_paginated"] = page_obj.has_other_pages()
         context["paginator"] = paginator
         return context
+
+
+class IngredientTypeCreateView(LoginRequiredMixin, generic.CreateView):
+    model = IngredientType
+    form_class = IngredientTypeCreatingForm
+    template_name = "kitchenflow/ingredient_type_form.html"
+    success_url = reverse_lazy("kitchenflow:ingredients-types-list")
 
 
 def remove_from_cooking(
