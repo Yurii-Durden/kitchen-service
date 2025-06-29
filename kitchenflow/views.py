@@ -17,7 +17,8 @@ from kitchenflow.forms import (
     DishSearchForm,
     DishTypeSearchForm,
     IngredientSearchForm,
-    IngredientCreatingForm
+    IngredientCreatingForm,
+    IngredientTypeSearchForm
 )
 
 
@@ -335,6 +336,54 @@ class IngredientDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Ingredient
     template_name = "kitchenflow/ingredient_delete.html"
     success_url = reverse_lazy("kitchenflow:ingredients-list")
+
+
+
+
+class IngredientTypeListView(LoginRequiredMixin, generic.ListView):
+    model = IngredientType
+    context_object_name = "ing_type_list"
+    template_name = "kitchenflow/ingredients_types_list.html"
+    paginate_by = 10
+
+    def get_context_data(
+            self, *, object_list=..., **kwargs
+    ):
+        context = super(IngredientTypeListView, self).get_context_data(**kwargs)
+        name = self.request.GET.get("name")
+        context["search_form"] = IngredientTypeSearchForm(
+            initial={"name": name}
+        )
+
+        return context
+
+    def get_queryset(self):
+        name = self.request.GET.get("name")
+        if name:
+            return IngredientType.objects.filter(name__icontains=name)
+        return IngredientType.objects.all()
+
+
+class IngredientTypeDetailView(LoginRequiredMixin, generic.DetailView):
+    model = IngredientType
+    template_name = "kitchenflow/ingredient_type_detail.html"
+    context_object_name = "ingredient_type_detail"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        ingredients = Ingredient.objects.filter(
+            ingredient_type=self.object
+        ).select_related("ingredient_type")
+
+        paginator = Paginator(ingredients, 10)
+        page_number = self.request.GET.get("page")
+        page_obj = paginator.get_page(page_number)
+
+        context["page_obj"] = page_obj
+        context["is_paginated"] = page_obj.has_other_pages()
+        context["paginator"] = paginator
+        return context
+
 
 def remove_from_cooking(
         request,
