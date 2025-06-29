@@ -108,4 +108,9 @@ urlpatterns = [
         views.IngredientTypeDetailView.as_view(),
         name="ingredient-type-detail"
     ),
+    path(
+        "ingredients-type/create/",
+        views.IngredientTypeCreateView.as_view(),
+        name="ingredient-type-create"
+    ),
 ]
