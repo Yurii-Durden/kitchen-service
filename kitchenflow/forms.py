@@ -343,3 +343,15 @@ class IngredientSearchForm(forms.Form):
             "autocomplete": "off",
         })
     )
+
+class IngredientTypeSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        label="",
+        required=False,
+        widget=forms.TextInput(attrs={
+            "placeholder": "search by ingredient type name",
+            "class": "search__input hover__elem",
+            "autocomplete": "off",
+        })
+    )
