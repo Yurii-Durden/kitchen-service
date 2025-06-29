@@ -26,8 +26,9 @@ document.addEventListener("click", (e) => {
 
 const elementsToBlur = [
   ".main__block",
-  ".page__count"
+  ".page__count",
 ];
+
 
 //blur first section
 const angleDown = document.querySelector(".angle__down");
@@ -57,6 +58,7 @@ gsap.to(angleDown, {
   }
 });
 
+// buttons hover
 const createButton = document.querySelector(".create__button");
 const buttonLetters = Array.from(document.querySelectorAll(".create__fade"));
 ScrollTrigger.matchMedia({
@@ -193,6 +195,8 @@ window.addEventListener("scroll", () => {
 
 function toggleMenu() {
   const tl = gsap.timeline();
+
+  elementsToBlur.push(".page__link");
 
   if (!isOpen) {
     previousScroll = window.scrollY;

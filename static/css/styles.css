@@ -250,7 +250,7 @@ body::-webkit-scrollbar-thumb {
 
 .nav__link {
     position: relative;
-    font-size: clamp(25px, 8vw, 55px);
+    font-size: clamp(20px, 8vw, 60px);
     /*font-size: clamp(25px, 8vw, 70px);*/
     text-decoration: none;
     line-height: 1;
@@ -373,8 +373,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 @media (max-width: 408px) {
+    .nav__list {
+        gap: 20px;
+    }
     .nav__link {
-        font-size: 8vw;
+        font-size: 6vw;
         font-weight: 500;
     }
 }

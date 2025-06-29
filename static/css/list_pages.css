@@ -13,6 +13,10 @@
     will-change: transform;
 }
 
+.ing__type__title {
+    font-size: 8vw;
+}
+
 .fade__title__all {
     display: inline-block;
     opacity: 0;
