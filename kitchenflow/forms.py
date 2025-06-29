@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.hashers import make_password
 from django.forms.models import ModelForm
 
-from kitchenflow.models import Cook, Dish, DishType, Ingredient
+from kitchenflow.models import Cook, Dish, DishType, Ingredient, IngredientType
 
 
 class CookCreationForm(UserCreationForm):
@@ -290,6 +290,16 @@ class IngredientCreatingForm(ModelForm):
 
     class Meta:
         model = Ingredient
+        fields = "__all__"
+
+
+class IngredientTypeCreatingForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['name'].widget.attrs.update({'class': 'form_input'})
+
+    class Meta:
+        model = IngredientType
         fields = "__all__"
 
 
