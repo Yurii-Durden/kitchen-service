@@ -212,6 +212,10 @@ class DishTypeCreatingForm(ModelForm):
 
 
 class DishIngredientForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['amount'].widget.attrs.update({'class': 'form_amount'})
+
     class Meta:
         model = DishIngredient
         fields = ['ingredient', 'amount', 'unit']
