@@ -319,6 +319,16 @@ textarea {
     cursor: none;
 }
 
+.dish__type__item label {
+    display: block;
+    width: 100%;
+    transition: color 1.5s var(--primary-animation);
+}
+
+.dish__type__item label:hover {
+    color: #9f9f9f;
+}
+
 .dish__type__list__active {
     transform: translate3d(0, 0, 0);
     opacity: 1;
@@ -360,6 +370,16 @@ textarea {
     position: relative;
 }
 
+.cooks__multi label {
+  transition: color 1.5s var(--primary-animation);
+}
+
+.cooks__multi label:hover {
+  color: #8d8d8d;
+
+}
+
+
 .cooks__multi input[type="checkbox"]::after {
     content: '✓';
     color: var(--back-color);
@@ -382,7 +402,7 @@ textarea {
     transform: translate3d(15px, 0, 0);
     display: inline-block;
     padding: 0.12rem 0;
-    cursor: none; !important;
+    cursor: none !important;
 }
 
 /*INGREDIENTS----------------------------------------*/
