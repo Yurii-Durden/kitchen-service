@@ -211,6 +211,12 @@ class DishTypeCreatingForm(ModelForm):
         return name
 
 
+class DishIngredientForm(forms.ModelForm):
+    class Meta:
+        model = Ingredient
+        fields = ['ingredient', 'amount', 'unit']
+
+
 class DishCreatingForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -223,8 +229,9 @@ class DishCreatingForm(ModelForm):
             'wrap': 'soft',
             'rows': 10,
         })
-        self.fields['dish_type'].widget.attrs.update({'class': 'dish__check'})
-        self.fields['cooks'].widget.attrs.update({'class': 'cooks__multi'})
+        self.fields["dish_type"].widget.attrs.update({'class': 'dish__check'})
+        self.fields["cooks"].widget.attrs.update({'class': 'cooks__multi'})
+        self.fields["ingredients"].widget.attrs.update({"class": "ingredient"})
 
     cooks = forms.ModelMultipleChoiceField(
         queryset=get_user_model().objects.all(),
@@ -241,6 +248,7 @@ class DishCreatingForm(ModelForm):
             "description",
             "dish_type",
             "cooks",
+            "ingredients"
         )
 
     def clean_name(self):
