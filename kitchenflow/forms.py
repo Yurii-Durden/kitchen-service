@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.hashers import make_password
 from django.forms.models import ModelForm
 
-from kitchenflow.models import Cook, Dish, DishType, Ingredient, IngredientType
+from kitchenflow.models import Cook, Dish, DishType, Ingredient, IngredientType, DishIngredient
 
 
 class CookCreationForm(UserCreationForm):
@@ -213,7 +213,7 @@ class DishTypeCreatingForm(ModelForm):
 
 class DishIngredientForm(forms.ModelForm):
     class Meta:
-        model = Ingredient
+        model = DishIngredient
         fields = ['ingredient', 'amount', 'unit']
 
 
@@ -231,7 +231,6 @@ class DishCreatingForm(ModelForm):
         })
         self.fields["dish_type"].widget.attrs.update({'class': 'dish__check'})
         self.fields["cooks"].widget.attrs.update({'class': 'cooks__multi'})
-        self.fields["ingredients"].widget.attrs.update({"class": "ingredient"})
 
     cooks = forms.ModelMultipleChoiceField(
         queryset=get_user_model().objects.all(),
@@ -248,7 +247,6 @@ class DishCreatingForm(ModelForm):
             "description",
             "dish_type",
             "cooks",
-            "ingredients"
         )
 
     def clean_name(self):
