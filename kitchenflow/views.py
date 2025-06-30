@@ -2,12 +2,13 @@ from django.contrib.auth import logout, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
+from django.forms import inlineformset_factory
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 
-from kitchenflow.models import Cook, Dish, DishType, Ingredient, IngredientType
+from kitchenflow.models import Cook, Dish, DishType, Ingredient, IngredientType, DishIngredient
 from kitchenflow.forms import (
     CookCreationForm,
     CookPersonalInfoUpdateForm,
@@ -19,7 +20,8 @@ from kitchenflow.forms import (
     IngredientSearchForm,
     IngredientCreatingForm,
     IngredientTypeSearchForm,
-    IngredientTypeCreatingForm
+    IngredientTypeCreatingForm,
+    DishIngredientForm
 )
 
 
@@ -165,10 +167,41 @@ class DishListView(LoginRequiredMixin, generic.ListView):
         return queryset
 
 
+DishIngredientFormSet = inlineformset_factory(
+    Dish,
+    DishIngredient,
+    form=DishIngredientForm,
+    extra=1,
+)
+
+
 class DishCreateView(LoginRequiredMixin, generic.CreateView):
     model = Dish
     form_class = DishCreatingForm
     success_url = reverse_lazy("kitchenflow:dish-list")
+    template_name = "kitchenflow/dish_form.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.request.POST:
+            context['formset'] = DishIngredientFormSet(self.request.POST)
+        else:
+            context['formset'] = DishIngredientFormSet()
+        return context
+
+    def form_valid(self, form):
+        context = self.get_context_data()
+        formset = context['formset']
+
+        if formset.is_valid():
+            self.object = form.save()
+            formset.instance = self.object
+            formset.save()
+            return redirect(self.success_url)
+        else:
+            return self.render_to_response(
+                self.get_context_data(form=form, formset=formset)
+            )
 
 
 class DishUpdateView(LoginRequiredMixin, generic.UpdateView):

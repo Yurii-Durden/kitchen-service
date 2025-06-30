@@ -135,26 +135,3 @@ class DishIngredient(models.Model):
                 f"{self.ingredient.name} "
                 f"{self.amount} "
                 f"{self.unit} in {self.dish.name}")
-
-
-# class Ingredients(models.Model):
-#     UNIT_CHOICES = [
-#         ("g", "gram"),
-#         ("kg", "kilogram"),
-#         ("ml", "milliliter"),
-#         ("l", "liter"),
-#         ("pcs", "pieces"),
-#         ("tbsp", "tablespoon"),
-#         ("tsp", "teaspoon"),
-#     ]
-#
-#     name = models.CharField(max_length=255, unique=True, default=None)
-#     unit = models.CharField(max_length=10, choices=UNIT_CHOICES, default="g")
-#
-#     class Meta:
-#         ordering = ["name"]
-#
-#     def save(self, *args, **kwargs):
-#         if self.name:
-#             self.name = self.name.title()
-#         super().save(*args, **kwargs)

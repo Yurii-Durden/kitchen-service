@@ -97,6 +97,27 @@
               {{ form.cooks }}
             </div>
 
+            {% for error in form.subform.errors %}
+                <div class="error__item another__letter">{{ error }}</div>
+            {% endfor %}
+
+            {{ formset.management_form }}
+            {% for subform in formset %}
+              <div class="dish__group to__opacity ingredient-block">
+                {% for field in subform.visible_fields %}
+                  <div class="form__label another__letter">
+                    <label for="{{ field.id_for_label }}"><em>{{ field.label }}:&nbsp;</em></label>
+                    {{ field }}
+                    {% if field.errors %}
+                      <div class="error__item another__letter">
+                        {{ field.errors }}
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endfor %}
+              </div>
+            {% endfor %}
+
             <button type="submit" class="form__button to__opacity hover__elem">
               {% for button_letter in object|yesno:'Update,Create' %}<span class="another__letter">{{ button_letter }}</span>{% endfor %}
             </button>
