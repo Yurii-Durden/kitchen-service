@@ -14,7 +14,7 @@
     <div class="form__body _container">
       <div class="form__wrapper">
         <div class="form__box">
-          <h1 class="dish__type__form__title to__opacity">
+          <h1 class="dish__type__form__title to__opacity ">
             {% for letter in object|yesno:"Update dish,Create dish" %}{% if letter == " " %}<span class="title__letter">&nbsp;</span>{% else %}<span class="title__letter">{{ letter }}</span>{% endif %}{% endfor %}
           </h1>
 
@@ -33,7 +33,7 @@
               <div class="error__item another__letter">{{ error }}</div>
             {% endfor %}
 
-            <div class="dish__group to__opacity">
+            <div class="dish__group to__opacity ">
               <label for="{{ form.name.id_for_label }}" class="form__label another__letter"><em>{{ form.name.label }}:&nbsp;</em></label>
               {{ form.name }}
             </div>
@@ -42,7 +42,7 @@
               <div class="error__item another__letter">{{ error }}</div>
             {% endfor %}
 
-            <div class="dish__group to__opacity">
+            <div class="dish__group to__opacity ">
               <label for="{{ form.price.id_for_label }}" class="form__label another__letter"><em>{{ form.price.label }}:&nbsp;</em></label>
               {{ form.price }}
             </div>
@@ -51,7 +51,7 @@
               <div class="error__item another__letter">{{ error }}</div>
             {% endfor %}
 
-            <div class="dish__group__description to__opacity">
+            <div class="dish__group__description to__opacity ">
               <label for="{{ form.description.id_for_label }}" class="form__label another__letter"><em>{{ form.description.label }}:&nbsp;</em></label>
               {{ form.description }}
             </div>
@@ -60,12 +60,12 @@
               <div class="error__item another__letter">{{ error }}</div>
             {% endfor %}
 
-            <div class="dish__group__selected__list">
+            <div class="dish__group__selected__list ">
               <label class="form__label check__box another__letter">
                 <em>{{ form.dish_type.label }}:&nbsp;</em>
               </label>
               <div class="select__list__button hover__elem">
-                <span class="checked__elem"><span class="selected__text">
+                <span class="checked__elem hover__elem"><span class="selected__text">
                   {% if object %}
                     {{ object.dish_type }}
                   {% else %}
@@ -73,13 +73,18 @@
                   {% endif %}
                 </span><svg class="arrow__down" width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 <ul class="dish__type__list">
-                  <li class="dish__type__item" data-id="{{ choice.id }}">
-                    ---------
+                  <li class="dish__type__item">
+                    <label>
+                      <input type="radio" name="dish_type" value="" hidden
+                        {% if not form.dish_type.value %}checked{% endif %}>
+                      <em class="item__text">---------</em>
+                    </label>
                   </li>
                   {% for choice in form.dish_type.field.queryset %}
-                    <li class="dish__type__item" data-id="{{ choice.id }}">
+                    <li class="dish__type__item hover__elem">
                       <label>
-                        <input type="checkbox" name="dish_type" value="{{ choice.id }}" hidden>
+                        <input type="radio" name="dish_type" value="{{ choice.id }}" hidden
+                          {% if form.dish_type.value|stringformat:"s" == choice.id|stringformat:"s" %}checked{% endif %}>
                         <em class="item__text">{{ choice.name }}</em>
                       </label>
                     </li>
@@ -88,11 +93,12 @@
               </div>
             </div>
 
+
             {% for error in form.cooks.errors %}
                 <div class="error__item another__letter">{{ error }}</div>
             {% endfor %}
 
-            <div class="dish__group__cook to__opacity">
+            <div class="dish__group__cook to__opacity ">
               <label for="{{ form.cooks.id_for_label }}" class="form__label another__letter"><em>{{ form.cooks.label }}:&nbsp;</em></label>
               {{ form.cooks }}
             </div>
@@ -102,23 +108,67 @@
             {% endfor %}
 
             {{ formset.management_form }}
+
             {% for subform in formset %}
-              <div class="dish__group to__opacity ingredient-block">
-                {% for field in subform.visible_fields %}
-                  <div class="form__label another__letter">
-                    <label for="{{ field.id_for_label }}"><em>{{ field.label }}:&nbsp;</em></label>
-                    {{ field }}
-                    {% if field.errors %}
-                      <div class="error__item another__letter">
-                        {{ field.errors }}
-                      </div>
-                    {% endif %}
+              <div class="dish__group ingredient-block">
+
+                {% if subform.ingredient.errors %}
+                  <div class="error__item another__letter">
+                    {{ subform.ingredient.errors }}
                   </div>
-                {% endfor %}
+                {% endif %}
+                <div class="ing__label another__letter">
+                  <label><em>{{ subform.ingredient.label }}:&nbsp;</em></label>
+                  <div class="choose__ing__button hover__elem">
+                    <span class="checked__ing">
+                      <span class="selected__ing">---------</span>
+                    </span>
+                    <svg class="arrow__down" width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <ul class="ing__list">
+                      <li>
+                        <label>
+                          <input type="radio" name="{{ subform.ingredient.html_name }}" value="" {% if not subform.ingredient.value %}checked{% endif %} hidden>
+                          <em>---------</em>
+                        </label>
+                      </li>
+                      {% for ing in subform.ingredient.field.queryset %}
+                        <li>
+                          <label>
+                            <input type="radio" name="{{ subform.ingredient.html_name }}" value="{{ ing.id }}"
+                                   {% if subform.ingredient.value|stringformat:"s" == ing.id|stringformat:"s" %}checked{% endif %} hidden>
+                            <em>{{ ing }}</em>
+                          </label>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+
+{#                <div class="form__label another__letter">#}
+{#                  <label for="{{ subform.amount.id_for_label }}"><em>{{ subform.amount.label }}:&nbsp;</em></label>#}
+{#                  {{ subform.amount }}#}
+{#                  {% if subform.amount.errors %}#}
+{#                    <div class="error__item another__letter">#}
+{#                      {{ subform.amount.errors }}#}
+{#                    </div>#}
+{#                  {% endif %}#}
+{#                </div>#}
+
+{#                <div class="form__label another__letter">#}
+{#                  <label for="{{ subform.unit.id_for_label }}"><em>{{ subform.unit.label }}:&nbsp;</em></label>#}
+{#                  {{ subform.unit }}#}
+{#                  {% if subform.unit.errors %}#}
+{#                    <div class="error__item another__letter">#}
+{#                      {{ subform.unit.errors }}#}
+{#                    </div>#}
+{#                  {% endif %}#}
+{#                </div>#}
+
               </div>
             {% endfor %}
 
-            <button type="submit" class="form__button to__opacity hover__elem">
+
+            <button type="submit" class="form__button to__opacity  hover__elem">
               {% for button_letter in object|yesno:'Update,Create' %}<span class="another__letter">{{ button_letter }}</span>{% endfor %}
             </button>
           </form>
