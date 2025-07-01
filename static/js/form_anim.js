@@ -55,6 +55,10 @@ if(selectButton) {
     item.addEventListener("click", (e) => {
       e.stopPropagation();
       checkedElem.innerText = item.innerText;
+      selectList.classList.remove("dish__type__list__active");
+      toOpacity.forEach((elem) => {
+        elem.classList.remove("to__opacity__active");
+    })
     });
   });
 
