@@ -271,8 +271,6 @@ textarea {
 }
 
 .select__list__button {
-    font-size: clamp(16px, 2vw, 21px);
-    font-weight: 500;
     padding: 0.12rem 5px;
     min-width: 200px;
     font-style: italic;
@@ -423,21 +421,20 @@ textarea {
 }
 
 /*DISH-INGREDIENT------------------------------------*/
-/*.form_amount {*/
-/*    background-color: var(--primary-color);*/
-/*    font-style: italic;*/
-/*    font-family: "Cormorant Infant", serif;*/
-/*    color: var(--back-color);*/
-/*    font-size: clamp(16px, 2vw, 21px);*/
-/*    font-weight: 500;*/
+.ingredient-block {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    margin-bottom: 5vh;
+}
 
-/*}*/
+.ing__title {
+    font-size: 7vw;
+    font-weight: 400;
+    color: var(--back-color);
+}
 
-/*.form_amount:hover,*/
-/*.form_amount:focus {*/
-/*    outline: none;*/
-/*}*/
-
+/*ing-list-----------------------*/
 .choose__ing__button {
     display: flex;
     align-items: center;
@@ -500,6 +497,22 @@ textarea {
 .ing__label {
     display: flex;
     color: var(--back-color);
+}
+
+/*amount--------------------------*/
+.form_amount {
+    background-color: var(--primary-color);
+    font-style: italic;
+    font-family: "Cormorant Infant", serif;
+    color: var(--back-color);
+    font-size: clamp(16px, 2vw, 21px);
+    font-weight: 500;
+    border-bottom: 1px solid rgba(238, 237, 233, 0.3);
+}
+
+.form_amount:hover,
+.form_amount:focus {
+    outline: none;
 }
 
 /*INGREDIENTS TYPE----------------------------------*/

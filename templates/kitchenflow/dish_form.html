@@ -10,6 +10,8 @@
 {% endblock %}
 
 {% block content %}
+<form action="" method="post" class="dish__type__form">
+    {% csrf_token %}
   <section class="section">
     <div class="form__body _container">
       <div class="form__wrapper">
@@ -17,9 +19,6 @@
           <h1 class="dish__type__form__title to__opacity ">
             {% for letter in object|yesno:"Update dish,Create dish" %}{% if letter == " " %}<span class="title__letter">&nbsp;</span>{% else %}<span class="title__letter">{{ letter }}</span>{% endif %}{% endfor %}
           </h1>
-
-          <form action="" method="post" class="dish__type__form">
-            {% csrf_token %}
 
             {% if form.non_field_errors %}
               <ul class="error__list">
@@ -102,57 +101,62 @@
               <label for="{{ form.cooks.id_for_label }}" class="form__label another__letter"><em>{{ form.cooks.label }}:&nbsp;</em></label>
               {{ form.cooks }}
             </div>
+          </div>
+        </div>
+      </div>
+  </section>
+  <section class="section">
+  <div class="form__body__ing _container">
+    {% for error in form.subform.errors %}
+      <div class="error__item another__letter">{{ error }}</div>
+    {% endfor %}
 
-            {% for error in form.subform.errors %}
-                <div class="error__item another__letter">{{ error }}</div>
-            {% endfor %}
+    {{ formset.management_form }}
 
-            {{ formset.management_form }}
+    {% for subform in formset %}
+      <div class="ingredient-block">
+        <h2 class="ing__title">Ingredients</h2>
+        {% if subform.ingredient.errors %}
+          <div class="error__item another__letter">
+            {{ subform.ingredient.errors }}
+          </div>
+        {% endif %}
+        <div class="ing__label another__letter">
+          <label><em>{{ subform.ingredient.label }}:&nbsp;</em></label>
+          <div class="choose__ing__button hover__elem">
+            <span class="checked__ing">
+              <span class="selected__ing">---------</span>
+            </span>
+            <svg class="arrow__down" width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <ul class="ing__list">
+              <li>
+                <label>
+                  <input type="radio" name="{{ subform.ingredient.html_name }}" value="" {% if not subform.ingredient.value %}checked{% endif %} hidden>
+                  <em>---------</em>
+                </label>
+              </li>
+              {% for ing in subform.ingredient.field.queryset %}
+                <li>
+                  <label>
+                    <input type="radio" name="{{ subform.ingredient.html_name }}" value="{{ ing.id }}"
+                           {% if subform.ingredient.value|stringformat:"s" == ing.id|stringformat:"s" %}checked{% endif %} hidden>
+                    <em>{{ ing }}</em>
+                  </label>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
 
-            {% for subform in formset %}
-              <div class="dish__group ingredient-block">
-
-                {% if subform.ingredient.errors %}
-                  <div class="error__item another__letter">
-                    {{ subform.ingredient.errors }}
-                  </div>
-                {% endif %}
-                <div class="ing__label another__letter">
-                  <label><em>{{ subform.ingredient.label }}:&nbsp;</em></label>
-                  <div class="choose__ing__button hover__elem">
-                    <span class="checked__ing">
-                      <span class="selected__ing">---------</span>
-                    </span>
-                    <svg class="arrow__down" width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    <ul class="ing__list">
-                      <li>
-                        <label>
-                          <input type="radio" name="{{ subform.ingredient.html_name }}" value="" {% if not subform.ingredient.value %}checked{% endif %} hidden>
-                          <em>---------</em>
-                        </label>
-                      </li>
-                      {% for ing in subform.ingredient.field.queryset %}
-                        <li>
-                          <label>
-                            <input type="radio" name="{{ subform.ingredient.html_name }}" value="{{ ing.id }}"
-                                   {% if subform.ingredient.value|stringformat:"s" == ing.id|stringformat:"s" %}checked{% endif %} hidden>
-                            <em>{{ ing }}</em>
-                          </label>
-                        </li>
-                      {% endfor %}
-                    </ul>
-                  </div>
-                </div>
-
-{#                <div class="form__label another__letter">#}
-{#                  <label for="{{ subform.amount.id_for_label }}"><em>{{ subform.amount.label }}:&nbsp;</em></label>#}
-{#                  {{ subform.amount }}#}
-{#                  {% if subform.amount.errors %}#}
-{#                    <div class="error__item another__letter">#}
-{#                      {{ subform.amount.errors }}#}
-{#                    </div>#}
-{#                  {% endif %}#}
-{#                </div>#}
+        <div class="form__label another__letter">
+          <label for="{{ subform.amount.id_for_label }}"><em>{{ subform.amount.label }}:&nbsp;</em></label>
+          {{ subform.amount }}
+          {% if subform.amount.errors %}
+            <div class="error__item another__letter">
+              {{ subform.amount.errors }}
+            </div>
+          {% endif %}
+        </div>
 
 {#                <div class="form__label another__letter">#}
 {#                  <label for="{{ subform.unit.id_for_label }}"><em>{{ subform.unit.label }}:&nbsp;</em></label>#}
@@ -164,19 +168,16 @@
 {#                  {% endif %}#}
 {#                </div>#}
 
-              </div>
-            {% endfor %}
-
-
-            <button type="submit" class="form__button to__opacity  hover__elem">
-              {% for button_letter in object|yesno:'Update,Create' %}<span class="another__letter">{{ button_letter }}</span>{% endfor %}
-            </button>
-          </form>
-
-        </div>
       </div>
-    </div>
+    {% endfor %}
+
+
+    <button type="submit" class="form__button to__opacity  hover__elem">
+      {% for button_letter in object|yesno:'Update,Create' %}<span class="another__letter">{{ button_letter }}</span>{% endfor %}
+    </button>
+  </div>
   </section>
+</form>
 {% endblock %}
 
 {% block extra_scripts %}

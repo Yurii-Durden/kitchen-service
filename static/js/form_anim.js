@@ -95,7 +95,7 @@ if(selectIngButton) {
     item.addEventListener("click", (e) => {
       e.stopPropagation();
       checkedIng.innerText = item.innerText;
-      selectList.classList.remove("dish__type__list__active");
+      selectIngList.classList.remove("dish__ing__list__active");
       toOpacity.forEach((elem) => {
         elem.classList.remove("to__ing__opacity");
       })
