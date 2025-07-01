@@ -274,7 +274,7 @@ textarea {
     font-size: clamp(16px, 2vw, 21px);
     font-weight: 500;
     padding: 0.12rem 5px;
-    min-width: 170px;
+    min-width: 200px;
     font-style: italic;
     height: max-content;
     background-color: var(--primary-color);
@@ -301,12 +301,27 @@ textarea {
     width: 100%;
     transition: all 1.5s var(--primary-animation);
     transform: translate3d(0, -10%, 0);
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    scrollbar-width: thin;
+    scrollbar-color: #9f9f9f var(--primary-color);
+    /*scrollbar-color: var(--back-color) var(--primary-color);*/
     background-color: var(--primary-color);
     pointer-events: none;
     padding-bottom: 5px;
     z-index: 10;
+}
+
+.dish__type__list::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+.dish__type__list::-webkit-scrollbar-track {
+  background: var(--back-color);
+}
+
+.dish__type__list::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 10px;
 }
 
 .dish__type__item {
@@ -407,29 +422,84 @@ textarea {
     cursor: none !important;
 }
 
-/*dish-ingredient------------------------------------*/
-.form_amount {
+/*DISH-INGREDIENT------------------------------------*/
+/*.form_amount {*/
+/*    background-color: var(--primary-color);*/
+/*    font-style: italic;*/
+/*    font-family: "Cormorant Infant", serif;*/
+/*    color: var(--back-color);*/
+/*    font-size: clamp(16px, 2vw, 21px);*/
+/*    font-weight: 500;*/
+
+/*}*/
+
+/*.form_amount:hover,*/
+/*.form_amount:focus {*/
+/*    outline: none;*/
+/*}*/
+
+.choose__ing__button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: 400px;
+    padding: 0.12rem 5px;
+}
+
+.checked__ing {
+    position: relative;
+    z-index: 31;
+}
+
+.ing__list {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    transform: translate3d(0, 10%, 0);
+    opacity: 0;
+    overflow-y: auto;
     background-color: var(--primary-color);
-    font-style: italic;
-    font-family: "Cormorant Infant", serif;
+    z-index: 10;
+    pointer-events: none;
+    scrollbar-width: thin;
+    scrollbar-color: #9f9f9f var(--primary-color);
+    transition: all 1.5s var(--primary-animation);
+}
+
+.dish__ing__list__active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate3d(0, 0, 0);
+}
+
+.to__ing__opacity {
+    opacity: 0.25;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.ing__list li {
+    padding: 0.12rem 5px;
+    transition: color 1.5s var(--primary-animation);
+}
+
+.ing__list li:hover {
+    color: #9f9f9f;
+}
+
+.ing__list::-webkit-scrollbar-thumb,
+.ing__list::-webkit-scrollbar-thumb {
+  background-color: var(--back-color);
+  border-radius: 10px;
+}
+
+.ing__label {
+    display: flex;
     color: var(--back-color);
-    font-size: clamp(16px, 2vw, 21px);
-    font-weight: 500;
-
-}
-
-.form_amount:hover,
-.form_amount:focus {
-    outline: none;
-}
-
-/*INGREDIENTS----------------------------------------*/
-.ing__button {
-    margin-top: 2vh;
-}
-
-.select__list__button__ing {
-    min-width: 200px;
 }
 
 /*INGREDIENTS TYPE----------------------------------*/

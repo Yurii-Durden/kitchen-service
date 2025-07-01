@@ -113,7 +113,7 @@ class DishIngredient(models.Model):
     ingredient = models.ForeignKey(
         Ingredient,
         on_delete=models.CASCADE,
-        related_name="dish_ingredients"
+        related_name="dish_ingredients",
     )
 
     amount = models.DecimalField(max_digits=6, decimal_places=2)
