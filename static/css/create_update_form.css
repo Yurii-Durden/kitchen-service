@@ -50,12 +50,17 @@ input:-webkit-autofill {
     transform: translate3d(15px, 0, 0);
 }
 
+.form__ing__wrapper {
+    /*background-color: rebeccapurple;*/
+    max-width: 890px;
+    width: 100%;
+}
+
 /*form----------------------------------------------*/
 .form__body {
     display: flex;
     margin-top: 10vh;
     justify-content: center;
-    margin-bottom: 15vh;
 }
 
 /*label-input-------------------------------------------*/

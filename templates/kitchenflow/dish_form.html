@@ -14,7 +14,7 @@
     {% csrf_token %}
   <section class="section">
     <div class="form__body _container">
-      <div class="form__wrapper">
+      <div class="form__ing__wrapper">
         <div class="form__box">
           <h1 class="dish__type__form__title to__opacity ">
             {% for letter in object|yesno:"Update dish,Create dish" %}{% if letter == " " %}<span class="title__letter">&nbsp;</span>{% else %}<span class="title__letter">{{ letter }}</span>{% endif %}{% endfor %}
@@ -106,7 +106,8 @@
       </div>
   </section>
   <section class="section">
-  <div class="form__body__ing _container">
+  <div class="form__body _container">
+  <div class="form__ing__wrapper">
     {% for error in form.subform.errors %}
       <div class="error__item another__letter">{{ error }}</div>
     {% endfor %}
@@ -175,6 +176,7 @@
     <button type="submit" class="form__button to__opacity  hover__elem">
       {% for button_letter in object|yesno:'Update,Create' %}<span class="another__letter">{{ button_letter }}</span>{% endfor %}
     </button>
+  </div>
   </div>
   </section>
 </form>
