@@ -58,7 +58,7 @@ if(selectButton) {
       selectList.classList.remove("dish__type__list__active");
       toOpacity.forEach((elem) => {
         elem.classList.remove("to__opacity__active");
-    })
+      })
     });
   });
 
@@ -70,6 +70,46 @@ if(selectButton) {
       selectList.classList.remove("dish__type__list__active");
       toOpacity.forEach((elem) => {
         elem.classList.remove("to__opacity__active");
+    })
+
+    }
+  });
+}
+
+//select ingredient
+const selectIngButton     = document.querySelector(".choose__ing__button");
+const selectIngList       = document.querySelector(".ing__list");
+const selectIngItems  = document.querySelectorAll(".ing__list li");
+const checkedIng      = document.querySelector(".selected__ing");
+
+if(selectIngButton) {
+  selectIngButton.addEventListener("click", (e) => {
+    e.stopPropagation();
+    selectIngList.classList.toggle("dish__ing__list__active");
+    toOpacity.forEach((elem) => {
+      elem.classList.toggle("to__ing__opacity");
+    })
+  });
+
+  selectIngItems.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      e.stopPropagation();
+      checkedIng.innerText = item.innerText;
+      selectList.classList.remove("dish__type__list__active");
+      toOpacity.forEach((elem) => {
+        elem.classList.remove("to__ing__opacity");
+      })
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    const outsideIngButton = !selectIngButton.contains(e.target);
+    const outsideIngList   = !selectIngList.contains(e.target);
+
+    if (outsideIngButton && outsideIngList) {
+      selectIngList.classList.remove("dish__ing__list__active");
+      toOpacity.forEach((elem) => {
+        elem.classList.remove("to__ing__opacity");
     })
 
     }
