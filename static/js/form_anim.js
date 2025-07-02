@@ -81,11 +81,13 @@ const selectIngButton     = document.querySelector(".choose__ing__button");
 const selectIngList       = document.querySelector(".ing__list");
 const selectIngItems  = document.querySelectorAll(".ing__list li");
 const checkedIng      = document.querySelector(".selected__ing");
+const toOpacityTypes = document.querySelector(".to__opacity__types");
 
 if(selectIngButton) {
   selectIngButton.addEventListener("click", (e) => {
     e.stopPropagation();
     selectIngList.classList.toggle("dish__ing__list__active");
+    toOpacityTypes.classList.toggle("to__ing__opacity");
     toOpacity.forEach((elem) => {
       elem.classList.toggle("to__ing__opacity");
     })
@@ -99,6 +101,7 @@ if(selectIngButton) {
       toOpacity.forEach((elem) => {
         elem.classList.remove("to__ing__opacity");
       })
+      toOpacityTypes.classList.remove("to__ing__opacity");
     });
   });
 
@@ -110,8 +113,8 @@ if(selectIngButton) {
       selectIngList.classList.remove("dish__ing__list__active");
       toOpacity.forEach((elem) => {
         elem.classList.remove("to__ing__opacity");
-    })
-
+      });
+      toOpacityTypes.classList.remove("to__ing__opacity");
     }
   });
 }
@@ -215,3 +218,48 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+//IngredientsScroll
+if(document.querySelectorAll(".fade").length > 0) {
+  ScrollTrigger.matchMedia({
+    "(min-width: 1257px)": function () {
+      const animations = [
+        {
+          elements: ".fade",
+          trigger: ".ing__title"
+        },
+      ];
+
+      animations.forEach(({elements, trigger}) => {
+        const triggerElements = document.querySelectorAll(trigger);
+        if (!triggerElements.length) return;
+
+        triggerElements.forEach(triggerEl => {
+          const targets = triggerEl.querySelectorAll(elements);
+          if (!targets.length) return;
+
+          gsap.fromTo(targets, {
+            opacity: 0,
+            x: 15,
+            filter: "blur(10px)"
+          }, {
+            opacity: 1,
+            x: 0,
+            filter: "blur(0px)",
+            ease: "power2.out",
+            duration: 1,
+            stagger: 0.09,
+            scrollTrigger: {
+              trigger: triggerEl,
+              start: "top bottom-=15%",
+              end: "bottom center+=15%",
+              scrub: true,
+            }
+          });
+        });
+      });
+
+      ScrollTrigger.refresh();
+    }
+  });
+}
