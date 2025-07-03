@@ -63,6 +63,7 @@ input:-webkit-autofill {
 .form__body {
     display: flex;
     margin-top: 10vh;
+    margin-bottom: 10vh;
     justify-content: center;
 }
 
@@ -281,11 +282,13 @@ textarea {
 .select__list__button {
     padding: 0.12rem 5px;
     min-width: 200px;
+    opacity: 1;
     font-style: italic;
     height: max-content;
     background-color: var(--primary-color);
     cursor: pointer;
     position: relative;
+    transition: opacity 1.5s var(--primary-animation);
 }
 
 .arrow__down {
@@ -294,6 +297,7 @@ textarea {
     color: var(--back-color);
     position: relative;
     transition: transform 0.5s var(--primary-animation);
+    z-index: 35;
 }
 
 .dish__type__list {
@@ -331,8 +335,6 @@ textarea {
 
 .dish__type__item {
     color: var(--back-color);
-    font-size: clamp(16px, 2vw, 21px);
-    font-weight: 500;
     padding: 0.12rem 5px;
     background-color: var(--primary-color);
 }
@@ -428,15 +430,22 @@ textarea {
 }
 
 /*DISH-INGREDIENT------------------------------------*/
+.ing__body {
+    display: flex;
+    justify-content: center;
+}
+
 .ingredient__block {
     display: flex;
-    gap: 10px;
+    gap: 5vh;
     flex-direction: column;
     margin-bottom: 5vh;
 }
 
 .ing__wrapper {
     display: flex;
+    align-items: center;
+    transition: opacity 1.5s var(--primary-animation);
 }
 
 .ing__labels {
@@ -449,6 +458,12 @@ textarea {
     font-size: 7vw;
     font-weight: 400;
     color: var(--back-color);
+    margin-bottom: 5vh;
+}
+
+.fade__static {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
 }
 
 /*ing-list-----------------------*/
@@ -458,12 +473,17 @@ textarea {
     justify-content: space-between;
     position: relative;
     width: 400px;
+    opacity: 1;
     padding: 0.12rem 5px;
 }
 
 .checked__ing {
     position: relative;
     z-index: 31;
+}
+
+.ing__number {
+    font-family: "Cormorant Infant", serif;
 }
 
 .ing__list {
@@ -517,6 +537,16 @@ textarea {
 }
 
 /*amount--------------------------*/
+.amount__unit__block  {
+    display: flex;
+    gap: 30px;
+}
+
+.amount__block {
+    display: flex;
+    align-items: center;
+}
+
 .form_amount {
     position: relative;
     background-color: var(--primary-color);
@@ -531,6 +561,85 @@ textarea {
 .form_amount:hover,
 .form_amount:focus {
     outline: none;
+}
+
+/*unit----------------------------------------------*/
+.unit__wrapper {
+    color: var(--back-color);
+    display: flex;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 1.5s var(--primary-animation);
+}
+
+.unit__button {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    opacity: 1;
+    padding: 0.12rem 5px;
+    min-width: 110px;
+}
+
+.checked__unit {
+    position: relative;
+    font-size: clamp(16px, 2vw, 21px);
+    padding: 0.12rem 5px;
+    font-weight: 500;
+    z-index: 35;
+}
+
+.unit__list {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    opacity: 0;
+    width: 100%;
+    background-color: var(--primary-color);
+    pointer-events: none;
+    transform: translate3d(0, -10%, 0);
+    transition: all 1.5s var(--primary-animation);
+    z-index: 10;
+}
+
+.unit__list__active {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    pointer-events: auto;
+}
+
+.unit__list li {
+    padding: 0.12rem 5px;
+    transition: color 1.5s var(--primary-animation);
+}
+
+.unit__list li:hover {
+    color: #9f9f9f;
+}
+
+.unit__opa {
+    opacity: 0.25;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/*add-another-ing----------------------------------*/
+.add__another__ing {
+    max-width: max-content;
+    color: var(--back-color);
+    margin-bottom: 7vh;
+    font-weight: 500;
+    transition: all 1.5s var(--primary-animation);
+}
+
+.add__fade {
+    display: inline-block;
+}
+
+.add__another__ing:hover {
+    transform: translate3d(15px, 0, 0);
+    /*opacity: 0;*/
 }
 
 /*INGREDIENTS TYPE----------------------------------*/

@@ -106,14 +106,14 @@
       </div>
   </section>
   <section class="section">
-    <div class="form__body _container">
+    <div class="ing__body _container">
       <div class="form__ing__wrapper">
         <h2 class="ing__title to__opacity">
           <span class="fade">I</span><span class="fade">n</span><span class="fade">g</span><span class="fade">r</span><span class="fade">e</span><span class="fade">d</span><span class="fade">i</span><span class="fade">e</span><span class="fade">n</span><span class="fade">t</span><span class="fade">s</span>
         </h2>
 
         {% for error in form.subform.errors %}
-          <div class="error__item another__letter">{{ error }}</div>
+          <div class="error__item">{{ error }}</div>
         {% endfor %}
 
         {{ formset.management_form }}
@@ -128,11 +128,13 @@
               {% endif %}
 
               <div class="ing__wrapper">
-                <label><em>{{ subform.ingredient.label }}:&nbsp;</em></label>
+                <label><em><span class="ing__number">1</span>. {{ subform.ingredient.label }}:&nbsp;</em></label>
                 <div class="choose__ing__button hover__elem">
-                  <span class="checked__ing">
-                    <span class="selected__ing">---------</span>
-                  </span>
+                  <em>
+                    <span class="checked__ing">
+                      <span class="selected__ing">---------</span>
+                    </span>
+                  </em>
                   <svg class="arrow__down" width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
@@ -158,46 +160,56 @@
             </div>
 
             {% if subform.amount.errors %}
-              <div class="error__item another__letter">
+              <div class="error__item">
                 {{ subform.amount.errors }}
               </div>
             {% endif %}
 
-            <div class="form__label amount__block another__letter">
-              <label for="{{ subform.amount.id_for_label }}" class="to__opacity"><em>{{ subform.amount.label }}:&nbsp;</em></label>
-              {{ subform.amount }}
-            </div>
-
-            {% if subform.unit.errors %}
-              <div class="error__item another__letter">
-                {{ subform.unit.errors }}
+            <div class="form__label amount__unit__block">
+              <div class="amount__block">
+                <label for="{{ subform.amount.id_for_label }}" class="to__opacity"><em>{{ subform.amount.label }}:&nbsp;</em></label>
+                {{ subform.amount }}
               </div>
-            {% endif %}
 
-            <div class="form__label another__letter">
-              <div class="unit__button">
+              {% if subform.unit.errors %}
+                <div class="error__item">
+                  {{ subform.unit.errors }}
+                </div>
+              {% endif %}
+
+              <div class="unit__wrapper">
                 <label><em>{{ subform.unit.label }}:&nbsp;</em></label>
-                <span class="checked__unit">
-                  <span class="selected__unit">---------</span>
-                </span>
-                <svg class="arrow__down" width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <ul class="unit__list">
-                  {% for value, label in subform.fields.unit.choices %}
-                    <li class="hover__elem">
-                      <label>
-                        <input type="radio" name="{{ subform.unit.html_name }}" value="{{ value }}"
-                          {% if subform.unit.value|stringformat:"s" == value|stringformat:"s" %}checked{% endif %}>
-                        <em>{{ label }}</em>
-                      </label>
-                    </li>
-                  {% endfor %}
-                </ul>
+                <div class="unit__button hover__elem">
+                  <em>
+                    <span class="checked__unit">
+                      <span class="selected__unit">---------</span>
+                    </span>
+                  </em>
+                  <svg class="arrow__down" width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <ul class="unit__list">
+                    {% for value, label in subform.fields.unit.choices %}
+                      <li class="hover__elem">
+                        <label>
+                          <input type="radio" name="{{ subform.unit.html_name }}" value="{{ value }}"
+                            {% if subform.unit.value|stringformat:"s" == value|stringformat:"s" %}checked{% endif %} hidden>
+                          <em>{{ label }}</em>
+                        </label>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         {% endfor %}
+
+        <p id="add-ingredient" class="add__another__ing hover__elem to__opacity">
+          <em>
+            Add another ingredient
+          </em>
+        </p>
 
         <button type="submit" class="form__button to__opacity  hover__elem">
           {% for button_letter in object|yesno:'Update,Create' %}<span class="another__letter">{{ button_letter }}</span>{% endfor %}
