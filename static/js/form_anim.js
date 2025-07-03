@@ -35,12 +35,15 @@ ScrollTrigger.matchMedia({
 
 });
 
-//select list
+//INGREDIENTS START
+//select type
 const selectButton     = document.querySelector(".select__list__button");
 const selectList       = document.querySelector(".dish__type__list");
 const selectListItems  = document.querySelectorAll(".dish__type__item");
 const checkedElem      = document.querySelector(".selected__text");
 const toOpacity = document.querySelectorAll(".to__opacity");
+const unitBox = document.querySelectorAll(".unit__wrapper");
+const ingBox = document.querySelectorAll(".ing__wrapper");
 
 if(selectButton) {
   selectButton.addEventListener("click", (e) => {
@@ -48,6 +51,12 @@ if(selectButton) {
     selectList.classList.toggle("dish__type__list__active");
     toOpacity.forEach((elem) => {
       elem.classList.toggle("to__opacity__active");
+    })
+    unitBox.forEach((elem) => {
+      elem.classList.toggle("unit__opa");
+    })
+    ingBox.forEach((elem) => {
+      elem.classList.toggle("to__ing__opacity");
     })
   });
 
@@ -58,6 +67,12 @@ if(selectButton) {
       selectList.classList.remove("dish__type__list__active");
       toOpacity.forEach((elem) => {
         elem.classList.remove("to__opacity__active");
+      })
+      unitBox.forEach((elem) => {
+        elem.classList.remove("unit__opa");
+      })
+      ingBox.forEach((elem) => {
+        elem.classList.remove("to__ing__opacity");
       })
     });
   });
@@ -70,8 +85,13 @@ if(selectButton) {
       selectList.classList.remove("dish__type__list__active");
       toOpacity.forEach((elem) => {
         elem.classList.remove("to__opacity__active");
-    })
-
+      })
+      unitBox.forEach((elem) => {
+        elem.classList.remove("unit__opa");
+      })
+      ingBox.forEach((elem) => {
+        elem.classList.remove("to__ing__opacity");
+      })
     }
   });
 }
@@ -91,6 +111,9 @@ if(selectIngButton) {
     toOpacity.forEach((elem) => {
       elem.classList.toggle("to__ing__opacity");
     })
+    unitBox.forEach((elem) => {
+      elem.classList.toggle("unit__opa");
+    })
   });
 
   selectIngItems.forEach((item) => {
@@ -102,6 +125,9 @@ if(selectIngButton) {
         elem.classList.remove("to__ing__opacity");
       })
       toOpacityTypes.classList.remove("to__ing__opacity");
+      unitBox.forEach((elem) => {
+        elem.classList.remove("unit__opa");
+      })
     });
   });
 
@@ -115,9 +141,118 @@ if(selectIngButton) {
         elem.classList.remove("to__ing__opacity");
       });
       toOpacityTypes.classList.remove("to__ing__opacity");
+      unitBox.forEach((elem) => {
+        elem.classList.remove("unit__opa");
+      })
     }
   });
 }
+
+//select unit
+const selectUnitButton     = document.querySelector(".unit__button");
+const selectUnitList       = document.querySelector(".unit__list");
+const selectUnitItems  = document.querySelectorAll(".unit__list li");
+const checkedUnit      = document.querySelector(".checked__unit");
+
+if(selectUnitButton) {
+  selectUnitButton.addEventListener("click", (e) => {
+    e.stopPropagation();
+    selectUnitList.classList.toggle("unit__list__active");
+    toOpacityTypes.classList.toggle("to__ing__opacity");
+    toOpacity.forEach((elem) => {
+      elem.classList.toggle("to__ing__opacity");
+    })
+    ingBox.forEach((elem) => {
+      elem.classList.toggle("to__ing__opacity");
+    })
+  });
+
+  selectUnitItems.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      e.stopPropagation();
+      checkedUnit.innerText = item.innerText;
+      selectUnitList.classList.remove("unit__list__active");
+      toOpacity.forEach((elem) => {
+        elem.classList.remove("to__ing__opacity");
+      })
+      toOpacityTypes.classList.remove("to__ing__opacity");
+      ingBox.forEach((elem) => {
+        elem.classList.remove("to__ing__opacity");
+      })
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    const outsideIngButton = !selectUnitButton.contains(e.target);
+    const outsideIngList   = !selectUnitList.contains(e.target);
+
+    if (outsideIngButton && outsideIngList) {
+      selectUnitList.classList.remove("unit__list__active");
+      toOpacity.forEach((elem) => {
+        elem.classList.remove("to__ing__opacity");
+      });
+      toOpacityTypes.classList.remove("to__ing__opacity");
+      ingBox.forEach((elem) => {
+        elem.classList.remove("to__ing__opacity");
+      })
+    }
+  });
+}
+
+//IngredientsScroll
+if(document.querySelectorAll(".fade").length > 0) {
+  ScrollTrigger.matchMedia({
+    "(min-width: 1257px)": function () {
+      const animations = [
+        {
+          elements: ".fade",
+          trigger: ".ing__title"
+        },
+      ];
+
+      animations.forEach(({elements, trigger}) => {
+        const triggerElements = document.querySelectorAll(trigger);
+        if (!triggerElements.length) return;
+
+        triggerElements.forEach(triggerEl => {
+          const targets = triggerEl.querySelectorAll(elements);
+          if (!targets.length) return;
+
+          gsap.fromTo(targets, {
+            opacity: 0,
+            x: 15,
+            filter: "blur(10px)"
+          }, {
+            opacity: 1,
+            x: 0,
+            filter: "blur(0px)",
+            ease: "power2.out",
+            duration: 1,
+            stagger: 0.09,
+            scrollTrigger: {
+              trigger: triggerEl,
+              start: "top bottom-=15%",
+              end: "bottom center+=15%",
+              scrub: true,
+            }
+          });
+        });
+      });
+
+      ScrollTrigger.refresh();
+    }
+  });
+}
+
+//add ing button
+const addIngButton = document.querySelector(".add__another__ing");
+const ingNumber = Array.from(document.querySelectorAll(".ing__number"));
+const addLetters = document.querySelectorAll(".add__fade");
+// console.log(ingNumber[ingNumber.length - 1]);
+
+
+
+//INGREDIENTS END
 
 //page load anim
 window.addEventListener("DOMContentLoaded", () => {
@@ -218,48 +353,3 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-
-//IngredientsScroll
-if(document.querySelectorAll(".fade").length > 0) {
-  ScrollTrigger.matchMedia({
-    "(min-width: 1257px)": function () {
-      const animations = [
-        {
-          elements: ".fade",
-          trigger: ".ing__title"
-        },
-      ];
-
-      animations.forEach(({elements, trigger}) => {
-        const triggerElements = document.querySelectorAll(trigger);
-        if (!triggerElements.length) return;
-
-        triggerElements.forEach(triggerEl => {
-          const targets = triggerEl.querySelectorAll(elements);
-          if (!targets.length) return;
-
-          gsap.fromTo(targets, {
-            opacity: 0,
-            x: 15,
-            filter: "blur(10px)"
-          }, {
-            opacity: 1,
-            x: 0,
-            filter: "blur(0px)",
-            ease: "power2.out",
-            duration: 1,
-            stagger: 0.09,
-            scrollTrigger: {
-              trigger: triggerEl,
-              start: "top bottom-=15%",
-              end: "bottom center+=15%",
-              scrub: true,
-            }
-          });
-        });
-      });
-
-      ScrollTrigger.refresh();
-    }
-  });
-}
