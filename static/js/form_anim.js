@@ -245,10 +245,66 @@ if(document.querySelectorAll(".fade").length > 0) {
 }
 
 //add ing button
-const addIngButton = document.querySelector(".add__another__ing");
-const ingNumber = Array.from(document.querySelectorAll(".ing__number"));
-const addLetters = document.querySelectorAll(".add__fade");
-// console.log(ingNumber[ingNumber.length - 1]);
+document.addEventListener("DOMContentLoaded", () => {
+  const addIngredientBtn = document.getElementById("add-ingredient");
+  const formWrapper = document.querySelector(".form__ing__wrapper");
+  const totalFormsInput = document.querySelector('input[name="dishes-TOTAL_FORMS"]');
+
+  if (!addIngredientBtn || !formWrapper || !totalFormsInput) {
+    console.error("Necessary elements not found");
+    return;
+  }
+
+  addIngredientBtn.addEventListener("click", () => {
+    const totalForms = parseInt(totalFormsInput.value);
+    const maxForms = 1000;
+
+    if (totalForms >= maxForms) {
+      alert("Max count of forms");
+      return;
+    }
+
+    const lastIngredientBlock = formWrapper.querySelector(".ingredient__block:last-of-type");
+    if (!lastIngredientBlock) {
+      console.error("No ingredient block found to clone");
+      return;
+    }
+
+    const newIngredientBlock = lastIngredientBlock.cloneNode(true);
+
+    const regex = new RegExp(`dishes-(\\d+)-`, "g");
+
+    newIngredientBlock.querySelectorAll("input, select, label, span").forEach(el => {
+      if (el.name) {
+        el.name = el.name.replace(regex, `dishes-${totalForms}-`);
+      }
+      if (el.id) {
+        el.id = el.id.replace(regex, `dishes-${totalForms}-`);
+      }
+      if (el.htmlFor) {
+        el.htmlFor = el.htmlFor.replace(regex, `dishes-${totalForms}-`);
+      }
+    });
+
+    newIngredientBlock.querySelectorAll("input[type='text'], input[type='number']").forEach(input => {
+      input.value = "";
+    });
+
+    newIngredientBlock.querySelectorAll("input[type='radio']").forEach(radio => {
+      radio.checked = false;
+    });
+
+    const ingNumberSpan = newIngredientBlock.querySelector(".ing__number");
+    if (ingNumberSpan) {
+      ingNumberSpan.textContent = totalForms + 1;
+    }
+
+    formWrapper.insertBefore(newIngredientBlock, addIngredientBtn);
+
+    totalFormsInput.value = totalForms + 1;
+  });
+});
+
 
 
 

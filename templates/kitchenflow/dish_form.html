@@ -14,7 +14,7 @@
 {% csrf_token %}
   <section class="section">
     <div class="form__body _container">
-      <div class="form__ing__wrapper">
+      <div class="form__wrapper">
         <div class="form__box">
           <h1 class="dish__type__form__title to__opacity ">
             {% for letter in object|yesno:"Update dish,Create dish" %}{% if letter == " " %}<span class="title__letter">&nbsp;</span>{% else %}<span class="title__letter">{{ letter }}</span>{% endif %}{% endfor %}
