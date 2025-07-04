@@ -96,108 +96,132 @@ if(selectButton) {
   });
 }
 
-//select ingredient
-const selectIngButton     = document.querySelector(".choose__ing__button");
-const selectIngList       = document.querySelector(".ing__list");
-const selectIngItems  = document.querySelectorAll(".ing__list li");
-const checkedIng      = document.querySelector(".selected__ing");
-const toOpacityTypes = document.querySelector(".to__opacity__types");
+document.addEventListener("DOMContentLoaded", () => {
+  const formWrapper = document.querySelector(".form__ing__wrapper");
+  const addIngredientBtn = document.getElementById("add-ingredient");
+  const totalFormsInput = document.querySelector('input[name="dishes-TOTAL_FORMS"]');
 
-if(selectIngButton) {
-  selectIngButton.addEventListener("click", (e) => {
-    e.stopPropagation();
-    selectIngList.classList.toggle("dish__ing__list__active");
-    toOpacityTypes.classList.toggle("to__ing__opacity");
-    toOpacity.forEach((elem) => {
-      elem.classList.toggle("to__ing__opacity");
-    })
-    unitBox.forEach((elem) => {
-      elem.classList.toggle("unit__opa");
-    })
-  });
+  const toOpacity = Array.from(document.querySelectorAll(".to__opacity"));
+  const unitBox = Array.from(document.querySelectorAll(".unit__wrapper"));
+  const ingBox = Array.from(document.querySelectorAll(".ing__wrapper"));
+  const toOpacityTypes = document.querySelector(".to__opacity__types");
 
-  selectIngItems.forEach((item) => {
-    item.addEventListener("click", (e) => {
+  formWrapper.addEventListener("click", (e) => {
+    //select text ing
+    const ingItem = e.target.closest(".ing__list li");
+    if (ingItem) {
       e.stopPropagation();
-      checkedIng.innerText = item.innerText;
-      selectIngList.classList.remove("dish__ing__list__active");
-      toOpacity.forEach((elem) => {
-        elem.classList.remove("to__ing__opacity");
-      })
+      const label = ingItem.querySelector(".ing__elem");
+      const selectedText = label.innerText;
+      const ingredientBlock = ingItem.closest(".ingredient__block");
+      if (ingredientBlock) {
+        const selectedSpan = ingredientBlock.querySelector(".selected__ing");
+        if (selectedSpan) selectedSpan.innerText = selectedText;
+        const ingList = ingredientBlock.querySelector(".ing__list");
+        if (ingList) ingList.classList.remove("dish__ing__list__active");
+      }
+      toOpacity.forEach(el => el.classList.remove("to__ing__opacity"));
+      unitBox.forEach(el => el.classList.remove("unit__opa"));
       toOpacityTypes.classList.remove("to__ing__opacity");
-      unitBox.forEach((elem) => {
-        elem.classList.remove("unit__opa");
-      })
-    });
+      return;
+    }
+
+    const ingBtn = e.target.closest(".choose__ing__button");
+    if (ingBtn) {
+      e.stopPropagation();
+      const ingList = ingBtn.querySelector(".ing__list");
+      if (ingList) ingList.classList.toggle("dish__ing__list__active");
+      toOpacity.forEach(el => el.classList.toggle("to__ing__opacity"));
+      unitBox.forEach(el => el.classList.toggle("unit__opa"));
+      toOpacityTypes.classList.toggle("to__ing__opacity");
+      return;
+    }
+
+    // select text unit
+    const unitItem = e.target.closest(".unit__list li");
+    console.log(unitItem)
+    if (unitItem) {
+      e.stopPropagation();
+      const label = unitItem.querySelector("label em");
+      const selectedText = label ? label.innerText : "";
+      const ingredientBlock = unitItem.closest(".ingredient__block");
+      if (ingredientBlock) {
+        const selectedSpan = ingredientBlock.querySelector(".selected__unit");
+        if (selectedSpan) selectedSpan.innerText = selectedText;
+        const unitList = ingredientBlock.querySelector(".unit__list");
+        if (unitList) unitList.classList.remove("unit__list__active");
+      }
+      toOpacity.forEach(el => el.classList.remove("to__ing__opacity"));
+      ingBox.forEach(el => el.classList.remove("to__ing__opacity"));
+      toOpacityTypes.classList.remove("to__ing__opacity");
+      return;
+    }
+
+    const unitBtn = e.target.closest(".unit__button");
+    if (unitBtn) {
+      e.stopPropagation();
+      const unitList = unitBtn.querySelector(".unit__list");
+      if (unitList) unitList.classList.toggle("unit__list__active");
+      toOpacity.forEach(el => el.classList.toggle("to__ing__opacity"));
+      ingBox.forEach(el => el.classList.toggle("to__ing__opacity"));
+      toOpacityTypes.classList.toggle("to__ing__opacity");
+      return;
+    }
+
   });
 
   document.addEventListener("click", (e) => {
-    const outsideIngButton = !selectIngButton.contains(e.target);
-    const outsideIngList   = !selectIngList.contains(e.target);
 
-    if (outsideIngButton && outsideIngList) {
-      selectIngList.classList.remove("dish__ing__list__active");
-      toOpacity.forEach((elem) => {
-        elem.classList.remove("to__ing__opacity");
-      });
-      toOpacityTypes.classList.remove("to__ing__opacity");
-      unitBox.forEach((elem) => {
-        elem.classList.remove("unit__opa");
-      })
+    document.querySelectorAll(".dish__ing__list__active").forEach(list => list.classList.remove("dish__ing__list__active"));
+
+    document.querySelectorAll(".unit__list__active").forEach(list => list.classList.remove("unit__list__active"));
+    toOpacity.forEach(el => el.classList.remove("to__ing__opacity"));
+    unitBox.forEach(el => el.classList.remove("unit__opa"));
+    ingBox.forEach(el => el.classList.remove("to__ing__opacity"));
+    toOpacityTypes.classList.remove("to__ing__opacity");
+  });
+
+  addIngredientBtn.addEventListener("click", () => {
+    const totalForms = parseInt(totalFormsInput.value);
+    const maxForms = 1000;
+
+    if (totalForms >= maxForms) {
+      alert("Max count of forms");
+      return;
     }
-  });
-}
 
-//select unit
-const selectUnitButton     = document.querySelector(".unit__button");
-const selectUnitList       = document.querySelector(".unit__list");
-const selectUnitItems  = document.querySelectorAll(".unit__list li");
-const checkedUnit      = document.querySelector(".checked__unit");
+    const lastIngredientBlock = formWrapper.querySelector(".ingredient__block:last-of-type");
+    if (!lastIngredientBlock) {
+      console.error("No ingredient block found to clone");
+      return;
+    }
 
-if(selectUnitButton) {
-  selectUnitButton.addEventListener("click", (e) => {
-    e.stopPropagation();
-    selectUnitList.classList.toggle("unit__list__active");
-    toOpacityTypes.classList.toggle("to__ing__opacity");
-    toOpacity.forEach((elem) => {
-      elem.classList.toggle("to__ing__opacity");
-    })
-    ingBox.forEach((elem) => {
-      elem.classList.toggle("to__ing__opacity");
-    })
-  });
+    const newIngredientBlock = lastIngredientBlock.cloneNode(true);
 
-  selectUnitItems.forEach((item) => {
-    item.addEventListener("click", (e) => {
-      e.stopPropagation();
-      checkedUnit.innerText = item.innerText;
-      selectUnitList.classList.remove("unit__list__active");
-      toOpacity.forEach((elem) => {
-        elem.classList.remove("to__ing__opacity");
-      })
-      toOpacityTypes.classList.remove("to__ing__opacity");
-      ingBox.forEach((elem) => {
-        elem.classList.remove("to__ing__opacity");
-      })
+    const regex = new RegExp(`dishes-(\\d+)-`, "g");
+    newIngredientBlock.querySelectorAll("input, select, label, span").forEach(el => {
+      if (el.name) el.name = el.name.replace(regex, `dishes-${totalForms}-`);
+      if (el.id) el.id = el.id.replace(regex, `dishes-${totalForms}-`);
+      if (el.htmlFor) el.htmlFor = el.htmlFor.replace(regex, `dishes-${totalForms}-`);
     });
-  });
 
-  document.addEventListener("click", (e) => {
-    const outsideIngButton = !selectUnitButton.contains(e.target);
-    const outsideIngList   = !selectUnitList.contains(e.target);
+    newIngredientBlock.querySelectorAll("input[type='text'], input[type='number']").forEach(input => input.value = "");
 
-    if (outsideIngButton && outsideIngList) {
-      selectUnitList.classList.remove("unit__list__active");
-      toOpacity.forEach((elem) => {
-        elem.classList.remove("to__ing__opacity");
-      });
-      toOpacityTypes.classList.remove("to__ing__opacity");
-      ingBox.forEach((elem) => {
-        elem.classList.remove("to__ing__opacity");
-      })
-    }
+    newIngredientBlock.querySelectorAll("input[type='radio']").forEach(radio => radio.checked = false);
+
+    const ingNumberSpan = newIngredientBlock.querySelector(".ing__number");
+    if (ingNumberSpan) ingNumberSpan.textContent = totalForms + 1;
+
+    const selectedIng = newIngredientBlock.querySelector(".selected__ing");
+    if (selectedIng) selectedIng.textContent = "---------";
+    const selectedUnit = newIngredientBlock.querySelector(".selected__unit");
+    if (selectedUnit) selectedUnit.textContent = "---------";
+
+    formWrapper.insertBefore(newIngredientBlock, addIngredientBtn);
+
+    totalFormsInput.value = totalForms + 1;
   });
-}
+});
 
 //IngredientsScroll
 if(document.querySelectorAll(".fade").length > 0) {
@@ -243,70 +267,6 @@ if(document.querySelectorAll(".fade").length > 0) {
     }
   });
 }
-
-//add ing button
-document.addEventListener("DOMContentLoaded", () => {
-  const addIngredientBtn = document.getElementById("add-ingredient");
-  const formWrapper = document.querySelector(".form__ing__wrapper");
-  const totalFormsInput = document.querySelector('input[name="dishes-TOTAL_FORMS"]');
-
-  if (!addIngredientBtn || !formWrapper || !totalFormsInput) {
-    console.error("Necessary elements not found");
-    return;
-  }
-
-  addIngredientBtn.addEventListener("click", () => {
-    const totalForms = parseInt(totalFormsInput.value);
-    const maxForms = 1000;
-
-    if (totalForms >= maxForms) {
-      alert("Max count of forms");
-      return;
-    }
-
-    const lastIngredientBlock = formWrapper.querySelector(".ingredient__block:last-of-type");
-    if (!lastIngredientBlock) {
-      console.error("No ingredient block found to clone");
-      return;
-    }
-
-    const newIngredientBlock = lastIngredientBlock.cloneNode(true);
-
-    const regex = new RegExp(`dishes-(\\d+)-`, "g");
-
-    newIngredientBlock.querySelectorAll("input, select, label, span").forEach(el => {
-      if (el.name) {
-        el.name = el.name.replace(regex, `dishes-${totalForms}-`);
-      }
-      if (el.id) {
-        el.id = el.id.replace(regex, `dishes-${totalForms}-`);
-      }
-      if (el.htmlFor) {
-        el.htmlFor = el.htmlFor.replace(regex, `dishes-${totalForms}-`);
-      }
-    });
-
-    newIngredientBlock.querySelectorAll("input[type='text'], input[type='number']").forEach(input => {
-      input.value = "";
-    });
-
-    newIngredientBlock.querySelectorAll("input[type='radio']").forEach(radio => {
-      radio.checked = false;
-    });
-
-    const ingNumberSpan = newIngredientBlock.querySelector(".ing__number");
-    if (ingNumberSpan) {
-      ingNumberSpan.textContent = totalForms + 1;
-    }
-
-    formWrapper.insertBefore(newIngredientBlock, addIngredientBtn);
-
-    totalFormsInput.value = totalForms + 1;
-  });
-});
-
-
-
 
 //INGREDIENTS END
 
