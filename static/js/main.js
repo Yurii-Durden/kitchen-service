@@ -186,43 +186,51 @@ gsap.ticker.add(() => {
 });
 
 //cursor hover
-const scaleTargets = [
-  ".hover__elem",
-  ".dish__group__cook label",
-  "input",
-  "textarea"
-];
+function initCursorHoverEffects() {
+  const scaleTargets = [
+    ".hover__elem",
+    ".dish__group__cook label",
+    "input",
+    "textarea"
+  ];
 
-scaleTargets.forEach(selector => {
-  document.querySelectorAll(selector).forEach(elem => {
-    elem.addEventListener("mouseenter", () => {
-      gsap.to(cursor, { scale: 0.6, duration: 0.3, ease: "power2.out" });
-    });
-    elem.addEventListener("mouseleave", () => {
-      gsap.to(cursor, { scale: 1, duration: 0.3, ease: "power2.out" });
+  scaleTargets.forEach(selector => {
+    document.querySelectorAll(selector).forEach(elem => {
+      if (!elem.dataset.cursorBound) {
+        elem.addEventListener("mouseenter", () => {
+          gsap.to(cursor, { scale: 0.6, duration: 0.3, ease: "power2.out" });
+        });
+        elem.addEventListener("mouseleave", () => {
+          gsap.to(cursor, { scale: 1, duration: 0.3, ease: "power2.out" });
+        });
+        elem.dataset.cursorBound = "true";
+      }
     });
   });
-});
 
-hoverList = document.querySelectorAll(".hover__list")
-if (hoverList.length > 0) {
-  hoverList.forEach(elem => {
-    elem.addEventListener("mouseenter", () => {
-      cursor.classList.add("cursor__list__hover");
-    });
-    elem.addEventListener("mouseleave", () => {
-      cursor.classList.remove("cursor__list__hover");
-    });
+  document.querySelectorAll(".hover__list").forEach(elem => {
+    if (!elem.dataset.cursorBound) {
+      elem.addEventListener("mouseenter", () => {
+        cursor.classList.add("cursor__list__hover");
+      });
+      elem.addEventListener("mouseleave", () => {
+        cursor.classList.remove("cursor__list__hover");
+      });
+      elem.dataset.cursorBound = "true";
+    }
+  });
+
+  document.querySelectorAll("img").forEach(img => {
+    if (!img.dataset.cursorBound) {
+      img.addEventListener("mouseenter", () => {
+        gsap.to(cursor, { opacity: 0.3, duration: 0.3, ease: "power2.out" });
+      });
+      img.addEventListener("mouseleave", () => {
+        gsap.to(cursor, { opacity: 1, duration: 0.3, ease: "power2.out" });
+      });
+      img.dataset.cursorBound = "true";
+    }
   });
 }
 
-img = document.querySelector("img");
-
-if(img) {
-  img.addEventListener("mouseenter", () => {
-    gsap.to(cursor, { opacity: 0.3, duration: 0.3, ease: "power2.out" });
-  });
-  img.addEventListener("mouseleave", () => {
-    gsap.to(cursor, { opacity: 1, duration: 0.3, ease: "power2.out" });
-  });
-}
+initCursorHoverEffects();

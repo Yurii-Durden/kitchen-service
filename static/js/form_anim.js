@@ -36,83 +36,57 @@ ScrollTrigger.matchMedia({
 });
 
 //INGREDIENTS START
-//select type
-const selectButton     = document.querySelector(".select__list__button");
-const selectList       = document.querySelector(".dish__type__list");
-const selectListItems  = document.querySelectorAll(".dish__type__item");
-const checkedElem      = document.querySelector(".selected__text");
-const toOpacity = document.querySelectorAll(".to__opacity");
-const unitBox = document.querySelectorAll(".unit__wrapper");
-const ingBox = document.querySelectorAll(".ing__wrapper");
-
-if(selectButton) {
-  selectButton.addEventListener("click", (e) => {
-    e.stopPropagation();
-    selectList.classList.toggle("dish__type__list__active");
-    toOpacity.forEach((elem) => {
-      elem.classList.toggle("to__opacity__active");
-    })
-    unitBox.forEach((elem) => {
-      elem.classList.toggle("unit__opa");
-    })
-    ingBox.forEach((elem) => {
-      elem.classList.toggle("to__ing__opacity");
-    })
-  });
-
-  selectListItems.forEach((item) => {
-    item.addEventListener("click", (e) => {
-      e.stopPropagation();
-      checkedElem.innerText = item.innerText;
-      selectList.classList.remove("dish__type__list__active");
-      toOpacity.forEach((elem) => {
-        elem.classList.remove("to__opacity__active");
-      })
-      unitBox.forEach((elem) => {
-        elem.classList.remove("unit__opa");
-      })
-      ingBox.forEach((elem) => {
-        elem.classList.remove("to__ing__opacity");
-      })
-    });
-  });
-
-  document.addEventListener("click", (e) => {
-    const outsideButton = !selectButton.contains(e.target);
-    const outsideList   = !selectList.contains(e.target);
-
-    if (outsideButton && outsideList) {
-      selectList.classList.remove("dish__type__list__active");
-      toOpacity.forEach((elem) => {
-        elem.classList.remove("to__opacity__active");
-      })
-      unitBox.forEach((elem) => {
-        elem.classList.remove("unit__opa");
-      })
-      ingBox.forEach((elem) => {
-        elem.classList.remove("to__ing__opacity");
-      })
-    }
-  });
-}
-
 document.addEventListener("DOMContentLoaded", () => {
-  const formWrapper = document.querySelector(".form__ing__wrapper");
+  const formWrapper = document.querySelector(".dish__type__form");
+  const ingWrapper = document.querySelector(".form__ing__wrapper");
+
+  const checkedElem = document.querySelector(".selected__text");
+  const selectList  = document.querySelector(".dish__type__list");
+
   const addIngredientBtn = document.getElementById("add-ingredient");
   const totalFormsInput = document.querySelector('input[name="dishes-TOTAL_FORMS"]');
 
-  const toOpacity = Array.from(document.querySelectorAll(".to__opacity"));
-  const unitBox = Array.from(document.querySelectorAll(".unit__wrapper"));
-  const ingBox = Array.from(document.querySelectorAll(".ing__wrapper"));
-  const toOpacityTypes = document.querySelector(".to__opacity__types");
-
   formWrapper.addEventListener("click", (e) => {
-    //select text ing
+    const getToOpacityArray = () => {
+      return Array.from(document.querySelectorAll(".to__opacity")).filter(el => !el.contains(e.target));
+    };
+
+    function activateDim() {
+      getToOpacityArray().forEach(el => el.classList.add("to__opacity__active"));
+    }
+
+    function deactivateDim() {
+      getToOpacityArray().forEach(el => el.classList.remove("to__opacity__active"));
+    }
+
+    const selectBtn = e.target.closest(".select__list__button");
+    const listItem = e.target.closest(".dish__type__item");
+
+    // Select type item
+    if (listItem) {
+      e.stopPropagation();
+      const itemText = listItem.querySelector(".item__text")?.innerText || "---------";
+      checkedElem.innerText = itemText;
+      selectList.classList.remove("dish__type__list__active");
+      deactivateDim();
+      return;
+    }
+
+    // Open type list
+    if (selectBtn) {
+      e.stopPropagation();
+      console.log(e.target.closest(".to__opacity"))
+      const isActive = selectList.classList.toggle("dish__type__list__active");
+      isActive ? activateDim() : deactivateDim();
+      return;
+    }
+
+    // Select ingredient item
     const ingItem = e.target.closest(".ing__list li");
     if (ingItem) {
       e.stopPropagation();
       const label = ingItem.querySelector(".ing__elem");
-      const selectedText = label.innerText;
+      const selectedText = label?.innerText || "";
       const ingredientBlock = ingItem.closest(".ingredient__block");
       if (ingredientBlock) {
         const selectedSpan = ingredientBlock.querySelector(".selected__ing");
@@ -120,9 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const ingList = ingredientBlock.querySelector(".ing__list");
         if (ingList) ingList.classList.remove("dish__ing__list__active");
       }
-      toOpacity.forEach(el => el.classList.remove("to__ing__opacity"));
-      unitBox.forEach(el => el.classList.remove("unit__opa"));
-      toOpacityTypes.classList.remove("to__ing__opacity");
+      deactivateDim();
       return;
     }
 
@@ -131,19 +103,16 @@ document.addEventListener("DOMContentLoaded", () => {
       e.stopPropagation();
       const ingList = ingBtn.querySelector(".ing__list");
       if (ingList) ingList.classList.toggle("dish__ing__list__active");
-      toOpacity.forEach(el => el.classList.toggle("to__ing__opacity"));
-      unitBox.forEach(el => el.classList.toggle("unit__opa"));
-      toOpacityTypes.classList.toggle("to__ing__opacity");
+      activateDim();
       return;
     }
 
-    // select text unit
+    // Select unit item
     const unitItem = e.target.closest(".unit__list li");
-    console.log(unitItem)
     if (unitItem) {
       e.stopPropagation();
       const label = unitItem.querySelector("label em");
-      const selectedText = label ? label.innerText : "";
+      const selectedText = label?.innerText || "";
       const ingredientBlock = unitItem.closest(".ingredient__block");
       if (ingredientBlock) {
         const selectedSpan = ingredientBlock.querySelector(".selected__unit");
@@ -151,9 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const unitList = ingredientBlock.querySelector(".unit__list");
         if (unitList) unitList.classList.remove("unit__list__active");
       }
-      toOpacity.forEach(el => el.classList.remove("to__ing__opacity"));
-      ingBox.forEach(el => el.classList.remove("to__ing__opacity"));
-      toOpacityTypes.classList.remove("to__ing__opacity");
+      deactivateDim();
       return;
     }
 
@@ -162,23 +129,14 @@ document.addEventListener("DOMContentLoaded", () => {
       e.stopPropagation();
       const unitList = unitBtn.querySelector(".unit__list");
       if (unitList) unitList.classList.toggle("unit__list__active");
-      toOpacity.forEach(el => el.classList.toggle("to__ing__opacity"));
-      ingBox.forEach(el => el.classList.toggle("to__ing__opacity"));
-      toOpacityTypes.classList.toggle("to__ing__opacity");
+      activateDim();
       return;
     }
 
-  });
-
-  document.addEventListener("click", (e) => {
-
     document.querySelectorAll(".dish__ing__list__active").forEach(list => list.classList.remove("dish__ing__list__active"));
-
     document.querySelectorAll(".unit__list__active").forEach(list => list.classList.remove("unit__list__active"));
-    toOpacity.forEach(el => el.classList.remove("to__ing__opacity"));
-    unitBox.forEach(el => el.classList.remove("unit__opa"));
-    ingBox.forEach(el => el.classList.remove("to__ing__opacity"));
-    toOpacityTypes.classList.remove("to__ing__opacity");
+    selectList.classList.remove("dish__type__list__active");
+    deactivateDim();
   });
 
   addIngredientBtn.addEventListener("click", () => {
@@ -197,8 +155,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const newIngredientBlock = lastIngredientBlock.cloneNode(true);
-
     const regex = new RegExp(`dishes-(\\d+)-`, "g");
+
     newIngredientBlock.querySelectorAll("input, select, label, span").forEach(el => {
       if (el.name) el.name = el.name.replace(regex, `dishes-${totalForms}-`);
       if (el.id) el.id = el.id.replace(regex, `dishes-${totalForms}-`);
@@ -206,7 +164,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     newIngredientBlock.querySelectorAll("input[type='text'], input[type='number']").forEach(input => input.value = "");
-
     newIngredientBlock.querySelectorAll("input[type='radio']").forEach(radio => radio.checked = false);
 
     const ingNumberSpan = newIngredientBlock.querySelector(".ing__number");
@@ -217,11 +174,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const selectedUnit = newIngredientBlock.querySelector(".selected__unit");
     if (selectedUnit) selectedUnit.textContent = "---------";
 
-    formWrapper.insertBefore(newIngredientBlock, addIngredientBtn);
-
+    ingWrapper.insertBefore(newIngredientBlock, addIngredientBtn);
     totalFormsInput.value = totalForms + 1;
+    // cursor update
+    newIngredientBlock.querySelectorAll("[data-cursor-bound]").forEach(el => {
+      delete el.dataset.cursorBound;
+    });
+    initCursorHoverEffects();
   });
 });
+
 
 //IngredientsScroll
 if(document.querySelectorAll(".fade").length > 0) {
@@ -267,7 +229,6 @@ if(document.querySelectorAll(".fade").length > 0) {
     }
   });
 }
-
 //INGREDIENTS END
 
 //page load anim
