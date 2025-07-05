@@ -181,6 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
       delete el.dataset.cursorBound;
     });
     initCursorHoverEffects();
+    ScrollTrigger.refresh();
   });
 });
 
