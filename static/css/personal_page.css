@@ -153,6 +153,20 @@
     letter-spacing: -0.02em;
 }
 
+.ing__second__title {
+    font-size: 7vw;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+}
+
+.ing__fade {
+    display: inline-block;
+    filter: blur(10px);
+    opacity: 0;
+    transform: translate3d(15px, 0px, 0px);
+    will-change: transform, opacity, filter;
+}
+
 .dish__description {
     margin-top: 3vh;
     font-size: clamp(16px, 2vw, 22px);
@@ -184,6 +198,79 @@
     width: 100%;
     text-align: start;
     padding-left: 10px;
+}
+/*added-ingredients----------------------------------*/
+.ing__section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    position: relative;
+    z-index: 5;
+}
+
+.ing__number {
+    font-family: "Cormorant Infant", serif;
+}
+
+.update__add__ing__button a {
+    font-size: clamp(16px, 2vw, 22px);
+    color: var(--primary-color);
+    margin-left: 10px;
+    font-weight: 600;
+}
+
+
+.ingredients__box {
+    position: relative;
+}
+
+.ingredients__list {
+    margin-top: 4vh;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.ing__info {
+    padding: 1.7rem 10px;
+    display: flex;
+    font-size: clamp(16px, 2vw, 22px);
+    font-style: italic;
+    color: var(--primary-color);
+    transition: color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    z-index: 2;
+}
+
+.ingredient__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.ingredient__item:hover .ing__info {
+    color: var(--back-color);
+}
+
+.ingredient__item::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    will-change: transform;
+    transform: scaleY(0);
+    transform-origin: bottom center;
+    transition: transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+
+.ingredient__item:hover::before {
+    transform: scaleY(1);
 }
 
 /*added-cooks-----------------------------------------*/
@@ -272,7 +359,6 @@
 .cooks__list {
     pointer-events: none;
     opacity: 0;
-    /*max-height: 500px;*/
     height: max-content;
     display: none;
     overflow-y: auto;

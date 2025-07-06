@@ -165,9 +165,9 @@ searchInput.addEventListener("input", () => {
 });
 
 // filter open
-window.addEventListener("load", () => {
-  document.querySelector(".choose__box").style.display = "none";
-});
+// window.addEventListener("load", () => {
+//   document.querySelector(".choose__box").style.display = "none";
+// });
 
 const filter_by_button = document.querySelector(".filter__by__text");
 const filter_links = Array.from(document.querySelectorAll(".choose__type__item"));

@@ -69,7 +69,7 @@
 
 /*filter-by-dish--------------------------------------------*/
 .choose__box {
-    display: flex;
+    display: none;
 }
 
 .filter__by__text {

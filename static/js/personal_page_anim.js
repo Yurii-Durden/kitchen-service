@@ -294,6 +294,10 @@ ScrollTrigger.matchMedia({
         trigger: ".second__title"
       },
       {
+        elements: ".ing__fade",
+        trigger: ".ing__second__title"
+      },
+      {
         elements: ".fade",
         trigger: ".dish__second__title"
       },

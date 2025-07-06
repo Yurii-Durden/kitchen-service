@@ -108,7 +108,7 @@ class DishIngredient(models.Model):
     dish = models.ForeignKey(
         Dish,
         on_delete=models.CASCADE,
-        related_name="dishes"
+        related_name="dishes_ingredients"
     )
     ingredient = models.ForeignKey(
         Ingredient,
@@ -132,6 +132,6 @@ class DishIngredient(models.Model):
 
     def __str__(self):
         return (f""
-                f"{self.ingredient.name} "
+                f"{self.ingredient.name} - "
                 f"{self.amount} "
-                f"{self.unit} in {self.dish.name}")
+                f"{self.get_unit_display()}")
