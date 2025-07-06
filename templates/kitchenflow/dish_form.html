@@ -122,6 +122,12 @@
 
         {{ formset.management_form }}
 
+      {% if formset.non_form_errors %}
+        <div class="error__item">
+          {{ formset.non_form_errors }}
+        </div>
+      {% endif %}
+
         {% for subform in formset %}
           <div class="ingredient__block">
             <div class="ing__labels">
@@ -136,7 +142,13 @@
                 <div class="choose__ing__button hover__elem">
                   <em>
                     <span class="checked__ing">
-                      <span class="selected__ing">---------</span>
+                      {% if subform.ingredient.value %}
+                        {% with ing_obj=subform.ingredient.field.queryset|get_item:subform.ingredient.value %}
+                          {{ ing_obj }}
+                        {% endwith %}
+                      {% else %}
+                        <span class="selected__ing">---------</span>
+                      {% endif %}
                     </span>
                   </em>
                   <svg class="arrow__down" width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -187,7 +199,17 @@
                 <div class="unit__button hover__elem">
                   <em>
                     <span class="checked__unit">
-                      <span class="selected__unit">---------</span>
+                      <span class="selected__unit">
+                        {% if subform.unit.value %}
+                          {% for value, label in subform.fields.unit.choices %}
+                            {% if subform.unit.value == value %}
+                              {{ label }}
+                            {% endif %}
+                          {% endfor %}
+                        {% else %}
+                          ---------
+                        {% endif %}
+                      </span>
                     </span>
                   </em>
                   <svg class="arrow__down" width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

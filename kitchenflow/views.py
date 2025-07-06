@@ -211,26 +211,26 @@ class DishUpdateView(LoginRequiredMixin, generic.UpdateView):
     def get_success_url(self):
         return reverse("kitchenflow:dish-detail", args=[self.object.pk])
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     if self.request.POST:
-    #         context["formset"] = DishIngredientFormSet(
-    #             self.request.POST, instance=self.object
-    #         )
-    #     else:
-    #         context["formset"] = DishIngredientFormSet(instance=self.object)
-    #     return context
-    #
-    # def form_valid(self, form):
-    #     context = self.get_context_data()
-    #     formset = context["formset"]
-    #     if formset.is_valid():
-    #         self.object = form.save()
-    #         formset.instance = self.object
-    #         formset.save()
-    #         return super().form_valid(form)
-    #     else:
-    #         return self.form_invalid(form)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.request.POST:
+            context["formset"] = DishIngredientFormSet(
+                self.request.POST, instance=self.object
+            )
+        else:
+            context["formset"] = DishIngredientFormSet(instance=self.object)
+        return context
+
+    def form_valid(self, form):
+        context = self.get_context_data()
+        formset = context["formset"]
+        if formset.is_valid():
+            self.object = form.save()
+            formset.instance = self.object
+            formset.save()
+            return super().form_valid(form)
+        else:
+            return self.form_invalid(form)
 
 
 class DishDeleteView(LoginRequiredMixin, generic.DeleteView):
