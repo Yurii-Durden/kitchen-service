@@ -447,6 +447,10 @@ textarea {
     align-items: center;
 }
 
+.svg__close {
+    margin-left: 25px;
+}
+
 .ing__labels {
     display: flex;
     flex-direction: column;
@@ -454,7 +458,7 @@ textarea {
 }
 
 .ing__title {
-    font-size: 7vw;
+    font-size: 7.5vw;
     font-weight: 400;
     color: var(--back-color);
     margin-bottom: 5vh;
