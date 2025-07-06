@@ -61,8 +61,8 @@
       </h2>
 
       {% if user.is_chef %}
-      	<em class="update__add__ing__button">
-          <a href="{% url 'kitchenflow:dish-update' dish.id %}#ingredients" class="update__add__ing">Add/update ingredient</a>
+      	<em class="update__add__ing__button hover__elem">
+          <a href="{% url 'kitchenflow:dish-update' dish.id %}#ingredients" class="update__add__ing">Add/update ingredients</a>
         </em>
       {% endif %}
 
