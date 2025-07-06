@@ -132,6 +132,6 @@ class DishIngredient(models.Model):
 
     def __str__(self):
         return (f""
-                f"{self.ingredient.name} "
+                f"{self.ingredient.name} - "
                 f"{self.amount} "
-                f"{self.unit} in {self.dish.name}")
+                f"{self.get_unit_display()}")

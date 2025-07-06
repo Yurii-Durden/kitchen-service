@@ -69,10 +69,10 @@
       {% if dish.ingredients.exists %}
         <div class="ingredients__box">
           <ul class="ingredients__list">
-            {% for ingredient in dish.dishes_ingredients.all %}
+            {% for ingredient in dish.dishes.all %}
             	<li class="ingredient__item hover__list">
                 <em class="ing__info">
-                  <span class="ing__number">{{ forloop.counter }}.&nbsp;</span> {{ ingredient }}
+                  <span class="ing__number">{{ forloop.counter }}.&nbsp;</span> <span>{{ ingredient.ingredient.name }} - <span class="ing__info__num">{{ ingredient.amount }}</span> {{ ingredient.get_unit_display }}</span>
                 </em>
               </li>
             {% endfor %}

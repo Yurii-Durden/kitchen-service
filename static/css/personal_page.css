@@ -249,6 +249,10 @@
     position: relative;
 }
 
+.ing__info__num {
+    font-family: "Cormorant Infant", serif;
+}
+
 .ingredient__item:hover .ing__info {
     color: var(--back-color);
 }

@@ -278,6 +278,15 @@ window.addEventListener("DOMContentLoaded", () => {
   const cooksMulti = document.querySelectorAll(".dish__group__cook label");
   const errors = document.querySelectorAll(".error__item");
 
+  const hash = window.location.hash;
+
+  if (hash === "#ingredients") {
+    const introSection = document.querySelector(".intro");
+    if (introSection) {
+      introSection.style.display = "none";
+    }
+  }
+
   gsap.to(titleLetters, {
     opacity: 1,
     x: 0,
