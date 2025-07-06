@@ -35,7 +35,7 @@ ScrollTrigger.matchMedia({
 
 });
 
-
+// Add cook
 const addButton = document.querySelector(".add__cook__button");
 
 if (addButton) {
@@ -55,17 +55,20 @@ if (addButton) {
       const isHidden = getComputedStyle(cooksList).opacity === "0";
 
       if (isHidden) {
-        gsap.to(noTextDish, {
+        noTextDish && gsap.to(noTextDish, {
           opacity: 0,
           duration: 0.8,
           ease: "power2.out",
           onComplete: () => {
+            cooksList.style.display = "block";
             cooksList.style.pointerEvents = "auto";
+
             gsap.to(cooksList, {
               opacity: 1,
               duration: 1.2,
               ease: "power2.out",
               onComplete: () => {
+                requestAnimationFrame(() => ScrollTrigger.refresh());
                 isAnimating = false;
               }
             });
@@ -73,22 +76,27 @@ if (addButton) {
         });
       } else {
         cooksList.style.pointerEvents = "none";
+
         gsap.to(cooksList, {
           opacity: 0,
           duration: 0.8,
           ease: "power2.out",
           onComplete: () => {
-            gsap.to(noTextDish, {
+            cooksList.style.display = "none";
+
+            noTextDish && gsap.to(noTextDish, {
               opacity: 1,
               duration: 1.2,
               ease: "power2.out",
               onComplete: () => {
+                requestAnimationFrame(() => ScrollTrigger.refresh());
                 isAnimating = false;
               }
             });
           }
         });
       }
+
       return;
     }
 
@@ -96,12 +104,19 @@ if (addButton) {
 
     if (isHidden) {
       cooksList.style.pointerEvents = "none";
+
       gsap.to(cooksList, {
         opacity: 0,
         duration: 0.9,
         ease: "power2.out",
         onComplete: () => {
+          cooksList.style.display = "none";
+
+          addedCookList.style.display = "block";
           addedCookList.style.pointerEvents = "auto";
+
+          requestAnimationFrame(() => ScrollTrigger.refresh());
+
           gsap.to(addedCookList, {
             opacity: 1,
             duration: 2,
@@ -114,12 +129,19 @@ if (addButton) {
       });
     } else {
       addedCookList.style.pointerEvents = "none";
+
       gsap.to(addedCookList, {
         opacity: 0,
         duration: 0.9,
         ease: "power2.out",
         onComplete: () => {
+          addedCookList.style.display = "none";
+
+          cooksList.style.display = "block";
           cooksList.style.pointerEvents = "auto";
+
+          requestAnimationFrame(() => ScrollTrigger.refresh());
+
           gsap.to(cooksList, {
             opacity: 1,
             duration: 2,
@@ -133,6 +155,7 @@ if (addButton) {
     }
   });
 }
+
 
 
 //page load anim

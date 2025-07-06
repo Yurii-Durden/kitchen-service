@@ -272,8 +272,9 @@
 .cooks__list {
     pointer-events: none;
     opacity: 0;
-    max-height: 500px;
-    height: 100%;
+    /*max-height: 500px;*/
+    height: max-content;
+    display: none;
     overflow-y: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
