@@ -215,22 +215,23 @@ class DishUpdateView(LoginRequiredMixin, generic.UpdateView):
         context = super().get_context_data(**kwargs)
         if self.request.POST:
             context["formset"] = DishIngredientFormSet(
-                self.request.POST, instance=self.object
+                self.request.POST, instance=self.object, prefix='dishes'
             )
         else:
-            context["formset"] = DishIngredientFormSet(instance=self.object)
+            context["formset"] = DishIngredientFormSet(instance=self.object, prefix='dishes')
         return context
 
     def form_valid(self, form):
-        context = self.get_context_data()
-        formset = context["formset"]
+        formset = DishIngredientFormSet(self.request.POST, instance=form.instance, prefix='dishes')
         if formset.is_valid():
             self.object = form.save()
             formset.instance = self.object
             formset.save()
             return super().form_valid(form)
         else:
-            return self.form_invalid(form)
+            context = self.get_context_data(form=form)
+            context["formset"] = formset
+            return self.render_to_response(context)
 
 
 class DishDeleteView(LoginRequiredMixin, generic.DeleteView):
