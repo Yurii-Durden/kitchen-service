@@ -140,36 +140,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Delete ingredient block
     const closeBtn = e.target.closest(".svg__close");
-    if (closeBtn) {
-      e.stopPropagation();
-      const ingredientBlock = closeBtn.closest(".ingredient__block");
-      if (!ingredientBlock) return;
+      if (closeBtn) {
+        e.stopPropagation();
+        const ingredientBlock = closeBtn.closest(".ingredient__block");
+        if (!ingredientBlock) return;
+        const blocks = formWrapper.querySelectorAll(".ingredient__block");
+        if (blocks.length <= 1) {
+          alert("You can't remove the last ingredient block. Leave it empty if you don't need it.");
+          return;
+        }
 
-      const blocks = formWrapper.querySelectorAll(".ingredient__block");
-      if (blocks.length <= 1) {
-        alert("You can't remove the last ingredient block. Leave it empty if you don't need it.");
-        return;
+      const deleteCheckbox = ingredientBlock.querySelector('input[type="checkbox"][name$="-DELETE"]');
+      if (deleteCheckbox) {
+        deleteCheckbox.checked = true;
       }
 
-      ingredientBlock.remove();
-      const updatedBlocks = formWrapper.querySelectorAll(".ingredient__block");
-      updatedBlocks.forEach((block, index) => {
-        const regex = new RegExp(`dishes-(\\d+)-`, "g");
-        block.querySelectorAll("input, select, label, span").forEach(el => {
-          if (el.name) el.name = el.name.replace(regex, `dishes-${index}-`);
-          if (el.id) el.id = el.id.replace(regex, `dishes-${index}-`);
-          if (el.htmlFor) el.htmlFor = el.htmlFor.replace(regex, `dishes-${index}-`);
-        });
+      ingredientBlock.style.display = "none";
 
-        const number = block.querySelector(".ing__number");
-        if (number) number.textContent = index + 1;
-      });
-
-      totalFormsInput.value = updatedBlocks.length;
       ScrollTrigger.refresh();
       return;
     }
-
 
   });
 

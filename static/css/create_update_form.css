@@ -451,6 +451,13 @@ textarea {
     margin-left: 25px;
 }
 
+.hover__elem label {
+  display: block;
+  width: 100%;
+  padding: 0.12rem 5px;
+  cursor: none;
+}
+
 .ing__labels {
     display: flex;
     flex-direction: column;
@@ -516,7 +523,6 @@ textarea {
 }
 
 .ing__list li {
-    padding: 0.12rem 5px;
     transition: color 1.5s var(--primary-animation);
 }
 
@@ -606,7 +612,6 @@ textarea {
 }
 
 .unit__list li {
-    padding: 0.12rem 5px;
     transition: color 1.5s var(--primary-animation);
 }
 
