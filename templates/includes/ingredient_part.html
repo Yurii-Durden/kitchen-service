@@ -2,7 +2,8 @@
 
 <div class="ingredient__block">
   {{ form.id }}
-  <div style="display: none">{{ form.DELETE }}</div>
+{#  <div style="display: none">#}
+    <div>{{ form.DELETE }}</div>
     <div class="ing__labels">
       {% if form.ingredient.errors %}
         <div class="error__item">

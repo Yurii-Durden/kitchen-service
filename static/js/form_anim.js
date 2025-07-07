@@ -150,20 +150,18 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
-      ingredientBlock.style.display = "none";
+      // ingredientBlock.style.display = "none";
 
-      const visibleBlocks = Array.from(
-        ingWrapper.querySelectorAll(".ingredient__block")
-      ).filter(block =>
-        getComputedStyle(block).display !== "none" &&
-        !block.closest("#empty-form-template")
-      );
-
-      console.log(visibleBlocks)
-
-      visibleBlocks.forEach((block, index) => {
-        block.querySelector(".ing__number").textContent = `${index + 1}`;
-      });
+      // const visibleBlocks = Array.from(
+      //   ingWrapper.querySelectorAll(".ingredient__block")
+      // ).filter(block =>
+      //   getComputedStyle(block).display !== "none" &&
+      //   !block.closest("#empty-form-template")
+      // );
+      //
+      // visibleBlocks.forEach((block, index) => {
+      //   block.querySelector(".ing__number").textContent = `${index + 1}`;
+      // });
 
       ScrollTrigger.refresh();
       return;
