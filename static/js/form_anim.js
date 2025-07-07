@@ -370,6 +370,18 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  if (cooksMulti.length > 0) {
+    gsap.to(cooksMulti, {
+      opacity: 1,
+      x: 0,
+      filter: "blur(0px)",
+      duration: 1.2,
+      ease: "power2.out",
+      stagger: 0.01,
+      delay: 0.3
+    });
+  }
+
   if (ingTitle) {
     gsap.to(ingTitle, {
       opacity: 1,

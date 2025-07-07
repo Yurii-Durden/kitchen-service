@@ -636,6 +636,7 @@ textarea {
 
 /*add-another-ing----------------------------------*/
 .add__another__ing__box {
+    display: inline-block;
     opacity: 0;
     filter: blur(10px);
     transform: translate3d(15px, 0, 0);
