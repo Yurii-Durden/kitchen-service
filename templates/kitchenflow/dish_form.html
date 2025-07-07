@@ -111,9 +111,11 @@
   <section class="ing__section" id="ingredients">
     <div class="ing__body _container">
       <div class="form__ing__wrapper">
+      <div class="ing__title__box">
         <h2 class="ing__title to__opacity">
           <span class="fade">I</span><span class="fade">n</span><span class="fade">g</span><span class="fade">r</span><span class="fade">e</span><span class="fade">d</span><span class="fade">i</span><span class="fade">e</span><span class="fade">n</span><span class="fade">t</span><span class="fade">s</span>
         </h2>
+      </div>
 
         {{ formset.management_form }}
 
@@ -131,11 +133,13 @@
           {% include "includes/ingredient_part.html" with form=formset.empty_form index="__prefix__" only %}
         </div>
 
-        <p id="add-ingredient" class="add__another__ing hover__elem to__opacity">
-          <em>
-            Add another ingredient
-          </em>
-        </p>
+        <div class="add__another__ing__box">
+          <p id="add-ingredient" class="add__another__ing hover__elem to__opacity">
+            <em>
+              Add another ingredient
+            </em>
+          </p>
+        </div>
 
         <button type="submit" class="form__button to__opacity hover__elem">
           {% for button_letter in object|yesno:'Update,Create' %}<span class="another__letter">{{ button_letter }}</span>{% endfor %}

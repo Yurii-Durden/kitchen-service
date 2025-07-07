@@ -282,6 +282,9 @@ window.addEventListener("DOMContentLoaded", () => {
   const checkElem = document.querySelector(".checked__elem");
   const cooksMulti = document.querySelectorAll(".dish__group__cook label");
   const errors = document.querySelectorAll(".error__item");
+  const ingTitle = document.querySelector(".ing__title__box");
+  const ingBox = document.querySelectorAll(".ingredient__block");
+  const addIngB = document.querySelector(".add__another__ing__box");
 
   const hash = window.location.hash;
 
@@ -367,8 +370,8 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  if (cooksMulti.length > 0) {
-    gsap.to(cooksMulti, {
+  if (ingTitle) {
+    gsap.to(ingTitle, {
       opacity: 1,
       x: 0,
       filter: "blur(0px)",
@@ -378,4 +381,29 @@ window.addEventListener("DOMContentLoaded", () => {
       delay: 0.3
     });
   }
+
+  if (addIngB) {
+    gsap.to(addIngB, {
+      opacity: 1,
+      x: 0,
+      filter: "blur(0px)",
+      duration: 1.2,
+      ease: "power2.out",
+      stagger: 0.01,
+      delay: 0.3
+    });
+  }
+
+  if (ingBox.length > 0) {
+    gsap.to(ingBox, {
+      opacity: 1,
+      x: 0,
+      filter: "blur(0px)",
+      duration: 1.2,
+      ease: "power2.out",
+      stagger: 0.01,
+      delay: 0.3
+    });
+  }
+
 });
