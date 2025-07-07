@@ -164,48 +164,43 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   addIngredientBtn.addEventListener("click", () => {
-    const totalForms = parseInt(totalFormsInput.value);
-    const maxForms = 1000;
+  const totalForms = parseInt(totalFormsInput.value);
+  const maxForms = 1000;
 
-    if (totalForms >= maxForms) {
-      alert("Max count of forms");
-      return;
-    }
+  if (totalForms >= maxForms) {
+    alert("Max count of forms");
+    return;
+  }
 
-    const lastIngredientBlock = formWrapper.querySelector(".ingredient__block:last-of-type");
-    if (!lastIngredientBlock) {
-      console.error("No ingredient block found to clone");
-      return;
-    }
+  const template = document.querySelector("#empty-form-template");
+  if (!template) {
+    console.error("Empty form template not found!");
+    return;
+  }
 
-    const newIngredientBlock = lastIngredientBlock.cloneNode(true);
-    const regex = new RegExp(`dishes-(\\d+)-`, "g");
+  let newFormHtml = template.innerHTML.replace(/__prefix__/g, totalForms);
 
-    newIngredientBlock.querySelectorAll("input, select, label, span").forEach(el => {
-      if (el.name) el.name = el.name.replace(regex, `dishes-${totalForms}-`);
-      if (el.id) el.id = el.id.replace(regex, `dishes-${totalForms}-`);
-      if (el.htmlFor) el.htmlFor = el.htmlFor.replace(regex, `dishes-${totalForms}-`);
-    });
+  const tempDiv = document.createElement("div");
+  tempDiv.innerHTML = newFormHtml;
 
-    newIngredientBlock.querySelectorAll("input[type='text'], input[type='number']").forEach(input => input.value = "");
-    newIngredientBlock.querySelectorAll("input[type='radio']").forEach(radio => radio.checked = false);
+  const newIngredientBlock = tempDiv.firstElementChild;
+  if (!newIngredientBlock) {
+    console.error("Failed to create new form block");
+    return;
+  }
 
-    const ingNumberSpan = newIngredientBlock.querySelector(".ing__number");
-    if (ingNumberSpan) ingNumberSpan.textContent = totalForms + 1;
+  const ingNumberSpan = newIngredientBlock.querySelector(".ing__number");
+  if (ingNumberSpan) ingNumberSpan.textContent = totalForms + 1;
 
-    const selectedIng = newIngredientBlock.querySelector(".selected__ing");
-    if (selectedIng) selectedIng.textContent = "---------";
-    const selectedUnit = newIngredientBlock.querySelector(".selected__unit");
-    if (selectedUnit) selectedUnit.textContent = "---------";
+  ingWrapper.insertBefore(newIngredientBlock, addIngredientBtn);
 
-    ingWrapper.insertBefore(newIngredientBlock, addIngredientBtn);
-    totalFormsInput.value = totalForms + 1;
-    // cursor update
-    newIngredientBlock.querySelectorAll("[data-cursor-bound]").forEach(el => {
-      delete el.dataset.cursorBound;
-    });
-    initCursorHoverEffects();
-    ScrollTrigger.refresh();
+  totalFormsInput.value = totalForms + 1;
+
+  newIngredientBlock.querySelectorAll("[data-cursor-bound]").forEach(el => {
+    delete el.dataset.cursorBound;
+  });
+   initCursorHoverEffects();
+   ScrollTrigger.refresh();
   });
 });
 
