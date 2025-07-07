@@ -122,14 +122,16 @@
 
         {{ formset.management_form }}
 
-      {% if formset.non_form_errors %}
-        <div class="error__item">
-          {{ formset.non_form_errors }}
-        </div>
-      {% endif %}
+        {% if formset.non_form_errors %}
+          <div class="error__item">
+            {{ formset.non_form_errors }}
+          </div>
+        {% endif %}
 
         {% for subform in formset %}
           <div class="ingredient__block">
+            {{ subform.id }}
+            <div style="display: none">{{ subform.DELETE }}</div>
             <div class="ing__labels">
               {% if subform.ingredient.errors %}
                 <div class="error__item">
@@ -138,17 +140,19 @@
               {% endif %}
 
               <div class="ing__wrapper to__opacity">
-                <label><em><span class="ing__number">1</span>. {{ subform.ingredient.label }}:&nbsp;</em></label>
+                <label><em><span class="ing__number">{{ forloop.counter }}</span>. {{ subform.ingredient.label }}:&nbsp;</em></label>
                 <div class="choose__ing__button hover__elem">
                   <em>
                     <span class="checked__ing">
-                      {% if subform.ingredient.value %}
-                        {% with ing_obj=subform.ingredient.field.queryset|get_item:subform.ingredient.value %}
-                          {{ ing_obj }}
-                        {% endwith %}
-                      {% else %}
-                        <span class="selected__ing">---------</span>
-                      {% endif %}
+                      <span class="selected__ing">
+                        {% if subform.ingredient.value %}
+                          {% with ing_obj=subform.ingredient.field.queryset|get_item:subform.ingredient.value %}
+                            {{ ing_obj }}
+                          {% endwith %}
+                        {% else %}
+                          ---------
+                        {% endif %}
+                      </span>
                     </span>
                   </em>
                   <svg class="arrow__down" width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -157,7 +161,7 @@
                   <ul class="ing__list">
                     <li class="hover__elem">
                       <label>
-                        <input type="radio" name="{{ subform.ingredient.html_name }}" value="" {% if not subform.ingredient.value %}checked{% endif %} hidden>
+                        <input type="radio" name="{{ subform.ingredient.html_name }}" value="" {% if not subform.ingredient.value %}checked{% endif %}>
                         <em class="ing__elem">---------</em>
                       </label>
                     </li>
@@ -165,7 +169,7 @@
                       <li class="hover__elem">
                         <label>
                           <input type="radio" name="{{ subform.ingredient.html_name }}" value="{{ ing.id }}"
-                                 {% if subform.ingredient.value|stringformat:"s" == ing.id|stringformat:"s" %}checked{% endif %} hidden>
+                                 {% if subform.ingredient.value|stringformat:"s" == ing.id|stringformat:"s" %}checked{% endif %}>
                           <em class="ing__elem">{{ ing }}</em>
                         </label>
                       </li>
@@ -220,7 +224,7 @@
                       <li class="hover__elem">
                         <label>
                           <input type="radio" name="{{ subform.unit.html_name }}" value="{{ value }}"
-                            {% if subform.unit.value|stringformat:"s" == value|stringformat:"s" %}checked{% endif %} hidden>
+                            {% if subform.unit.value|stringformat:"s" == value|stringformat:"s" %}checked{% endif %}>
                           <em>{{ label }}</em>
                         </label>
                       </li>
