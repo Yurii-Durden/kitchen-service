@@ -292,6 +292,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const introSection = document.querySelector(".intro");
     if (introSection) {
       introSection.style.display = "none";
+      ingTitle.style.marginTop = "10vh";
     }
   }
 
