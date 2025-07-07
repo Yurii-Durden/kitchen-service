@@ -157,12 +157,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
       ingredientBlock.style.display = "none";
 
+      const visibleBlocks = Array.from(ingWrapper.querySelectorAll(".ingredient__block:not([style*='display: none'])")).slice(1);
+      console.log(visibleBlocks)
+
+      visibleBlocks.forEach((block, index) => {
+        block.querySelector(".ing__number").textContent = `${index + 1}`
+      })
+
       ScrollTrigger.refresh();
       return;
     }
 
   });
 
+  // Add a new ingredient block
   addIngredientBtn.addEventListener("click", () => {
   const totalForms = parseInt(totalFormsInput.value);
   const maxForms = 1000;
@@ -189,10 +197,13 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  const ingNumberSpan = newIngredientBlock.querySelector(".ing__number");
-  if (ingNumberSpan) ingNumberSpan.textContent = totalForms + 1;
-
   ingWrapper.insertBefore(newIngredientBlock, addIngredientBtn);
+
+  const visibleBlocks = Array.from(ingWrapper.querySelectorAll(".ingredient__block:not([style*='display: none'])")).slice(1);
+
+  visibleBlocks.forEach((block, index) => {
+    block.querySelector(".ing__number").textContent = `${index + 1}`
+  })
 
   totalFormsInput.value = totalForms + 1;
 
