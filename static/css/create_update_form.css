@@ -448,7 +448,10 @@ textarea {
 }
 
 .svg__close {
-    margin-left: 25px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    margin-left: 20px;
 }
 
 .hover__elem label {

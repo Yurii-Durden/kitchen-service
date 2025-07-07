@@ -150,19 +150,20 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
-      const deleteCheckbox = ingredientBlock.querySelector('input[type="checkbox"][name$="-DELETE"]');
-      if (deleteCheckbox) {
-        deleteCheckbox.checked = true;
-      }
-
       ingredientBlock.style.display = "none";
 
-      const visibleBlocks = Array.from(ingWrapper.querySelectorAll(".ingredient__block:not([style*='display: none'])")).slice(1);
+      const visibleBlocks = Array.from(
+        ingWrapper.querySelectorAll(".ingredient__block")
+      ).filter(block =>
+        getComputedStyle(block).display !== "none" &&
+        !block.closest("#empty-form-template")
+      );
+
       console.log(visibleBlocks)
 
       visibleBlocks.forEach((block, index) => {
-        block.querySelector(".ing__number").textContent = `${index + 1}`
-      })
+        block.querySelector(".ing__number").textContent = `${index + 1}`;
+      });
 
       ScrollTrigger.refresh();
       return;
@@ -199,7 +200,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   ingWrapper.insertBefore(newIngredientBlock, addIngredientBtn);
 
-  const visibleBlocks = Array.from(ingWrapper.querySelectorAll(".ingredient__block:not([style*='display: none'])")).slice(1);
+  const visibleBlocks = Array.from(
+    ingWrapper.querySelectorAll(".ingredient__block")
+    ).filter(block =>
+      getComputedStyle(block).display !== "none" &&
+      !block.closest("#empty-form-template")
+  );
 
   visibleBlocks.forEach((block, index) => {
     block.querySelector(".ing__number").textContent = `${index + 1}`
