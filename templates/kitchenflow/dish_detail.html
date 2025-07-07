@@ -62,7 +62,9 @@
 
       {% if user.is_chef %}
       	<em class="update__add__ing__button hover__elem">
-          <a href="{% url 'kitchenflow:dish-update' dish.id %}#ingredients" class="update__add__ing">Add/update ingredients</a>
+          <a href="{% url 'kitchenflow:dish-update' dish.id %}#ingredients" class="update__add__ing">
+            <span class="anim__button">A</span><span class="anim__button">d</span><span class="anim__button">d</span><span class="anim__button">/</span><span class="anim__button">u</span><span class="anim__button">p</span><span class="anim__button">d</span><span class="anim__button">a</span><span class="anim__button">t</span><span class="anim__button">e</span><span class="anim__button"><span class="anim__button">&nbsp;</span></span><span class="anim__button">i</span><span class="anim__button">n</span><span class="anim__button">g</span><span class="anim__button">r</span><span class="anim__button">e</span><span class="anim__button">d</span><span class="anim__button">i</span><span class="anim__button">e</span><span class="anim__button">n</span><span class="anim__button">t</span><span class="anim__button">s</span>
+          </a>
         </em>
       {% endif %}
 
