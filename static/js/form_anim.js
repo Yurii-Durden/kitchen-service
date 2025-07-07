@@ -150,18 +150,23 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
-      // ingredientBlock.style.display = "none";
+      const deleteCheckbox = ingredientBlock.querySelector('input[type="checkbox"][name$="-DELETE"]');
+      if (deleteCheckbox) {
+        deleteCheckbox.checked = true;
+      }
 
-      // const visibleBlocks = Array.from(
-      //   ingWrapper.querySelectorAll(".ingredient__block")
-      // ).filter(block =>
-      //   getComputedStyle(block).display !== "none" &&
-      //   !block.closest("#empty-form-template")
-      // );
-      //
-      // visibleBlocks.forEach((block, index) => {
-      //   block.querySelector(".ing__number").textContent = `${index + 1}`;
-      // });
+      ingredientBlock.style.display = "none";
+
+      const visibleBlocks = Array.from(
+        ingWrapper.querySelectorAll(".ingredient__block")
+      ).filter(block =>
+        getComputedStyle(block).display !== "none" &&
+        !block.closest("#empty-form-template")
+      );
+
+      visibleBlocks.forEach((block, index) => {
+        block.querySelector(".ing__number").textContent = `${index + 1}`;
+      });
 
       ScrollTrigger.refresh();
       return;
