@@ -408,6 +408,12 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   if (ingBox.length > 0) {
+    gsap.set(ingBox, {
+      opacity: 0,
+      x: 15,
+      filter: "blur(10px)"
+    });
+
     gsap.to(ingBox, {
       opacity: 1,
       x: 0,
@@ -415,8 +421,10 @@ window.addEventListener("DOMContentLoaded", () => {
       duration: 1.2,
       ease: "power2.out",
       stagger: 0.01,
-      delay: 0.3
+      delay: 0.3,
+      clearProps: "filter,opacity,transform,willChange,zIndex"
     });
   }
+
 
 });

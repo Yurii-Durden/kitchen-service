@@ -437,14 +437,11 @@ textarea {
 }
 
 .ingredient__block {
-    opacity: 0;
-    filter: blur(10px);
-    transform: translate3d(15px, 0, 0);
     display: flex;
     gap: 5vh;
     flex-direction: column;
     margin-bottom: 7vh;
-    transition: opacity 1.5s var(--primary-animation);
+
 }
 
 .ing__wrapper {
