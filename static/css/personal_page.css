@@ -205,6 +205,10 @@
     padding-left: 10px;
 }
 
+.fade__ing {
+    display: inline-block;
+}
+
 .ing__section {
     min-height: 100vh;
     width: 100%;
@@ -295,7 +299,7 @@
 }
 
 .added__cook__link {
-    padding: 1.7rem 10px;
+    padding: 1.7rem 50px 1.7rem 10px;
     display: flex;
     font-size: clamp(16px, 2vw, 22px);
     font-style: italic;
@@ -336,6 +340,7 @@
 }
 
 .remove__button {
+    padding-left: 50px;
     transition: transform 1.5s var(--primary-animation);
 }
 

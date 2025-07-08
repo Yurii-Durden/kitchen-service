@@ -3,6 +3,7 @@ ScrollTrigger.matchMedia({
 
   "(min-width: 1024px)": function () {
     const updateDeleteButtons = document.querySelectorAll(".delete__update__button");
+    const updateIng = document.querySelector(".update__add__ing__button");
 
     updateDeleteButtons.forEach((button) => {
       const letters = Array.from(button.querySelectorAll(".anim__button"));
@@ -31,6 +32,36 @@ ScrollTrigger.matchMedia({
         });
       });
     });
+
+    if (updateIng) {
+
+      const letters = updateIng.querySelectorAll(".fade__ing")
+      updateIng.addEventListener("mouseenter", () => {
+        const tl = gsap.timeline();
+        tl.to(letters, {
+          opacity: 0,
+          x: 15,
+          filter: "blur(5px)",
+          duration: 0.9,
+          ease: "power2.out",
+          stagger: 0.05,
+        });
+      });
+
+      updateIng.addEventListener("mouseleave", () => {
+        const tl = gsap.timeline();
+        tl.to(letters, {
+          opacity: 1,
+          x: 0,
+          filter: "blur(0px)",
+          duration: 0.9,
+          ease: "power2.out",
+          stagger: 0.05,
+        });
+      });
+
+    }
+
   }
 });
 
