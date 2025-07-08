@@ -66,7 +66,7 @@
                   {% for choice in form.ingredient_type.field.queryset %}
                     <li class="dish__type__item" data-id="{{ choice.id }}">
                       <label>
-                        <input type="radio" name="ingredient_type" value="{{ choice.id }}">
+                        <input type="radio" name="ingredient_type" value="{{ choice.id }}" hidden>
                         <em class="item__text">{{ choice.name }}</em>
                       </label>
                     </li>

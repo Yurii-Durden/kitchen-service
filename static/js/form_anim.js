@@ -48,6 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const selectIngBtn = document.querySelector(".select__list__button__ing");
 
+  const closeSvg = document.querySelector(".svg__close");
+
   if (formWrapper) {
 
     formWrapper.addEventListener("click", (e) => {
@@ -98,16 +100,20 @@ document.addEventListener("DOMContentLoaded", () => {
           const ingList = ingredientBlock.querySelector(".ing__list");
           if (ingList) ingList.classList.remove("dish__ing__list__active");
         }
+        closeSvg.classList.remove("close__opacity");
         deactivateDim();
         return;
       }
 
+      // Open ingredient list
       const ingBtn = e.target.closest(".choose__ing__button");
       if (ingBtn) {
         e.stopPropagation();
         const ingList = ingBtn.querySelector(".ing__list");
-        if (ingList) ingList.classList.toggle("dish__ing__list__active");
-        activateDim();
+        const ingListAct = ingList.classList.toggle("dish__ing__list__active");
+        closeSvg.classList.toggle("close__opacity");
+        ingListAct ? activateDim() : deactivateDim();
+
         return;
       }
 
@@ -128,18 +134,21 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
+      // Open unit list
       const unitBtn = e.target.closest(".unit__button");
       if (unitBtn) {
         e.stopPropagation();
         const unitList = unitBtn.querySelector(".unit__list");
-        if (unitList) unitList.classList.toggle("unit__list__active");
-        activateDim();
+        const unitListAct = unitList.classList.toggle("unit__list__active");
+        unitListAct ? activateDim() : deactivateDim();
+
         return;
       }
 
       document.querySelectorAll(".dish__ing__list__active").forEach(list => list.classList.remove("dish__ing__list__active"));
       document.querySelectorAll(".unit__list__active").forEach(list => list.classList.remove("unit__list__active"));
       selectList.classList.remove("dish__type__list__active");
+      closeSvg.classList.remove("close__opacity");
       deactivateDim();
 
       // Delete ingredient block
@@ -228,11 +237,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // ingredient create start
   if (selectIngBtn) {
-      selectIngBtn.addEventListener("click", (e) => {
-        e.stopPropagation()
-        selectList.classList.toggle("dish__type__list__active");
+
+    const getToOpacityArray = () => {
+        return Array.from(document.querySelectorAll(".to__opacity"));
+      };
+
+    function activateDim() {
+        getToOpacityArray().forEach(el => el.classList.add("to__opacity__active"));
+      }
+
+    function deactivateDim() {
+        getToOpacityArray().forEach(el => el.classList.remove("to__opacity__active"));
+      }
+
+    selectIngBtn.addEventListener("click", (e) => {
+      e.stopPropagation()
+      const classListAct = selectList.classList.toggle("dish__type__list__active");
+      classListAct ? activateDim() : deactivateDim();
     });
+
     const listItem = document.querySelectorAll(".dish__type__item");
 
     listItem.forEach((item) => {
@@ -240,6 +265,7 @@ document.addEventListener("DOMContentLoaded", () => {
         e.stopPropagation()
         selectList.classList.remove("dish__type__list__active");
         checkedElem.textContent = item.textContent;
+        deactivateDim();
       })
     })
 
@@ -247,9 +273,11 @@ document.addEventListener("DOMContentLoaded", () => {
       e.stopPropagation()
       if (!selectList.contains(e.target) && !selectIngBtn.contains(e.target)) {
         selectList.classList.remove("dish__type__list__active");
+        deactivateDim();
       }
     });
   }
+  // ingredient create end
 });
 
 

@@ -450,9 +450,15 @@ textarea {
 
 .svg__close {
     display: flex;
+    opacity: 1;
     align-items: center;
     padding: 5px;
     margin-left: 20px;
+}
+
+.close__opacity {
+    opacity: 0.25;
+    transition: opacity 1.5s var(--primary-animation);
 }
 
 .hover__elem label {
