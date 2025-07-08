@@ -46,100 +46,104 @@ document.addEventListener("DOMContentLoaded", () => {
   const addIngredientBtn = document.getElementById("add-ingredient");
   const totalFormsInput = document.querySelector('input[name="dishes-TOTAL_FORMS"]');
 
-  formWrapper.addEventListener("click", (e) => {
-    const getToOpacityArray = () => {
-      return Array.from(document.querySelectorAll(".to__opacity")).filter(el => !el.contains(e.target));
-    };
+  const
 
-    function activateDim() {
-      getToOpacityArray().forEach(el => el.classList.add("to__opacity__active"));
-    }
+  if (formWrapper) {
 
-    function deactivateDim() {
-      getToOpacityArray().forEach(el => el.classList.remove("to__opacity__active"));
-    }
+    formWrapper.addEventListener("click", (e) => {
+      const getToOpacityArray = () => {
+        return Array.from(document.querySelectorAll(".to__opacity")).filter(el => !el.contains(e.target));
+      };
 
-    const selectBtn = e.target.closest(".select__list__button");
-    const listItem = e.target.closest(".dish__type__item");
+      function activateDim() {
+        getToOpacityArray().forEach(el => el.classList.add("to__opacity__active"));
+      }
 
-    // Select type item
-    if (listItem) {
-      e.stopPropagation();
-      const itemText = listItem.querySelector(".item__text")?.innerText || "---------";
-      checkedElem.innerText = itemText;
+      function deactivateDim() {
+        getToOpacityArray().forEach(el => el.classList.remove("to__opacity__active"));
+      }
+
+      const selectBtn = e.target.closest(".select__list__button");
+      const listItem = e.target.closest(".dish__type__item");
+
+      // Select type item
+      if (listItem) {
+        e.stopPropagation();
+        const itemText = listItem.querySelector(".item__text")?.innerText || "---------";
+        checkedElem.innerText = itemText;
+        selectList.classList.remove("dish__type__list__active");
+        deactivateDim();
+        return;
+      }
+
+      // Open type list
+      if (selectBtn) {
+        e.stopPropagation();
+        console.log(e.target.closest(".to__opacity"))
+        const isActive = selectList.classList.toggle("dish__type__list__active");
+        isActive ? activateDim() : deactivateDim();
+        return;
+      }
+
+      // Select ingredient item
+      const ingItem = e.target.closest(".ing__list li");
+      if (ingItem) {
+        e.stopPropagation();
+        const label = ingItem.querySelector(".ing__elem");
+        const selectedText = label?.innerText || "";
+        const ingredientBlock = ingItem.closest(".ingredient__block");
+        if (ingredientBlock) {
+          const selectedSpan = ingredientBlock.querySelector(".selected__ing");
+          if (selectedSpan) selectedSpan.innerText = selectedText;
+          const ingList = ingredientBlock.querySelector(".ing__list");
+          if (ingList) ingList.classList.remove("dish__ing__list__active");
+        }
+        deactivateDim();
+        return;
+      }
+
+      const ingBtn = e.target.closest(".choose__ing__button");
+      if (ingBtn) {
+        e.stopPropagation();
+        const ingList = ingBtn.querySelector(".ing__list");
+        if (ingList) ingList.classList.toggle("dish__ing__list__active");
+        activateDim();
+        return;
+      }
+
+      // Select unit item
+      const unitItem = e.target.closest(".unit__list li");
+      if (unitItem) {
+        e.stopPropagation();
+        const label = unitItem.querySelector("label em");
+        const selectedText = label?.innerText || "";
+        const ingredientBlock = unitItem.closest(".ingredient__block");
+        if (ingredientBlock) {
+          const selectedSpan = ingredientBlock.querySelector(".selected__unit");
+          if (selectedSpan) selectedSpan.innerText = selectedText;
+          const unitList = ingredientBlock.querySelector(".unit__list");
+          if (unitList) unitList.classList.remove("unit__list__active");
+        }
+        deactivateDim();
+        return;
+      }
+
+      const unitBtn = e.target.closest(".unit__button");
+      if (unitBtn) {
+        e.stopPropagation();
+        const unitList = unitBtn.querySelector(".unit__list");
+        if (unitList) unitList.classList.toggle("unit__list__active");
+        activateDim();
+        return;
+      }
+
+      document.querySelectorAll(".dish__ing__list__active").forEach(list => list.classList.remove("dish__ing__list__active"));
+      document.querySelectorAll(".unit__list__active").forEach(list => list.classList.remove("unit__list__active"));
       selectList.classList.remove("dish__type__list__active");
       deactivateDim();
-      return;
-    }
 
-    // Open type list
-    if (selectBtn) {
-      e.stopPropagation();
-      console.log(e.target.closest(".to__opacity"))
-      const isActive = selectList.classList.toggle("dish__type__list__active");
-      isActive ? activateDim() : deactivateDim();
-      return;
-    }
-
-    // Select ingredient item
-    const ingItem = e.target.closest(".ing__list li");
-    if (ingItem) {
-      e.stopPropagation();
-      const label = ingItem.querySelector(".ing__elem");
-      const selectedText = label?.innerText || "";
-      const ingredientBlock = ingItem.closest(".ingredient__block");
-      if (ingredientBlock) {
-        const selectedSpan = ingredientBlock.querySelector(".selected__ing");
-        if (selectedSpan) selectedSpan.innerText = selectedText;
-        const ingList = ingredientBlock.querySelector(".ing__list");
-        if (ingList) ingList.classList.remove("dish__ing__list__active");
-      }
-      deactivateDim();
-      return;
-    }
-
-    const ingBtn = e.target.closest(".choose__ing__button");
-    if (ingBtn) {
-      e.stopPropagation();
-      const ingList = ingBtn.querySelector(".ing__list");
-      if (ingList) ingList.classList.toggle("dish__ing__list__active");
-      activateDim();
-      return;
-    }
-
-    // Select unit item
-    const unitItem = e.target.closest(".unit__list li");
-    if (unitItem) {
-      e.stopPropagation();
-      const label = unitItem.querySelector("label em");
-      const selectedText = label?.innerText || "";
-      const ingredientBlock = unitItem.closest(".ingredient__block");
-      if (ingredientBlock) {
-        const selectedSpan = ingredientBlock.querySelector(".selected__unit");
-        if (selectedSpan) selectedSpan.innerText = selectedText;
-        const unitList = ingredientBlock.querySelector(".unit__list");
-        if (unitList) unitList.classList.remove("unit__list__active");
-      }
-      deactivateDim();
-      return;
-    }
-
-    const unitBtn = e.target.closest(".unit__button");
-    if (unitBtn) {
-      e.stopPropagation();
-      const unitList = unitBtn.querySelector(".unit__list");
-      if (unitList) unitList.classList.toggle("unit__list__active");
-      activateDim();
-      return;
-    }
-
-    document.querySelectorAll(".dish__ing__list__active").forEach(list => list.classList.remove("dish__ing__list__active"));
-    document.querySelectorAll(".unit__list__active").forEach(list => list.classList.remove("unit__list__active"));
-    selectList.classList.remove("dish__type__list__active");
-    deactivateDim();
-
-    // Delete ingredient block
-    const closeBtn = e.target.closest(".svg__close");
+      // Delete ingredient block
+      const closeBtn = e.target.closest(".svg__close");
       if (closeBtn) {
         e.stopPropagation();
         const ingredientBlock = closeBtn.closest(".ingredient__block");
@@ -150,79 +154,81 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
-      const deleteCheckbox = ingredientBlock.querySelector('input[type="checkbox"][name$="-DELETE"]');
-      if (deleteCheckbox) {
-        deleteCheckbox.checked = true;
+        const deleteCheckbox = ingredientBlock.querySelector('input[type="checkbox"][name$="-DELETE"]');
+        if (deleteCheckbox) {
+          deleteCheckbox.checked = true;
+        }
+
+        ingredientBlock.style.display = "none";
+
+        const visibleBlocks = Array.from(
+            ingWrapper.querySelectorAll(".ingredient__block")
+        ).filter(block =>
+            getComputedStyle(block).display !== "none" &&
+            !block.closest("#empty-form-template")
+        );
+
+        visibleBlocks.forEach((block, index) => {
+          block.querySelector(".ing__number").textContent = `${index + 1}`;
+        });
+
+        ScrollTrigger.refresh();
+        return;
       }
 
-      ingredientBlock.style.display = "none";
+    });
+
+    // Add a new ingredient block
+    addIngredientBtn.addEventListener("click", () => {
+      const totalForms = parseInt(totalFormsInput.value);
+      const maxForms = 1000;
+
+      if (totalForms >= maxForms) {
+        alert("Max count of forms");
+        return;
+      }
+
+      const template = document.querySelector("#empty-form-template");
+      if (!template) {
+        console.error("Empty form template not found!");
+        return;
+      }
+
+      let newFormHtml = template.innerHTML.replace(/__prefix__/g, totalForms);
+
+      const tempDiv = document.createElement("div");
+      tempDiv.innerHTML = newFormHtml;
+
+      const newIngredientBlock = tempDiv.firstElementChild;
+      if (!newIngredientBlock) {
+        console.error("Failed to create new form block");
+        return;
+      }
+
+      ingWrapper.insertBefore(newIngredientBlock, addIngredientBtn);
 
       const visibleBlocks = Array.from(
-        ingWrapper.querySelectorAll(".ingredient__block")
+          ingWrapper.querySelectorAll(".ingredient__block")
       ).filter(block =>
-        getComputedStyle(block).display !== "none" &&
-        !block.closest("#empty-form-template")
+          getComputedStyle(block).display !== "none" &&
+          !block.closest("#empty-form-template")
       );
 
       visibleBlocks.forEach((block, index) => {
-        block.querySelector(".ing__number").textContent = `${index + 1}`;
+        block.querySelector(".ing__number").textContent = `${index + 1}`
+      })
+
+      totalFormsInput.value = totalForms + 1;
+
+      newIngredientBlock.querySelectorAll("[data-cursor-bound]").forEach(el => {
+        delete el.dataset.cursorBound;
       });
-
+      initCursorHoverEffects();
       ScrollTrigger.refresh();
-      return;
-    }
-
-  });
-
-  // Add a new ingredient block
-  addIngredientBtn.addEventListener("click", () => {
-  const totalForms = parseInt(totalFormsInput.value);
-  const maxForms = 1000;
-
-  if (totalForms >= maxForms) {
-    alert("Max count of forms");
-    return;
+    });
   }
-
-  const template = document.querySelector("#empty-form-template");
-  if (!template) {
-    console.error("Empty form template not found!");
-    return;
-  }
-
-  let newFormHtml = template.innerHTML.replace(/__prefix__/g, totalForms);
-
-  const tempDiv = document.createElement("div");
-  tempDiv.innerHTML = newFormHtml;
-
-  const newIngredientBlock = tempDiv.firstElementChild;
-  if (!newIngredientBlock) {
-    console.error("Failed to create new form block");
-    return;
-  }
-
-  ingWrapper.insertBefore(newIngredientBlock, addIngredientBtn);
-
-  const visibleBlocks = Array.from(
-    ingWrapper.querySelectorAll(".ingredient__block")
-    ).filter(block =>
-      getComputedStyle(block).display !== "none" &&
-      !block.closest("#empty-form-template")
-  );
-
-  visibleBlocks.forEach((block, index) => {
-    block.querySelector(".ing__number").textContent = `${index + 1}`
-  })
-
-  totalFormsInput.value = totalForms + 1;
-
-  newIngredientBlock.querySelectorAll("[data-cursor-bound]").forEach(el => {
-    delete el.dataset.cursorBound;
-  });
-   initCursorHoverEffects();
-   ScrollTrigger.refresh();
-  });
 });
+
 
 
 //IngredientsScroll
@@ -425,6 +431,4 @@ window.addEventListener("DOMContentLoaded", () => {
       clearProps: "filter,opacity,transform,willChange,zIndex"
     });
   }
-
-
 });

@@ -127,7 +127,7 @@
           <ul class="added__cooks__list">
             {% for cook in dish.cooks.all %}
               <li class="added__cook__item hover__list">
-                <a class="added__cook__link hover__elem" href="{% url 'kitchenflow:cook-detail' cook.id %}">{{ cook.first_name }} {{ cook.last_name }}</a>
+                <a class="added__cook__link added__cook__person hover__elem" href="{% url 'kitchenflow:cook-detail' cook.id %}">{{ cook.first_name }} {{ cook.last_name }}</a>
                 {% if user.is_chef %}
                   <a class="added__cook__link remove__button hover__elem" href="{% url 'kitchenflow:remove-from-cooking' dish.id cook.id %}">remove from cooking</a>
                 {% endif %}
