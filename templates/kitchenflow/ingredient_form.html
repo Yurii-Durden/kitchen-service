@@ -50,13 +50,15 @@
                 <em>{{ form.ingredient_type.label }}:&nbsp;</em>
               </label>
               <div class="select__list__button select__list__button__ing hover__elem">
-                <span class="checked__elem"><span class="selected__text">
-                  {% if object %}
-                    {{ object.ingredient_type }}
-                  {% else %}
-                    ---------
-                  {% endif %}
-                </span><svg class="arrow__down" width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span class="checked__elem">
+                  <span class="selected__text">
+                    {% if object %}
+                      {{ object.ingredient_type }}
+                    {% else %}
+                      ---------
+                    {% endif %}
+                  </span>
+                  <svg class="arrow__down" width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 <ul class="dish__type__list">
                   <li class="dish__type__item" data-id="{{ choice.id }}">
                     ---------
@@ -64,7 +66,7 @@
                   {% for choice in form.ingredient_type.field.queryset %}
                     <li class="dish__type__item" data-id="{{ choice.id }}">
                       <label>
-                        <input type="checkbox" name="ingredient_type" value="{{ choice.id }}" hidden>
+                        <input type="radio" name="ingredient_type" value="{{ choice.id }}">
                         <em class="item__text">{{ choice.name }}</em>
                       </label>
                     </li>

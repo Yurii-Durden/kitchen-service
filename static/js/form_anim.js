@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const addIngredientBtn = document.getElementById("add-ingredient");
   const totalFormsInput = document.querySelector('input[name="dishes-TOTAL_FORMS"]');
 
-  const
+  const selectIngBtn = document.querySelector(".select__list__button__ing");
 
   if (formWrapper) {
 
@@ -227,8 +227,30 @@ document.addEventListener("DOMContentLoaded", () => {
       ScrollTrigger.refresh();
     });
   }
-});
 
+  if (selectIngBtn) {
+      selectIngBtn.addEventListener("click", (e) => {
+        e.stopPropagation()
+        selectList.classList.toggle("dish__type__list__active");
+    });
+    const listItem = document.querySelectorAll(".dish__type__item");
+
+    listItem.forEach((item) => {
+      item.addEventListener("click", (e) => {
+        e.stopPropagation()
+        selectList.classList.remove("dish__type__list__active");
+        checkedElem.textContent = item.textContent;
+      })
+    })
+
+    document.addEventListener("click", (e) => {
+      e.stopPropagation()
+      if (!selectList.contains(e.target) && !selectIngBtn.contains(e.target)) {
+        selectList.classList.remove("dish__type__list__active");
+      }
+    });
+  }
+});
 
 
 //IngredientsScroll
