@@ -1,4 +1,4 @@
-//scroll to the top
+// Scroll to the top
 ScrollTrigger.create({
   trigger: ".pinned__section",
   start: "top top",
@@ -25,12 +25,12 @@ document.addEventListener("click", (e) => {
 });
 
 const elementsToBlur = [
-  ".main__block",
-  ".page__count",
+  document.querySelector(".main__block"),
+  document.querySelector(".page__count"),
 ];
 
 
-//blur first section
+// Blur first section
 const angleDown = document.querySelector(".angle__down");
 
 gsap.to(elementsToBlur, {
@@ -58,7 +58,7 @@ gsap.to(angleDown, {
   }
 });
 
-// buttons hover
+// Buttons hover
 const createButton = document.querySelector(".create__button");
 const buttonLetters = Array.from(document.querySelectorAll(".create__fade"));
 ScrollTrigger.matchMedia({
@@ -88,7 +88,7 @@ ScrollTrigger.matchMedia({
       }, 0);
     });
 
-    // cook links hover
+    // Cook links hover
     const userNicks = document.querySelectorAll(".username");
 
     userNicks.forEach(userNick => {
@@ -119,7 +119,7 @@ ScrollTrigger.matchMedia({
       });
     });
 
-    // dish and dish type hover
+    // Dish and dish type hover
     const dish = document.querySelectorAll(".target__block");
 
     dish.forEach(dishName => {
@@ -152,7 +152,7 @@ ScrollTrigger.matchMedia({
   }
 });
 
-//search form
+// Search form
 const searchInput = document.querySelector(".search__input");
 const searchForm = document.querySelector(".search__form");
 
@@ -164,11 +164,7 @@ searchInput.addEventListener("input", () => {
   }
 });
 
-// filter open
-// window.addEventListener("load", () => {
-//   document.querySelector(".choose__box").style.display = "none";
-// });
-
+// Filter click
 const filter_by_button = document.querySelector(".filter__by__text");
 const filter_links = Array.from(document.querySelectorAll(".choose__type__item"));
 const dishChooseBox = document.querySelector(".choose__box");
@@ -176,6 +172,7 @@ const pageListBox = document.querySelector(".page__list__box");
 
 let isOpen = false;
 let previousScroll = 0;
+let prevNextButtonTrigger = null;
 
 if (filter_by_button) {
   filter_by_button.addEventListener("click", toggleMenu);
@@ -203,8 +200,7 @@ function toggleMenu() {
   const tl = gsap.timeline();
   const hasData = document.querySelector(".data__list");
   const body = document.body;
-
-  elementsToBlur.push(".page__link");
+  const prevNextButton = document.querySelectorAll(".prev__next__button");
 
   if (!isOpen) {
     previousScroll = window.scrollY;
@@ -234,6 +230,20 @@ function toggleMenu() {
       );
     }
 
+    if (prevNextButton.length > 0 && !prevNextButtonTrigger) {
+      prevNextButtonTrigger = gsap.to(prevNextButton, {
+        filter: "blur(15px)",
+        pointerEvents: "none",
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".scrollable__section",
+          start: 0,
+          end: 500,
+          scrub: true,
+        }
+      });
+    }
+
   } else {
     window.scrollTo({
       top: previousScroll,
@@ -253,6 +263,16 @@ function toggleMenu() {
     if (pageListBox) {
       tl.add(() => {
         pageListBox.style.display = "flex";
+        if (prevNextButtonTrigger) {
+          prevNextButtonTrigger.scrollTrigger.kill();
+          prevNextButtonTrigger.kill();
+          prevNextButtonTrigger = null;
+          prevNextButton.forEach((e) => {
+            e.style.filter = "none";
+            e.style.pointerEvents = "auto";
+          })
+        }
+
       }, ">");
     }
 
@@ -270,7 +290,7 @@ function toggleMenu() {
   isOpen = !isOpen;
 }
 
-
+// Filter button hover
 const typeLinks = document.querySelectorAll(".filter__buttons");
 ScrollTrigger.matchMedia({
   "(min-width: 1024px)": function () {
@@ -307,7 +327,7 @@ ScrollTrigger.matchMedia({
   }
 });
 
-//page load anim
+// Page load anim
 window.addEventListener("DOMContentLoaded", () => {
   const titleAllLetters = document.querySelectorAll(".fade__title__all");
   const searchForm = document.querySelector(".search__form");
@@ -392,7 +412,7 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-//pagination hover
+// Pagination hover
 const paginationButtons = document.querySelectorAll(".page__link");
 
 if (paginationButtons.length > 0) {
