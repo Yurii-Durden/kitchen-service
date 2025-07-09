@@ -317,6 +317,8 @@
     align-items: center;
     justify-content: space-between;
     position: relative;
+    padding: 0 10px;
+
 }
 
 .added__cook__item:hover .added__cook__link {
@@ -344,7 +346,7 @@
 }
 
 .remove__button {
-    padding-left: 50px;
+    padding-left: 100px;
     transition: transform 1.5s var(--primary-animation);
 }
 
