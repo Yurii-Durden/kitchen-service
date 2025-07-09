@@ -41,6 +41,7 @@
 }
 
 .button__item {
+    max-width: max-content;
     opacity: 0;
     transform: translateX(15px);
     filter: blur(10px);
