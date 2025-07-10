@@ -50,6 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const closeSvg = document.querySelector(".svg__close");
 
+  let actualIngredientsList = document.querySelectorAll(".selected__ing");
+  console.log(actualIngredientsList);
+
   if (formWrapper) {
 
     formWrapper.addEventListener("click", (e) => {
