@@ -211,15 +211,16 @@
 }
 
 .ing__section {
-    min-height: 100vh;
+    min-height: max-content;
     width: 100%;
     display: flex;
-    margin-bottom: 10vh;
+    margin-bottom: 20vh;
     position: relative;
     z-index: 5;
 }
 
 .ing__number {
+    font-weight: 500;
     font-family: "Cormorant Infant", serif;
 }
 
@@ -237,7 +238,6 @@
 
 .ingredients__list {
     margin-top: 4vh;
-    position: absolute;
     width: 100%;
     top: 0;
     left: 0;
