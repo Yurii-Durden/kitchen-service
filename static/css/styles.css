@@ -340,6 +340,10 @@ body::-webkit-scrollbar-thumb {
     mix-blend-mode: difference;
 }
 
+body.mobile #cursor {
+    display: none;
+}
+
 /*BODY-----------------------------------------------*/
 .section {
     min-height: 100vh;
@@ -347,16 +351,6 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     position: relative;
     z-index: 5;
-}
-/*cursor-media-----------------------------------------*/
-@media  (max-width: 1025px) {
-    #cursor {
-        display: none;
-    }
-
-    * {
-        cursor: auto;
-    }
 }
 
 /*header-media-----------------------------------------*/

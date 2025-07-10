@@ -165,25 +165,32 @@ loginBoxes.forEach((box) => {
 });
 
 //cursor
-const cursor = document.getElementById("cursor");
+const isMobile = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
 
-let mouseX = 0, mouseY = 0;
-let posX = 0, posY = 0;
+if (isMobile) {
+  document.body.classList.add("mobile"); //
+} else {
+  const cursor = document.getElementById("cursor");
 
-document.addEventListener("mousemove", e => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-});
+  let mouseX = 0, mouseY = 0;
+  let posX = 0, posY = 0;
 
-gsap.ticker.add(() => {
-  posX += (mouseX - posX) * 0.15;
-  posY += (mouseY - posY) * 0.15;
-
-  gsap.set(cursor, {
-    x: posX,
-    y: posY
+  document.addEventListener("mousemove", e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
   });
-});
+
+  gsap.ticker.add(() => {
+    posX += (mouseX - posX) * 0.19;
+    posY += (mouseY - posY) * 0.19;
+
+    gsap.set(cursor, {
+      x: posX,
+      y: posY
+    });
+  });
+}
+
 
 //cursor hover
 function initCursorHoverEffects() {
@@ -198,10 +205,10 @@ function initCursorHoverEffects() {
     document.querySelectorAll(selector).forEach(elem => {
       if (!elem.dataset.cursorBound) {
         elem.addEventListener("mouseenter", () => {
-          gsap.to(cursor, { scale: 0.6, duration: 0.3, ease: "power2.out" });
+          gsap.to(cursor, { scale: 0.6, duration: 0.31, ease: "power2.out" });
         });
         elem.addEventListener("mouseleave", () => {
-          gsap.to(cursor, { scale: 1, duration: 0.3, ease: "power2.out" });
+          gsap.to(cursor, { scale: 1, duration: 0.31, ease: "power2.out" });
         });
         elem.dataset.cursorBound = "true";
       }
