@@ -98,7 +98,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Select ingredient item
       const ingItem = e.target.closest(".ing__list li");
-      if (e.target.tagName === "INPUT") return;
+      // if (e.target.tagName === "INPUT") return;
+
       if (ingItem) {
         e.stopPropagation();
         const label = ingItem.querySelector(".ing__elem");
@@ -117,8 +118,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 const existText = document.querySelector(".exist__text");
                 setTimeout(() => {existText.classList.add("exist__text__active");}, 100);
                 const existTextElem = e.target.closest(".ing__wrapper").previousElementSibling;
-                setTimeout(() => {existText.classList.remove("exist__text__active");}, 2500);
-                setTimeout(() => {existTextElem.remove();}, 3500)
+                setTimeout(() => {existText.classList.remove("exist__text__active");}, 2000);
+                setTimeout(() => {existTextElem.remove();}, 3000);
               }
           }
           const ingList = ingredientBlock.querySelector(".ing__list");

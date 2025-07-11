@@ -455,7 +455,7 @@ textarea {
     left: 0;
     top: -80%;
     color: var(--back-color);
-    transition: opacity 1.5s var(--primary-animation);
+    transition: opacity 1s var(--primary-animation);
 }
 
 .exist__text__active {
