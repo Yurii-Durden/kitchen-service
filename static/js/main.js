@@ -181,8 +181,8 @@ if (isMobile) {
   });
 
   gsap.ticker.add(() => {
-    posX += (mouseX - posX) * 0.19;
-    posY += (mouseY - posY) * 0.19;
+    posX += (mouseX - posX) * 0.20;
+    posY += (mouseY - posY) * 0.20;
 
     gsap.set(cursor, {
       x: posX,

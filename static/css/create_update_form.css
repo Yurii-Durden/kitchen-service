@@ -453,7 +453,7 @@ textarea {
     opacity: 0;
     position: absolute;
     left: 0;
-    top: -80%;
+    top: -100%;
     color: var(--back-color);
     transition: opacity 1s var(--primary-animation);
 }
