@@ -50,8 +50,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const closeSvg = document.querySelector(".svg__close");
 
-  let actualIngredientsList = document.querySelectorAll(".selected__ing");
-  console.log(actualIngredientsList);
+  function getActualList() {
+    return  Array.from(
+        document.querySelectorAll(".selected__ing")
+          ).map(
+            span => span.textContent.trim()
+          ).filter(
+            text => text !== "---------"
+          );
+  }
 
   if (formWrapper) {
 
@@ -84,7 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
       // Open type list
       if (selectBtn) {
         e.stopPropagation();
-        console.log(e.target.closest(".to__opacity"))
         const isActive = selectList.classList.toggle("dish__type__list__active");
         isActive ? activateDim() : deactivateDim();
         return;
@@ -92,14 +98,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Select ingredient item
       const ingItem = e.target.closest(".ing__list li");
+      if (e.target.tagName === "INPUT") return;
       if (ingItem) {
         e.stopPropagation();
         const label = ingItem.querySelector(".ing__elem");
-        const selectedText = label?.innerText || "";
+        const selectedText = label?.innerText.trim() || "";
         const ingredientBlock = ingItem.closest(".ingredient__block");
         if (ingredientBlock) {
           const selectedSpan = ingredientBlock.querySelector(".selected__ing");
-          if (selectedSpan) selectedSpan.innerText = selectedText;
+          if (!getActualList().includes(selectedText)) {
+            selectedSpan.innerText = selectedText;
+          }
+          else {
+              if (!document.querySelector(".exist__text") && selectedText != selectedSpan.innerText.trim()) {
+                e.target.closest(".ing__wrapper").insertAdjacentHTML(
+                    "beforebegin", `<p class='exist__text'><em>Ingredient ${selectedText.split('-')[0]} already exist</em></p>`
+                )
+                const existText = document.querySelector(".exist__text");
+                setTimeout(() => {existText.classList.add("exist__text__active");}, 100);
+                const existTextElem = e.target.closest(".ing__wrapper").previousElementSibling;
+                setTimeout(() => {existText.classList.remove("exist__text__active");}, 2500);
+                setTimeout(() => {existTextElem.remove();}, 3500)
+              }
+          }
           const ingList = ingredientBlock.querySelector(".ing__list");
           if (ingList) ingList.classList.remove("dish__ing__list__active");
         }

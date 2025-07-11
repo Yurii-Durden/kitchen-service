@@ -440,12 +440,27 @@ textarea {
     gap: 5vh;
     flex-direction: column;
     margin-bottom: 7vh;
+    position: relative;
 
 }
 
 .ing__wrapper {
     display: flex;
     align-items: center;
+}
+
+.exist__text {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: -80%;
+    color: var(--back-color);
+    transition: opacity 1.5s var(--primary-animation);
+}
+
+.exist__text__active {
+    opacity: 1;
+    display: inline-block;
 }
 
 .svg__close {
@@ -472,6 +487,7 @@ textarea {
     display: flex;
     flex-direction: column;
     color: var(--back-color);
+    position: relative;
 }
 
 .ing__title__box {
