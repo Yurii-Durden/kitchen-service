@@ -33,7 +33,7 @@
           <ul class="ing__list">
             <li class="hover__elem">
               <label>
-                <input type="radio" name="{{ form.ingredient.html_name }}" value="" {% if not form.ingredient.value %}checked{% endif %}>
+                <input type="radio" name="{{ form.ingredient.html_name }}" value="" {% if not form.ingredient.value %}checked{% endif %} hidden>
                 <em class="ing__elem">---------</em>
               </label>
             </li>
@@ -41,7 +41,7 @@
               <li class="hover__elem">
                 <label>
                   <input type="radio" name="{{ form.ingredient.html_name }}" value="{{ ing.id }}"
-                         {% if form.ingredient.value|stringformat:"s" == ing.id|stringformat:"s" %}checked{% endif %}>
+                         {% if form.ingredient.value|stringformat:"s" == ing.id|stringformat:"s" %}checked{% endif %} hidden>
                   <em class="ing__elem">{{ ing }}</em>
                 </label>
               </li>

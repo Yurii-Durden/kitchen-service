@@ -35,6 +35,8 @@ ScrollTrigger.matchMedia({
 
 });
 
+const previousSelection = new Map();
+
 //INGREDIENTS START
 document.addEventListener("DOMContentLoaded", () => {
   const formWrapper = document.querySelector(".dish__type__form");
@@ -49,6 +51,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const selectIngBtn = document.querySelector(".select__list__button__ing");
 
   const closeSvg = document.querySelector(".svg__close");
+
+  document.querySelectorAll(".ingredient__block").forEach(block => {
+    const blockId = block.id;
+    const selectedSpan = block.querySelector(".selected__ing");
+
+    if (selectedSpan && selectedSpan.textContent.trim() !== "---------") {
+      previousSelection.set(blockId, selectedSpan.textContent.trim());
+    } else {
+      previousSelection.set(blockId, null);
+    }
+  });
 
   function getActualList() {
     return  Array.from(
@@ -98,30 +111,64 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Select ingredient item
       const ingItem = e.target.closest(".ing__list li");
-      // if (e.target.tagName === "INPUT") return;
+      if (ingItem) {
+        const radioInput = ingItem.querySelector('input[type="radio"]');
+
+      if (radioInput && (e.target === radioInput || e.target === ingItem || e.target.closest('label'))) {
+        e.preventDefault();
+      }
+
+      e.stopPropagation();
 
       if (ingItem) {
-        e.stopPropagation();
         const label = ingItem.querySelector(".ing__elem");
         const selectedText = label?.innerText.trim() || "";
         const ingredientBlock = ingItem.closest(".ingredient__block");
+        const blockId = ingredientBlock?.id;
+
         if (ingredientBlock) {
           const selectedSpan = ingredientBlock.querySelector(".selected__ing");
+          if (selectedText === selectedSpan.innerText.trim() && radioInput.checked) {
+            const ingList = ingredientBlock.querySelector(".ing__list");
+            if (ingList) ingList.classList.remove("dish__ing__list__active");
+            closeSvg.classList.remove("close__opacity");
+            deactivateDim();
+            return
+          }
           if (!getActualList().includes(selectedText)) {
+            const allRadiosInBlock = ingredientBlock.querySelectorAll('input[type="radio"]');
+            allRadiosInBlock.forEach(radio => radio.checked = false);
+            radioInput.checked = true;
             selectedSpan.innerText = selectedText;
+            previousSelection.set(blockId, selectedText);
           }
           else {
-              if (!document.querySelector(".exist__text") && selectedText != selectedSpan.innerText.trim()) {
-                e.target.closest(".ing__wrapper").insertAdjacentHTML(
-                    "beforebegin", `<p class='exist__text'><em>Ingredient ${selectedText.split('-')[0]} already exist</em></p>`
-                )
-                const existText = document.querySelector(".exist__text");
-                setTimeout(() => {existText.classList.add("exist__text__active");}, 100);
-                const existTextElem = e.target.closest(".ing__wrapper").previousElementSibling;
-                setTimeout(() => {existText.classList.remove("exist__text__active");}, 2000);
-                setTimeout(() => {existTextElem.remove();}, 3000);
+            if (!document.querySelector(".exist__text") && selectedText != selectedSpan.innerText.trim()) {
+              e.target.closest(".ing__wrapper").insertAdjacentHTML(
+                  "beforebegin", `<p class='exist__text'><em>Ingredient ${selectedText.split('-')[0]} already exist</em></p>`
+              )
+              const existText = document.querySelector(".exist__text");
+              setTimeout(() => {
+                existText.classList.add("exist__text__active");
+              }, 100);
+              const existTextElem = e.target.closest(".ing__wrapper").previousElementSibling;
+              setTimeout(() => {
+                existText.classList.remove("exist__text__active");
+              }, 2000);
+              setTimeout(() => {
+                existTextElem.remove();
+              }, 3000);
+            }
+            radioInput.checked = false;
+            if (prevSelected) {
+              const prevRadioInput = ingredientBlock.querySelector(`li[data-ingredient-name="${prevSelected}"] input[type="radio"]`);
+              if (prevRadioInput) {
+                prevRadioInput.checked = true;
+                selectedSpan.innerText = prevSelected;
               }
+            }
           }
+        }
           const ingList = ingredientBlock.querySelector(".ing__list");
           if (ingList) ingList.classList.remove("dish__ing__list__active");
         }
