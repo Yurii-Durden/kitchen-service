@@ -489,6 +489,11 @@
     font-size: clamp(16px, 2vw, 22px);
     font-weight: 500;
     margin-bottom: 8vh;
+    text-transform: lowercase;
+}
+
+.dish__section {
+    margin-bottom: 20vh;
 }
 
 /*media-------------------------------------------*/
