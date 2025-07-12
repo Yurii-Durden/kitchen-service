@@ -73,6 +73,8 @@ class Dish(models.Model):
     def save(self, *args, **kwargs):
         if self.name:
             self.name = self.name.title()
+        if self.description:
+            self.description = self.description.title().strip(".")
         super().save(*args, **kwargs)
 
 
