@@ -9,6 +9,7 @@ ScrollTrigger.create({
   scrub: true
 });
 
+
 const scrollableSection = document.querySelector(".scrollable__section");
 
 document.addEventListener("click", (e) => {
@@ -57,6 +58,7 @@ gsap.to(angleDown, {
     scrub: true,
   }
 });
+
 
 // Buttons hover
 const createButton = document.querySelector(".create__button");
@@ -152,6 +154,7 @@ ScrollTrigger.matchMedia({
   }
 });
 
+
 // Search form
 const searchInput = document.querySelector(".search__input");
 const searchForm = document.querySelector(".search__form");
@@ -163,6 +166,7 @@ searchInput.addEventListener("input", () => {
     searchForm.classList.remove("search__form--filled");
   }
 });
+
 
 // Filter click
 const filter_by_button = document.querySelector(".filter__by__text");
@@ -290,6 +294,7 @@ function toggleMenu() {
   isOpen = !isOpen;
 }
 
+
 // Filter button hover
 const typeLinks = document.querySelectorAll(".filter__buttons");
 ScrollTrigger.matchMedia({
@@ -326,6 +331,7 @@ ScrollTrigger.matchMedia({
     }
   }
 });
+
 
 // Page load anim
 window.addEventListener("DOMContentLoaded", () => {
@@ -411,6 +417,7 @@ window.addEventListener("DOMContentLoaded", () => {
     delay: 1.1
   });
 });
+
 
 // Pagination hover
 const paginationButtons = document.querySelectorAll(".page__link");

@@ -34,6 +34,7 @@ ScrollTrigger.matchMedia({
   }
 });
 
+
 //page load anim
 window.addEventListener("DOMContentLoaded", () => {
   const titleLetters = document.querySelector(".title__letter");

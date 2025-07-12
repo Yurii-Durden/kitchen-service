@@ -35,6 +35,7 @@ ScrollTrigger.matchMedia({
 
 });
 
+
 const previousSelection = new Map();
 
 //INGREDIENTS START
@@ -398,6 +399,7 @@ if(document.querySelectorAll(".fade").length > 0) {
   });
 }
 //INGREDIENTS END
+
 
 //page load anim
 window.addEventListener("DOMContentLoaded", () => {

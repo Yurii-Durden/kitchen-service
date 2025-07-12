@@ -65,6 +65,7 @@ ScrollTrigger.matchMedia({
   }
 });
 
+
 // Add cook
 const addButton = document.querySelector(".add__cook__button");
 
@@ -187,7 +188,6 @@ if (addButton) {
 }
 
 
-
 //page load anim
 window.addEventListener("DOMContentLoaded", () => {
   // cook
@@ -279,6 +279,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+
 //pagination
 const paginationButtons = document.querySelectorAll(".page__link");
 
@@ -314,6 +315,7 @@ if (paginationButtons.length > 0) {
     });
   });
 }
+
 
 //scroll to  appear
 ScrollTrigger.matchMedia({

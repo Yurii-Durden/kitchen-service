@@ -44,6 +44,7 @@ ScrollTrigger.matchMedia({
   }
 });
 
+
 ScrollTrigger.matchMedia({
   "(min-width: 1024px)": function () {
     const animations = [
@@ -81,6 +82,7 @@ ScrollTrigger.matchMedia({
     ScrollTrigger.refresh();
   }
 });
+
 
 window.addEventListener("DOMContentLoaded", () => {
   const titleLetters = document.querySelectorAll(".fade__about__title");

@@ -4,6 +4,7 @@ ScrollSmoother.create({
   content: '.content'
 });
 
+
 window.addEventListener("DOMContentLoaded", () => {
   const headerLetters = document.querySelectorAll(".fade__header");
 
@@ -17,6 +18,7 @@ window.addEventListener("DOMContentLoaded", () => {
     delay: 1
   });
 });
+
 
 const header_menu_button = document.querySelector(".menu__item");
 const header_menu = document.querySelector(".header__menu");
@@ -56,6 +58,7 @@ header_menu_button.addEventListener("click", (event) => {
   menuIsOpen = !menuIsOpen;
 });
 
+
 let lastScroll = 0;
 const header = document.querySelector('.header');
 const firstSection = document.querySelector('.first__section');
@@ -75,6 +78,7 @@ if (firstSection) {
     lastScroll = scrollTop;
   });
 }
+
 
 const menuBox = document.querySelector(".menu__box");
 let toggled = false;
@@ -163,6 +167,7 @@ loginBoxes.forEach((box) => {
     }, 0);
   });
 });
+
 
 //cursor
 const isMobile = window.matchMedia("(hover: none) and (pointer: coarse)").matches;

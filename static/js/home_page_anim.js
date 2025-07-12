@@ -52,6 +52,7 @@ ScrollTrigger.matchMedia({
   }
 });
 
+
 ScrollTrigger.matchMedia({
   "(min-width: 1257px)": function () {
     const animations = [
@@ -93,6 +94,7 @@ ScrollTrigger.matchMedia({
     ScrollTrigger.refresh();
   }
 });
+
 
 //load page anim
 window.addEventListener("DOMContentLoaded", () => {
