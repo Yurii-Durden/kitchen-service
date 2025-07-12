@@ -95,7 +95,6 @@
               </div>
             </div>
 
-
             {% for error in form.cooks.errors %}
                 <div class="error__item another__letter">{{ error }}</div>
             {% endfor %}
@@ -138,7 +137,6 @@
             Add another ingredient
           </em>
         </p>
-
 
         <button type="submit" class="form__button to__opacity hover__elem">
           {% for button_letter in object|yesno:'Update,Create' %}<span class="another__letter">{{ button_letter }}</span>{% endfor %}
