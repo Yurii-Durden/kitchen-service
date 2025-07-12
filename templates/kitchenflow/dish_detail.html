@@ -74,7 +74,7 @@
             {% for ingredient in dish.dishes.all %}
             	<li class="ingredient__item hover__list">
                 <em class="ing__info">
-                  <span class="ing__number">{{ forloop.counter }}.&nbsp;</span> <span>{{ ingredient.ingredient.name }} - <span class="ing__info__num">{{ ingredient.amount }}</span> {{ ingredient.get_unit_display }}</span>
+                  <span class="ing__number">{{ forloop.counter }}.&nbsp;</span> <span>{{ ingredient.ingredient.name }} — <span class="ing__info__num">{{ ingredient.amount }}</span> {{ ingredient.get_unit_display }}</span>
                 </em>
               </li>
             {% endfor %}
