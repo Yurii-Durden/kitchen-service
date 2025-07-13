@@ -23,7 +23,7 @@
             {% if form.name.errors %}
               <ul class="error__list">
                 {% for error in form.name.errors %}
-                  <li class="li">{{ error|slice:":-1" }}</li> 
+                  <li class="error__item">{{ error|slice:":-1" }}</li>
                 {% endfor %}
               </ul>
             {% endif %}
@@ -40,7 +40,7 @@
             {% if form.ingredient_type.errors %}
               <ul class="error__list">
                 {% for error in form.ingredient_type.errors %}
-                  <li class="error__item">{{ error }}</li>
+                  <li class="error__item">{{ error|slice:":-1" }}</li>
                 {% endfor %}
               </ul>
             {% endif %}

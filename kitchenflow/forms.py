@@ -199,6 +199,9 @@ class DishTypeCreatingForm(ModelForm):
                 "The name must be at least 2 characters long."
             )
 
+        if not name:
+            raise forms.ValidationError("This field is required.")
+
         if any(letter.isdigit() for letter in name):
             raise forms.ValidationError("The name should not contain numbers.")
 
@@ -317,6 +320,14 @@ class IngredientCreatingForm(ModelForm):
         model = Ingredient
         fields = "__all__"
 
+    def clean_name(self):
+        name = self.cleaned_data.get("name")
+
+        if len(name) < 2:
+            raise forms.ValidationError("Name must be at least 2 characters.")
+
+        return name
+
 
 class IngredientTypeCreatingForm(ModelForm):
     def __init__(self, *args, **kwargs):
@@ -326,6 +337,14 @@ class IngredientTypeCreatingForm(ModelForm):
     class Meta:
         model = IngredientType
         fields = "__all__"
+
+    def clean_name(self):
+        name = self.cleaned_data.get("name")
+
+        if len(name) < 2:
+            raise forms.ValidationError("Name must be at least 2 characters.")
+
+        return name
 
 
 # search forms
