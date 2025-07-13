@@ -595,7 +595,6 @@ textarea {
     position: absolute;
     left: 0;
     top: -100%;
-    font-weight: 600;
 }
 
 .amount__block {
@@ -753,6 +752,7 @@ textarea {
     font-style: italic;
     color: var(--back-color);
     margin-bottom: 0.5rem;
+    font-weight: 600;
 }
 
 /*media----------------------------------------*/
