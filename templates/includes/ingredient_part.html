@@ -56,57 +56,59 @@
       </div>
     </div>
 
-  {% if form.amount.errors %}
-    <div class="error__item">
-      {{ form.amount.errors }}
-    </div>
-  {% endif %}
-
   <div class="form__label amount__unit__block">
-    <div class="amount__block to__opacity">
-      <label for="{{ form.amount.id_for_label }}" class=""><em>{{ form.amount.label }}:&nbsp;</em></label>
-      {{ form.amount }}
+
+    <div class="amount__wrapper">
+      {% if form.amount.errors %}
+        <div class="error__item amount__error">
+          {{ form.amount.errors }}
+        </div>
+      {% endif %}
+      <div class="amount__block to__opacity">
+        <label for="{{ form.amount.id_for_label }}" class=""><em>{{ form.amount.label }}:&nbsp;</em></label>
+        {{ form.amount }}
+      </div>
     </div>
 
-    <div class="unit__wrapper to__opacity">
-
+    <div class="unit__main__wrapper">
       {% if form.unit.errors %}
-        <div class="error__item">
+        <div class="error__item unit__error">
           {{ form.unit.errors }}
         </div>
       {% endif %}
-
-      <label><em>{{ form.unit.label }}:&nbsp;</em></label>
-      <div class="unit__button hover__elem">
-        <em>
-          <span class="checked__unit">
-            <span class="selected__unit">
-              {% if form.unit.value %}
-                {% for value, label in form.fields.unit.choices %}
-                  {% if form.unit.value == value %}
-                    {{ label }}
-                  {% endif %}
-                {% endfor %}
-              {% else %}
-                ---------
-              {% endif %}
+      <div class="unit__wrapper to__opacity">
+        <label><em>{{ form.unit.label }}:&nbsp;</em></label>
+        <div class="unit__button hover__elem">
+          <em>
+            <span class="checked__unit">
+              <span class="selected__unit">
+                {% if form.unit.value %}
+                  {% for value, label in form.fields.unit.choices %}
+                    {% if form.unit.value == value %}
+                      {{ label }}
+                    {% endif %}
+                  {% endfor %}
+                {% else %}
+                  ---------
+                {% endif %}
+              </span>
             </span>
-          </span>
-        </em>
-        <svg class="arrow__down" width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <ul class="unit__list">
-          {% for value, label in form.fields.unit.choices %}
-            <li class="hover__elem">
-              <label>
-                <input type="radio" name="{{ form.unit.html_name }}" value="{{ value }}"
-                       {% if form.unit.value|stringformat:"s" == value|stringformat:"s" %}checked{% endif %} hidden>
-                <em>{{ label }}</em>
-              </label>
-            </li>
-          {% endfor %}
-        </ul>
+          </em>
+          <svg class="arrow__down" width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <ul class="unit__list">
+            {% for value, label in form.fields.unit.choices %}
+              <li class="hover__elem">
+                <label>
+                  <input type="radio" name="{{ form.unit.html_name }}" value="{{ value }}"
+                         {% if form.unit.value|stringformat:"s" == value|stringformat:"s" %}checked{% endif %} hidden>
+                  <em>{{ label }}</em>
+                </label>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
       </div>
     </div>
   </div>

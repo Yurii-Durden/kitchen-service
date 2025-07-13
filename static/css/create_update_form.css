@@ -585,6 +585,19 @@ textarea {
     gap: 30px;
 }
 
+.unit__main__wrapper, .amount__wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.unit__error, .amount__error {
+    position: absolute;
+    left: 0;
+    top: -100%;
+    font-weight: 600;
+}
+
 .amount__block {
     display: flex;
     align-items: center;

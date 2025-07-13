@@ -44,7 +44,7 @@
         <ul>
           {% for ingredient in page_obj %}
             <li class="list__item hover__list">
-              <a class="list__link hover__elem" href="{% url 'kitchenflow:ingredient-detail' ingredient.id %}">{{ ingredient }}</a>
+              <a class="list__link hover__elem" href="{% url 'kitchenflow:ingredient-detail' ingredient.id %}">{{ ingredient.name }} — {{ ingredient.ingredient_type }}</a>
             </li>
           {% endfor %}
         </ul>
