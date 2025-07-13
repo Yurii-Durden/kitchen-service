@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const selectIngBtn = document.querySelector(".select__list__button__ing");
 
-  const closeSvg = document.querySelector(".svg__close");
+  const closeSvg = document.querySelectorAll(".svg__close");
 
   document.querySelectorAll(".ingredient__block").forEach(block => {
     const blockId = block.id;
@@ -98,6 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const itemText = listItem.querySelector(".item__text")?.innerText || "---------";
         checkedElem.innerText = itemText;
         selectList.classList.remove("dish__type__list__active");
+        closeSvg.forEach((e) => {
+          e.classList.remove("close__opacity")
+        });
         deactivateDim();
         return;
       }
@@ -107,6 +110,9 @@ document.addEventListener("DOMContentLoaded", () => {
         e.stopPropagation();
         const isActive = selectList.classList.toggle("dish__type__list__active");
         isActive ? activateDim() : deactivateDim();
+        closeSvg.forEach((e) => {
+          e.classList.toggle("close__opacity")
+        });
         return;
       }
 
@@ -132,7 +138,9 @@ document.addEventListener("DOMContentLoaded", () => {
           if (selectedText === selectedSpan.innerText.trim() && radioInput.checked) {
             const ingList = ingredientBlock.querySelector(".ing__list");
             if (ingList) ingList.classList.remove("dish__ing__list__active");
-            closeSvg.classList.remove("close__opacity");
+            closeSvg.forEach((e) => {
+              e.classList.remove("close__opacity");
+            });
             deactivateDim();
             return
           }
@@ -184,7 +192,9 @@ document.addEventListener("DOMContentLoaded", () => {
         e.stopPropagation();
         const ingList = ingBtn.querySelector(".ing__list");
         const ingListAct = ingList.classList.toggle("dish__ing__list__active");
-        closeSvg.classList.toggle("close__opacity");
+        closeSvg.forEach((e) => {
+          e.classList.toggle("close__opacity")
+        });
         ingListAct ? activateDim() : deactivateDim();
 
         return;
@@ -203,6 +213,9 @@ document.addEventListener("DOMContentLoaded", () => {
           const unitList = ingredientBlock.querySelector(".unit__list");
           if (unitList) unitList.classList.remove("unit__list__active");
         }
+        closeSvg.forEach((e) => {
+          e.classList.remove("close__opacity")
+        });
         deactivateDim();
         return;
       }
@@ -213,6 +226,9 @@ document.addEventListener("DOMContentLoaded", () => {
         e.stopPropagation();
         const unitList = unitBtn.querySelector(".unit__list");
         const unitListAct = unitList.classList.toggle("unit__list__active");
+        closeSvg.forEach((e) => {
+          e.classList.toggle("close__opacity")
+        });
         unitListAct ? activateDim() : deactivateDim();
 
         return;
@@ -221,7 +237,9 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll(".dish__ing__list__active").forEach(list => list.classList.remove("dish__ing__list__active"));
       document.querySelectorAll(".unit__list__active").forEach(list => list.classList.remove("unit__list__active"));
       selectList.classList.remove("dish__type__list__active");
-      closeSvg.classList.remove("close__opacity");
+      closeSvg.forEach((e) => {
+        e.classList.remove("close__opacity");
+      });
       deactivateDim();
 
       // Delete ingredient block

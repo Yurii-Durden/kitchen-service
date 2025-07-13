@@ -444,6 +444,11 @@ textarea {
 
 }
 
+.main__ing__wrapper {
+    display: flex;
+    align-items: center;
+}
+
 .ing__wrapper {
     display: flex;
     align-items: center;
