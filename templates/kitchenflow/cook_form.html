@@ -18,7 +18,7 @@
             {% for letter in object|yesno:"Update cook,Create cook" %}{% if letter == " " %}<span class="title__letter">&nbsp;</span>{% else %}<span class="title__letter">{{ letter }}</span>{% endif %}{% endfor %}
           </h1>
 
-          <form action="" method="post" class="dish__type__form">
+          <form action="" method="post" class="dish__type__form" novalidate>
             {% csrf_token %}
 
             {% if form.non_field_errors %}
@@ -30,7 +30,7 @@
             {% endif %}
 
             {% for error in form.username.errors %}
-              <div class="error__item another__letter">{{ error }}</div>
+              <div class="error__item another__letter">{{ error|slice:":-1" }}</div>
             {% endfor %}
 
             <div class="form__group__cook">
@@ -39,7 +39,7 @@
             </div>
 
             {% for error in form.first_name.errors %}
-              <div class="error__item another__letter">{{ error }}</div>
+              <div class="error__item another__letter">{{ error|slice:":-1" }}</div>
             {% endfor %}
 
             <div class="form__group__cook">
@@ -48,7 +48,7 @@
             </div>
 
             {% for error in form.last_name.errors %}
-              <div class="error__item another__letter">{{ error }}</div>
+              <div class="error__item another__letter">{{ error|slice:":-1" }}</div>
             {% endfor %}
 
             <div class="form__group__cook">
@@ -57,7 +57,7 @@
             </div>
 
             {% for error in form.years_of_experience.errors %}
-              <div class="error__item another__letter">{{ error }}</div>
+              <div class="error__item another__letter">{{ error|slice:":-1" }}</div>
             {% endfor %}
 
             <div class="form__group__cook">
@@ -66,7 +66,7 @@
             </div>
 
             {% for error in form.is_chef.errors %}
-              <div class="error__item another__letter">{{ error }}</div>
+              <div class="error__item another__letter">{{ error|slice:":-1" }}</div>
             {% endfor %}
 
             <div class="form__group__cook">
@@ -75,7 +75,13 @@
             </div>
 
             {% for error in form.password1.errors %}
-              <div class="error__item another__letter">{{ error }}</div>
+              <div class="error__item another__letter">{{ error|slice:":-1" }}</div>
+            {% endfor %}
+
+            {% for error in form.password2.errors %}
+              {% if error != "This field is required." %}
+                <div class="error__item another__letter">{{ error|slice:":-1" }}</div>
+              {% endif %}
             {% endfor %}
 
             <div class="form__group__cook">
@@ -84,7 +90,9 @@
             </div>
 
             {% for error in form.password2.errors %}
-              <div class="error__item another__letter">{{ error }}</div>
+              {% if error == "This field is required." %}
+                <div class="error__item another__letter">{{ error|slice:":-1" }}</div>
+              {% endif %}
             {% endfor %}
 
             <div class="form__group__cook last__input">

@@ -6,9 +6,11 @@
   </div>
     <div class="ing__labels">
       {% if form.ingredient.errors %}
-        <div class="error__item">
-          {{ form.ingredient.errors }}
-        </div>
+        {% for error in form.ingredient.errors %}
+          <div class="error__item">
+            {{ error|slice:":-1" }}
+          </div>
+        {% endfor %}
       {% endif %}
 
       <div class="main__ing__wrapper">
@@ -56,13 +58,15 @@
       </div>
     </div>
 
-  <div class="form__label amount__unit__block">
+  <div class="form__label amount__unit__block" {% if form.amount.errors or form.unit.errors %} style="padding-top: 10px" {% endif %}>
 
     <div class="amount__wrapper">
       {% if form.amount.errors %}
-        <div class="error__item amount__error">
-          {{ form.amount.errors }}
-        </div>
+        {% for error in form.amount.errors %}
+          <div class="error__item amount__error">
+            {{ error|slice:":-1" }}
+          </div>
+        {% endfor %}
       {% endif %}
       <div class="amount__block to__opacity">
         <label for="{{ form.amount.id_for_label }}" class=""><em>{{ form.amount.label }}:&nbsp;</em></label>
@@ -72,9 +76,11 @@
 
     <div class="unit__main__wrapper">
       {% if form.unit.errors %}
-        <div class="error__item unit__error">
-          {{ form.unit.errors }}
-        </div>
+        {% for error in form.unit.errors %}
+          <div class="error__item unit__error">
+            {{ error|slice:":-1" }}
+          </div>
+        {% endfor %}
       {% endif %}
       <div class="unit__wrapper to__opacity">
         <label><em>{{ form.unit.label }}:&nbsp;</em></label>

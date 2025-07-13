@@ -29,7 +29,7 @@
             {% endif %}
 
             {% for error in form.name.errors %}
-              <div class="error__item another__letter">{{ error }}</div>
+              <div class="error__item another__letter">{{ error|slice:":-1" }}</div>
             {% endfor %}
 
             <div class="dish__group to__opacity">
@@ -38,7 +38,7 @@
             </div>
 
             {% for error in form.price.errors %}
-              <div class="error__item another__letter">{{ error }}</div>
+              <div class="error__item another__letter">{{ error|slice:":-1" }}</div>
             {% endfor %}
 
             <div class="dish__group to__opacity">
@@ -47,7 +47,7 @@
             </div>
 
             {% for error in form.description.errors %}
-              <div class="error__item another__letter">{{ error }}</div>
+              <div class="error__item another__letter">{{ error|slice:":-1" }}</div>
             {% endfor %}
 
             <div class="dish__group__description to__opacity">
@@ -56,7 +56,7 @@
             </div>
 
             {% for error in form.dish_type.errors %}
-              <div class="error__item another__letter">{{ error }}</div>
+              <div class="error__item another__letter">{{ error|slice:":-1" }}</div>
             {% endfor %}
 
             <div class="dish__group__selected__list __types to__opacity">
@@ -96,7 +96,7 @@
             </div>
 
             {% for error in form.cooks.errors %}
-                <div class="error__item another__letter">{{ error }}</div>
+                <div class="error__item another__letter">{{ error|slice:":-1" }}</div>
             {% endfor %}
 
             <div class="dish__group__cook to__opacity">
