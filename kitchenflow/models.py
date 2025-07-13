@@ -95,7 +95,7 @@ class Ingredient(models.Model):
     ingredient_type = models.ForeignKey(IngredientType, on_delete=models.CASCADE, related_name="ingredients")
 
     class Meta:
-        ordering = ["ingredient_type", "name"]
+        ordering = ["name", "ingredient_type"]
 
     def __str__(self):
         return f"{self.name} - {self.ingredient_type}"
