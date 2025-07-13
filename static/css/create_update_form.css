@@ -474,11 +474,11 @@ textarea {
     align-items: center;
     padding: 5px;
     margin-left: 20px;
+    transition: opacity 1.5s var(--primary-animation);
 }
 
 .close__opacity {
     opacity: 0.25;
-    transition: opacity 1.5s var(--primary-animation);
 }
 
 .hover__elem label {
