@@ -30,7 +30,7 @@
             {% endif %}
 
             {% for error in form.username.errors %}
-              <div class="error__item another__letter">{{ error|slice:":-1" }}</div>
+              <div class="error__item another__letter">{{ error }}</div>
             {% endfor %}
 
             <div class="form__group__cook">
@@ -39,7 +39,7 @@
             </div>
 
             {% for error in form.first_name.errors %}
-              <div class="error__item another__letter">{{ error|slice:":-1" }}</div>
+              <div class="error__item another__letter">{{ error }}</div>
             {% endfor %}
 
             <div class="form__group__cook">
@@ -48,7 +48,7 @@
             </div>
 
             {% for error in form.last_name.errors %}
-              <div class="error__item another__letter">{{ error|slice:":-1" }}</div>
+              <div class="error__item another__letter">{{ error }}</div>
             {% endfor %}
 
             <div class="form__group__cook">
@@ -57,7 +57,7 @@
             </div>
 
             {% for error in form.years_of_experience.errors %}
-              <div class="error__item another__letter">{{ error|slice:":-1" }}</div>
+              <div class="error__item another__letter">{{ error }}</div>
             {% endfor %}
 
             <div class="form__group__cook">
@@ -66,7 +66,7 @@
             </div>
 
             {% for error in form.is_chef.errors %}
-              <div class="error__item another__letter">{{ error|slice:":-1" }}</div>
+              <div class="error__item another__letter">{{ error }}</div>
             {% endfor %}
 
             <div class="form__group__cook">
@@ -75,12 +75,12 @@
             </div>
 
             {% for error in form.password1.errors %}
-              <div class="error__item another__letter">{{ error|slice:":-1" }}</div>
+              <div class="error__item another__letter">{{ error }}</div>
             {% endfor %}
 
             {% for error in form.password2.errors %}
               {% if error != "This field is required." %}
-                <div class="error__item another__letter">{{ error|slice:":-1" }}</div>
+                <div class="error__item another__letter">{{ error }}</div>
               {% endif %}
             {% endfor %}
 
@@ -91,7 +91,7 @@
 
             {% for error in form.password2.errors %}
               {% if error == "This field is required." %}
-                <div class="error__item another__letter">{{ error|slice:":-1" }}</div>
+                <div class="error__item another__letter">{{ error }}</div>
               {% endif %}
             {% endfor %}
 
