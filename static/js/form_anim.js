@@ -181,7 +181,9 @@ document.addEventListener("DOMContentLoaded", () => {
           const ingList = ingredientBlock.querySelector(".ing__list");
           if (ingList) ingList.classList.remove("dish__ing__list__active");
         }
-        closeSvg.classList.remove("close__opacity");
+        closeSvg.forEach((e) => {
+          e.classList.toggle("close__opacity")
+        });
         deactivateDim();
         return;
       }

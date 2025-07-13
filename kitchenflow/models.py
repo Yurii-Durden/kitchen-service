@@ -98,7 +98,7 @@ class Ingredient(models.Model):
         ordering = ["ingredient_type", "name"]
 
     def __str__(self):
-        return f"{self.name} — {self.ingredient_type}"
+        return f"{self.name} - {self.ingredient_type}"
 
     def save(self, *args, **kwargs):
         if self.name:

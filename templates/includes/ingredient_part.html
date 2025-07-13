@@ -68,13 +68,14 @@
       {{ form.amount }}
     </div>
 
-    {% if form.unit.errors %}
-      <div class="error__item">
-        {{ form.unit.errors }}
-      </div>
-    {% endif %}
-
     <div class="unit__wrapper to__opacity">
+
+      {% if form.unit.errors %}
+        <div class="error__item">
+          {{ form.unit.errors }}
+        </div>
+      {% endif %}
+
       <label><em>{{ form.unit.label }}:&nbsp;</em></label>
       <div class="unit__button hover__elem">
         <em>
