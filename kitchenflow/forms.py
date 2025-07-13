@@ -220,6 +220,22 @@ class DishIngredientForm(forms.ModelForm):
         model = DishIngredient
         fields = ['ingredient', 'amount', 'unit']
 
+    def clean_amount(self):
+        amount = self.cleaned_data.get("amount")
+        if amount is None:
+            raise forms.ValidationError("This field is required")
+        if amount <= 0:
+            raise forms.ValidationError("Amount must be positive")
+        if amount > 10_000:
+            raise forms.ValidationError("Amount is unrealistically high")
+        return amount
+
+    def clean_unit(self):
+        unit = self.cleaned_data.get("unit")
+        if unit is None:
+            raise forms.ValidationError("Unit is required")
+        return unit
+
 
 class DishCreatingForm(ModelForm):
     def __init__(self, *args, **kwargs):
@@ -313,6 +329,7 @@ class IngredientTypeCreatingForm(ModelForm):
         fields = "__all__"
 
 
+# search forms
 class CookSearchForm(forms.Form):
     username = forms.CharField(
         max_length=255,
