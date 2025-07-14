@@ -63,6 +63,7 @@ class Dish(models.Model):
         through="DishIngredient",
         related_name="dishes"
     )
+    recipe = models.TextField(blank=True, null=True, default='')
 
     class Meta:
         ordering = ["name"]
