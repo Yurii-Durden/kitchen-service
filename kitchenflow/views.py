@@ -5,6 +5,7 @@ from django.core.paginator import Paginator
 from django.forms import inlineformset_factory
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
+from django.template.defaultfilters import first
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 
@@ -70,8 +71,17 @@ class CookListView(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         queryset = Cook.objects.all()
         username = self.request.GET.get("username")
+
         if username:
-            return queryset.filter(username__icontains=username)
+            first = username[0].lower()
+            return sorted(
+                queryset.filter(username__icontains=username),
+                key=lambda obj: (
+                    0 if obj.username.startswith(first) else 1,
+                    obj.username.lower()
+                )
+            )
+
         return queryset
 
 
@@ -159,7 +169,14 @@ class DishListView(LoginRequiredMixin, generic.ListView):
         type_param = self.request.GET.get("type")
 
         if name:
-            queryset = queryset.filter(name__icontains=name)
+            first = name[0].lower()
+            queryset = sorted(
+                queryset.filter(name__icontains=name),
+                key=lambda obj: (
+                    0 if obj.name.lower().startswith(first) else 1,
+                    obj.name.lower()
+                )
+            )
 
         if type_param:
             queryset = queryset.filter(dish_type__name__icontains=type_param)
@@ -263,9 +280,17 @@ class DishTypeListView(LoginRequiredMixin, generic.ListView):
             queryset = DishType.objects.all()
         else:
             queryset = DishType.objects.filter(dishes__cooks=user)
+
         name = self.request.GET.get("name")
         if name:
-            return queryset.filter(name__icontains=name)
+            first = name[0].lower()
+            return sorted(
+                queryset.filter(name__icontains=name),
+                key=lambda obj: (
+                    0 if obj.name.lower().startswith(first) else 1,
+                    obj.name.lower()
+                )
+            )
         return queryset
 
 
@@ -343,7 +368,14 @@ class IngredientsListView(LoginRequiredMixin, generic.ListView):
         name = self.request.GET.get("name")
         ing_type = self.request.GET.get("type")
         if name:
-            return queryset.filter(name__icontains=name)
+            first = name[0].lower()
+            return sorted(
+                queryset.filter(name__icontains=name),
+                key=lambda obj: (
+                    0 if obj.name.lower().startswith(first) else 1,
+                    obj.name.lower()
+                )
+            )
 
         if ing_type:
             return queryset.filter(ingredient_type__name__icontains=ing_type)
@@ -414,7 +446,14 @@ class IngredientTypeListView(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         name = self.request.GET.get("name")
         if name:
-            return IngredientType.objects.filter(name__icontains=name)
+            first = name.lower()[0]
+            return sorted(
+                IngredientType.objects.filter(name__icontains=name),
+                key=lambda obj: (
+                    0 if obj.name.lower().startswith(first) else 1,
+                    obj.name.lower()
+                )
+            )
         return IngredientType.objects.all()
 
 
