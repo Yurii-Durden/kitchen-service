@@ -126,9 +126,10 @@ class DishIngredient(models.Model):
             ("kg", "kilogram"),
             ("ml", "milliliter"),
             ("l", "liter"),
-            ("pcs", "pieces"),
+            ("pcs", "piece"),
             ("tbsp", "tablespoon"),
             ("tsp", "teaspoon"),
+            ("sl", "slice"),
         ]
     )
 
