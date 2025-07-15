@@ -56,6 +56,7 @@
 
   <section class="ing__section">
     <div class="ingredient__box _container">
+    {% if dish.recipe %}
       <h2 class="recipe__second__title">
         <span class="rec__fade">R</span><span class="rec__fade">e</span><span class="rec__fade">c</span><span class="rec__fade">i</span><span class="rec__fade">p</span><span class="rec__fade">e</span>
       </h2>
@@ -64,6 +65,7 @@
           {{ dish.recipe }}
         </em>
       </p>
+    {% endif %}
 
       <h2 class="ing__second__title">
         <span class="ing__fade">I</span><span class="ing__fade">n</span><span class="ing__fade">g</span><span class="ing__fade">r</span><span class="ing__fade">e</span><span class="ing__fade">d</span><span class="ing__fade">i</span><span class="ing__fade">e</span><span class="ing__fade">n</span><span class="ing__fade">t</span><span class="ing__fade">s</span>

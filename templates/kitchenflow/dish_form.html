@@ -103,6 +103,16 @@
               <label for="{{ form.cooks.id_for_label }}" class="form__label another__letter"><em>{{ form.cooks.label }}:&nbsp;</em></label>
               {{ form.cooks }}
             </div>
+
+            {% for error in form.recipe.errors %}
+              <div class="error__item another__letter">{{ error }}</div>
+            {% endfor %}
+
+            <div class="dish__group__description to__opacity">
+              <label for="{{ form.recipe.id_for_label }}" class="form__label another__letter"><em>{{ form.recipe.label }}:&nbsp;</em></label>
+              {{ form.recipe }}
+            </div>
+
           </div>
         </div>
       </div>

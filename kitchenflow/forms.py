@@ -253,6 +253,11 @@ class DishCreatingForm(ModelForm):
         })
         self.fields["dish_type"].widget.attrs.update({'class': 'dish__check'})
         self.fields["cooks"].widget.attrs.update({'class': 'cooks__multi'})
+        self.fields['recipe'].widget.attrs.update({
+            'class': 'form_input',
+            'wrap': 'soft',
+            'rows': 10,
+        })
 
     cooks = forms.ModelMultipleChoiceField(
         queryset=get_user_model().objects.all(),
@@ -269,6 +274,7 @@ class DishCreatingForm(ModelForm):
             "description",
             "dish_type",
             "cooks",
+            "recipe"
         )
 
     def clean_name(self):
