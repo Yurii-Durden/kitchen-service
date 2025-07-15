@@ -290,7 +290,7 @@
 
 /*recipe----------------------------------------------*/
 .recipe__text {
-    font-size: clamp(16px, 2vw, 22px);
+    font-size: clamp(16px, 2vw, 30px);
     font-weight: 500;
     max-width: 500px;
     width: 100%;
