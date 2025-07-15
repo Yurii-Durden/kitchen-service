@@ -219,6 +219,10 @@ input:-webkit-autofill {
 }
 
 /*DISH--------------------------------------------------*/
+.intro {
+    margin-bottom: 10vh;
+}
+
 .dish__group {
     position: relative;
     display: flex;
@@ -754,6 +758,17 @@ textarea {
     margin-bottom: 0.5rem;
     font-weight: 500;
 }
+
+/*recipe--------------------------------------*/
+.big__area {
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    /*resize: vertical;*/
+    width: 100%;
+}
+
 
 /*media----------------------------------------*/
 @media (max-width: 1025px) {

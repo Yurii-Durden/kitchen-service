@@ -247,16 +247,16 @@ class DishCreatingForm(ModelForm):
             'class': 'form_input price_input'
         })
         self.fields['description'].widget.attrs.update({
-            'class': 'form_input',
+            'class': 'form_input big__area',
             'wrap': 'soft',
             'rows': 10,
         })
         self.fields["dish_type"].widget.attrs.update({'class': 'dish__check'})
         self.fields["cooks"].widget.attrs.update({'class': 'cooks__multi'})
         self.fields['recipe'].widget.attrs.update({
-            'class': 'form_input',
+            'class': 'form_input big__area',
             'wrap': 'soft',
-            'rows': 10,
+            'rows': 11,
         })
 
     cooks = forms.ModelMultipleChoiceField(
