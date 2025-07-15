@@ -8,6 +8,7 @@ from django.shortcuts import render, redirect
 from django.template.defaultfilters import first
 from django.urls import reverse_lazy, reverse
 from django.views import generic
+from django.db.models import Case, When, Value, IntegerField
 
 from kitchenflow.models import Cook, Dish, DishType, Ingredient, IngredientType, DishIngredient
 from kitchenflow.forms import (
@@ -152,7 +153,7 @@ class DishListView(LoginRequiredMixin, generic.ListView):
             initial={"name": name}
         )
         context["dish_types"] = DishType.objects.all()
-        context["dish_page"] = "dish_page"
+        context["filter_page"] = "filter_page"
 
         return context
 
@@ -170,12 +171,17 @@ class DishListView(LoginRequiredMixin, generic.ListView):
 
         if name:
             first = name[0].lower()
-            queryset = sorted(
-                queryset.filter(name__icontains=name),
-                key=lambda obj: (
-                    0 if obj.name.lower().startswith(first) else 1,
-                    obj.name.lower()
+            queryset = (
+                queryset
+                .filter(name__icontains=name)
+                .annotate(
+                    _starts=Case(
+                        When(name__istartswith=first, then=Value(0)),
+                        default=Value(1),
+                        output_field=IntegerField(),
+                    )
                 )
+                .order_by('_starts', 'name')
             )
 
         if type_param:
@@ -359,6 +365,7 @@ class IngredientsListView(LoginRequiredMixin, generic.ListView):
         )
         context["ingredients_types"] = IngredientType.objects.all()
         context["ingredients"] = True
+        context["filter_page"] = "filter_page"
 
         return context
 
@@ -369,16 +376,16 @@ class IngredientsListView(LoginRequiredMixin, generic.ListView):
         ing_type = self.request.GET.get("type")
         if name:
             first = name[0].lower()
-            return sorted(
-                queryset.filter(name__icontains=name),
-                key=lambda obj: (
-                    0 if obj.name.lower().startswith(first) else 1,
-                    obj.name.lower()
-                )
-            )
+            queryset = queryset.filter(name__icontains=name).annotate(
+                    _starts=Case(
+                        When(name__istartswith=first, then=Value(0)),
+                        default=Value(1),
+                        output_field=IntegerField(),
+                    )
+                ).order_by('_starts', 'name')
 
         if ing_type:
-            return queryset.filter(ingredient_type__name__icontains=ing_type)
+            queryset = queryset.filter(ingredient_type__name__icontains=ing_type)
 
         return queryset
 
