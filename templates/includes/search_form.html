@@ -1,7 +1,7 @@
 <div class="form__box">
   <form class="search__form" action="" method="get">
     {{ search_form }}
-    {% if dish_page  %}
+    {% if filter_page %}
       <input type="hidden" name="type" value="{{ request.GET.type }}">
     {% endif %}
 

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load letter_transform %}
 
 {% block extra_styles %}
   <link rel="stylesheet" href="{% static 'css/personal_page.css' %}">
@@ -19,7 +20,7 @@
       {% if dish.description %}
         <p class="dish__description load__anim__item">
           <em>
-            {{ dish.description }}
+            {{ dish.description|letter_transform }}
           </em>
         </p>
       {% endif %}

@@ -430,7 +430,7 @@ textarea {
     display: flex;
     position: relative;
     flex-direction: column;
-    padding-bottom: 20vh;
+    padding-bottom: 30vh;
     z-index: 5;
 }
 
