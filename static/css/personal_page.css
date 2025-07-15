@@ -205,13 +205,13 @@
     z-index: 5;
 }
 
-.ing__second__title {
+.ing__second__title, .recipe__second__title {
     font-size: 7vw;
     font-weight: 500;
     letter-spacing: -0.02em;
 }
 
-.ing__fade {
+.ing__fade, .rec__fade {
     display: inline-block;
     filter: blur(10px);
     opacity: 0;
@@ -285,6 +285,15 @@
 
 .ingredient__item:hover::before {
     transform: scaleY(1);
+}
+
+/*recipe----------------------------------------------*/
+.recipe__text {
+    font-size: clamp(16px, 2vw, 22px);
+    font-weight: 500;
+    max-width: 500px;
+    width: 100%;
+    margin-bottom: 20vh;
 }
 
 /*added-cooks-----------------------------------------*/
