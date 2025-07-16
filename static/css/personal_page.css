@@ -226,7 +226,7 @@
 }
 
 .update__add__ing__button a {
-    font-size: clamp(16px, 2vw, 22px);
+    font-size: clamp(16px, 2vw, 23px);
     color: var(--primary-color);
     margin-left: 10px;
     font-weight: 600;
@@ -246,7 +246,7 @@
 .ing__info {
     padding: 1.7rem 10px;
     display: flex;
-    font-size: clamp(16px, 2vw, 22px);
+    font-size: clamp(16px, 2vw, 23px);
     font-style: italic;
     color: var(--primary-color);
     transition: color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -312,7 +312,7 @@
 .added__cook__link {
     padding: 1.7rem 0;
     display: flex;
-    font-size: clamp(16px, 2vw, 22px);
+    font-size: clamp(16px, 2vw, 23px);
     font-style: italic;
     color: var(--primary-color);
     transition: color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -369,7 +369,7 @@
 .add__cook__button {
     display: block;
     font-family: "Cormorant Garamond", serif;
-    font-size: clamp(16px, 2vw, 22px);
+    font-size: clamp(16px, 2vw, 23px);
     color: var(--primary-color);
     margin-left: 10px;
     font-weight: 600;
@@ -404,7 +404,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: clamp(16px, 2vw, 22px);
+    font-size: clamp(16px, 2vw, 23px);
     font-style: italic;
     color: var(--primary-color);
     transition: color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
