@@ -73,7 +73,7 @@
     left: 0;
     padding-left: 10px;
     position: absolute;
-    font-size: clamp(16px, 2vw, 22px);
+    font-size: clamp(16px, 2vw, 23px);
     font-style: italic;
     color: var(--primary-color);
     transition: color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);

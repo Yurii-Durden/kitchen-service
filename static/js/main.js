@@ -173,7 +173,7 @@ loginBoxes.forEach((box) => {
 const isMobile = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
 
 if (isMobile) {
-  document.body.classList.add("mobile"); //
+  document.body.classList.add("mobile");
 } else {
   const cursor = document.getElementById("cursor");
 
