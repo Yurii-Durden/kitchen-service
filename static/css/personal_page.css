@@ -290,9 +290,9 @@
 
 /*recipe----------------------------------------------*/
 .recipe__text {
-    font-size: clamp(16px, 2vw, 30px);
+    font-size: clamp(16px, 2vw, 31px);
     font-weight: 500;
-    max-width: 500px;
+    max-width: 650px;
     width: 100%;
     margin-bottom: 20vh;
 }
