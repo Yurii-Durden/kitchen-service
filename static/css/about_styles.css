@@ -204,7 +204,22 @@
     }
 
     .say__hi__section {
-        padding-top: 15vh;
+        padding-top: 10vh;
         min-height: max-content;
+        margin-bottom: 10vh;
+    }
+}
+
+@media (max-width: 1024px) {
+    .fade {
+        filter: blur(0);
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+
+    .fade__say__hi {
+        opacity: 1;
+        filter: blur(0);
+        transform: translate3d(0, 0, 0);
     }
 }
