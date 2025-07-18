@@ -463,23 +463,9 @@
     }
 }
 /*dish-type-media-----------------------------*/
-
-@media (max-width: 988px) {
-    .dish__type__link {
-        font-size: 5vw;
-        letter-spacing: 0;
+@media (max-width: 717px) {
+    .dish__types__title {
+        font-size: 12vw;
     }
 }
 
-@media (max-width: 578px) {
-    .dish__type__link {
-        font-size: 5.7vw;
-    }
-}
-
-@media (max-width: 450px) {
-    .dish__type__title {
-        font-size: 10vw;
-        margin-bottom: 6vh;
-    }
-}
