@@ -302,7 +302,7 @@
 }
 
 .pagination__item {
-    font-size: clamp(34px, 6vw, 75px);
+    font-size: clamp(27px, 4vw, 75px);
     font-weight: 400;
 }
 
@@ -343,9 +343,9 @@
 }
 
 /*cook-media-----------------------------*/
-@media (max-width: 813px) {
-    .pls__scroll {
-        bottom: 0;
+@media (max-width: 1210px) {
+    .cook__title {
+       font-size: 12vw;
     }
 }
 
@@ -358,6 +358,12 @@
 @media (max-width: 961px) {
     .search__input {
         min-width: 300px;
+    }
+}
+
+@media (max-width: 813px) {
+    .pls__scroll {
+        bottom: 0;
     }
 }
 
