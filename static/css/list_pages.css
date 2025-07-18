@@ -422,16 +422,16 @@
 }
 
 /*dish-media-------------------------------*/
+@media (max-width: 1210px) {
+    .dish__title {
+       font-size: 12vw;
+    }
+}
+
 @media (max-width: 988px) {
     .dish {
         font-size: 5vw;
         letter-spacing: 0;
-    }
-}
-
-@media (max-width: 578px) {
-    .dish {
-        font-size: 5.7vw;
     }
 }
 
@@ -442,6 +442,12 @@
 
     .choose__type__item:not(:last-child) {
         margin-bottom: 10vh;
+    }
+}
+
+@media (max-width: 578px) {
+    .dish {
+        font-size: 5.7vw;
     }
 }
 
