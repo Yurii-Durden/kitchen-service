@@ -36,7 +36,7 @@
     cursor: pointer;
     font-family: "Cormorant Garamond", serif;
     font-style: italic;
-    font-size: clamp(18px, 2vw, 25px);
+    font-size: clamp(20px, 2vw, 25px);
     font-weight: 500;
     margin-top: 2vh;
     color: var(--primary-color);
@@ -66,7 +66,7 @@ input {
     background-color: #eeede9;
     font-style: italic;
     font-family: "Cormorant Garamond", serif;
-    font-size: clamp(16px, 2vw, 21px);
+    font-size: clamp(20px, 2vw, 21px);
     font-weight: 500;
     white-space: nowrap;
     padding: 0.13rem 0;
@@ -84,6 +84,40 @@ input {
 .login__again__link {
     color: var(--primary-color);
     font-style: italic;
-    font-size: clamp(18px, 2vw, 23px);
+    font-size: clamp(20px, 2vw, 23px);
     font-weight: 500;
+}
+
+/*media--------------------------------*/
+@media (max-width: 1439px) {
+    .login__title__media {
+        font-size: 15.0vw;
+    }
+
+    .log__body {
+        margin-top: 15vh;
+    }
+}
+
+@media (max-width: 1025px) {
+    .logged__out__body {
+        display: flex;
+        padding-top: 15vh;
+        align-items: center;
+    }
+
+    .login__title {
+        font-size: 12.0vw;
+        letter-spacing: 0;
+    }
+}
+
+@media (max-width: 534px) {
+    .login__title__media {
+        font-size: 17.0vw;
+    }
+
+    .log__body {
+        margin-top: 25vh;
+    }
 }
