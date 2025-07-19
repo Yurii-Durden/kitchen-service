@@ -170,8 +170,13 @@ section {
         letter-spacing: 0;
     }
 
-    .delete__title, .delete__title__dish, .delete__title__type {
+    .delete__title, .delete__title__dish {
         letter-spacing: 0;
         margin-bottom: 3vh;
+    }
+
+    .delete__title__type {
+        letter-spacing: 0;
+        margin-bottom: 2vh;
     }
 }

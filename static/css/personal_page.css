@@ -578,12 +578,12 @@
         transform: translate3d(0, 0, 0);
     }
 
-    /*dish-type*/
-    .button__item__t {
+    /*dish-type, ingredient-type*/
+    .button__item__t, .button__item__i {
         margin-top: 3vh;
         margin-bottom: 5vh;
     }
-    /*dish-type*/
+    /*dish-type, ingredient-type*/
 
     .ing__section {
         margin-bottom: 10vh;
