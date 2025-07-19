@@ -200,7 +200,7 @@
     min-height: max-content;
     width: 100%;
     display: flex;
-    margin-bottom: 21vh;
+    margin-bottom: 20vh;
     position: relative;
     z-index: 5;
 }
@@ -560,6 +560,28 @@
 
 /*dish-media----------------------------------------*/
 @media (max-width: 1025px) {
+    .rec__fade, .ing__fade {
+        opacity: 1;
+        filter: blur(0);
+        transform: translate3d(0, 0, 0);
+    }
+
+    .ing__section {
+        margin-bottom: 10vh;
+    }
+
+    .dish__second__title {
+        margin-bottom: 3.5vh;
+    }
+
+    .ing__info {
+        padding: 1.3rem 0;
+    }
+
+    .added__cook__item {
+        padding: 0 0;
+    }
+
     .add__cook__button {
         margin-left: 0;
     }
@@ -574,6 +596,10 @@
 
     .cook__list__item:hover .add__cook__plus {
         transform: translate3d(0, 0, 0);
+    }
+
+    .update__add__ing__button a {
+        margin-left: 0;
     }
 
     .cook__list__item::before {
@@ -596,11 +622,36 @@
         display: none;
     }
 
-    .dish__second__title {
-        font-size: 12vw;
-    }
-
     .dish__price {
         margin-bottom: 5vh;
+    }
+
+    .recipe__text {
+        margin-bottom: 10vh;
+    }
+}
+
+@media (max-width: 696px) {
+    .recipe__second__title,
+    .ing__second__title,
+    .dish__second__title {
+        font-size: 8vw;
+    }
+}
+@media (max-width: 512px) {
+    .dish__personal__title {
+        font-size: 9.3vw;
+    }
+
+    .recipe__second__title,
+    .ing__second__title,
+    .dish__second__title {
+        font-size: 12.0vw;
+    }
+}
+
+@media (max-width: 383px) {
+    .dish__personal__title {
+        font-size: 10vw;
     }
 }

@@ -354,6 +354,12 @@ body.mobile #cursor {
 }
 
 /*header-media-----------------------------------------*/
+@media (max-width: 911px) {
+    .nav__link, .my__nav__link {
+        font-weight: 400;
+    }
+}
+
 @media  (max-width: 768px) {
     .menu__click__elem {
         display: none;
