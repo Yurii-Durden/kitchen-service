@@ -471,7 +471,6 @@
     .dish__type__list__item:not(:last-child) {
         margin-bottom: 10rem;
     }
-
 }
 
 @media (max-width: 653px) {
@@ -525,3 +524,16 @@
         font-size: 4vw;
     }
 }
+
+/*ing-types-media----------------------------*/
+@media (max-width: 717px) {
+    .ing__type__title {
+        line-height: 1;
+        white-space: nowrap;
+        display: flex;
+        flex-direction: column;
+        font-size: 14vw;
+        margin-bottom: 2vh;
+    }
+}
+
