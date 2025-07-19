@@ -366,6 +366,10 @@
 }
 
 /*cook-list--------------------------------------*/
+.second__section {
+    padding-bottom: 20vh;
+}
+
 .add__cook__button {
     display: block;
     font-family: "Cormorant Garamond", serif;
@@ -507,8 +511,12 @@
 
 /*media-------------------------------------------*/
 @media (max-width: 1025px) {
+    .second__section {
+        padding-bottom: 0;
+    }
+
     .button__item__f {
-        margin-bottom: 5vh;
+        margin-bottom: 8vh;
     }
 
     .fade {
@@ -533,22 +541,30 @@
         margin-bottom: 0;
     }
 
+    .y {
+        margin-bottom: 5vh;
+    }
+
 }
 
 @media (max-width: 950px) {
     .personal__title {
-        font-size: 13vw;
+        font-size: 14vw;
         white-space: nowrap;
     }
 
     .second__title {
-        font-size: 10.5vw;
+        font-size: 12.5vw;
     }
 }
 
-@media (max-height: 701px) {
+@media (max-height: 916px) {
     .list__box {
-        margin-bottom: 15vh;
+        margin-bottom: 10vh;
+    }
+
+    .button__item__f {
+        margin-bottom: 5vh;
     }
 }
 
