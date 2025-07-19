@@ -549,22 +549,18 @@
 
 @media (max-width: 950px) {
     .personal__title {
-        font-size: 14vw;
+        font-size: 12vw;
         white-space: nowrap;
     }
 
     .second__title {
-        font-size: 12.5vw;
+        font-size: 10.5vw;
     }
 }
 
 @media (max-height: 916px) {
     .list__box {
         margin-bottom: 10vh;
-    }
-
-    .button__item__f {
-        margin-bottom: 5vh;
     }
 }
 
@@ -581,6 +577,13 @@
         filter: blur(0);
         transform: translate3d(0, 0, 0);
     }
+
+    /*dish-type*/
+    .button__item__t {
+        margin-top: 3vh;
+        margin-bottom: 5vh;
+    }
+    /*dish-type*/
 
     .ing__section {
         margin-bottom: 10vh;
