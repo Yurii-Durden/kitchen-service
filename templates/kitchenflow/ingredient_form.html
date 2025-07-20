@@ -14,8 +14,14 @@
     <div class="form__body _container">
       <div class="form__wrapper">
         <div class="form__box">
-          <h1 class="dish__type__form__title to__opacity">
-            {% for letter in object|yesno:"Update ingredient,Create ingredient" %}{% if letter == " " %}<span class="title__letter">&nbsp;</span>{% else %}<span class="title__letter">{{ letter }}</span>{% endif %}{% endfor %}
+          <h1 class="dish__type__form__title ing__form__title to__opacity">
+          {% with object|yesno:"Update ingredient,Create ingredient" as words %}
+          	{% with words.split as word %}
+              {% for title_word in word %}
+                <span>{% for letter in title_word %}<span class="title__letter">{{ letter }}</span>{% endfor %}</span>
+              {% endfor %}
+          	{% endwith %}
+          {% endwith %}
           </h1>
           <form action="" method="post" class="ingredient__form">
             {% csrf_token %}
@@ -59,8 +65,8 @@
                     {% endif %}
                   </span>
                   <svg class="arrow__down" width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                <ul class="dish__type__list">
-                  <li class="dish__type__item" data-id="{{ choice.id }}">
+                <ul class="dish__type__list ing__type__list">
+                  <li class="dish__type__item ing__type__item" data-id="{{ choice.id }}">
                     ---------
                   </li>
                   {% for choice in form.ingredient_type.field.queryset %}

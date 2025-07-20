@@ -808,16 +808,28 @@ textarea {
         padding: 0.17rem 0;
     }
 
-    .ing__type__form__title {
+    .ing__type__form__title, .ing__form__title {
         display: flex;
         flex-direction: column;
         line-height: 0.5;
         margin-bottom: 8vh;
     }
+
+    .ing__form__title {
+        line-height: 1;
+    }
+
+    .form__group__dish__type {
+        margin-bottom: 5vh;
+    }
+
+    .ing__type__item {
+        padding-left: 5px;
+    }
 }
 
 @media (max-width: 727px) {
-    .ing__type__form__title {
-        margin-bottom: 5vh;
+    .ing__type__form__title, .ing__form__title {
+        margin-bottom: 2vh;
     }
 }
