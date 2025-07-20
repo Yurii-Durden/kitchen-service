@@ -5,6 +5,8 @@
 
 .log__body {
     margin-top: 10vh;
+    max-width: max-content;
+    width: 100%;
 }
 
 .login__title {
@@ -79,6 +81,8 @@ input {
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: max-content;
+    width: 100%;
 }
 
 .login__again__link {
@@ -112,7 +116,7 @@ input {
     }
 }
 
-@media (max-width: 534px) {
+@media (max-width: 701px) {
     .login__title__media {
         font-size: 17.0vw;
     }

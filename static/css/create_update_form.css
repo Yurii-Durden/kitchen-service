@@ -94,7 +94,7 @@ input:-webkit-autofill {
 .form__button {
     font-family: "Cormorant Garamond", serif;
     font-style: italic;
-    font-size: clamp(20px, 2vw, 25px);
+    font-size: clamp(18px, 2vw, 25px);
     font-weight: 500;
     color: var(--back-color);
     background-color: var(--primary-color);
@@ -806,5 +806,18 @@ textarea {
 
     .dish__group__cook label {
         padding: 0.17rem 0;
+    }
+
+    .ing__type__form__title {
+        display: flex;
+        flex-direction: column;
+        line-height: 0.5;
+        margin-bottom: 8vh;
+    }
+}
+
+@media (max-width: 727px) {
+    .ing__type__form__title {
+        margin-bottom: 5vh;
     }
 }

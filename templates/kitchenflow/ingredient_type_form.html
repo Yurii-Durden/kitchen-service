@@ -14,9 +14,13 @@
     <div class="form__body _container">
       <div class="form__wrapper">
         <div class="form__box">
-          <h1 class="dish__type__form__title ing__type__form__title">
-            {% for letter in object|yesno:"Update ingredient type,Create ingredient type" %}{% if letter == " " %}<span class="title__letter">&nbsp;</span>{% else %}<span class="title__letter">{{ letter }}</span>{% endif %}{% endfor %}
-          </h1>
+          {% with object|yesno:"Update ingredient type,Create ingredient type" as full_title %}
+            {% with full_title.split as words %}
+              <h1 class="dish__type__form__title ing__type__form__title">
+                {% for word in words %}<span class="word">{% for letter in word %}<span class="title__letter">{{ letter }}</span>{% endfor %}</span>{% if not forloop.last %}&nbsp;{% endif %}{% endfor %}
+              </h1>
+            {% endwith %}
+          {% endwith %}
           <form action="" method="post" class="dish__type__form">
             {% csrf_token %}
 
