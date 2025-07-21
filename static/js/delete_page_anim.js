@@ -1,7 +1,7 @@
 // button hover
 ScrollTrigger.matchMedia({
 
-  "(min-width: 1024px)": function () {
+  "(min-width: 1025px)": function () {
     const deleteButton = document.querySelectorAll(".d__b__button");
 
     deleteButton.forEach((button) => {

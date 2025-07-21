@@ -377,7 +377,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //IngredientsScroll
 if(document.querySelectorAll(".fade").length > 0) {
   ScrollTrigger.matchMedia({
-    "(min-width: 1257px)": function () {
+    "(min-width: 1025px)": function () {
       const animations = [
         {
           elements: ".fade",

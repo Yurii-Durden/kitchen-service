@@ -434,6 +434,15 @@ textarea {
     z-index: 5;
 }
 
+.ing__fade {
+    display: inline-block;
+    filter: blur(10px);
+    opacity: 0;
+    transform: translate3d(15px, 0px, 0px);
+    will-change: transform, opacity, filter;
+
+}
+
 .ing__body {
     display: flex;
     justify-content: center;
@@ -771,6 +780,17 @@ textarea {
 
 /*media----------------------------------------*/
 @media (max-width: 1025px) {
+    .fade {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        filter: blur(0);
+    }
+
+    .ing__title {
+        font-size: 10vw;
+        font-weight: 400;
+    }
+
     .is_chef_input::before {
         bottom: 0;
     }
@@ -830,6 +850,6 @@ textarea {
 
 @media (max-width: 727px) {
     .ing__type__form__title, .ing__form__title {
-        margin-bottom: 2vh;
+        margin-bottom: 5vh;
     }
 }
