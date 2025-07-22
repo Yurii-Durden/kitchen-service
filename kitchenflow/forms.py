@@ -4,7 +4,14 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.hashers import make_password
 from django.forms.models import ModelForm
 
-from kitchenflow.models import Cook, Dish, DishType, Ingredient, IngredientType, DishIngredient
+from kitchenflow.models import (
+    Cook,
+    Dish,
+    DishType,
+    Ingredient,
+    IngredientType,
+    DishIngredient
+)
 
 
 class CookCreationForm(UserCreationForm):
@@ -320,7 +327,9 @@ class IngredientCreatingForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['name'].widget.attrs.update({'class': 'form_input'})
-        self.fields['ingredient_type'].widget.attrs.update({'class': 'form_input'})
+        self.fields['ingredient_type'].widget.attrs.update(
+            {'class': 'form_input'}
+        )
 
     class Meta:
         model = Ingredient
@@ -404,6 +413,7 @@ class IngredientSearchForm(forms.Form):
             "autocomplete": "off",
         })
     )
+
 
 class IngredientTypeSearchForm(forms.Form):
     name = forms.CharField(

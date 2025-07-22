@@ -5,12 +5,19 @@ from django.core.paginator import Paginator
 from django.forms import inlineformset_factory
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.template.defaultfilters import first
+# from django.template.defaultfilters import first
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 from django.db.models import Case, When, Value, IntegerField
 
-from kitchenflow.models import Cook, Dish, DishType, Ingredient, IngredientType, DishIngredient
+from kitchenflow.models import (
+    Cook,
+    Dish,
+    DishType,
+    Ingredient,
+    IngredientType,
+    DishIngredient
+)
 from kitchenflow.forms import (
     CookCreationForm,
     CookPersonalInfoUpdateForm,
@@ -241,11 +248,18 @@ class DishUpdateView(LoginRequiredMixin, generic.UpdateView):
                 self.request.POST, instance=self.object, prefix='dishes'
             )
         else:
-            context["formset"] = DishIngredientFormSet(instance=self.object, prefix='dishes')
+            context["formset"] = DishIngredientFormSet(
+                instance=self.object,
+                prefix='dishes'
+            )
         return context
 
     def form_valid(self, form):
-        formset = DishIngredientFormSet(self.request.POST, instance=form.instance, prefix='dishes')
+        formset = DishIngredientFormSet(
+            self.request.POST,
+            instance=form.instance,
+            prefix='dishes'
+        )
         if formset.is_valid():
             self.object = form.save()
             formset.instance = self.object
@@ -385,7 +399,9 @@ class IngredientsListView(LoginRequiredMixin, generic.ListView):
                 ).order_by('_starts', 'name')
 
         if ing_type:
-            queryset = queryset.filter(ingredient_type__name__icontains=ing_type)
+            queryset = queryset.filter(
+                ingredient_type__name__icontains=ing_type
+            )
 
         return queryset
 
@@ -442,7 +458,9 @@ class IngredientTypeListView(LoginRequiredMixin, generic.ListView):
     def get_context_data(
             self, *, object_list=..., **kwargs
     ):
-        context = super(IngredientTypeListView, self).get_context_data(**kwargs)
+        context = super(
+            IngredientTypeListView, self
+        ).get_context_data(**kwargs)
         name = self.request.GET.get("name")
         context["search_form"] = IngredientTypeSearchForm(
             initial={"name": name}
@@ -498,13 +516,17 @@ class IngredientTypeUpdateView(LoginRequiredMixin, generic.UpdateView):
     template_name = "kitchenflow/ingredient_type_form.html"
 
     def get_success_url(self):
-        return reverse("kitchenflow:ingredient-type-detail", args=[self.object.id])
+        return reverse(
+            "kitchenflow:ingredient-type-detail",
+            args=[self.object.id]
+        )
 
 
 class IngredientTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = IngredientType
     template_name = "kitchenflow/ingredient_type_delete.html"
     success_url = reverse_lazy("kitchenflow:ingredients-types-list")
+
 
 def remove_from_cooking(
         request,
