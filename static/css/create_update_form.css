@@ -1,6 +1,7 @@
 /*GENERAL----------------------------------*/
 html, body {
     scrollbar-color: var(--back-color) var(--primary-color);
+    background-color: var(--primary-color);
 }
 
 html::-webkit-scrollbar-track,
@@ -52,11 +53,6 @@ input:-webkit-autofill {
     opacity: 0;
     filter: blur(10px);
     transform: translate3d(15px, 0, 0);
-}
-
-.form__ing__wrapper {
-    max-width: 890px;
-    width: 100%;
 }
 
 /*form----------------------------------------------*/
@@ -222,6 +218,11 @@ input:-webkit-autofill {
 .intro {
     margin-bottom: 10vh;
 }
+
+/*.form__wrapper {*/
+/*    max-width: 890px;*/
+/*    width: 100%;*/
+/*}*/
 
 .dish__group {
     position: relative;
@@ -533,7 +534,8 @@ textarea {
     align-items: center;
     justify-content: space-between;
     position: relative;
-    width: 400px;
+    min-width: 400px;
+    width: 100%;
     opacity: 1;
     padding: 0.12rem 5px;
     transition: opacity 1.5s var(--primary-animation);
@@ -590,6 +592,10 @@ textarea {
 .ing__label {
     display: flex;
     color: var(--back-color);
+}
+
+.ing__but__label {
+    display: flex;
 }
 
 /*amount--------------------------*/
@@ -780,6 +786,10 @@ textarea {
 
 /*media----------------------------------------*/
 @media (max-width: 1025px) {
+    .add__another__ing:hover {
+        transform: translate3d(0, 0, 0);
+    }
+
     .fade {
         opacity: 1;
         transform: translate3d(0, 0, 0);
@@ -811,7 +821,7 @@ textarea {
         margin-bottom: 8vh;
     }
 
-    .form__body {
+    .form__body, .ing__body {
         justify-content: start;
     }
 
@@ -846,10 +856,36 @@ textarea {
     .ing__type__item {
         padding-left: 5px;
     }
+
+    .form_amount {
+        border-bottom: 0;
+    }
 }
 
 @media (max-width: 727px) {
     .ing__type__form__title, .ing__form__title {
         margin-bottom: 5vh;
+    }
+}
+
+@media (max-width: 573px) {
+    .choose__ing__button {
+        min-width: 250px;
+    }
+
+    .ing__title {
+        font-size: 7vh;
+        font-weight: 300;
+    }
+
+    .amount__unit__block {
+        flex-direction: column;
+        gap: 35px;
+    }
+}
+
+@media (max-width: 393px) {
+    .choose__ing__button {
+        min-width: 200px;
     }
 }

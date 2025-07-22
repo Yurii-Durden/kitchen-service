@@ -15,7 +15,9 @@
 
       <div class="main__ing__wrapper">
         <div class="ing__wrapper to__opacity">
-          <label><em><span class="ing__number">{{ index|add:1 }}</span>. {{ form.ingredient.label }}:&nbsp;</em></label>
+          <label class="ing__but__label">
+            <em><span class="ing__number">{{ index|add:1 }}</span>.</em>&nbsp;<em>{{ form.ingredient.label }}:&nbsp;</em>
+          </label>
           <div class="choose__ing__button hover__elem">
             <em>
               <span class="checked__ing">

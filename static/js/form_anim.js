@@ -576,3 +576,18 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// Adaptive width for ing block
+function syncWidths() {
+  const source = document.querySelector(".form__wrapper__dish");
+  const target = document.querySelector(".form__ing__wrapper");
+
+  if (source && target) {
+    const width = source.getBoundingClientRect().width;
+    target.style.width = `${width}px`;
+  }
+}
+
+syncWidths();
+
+window.addEventListener("resize", syncWidths);
