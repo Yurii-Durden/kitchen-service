@@ -577,7 +577,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Adaptive width for ing block
+// Adaptive width for ingredient block
 function syncWidths() {
   const source = document.querySelector(".form__wrapper__dish");
   const target = document.querySelector(".form__ing__wrapper");
