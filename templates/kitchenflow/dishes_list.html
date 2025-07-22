@@ -43,7 +43,10 @@
           {% for type in dish_types %}
       	  <li class="choose__type__item target__block">
             <em>
-              <a class="filter__by__link to__anim__elem hover__elem" href="{% url 'kitchenflow:dish-list' %}?type={{ type.name }}">
+              <a
+                  class="filter__by__link to__anim__elem hover__elem"
+                  href="{% url 'kitchenflow:dish-list' %}?type={{ type.name }}{% if request.GET.name %}&name={{ request.GET.name }}{% endif %}"
+              >
                 {{ type.name }}
               </a>
             </em>
