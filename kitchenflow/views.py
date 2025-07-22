@@ -5,7 +5,6 @@ from django.core.paginator import Paginator
 from django.forms import inlineformset_factory
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
-# from django.template.defaultfilters import first
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 from django.db.models import Case, When, Value, IntegerField
@@ -470,16 +469,18 @@ class IngredientTypeListView(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         name = self.request.GET.get("name")
+        queryset = IngredientType.objects.all()
         if name:
-            first = name.lower()[0]
-            return sorted(
-                IngredientType.objects.filter(name__icontains=name),
-                key=lambda obj: (
-                    0 if obj.name.lower().startswith(first) else 1,
-                    obj.name.lower()
-                )
-            )
-        return IngredientType.objects.all()
+            first = name[0].lower()
+            queryset = queryset.filter(name__icontains=name).annotate(
+                    _starts=Case(
+                        When(name__istartswith=first, then=Value(0)),
+                        default=Value(1),
+                        output_field=IntegerField(),
+                    )
+                ).order_by('_starts', 'name')
+
+        return queryset
 
 
 class IngredientTypeDetailView(LoginRequiredMixin, generic.DetailView):
