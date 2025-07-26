@@ -30,7 +30,8 @@ if not SECRET_KEY:
     raise ValueError("No DJANGO_SECRET_KEY set for Django settings")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
+print(DEBUG)
 
 ALLOWED_HOSTS = ["127.0.0.1"]
 
