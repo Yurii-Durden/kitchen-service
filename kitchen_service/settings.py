@@ -30,7 +30,7 @@ if not SECRET_KEY:
     raise ValueError("No DJANGO_SECRET_KEY set for Django settings")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
