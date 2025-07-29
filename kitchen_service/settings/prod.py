@@ -6,6 +6,10 @@ DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "127.0.0.1").split(",")
 
+external_hostname = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
+if external_hostname:
+    ALLOWED_HOSTS.append((external_hostname))
+
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
