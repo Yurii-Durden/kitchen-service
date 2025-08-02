@@ -578,6 +578,14 @@
         transform: translate3d(0, 0, 0);
     }
 
+    .ingredient__item:hover .ing__info {
+        color: var(--primary-color);
+    }
+
+    .ingredient__item::before {
+        display: none;
+    }
+
     /*dish-type, ingredient-type*/
     .button__item__t, .button__item__i {
         margin-top: 3vh;

@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +8,9 @@
   {% block title %}
   <title>Kitchen service</title>
   {%  endblock %}
+  <link rel="icon" href="{% static 'images/icon.svg' %}">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
-  {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   {% block extra_styles %}
   {% endblock %}
