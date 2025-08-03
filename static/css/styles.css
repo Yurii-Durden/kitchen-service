@@ -68,6 +68,7 @@ body {
     bottom: 0;
     scrollbar-width: thin;
     scrollbar-color: var(--primary-color) var(--back-color);
+    overflow-x: hidden;
 }
 
 html::-webkit-scrollbar,

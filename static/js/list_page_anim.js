@@ -1,13 +1,16 @@
 // Scroll to the top
-ScrollTrigger.create({
-  trigger: ".pinned__section",
-  start: "top top",
-  end: "+=99999",
-  pin: true,
-  pinType: "transform",
-  pinSpacing: false,
-  scrub: true
-});
+window.onload = function() {
+  ScrollTrigger.create({
+    trigger: ".pinned__section",
+    start: "top top",
+    end: () => `+=${document.querySelector(".scrollable__section").offsetHeight}`,
+    pin: true,
+    pinSpacing: false,
+    scrub: true,
+    pinType: "transform",
+    invalidateOnRefresh: true
+  });
+};
 
 
 const scrollableSection = document.querySelector(".scrollable__section");
