@@ -172,7 +172,11 @@ loginBoxes.forEach((box) => {
 
 
 //cursor
-const isMobile = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+const isMobile = (
+  window.matchMedia("(hover: none) and (pointer: coarse)").matches ||
+  ('ontouchstart' in window) ||
+  navigator.maxTouchPoints > 0
+);
 
 if (isMobile) {
   document.body.classList.add("mobile");
