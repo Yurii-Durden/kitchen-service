@@ -1,8 +1,16 @@
+.pinned__section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+
 .scrollable__section {
     position: relative;
     padding-bottom: 50vh;
     width: max-content;
-    margin: 0 auto;
+    margin: 100vh auto 0;
+    z-index: 7;
 }
 
 .page__all__title {

@@ -73,6 +73,7 @@ class CookListView(LoginRequiredMixin, generic.ListView):
         context["search_form"] = CookSearchForm(
             initial={"username": username}
         )
+        context["list"] = True
         return context
 
     def get_queryset(self):
@@ -158,6 +159,7 @@ class DishListView(LoginRequiredMixin, generic.ListView):
         context["search_form"] = DishSearchForm(
             initial={"name": name}
         )
+        context["list"] = True
         context["dish_types"] = DishType.objects.all()
         context["filter_page"] = "filter_page"
 
@@ -290,6 +292,7 @@ class DishTypeListView(LoginRequiredMixin, generic.ListView):
         context["search_form"] = DishTypeSearchForm(
             initial={"name": name}
         )
+        context["list"] = True
 
         return context
 
@@ -337,6 +340,7 @@ class DishTypeDetailView(LoginRequiredMixin, generic.DetailView):
         context["page_obj"] = page_obj
         context["is_paginated"] = page_obj.has_other_pages()
         context["paginator"] = paginator
+        context["list"] = True
         return context
 
 
@@ -379,6 +383,7 @@ class IngredientsListView(LoginRequiredMixin, generic.ListView):
         context["ingredients_types"] = IngredientType.objects.all()
         context["ingredients"] = True
         context["filter_page"] = "filter_page"
+        context["list"] = True
 
         return context
 
@@ -464,6 +469,7 @@ class IngredientTypeListView(LoginRequiredMixin, generic.ListView):
         context["search_form"] = IngredientTypeSearchForm(
             initial={"name": name}
         )
+        context["list"] = True
 
         return context
 

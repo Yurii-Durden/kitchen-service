@@ -1,8 +1,10 @@
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-ScrollSmoother.create({
-  wrapper: '.wrapper',
-  content: '.content'
-});
+if (!isListPage) {
+    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+    ScrollSmoother.create({
+    wrapper: '.wrapper',
+    content: '.content'
+  });
+}
 
 
 window.addEventListener("DOMContentLoaded", () => {
