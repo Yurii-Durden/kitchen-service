@@ -45,13 +45,17 @@ header_menu_button.addEventListener("click", (event) => {
       delay: 0.3
     });
   } else {
-    gsap.to(nav_links, {
-      opacity: 0,
-      x: 20,
-      filter: "blur(10px)",
-      duration: 0.2,
-      stagger: 0.02,
-      ease: "power2.in"
+    ScrollTrigger.matchMedia({
+      "(min-width: 1025px)": function () {
+        gsap.to(nav_links, {
+          opacity: 0,
+          x: 20,
+          filter: "blur(10px)",
+          duration: 0.2,
+          stagger: 0.02,
+          ease: "power2.in"
+        });
+      }
     });
     setTimeout(() => {body.classList.remove("hide__scroll");}, 1200)
     setTimeout(() => {header_menu.classList.remove("header__menu__active");}, 100);
