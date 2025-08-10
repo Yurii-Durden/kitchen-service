@@ -84,27 +84,32 @@ ScrollTrigger.matchMedia({
 });
 
 
-window.addEventListener("DOMContentLoaded", () => {
-  const titleLetters = document.querySelectorAll(".fade__about__title");
-  const aboutWords = document.querySelectorAll(".fade__about");
+ScrollTrigger.matchMedia({
+  "(min-width: 1024px)": function () {
+    window.addEventListener("DOMContentLoaded", () => {
+      const titleLetters = document.querySelectorAll(".fade__about__title");
+      const aboutWords = document.querySelectorAll(".fade__about");
 
-  gsap.to(titleLetters, {
-    opacity: 1,
-    x: 0,
-    filter: "blur(0px)",
-    duration: 1,
-    ease: "power2.out",
-    stagger: 0.09,
-    delay: 0.1
-  });
+      gsap.to(titleLetters, {
+        opacity: 1,
+        x: 0,
+        filter: "blur(0px)",
+        duration: 1,
+        ease: "power2.out",
+        stagger: 0.09,
+        delay: 0.1
+      });
 
-  gsap.to(aboutWords, {
-    opacity: 1,
-    x: 0,
-    filter: "blur(0px)",
-    duration: 1.2,
-    ease: "power2.out",
-    stagger: 0.01,
-    delay: 0.3
-  });
+      gsap.to(aboutWords, {
+        opacity: 1,
+        x: 0,
+        filter: "blur(0px)",
+        duration: 1.2,
+        ease: "power2.out",
+        stagger: 0.01,
+        delay: 0.3
+      });
+    });
+  }
 });
+
