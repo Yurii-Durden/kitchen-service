@@ -361,6 +361,10 @@ body.mobile #cursor {
         filter: blur(0px);
         transform: translate3d(0, 0, 0);
     }
+
+    .nav__items a:hover {
+        transform: translate3d(0, 0, 0);
+    }
 }
 
 @media (max-width: 911px) {
