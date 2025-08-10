@@ -350,6 +350,45 @@
     transform: translate3d(15px, 0, 0);
 }
 
+/*general-media--------------------------*/
+@media (max-width: 1024px) {
+    .fade__title__all {
+        opacity: 1;
+        filter: blur(0px);
+        transform: translate3d(0, 0, 0);
+    }
+
+    .search__form {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        filter: blur(0px);
+    }
+
+    .filter__by__text {
+        opacity: 1;
+        filter: blur(0px);
+        transform: translate3d(0, 0, 0);
+    }
+
+    .create__fade {
+        opacity: 1;
+        filter: blur(0);
+        transform: translate3d(0, 0, 0);
+    }
+
+    .pls__scroll {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+        filter: blur(0px);
+    }
+
+    .fade__pag {
+        opacity: 1;
+        filter: blur(0px);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
 /*cook-media-----------------------------*/
 @media (max-width: 1210px) {
     .cook__title {
