@@ -254,6 +254,15 @@
     }
 }
 
+@media (max-width: 1024px) {
+    .fade__serene,
+    .elise {
+      opacity: 1;
+      filter: blur(0px);
+      transform: translate3d(0, 0, 0);
+    }
+}
+
 @media (max-width: 997px) {
     .project__title {
         bottom: -1%;
