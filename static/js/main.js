@@ -176,35 +176,35 @@ loginBoxes.forEach((box) => {
 
 
 //cursor
-const isMobile = (
-  window.matchMedia("(hover: none) and (pointer: coarse)").matches ||
-  ('ontouchstart' in window) ||
-  navigator.maxTouchPoints > 0
-);
-
-if (isMobile) {
-  document.body.classList.add("mobile");
-} else {
-  const cursor = document.getElementById("cursor");
-
-  let mouseX = 0, mouseY = 0;
-  let posX = 0, posY = 0;
-
-  document.addEventListener("mousemove", e => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-  });
-
-  gsap.ticker.add(() => {
-    posX += (mouseX - posX) * 0.20;
-    posY += (mouseY - posY) * 0.20;
-
-    gsap.set(cursor, {
-      x: posX,
-      y: posY
-    });
-  });
-}
+// const isMobile = (
+//   window.matchMedia("(hover: none) and (pointer: coarse)").matches ||
+//   ('ontouchstart' in window) ||
+//   navigator.maxTouchPoints > 0
+// );
+//
+// if (isMobile) {
+//   document.body.classList.add("mobile");
+// } else {
+//   const cursor = document.getElementById("cursor");
+//
+//   let mouseX = 0, mouseY = 0;
+//   let posX = 0, posY = 0;
+//
+//   document.addEventListener("mousemove", e => {
+//     mouseX = e.clientX;
+//     mouseY = e.clientY;
+//   });
+//
+//   gsap.ticker.add(() => {
+//     posX += (mouseX - posX) * 0.20;
+//     posY += (mouseY - posY) * 0.20;
+//
+//     gsap.set(cursor, {
+//       x: posX,
+//       y: posY
+//     });
+//   });
+// }
 
 
 //cursor hover
