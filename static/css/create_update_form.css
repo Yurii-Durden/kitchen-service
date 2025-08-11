@@ -700,6 +700,7 @@ textarea {
     opacity: 0;
     filter: blur(10px);
     transform: translate3d(15px, 0, 0);
+    cursor: pointer;
 }
 
 .add__another__ing {
