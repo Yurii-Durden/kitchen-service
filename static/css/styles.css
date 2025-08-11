@@ -363,6 +363,12 @@ body.mobile #cursor {
     .nav__items a:hover {
         transform: translate3d(0, 0, 0);
     }
+
+    .fade__header {
+        opacity: 1;
+        filter: blur(0);
+        transform: translate3d(0, 0, 0);
+    }
 }
 
 @media (max-width: 911px) {
