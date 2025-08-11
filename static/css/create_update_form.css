@@ -543,6 +543,7 @@ textarea {
     opacity: 1;
     padding: 0.12rem 5px;
     transition: opacity 1.5s var(--primary-animation);
+    cursor: pointer;
 }
 
 .checked__ing {
@@ -655,6 +656,7 @@ textarea {
     align-items: center;
     justify-content: space-between;
     min-width: 110px;
+    cursor: pointer;
 }
 
 .checked__unit {
