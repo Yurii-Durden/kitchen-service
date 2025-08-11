@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_styles %}
+  <link rel="stylesheet" href="{% static 'css/create_update_form.css' %}">
+{% endblock %}
+
+{% block title %}
+  <title>{{ object|yesno:"Update , Create " }}dish</title>
+{% endblock %}
+
+{% block content %}
+<form action="" method="post" class="dish__type__form" novalidate>
+{% csrf_token %}
+  <section class="section intro">
+    <div class="form__body _container">
+      <div class="form__wrapper form__wrapper__dish">
+        <div class="form__box">
+          <h1 class="dish__type__form__title to__opacity">
+            {% for letter in object|yesno:"Update dish,Create dish" %}{% if letter == " " %}<span class="title__letter">&nbsp;</span>{% else %}<span class="title__letter">{{ letter }}</span>{% endif %}{% endfor %}
+          </h1>
+
+            {% if form.non_field_errors %}
+              <ul class="error__list">
+                {% for error in form.non_field_errors %}
+                  <li class="error__item another__letter">{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+
+            {% for error in form.name.errors %}
+              <div class="error__item another__letter">{{ error }}</div>
+            {% endfor %}
+
+            <div class="dish__group to__opacity">
+              <label for="{{ form.name.id_for_label }}" class="form__label another__letter"><em>{{ form.name.label }}:&nbsp;</em></label>
+              {{ form.name }}
+            </div>
+
+            {% for error in form.price.errors %}
+              <div class="error__item another__letter">{{ error }}</div>
+            {% endfor %}
+
+            <div class="dish__group to__opacity">
+              <label for="{{ form.price.id_for_label }}" class="form__label another__letter"><em>{{ form.price.label }}:&nbsp;</em></label>
+              {{ form.price }}
+            </div>
+
+            {% for error in form.description.errors %}
+              <div class="error__item another__letter">{{ error }}</div>
+            {% endfor %}
+
+            <div class="dish__group__description to__opacity">
+              <label for="{{ form.description.id_for_label }}" class="form__label another__letter"><em>{{ form.description.label }}:&nbsp;</em></label>
+              {{ form.description }}
+            </div>
+
+            {% for error in form.dish_type.errors %}
+              <div class="error__item another__letter">{{ error }}</div>
+            {% endfor %}
+
+            <div class="dish__group__selected__list __types to__opacity">
+              <label class="form__label check__box another__letter">
+                <em>{{ form.dish_type.label }}:&nbsp;</em>
+              </label>
+              <div class="select__list__button hover__elem">
+                <span class="checked__elem hover__elem">
+                  <span class="selected__text">
+                    {% if object %}
+                      {{ object.dish_type }}
+                    {% else %}
+                      ---------
+                    {% endif %}
+                  </span>
+                  <svg class="arrow__down" width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <ul class="dish__type__list">
+                  <li class="dish__type__item">
+                    <label>
+                      <input type="radio" name="dish_type" value="" hidden
+                        {% if not form.dish_type.value %}checked{% endif %}>
+                      <em class="item__text">---------</em>
+                    </label>
+                  </li>
+                  {% for choice in form.dish_type.field.queryset %}
+                    <li class="dish__type__item hover__elem">
+                      <label>
+                        <input type="radio" name="dish_type" value="{{ choice.id }}" hidden
+                          {% if form.dish_type.value|stringformat:"s" == choice.id|stringformat:"s" %}checked{% endif %}>
+                        <em class="item__text">{{ choice.name }}</em>
+                      </label>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+
+            {% for error in form.cooks.errors %}
+                <div class="error__item another__letter">{{ error }}</div>
+            {% endfor %}
+
+            <div class="dish__group__cook to__opacity">
+              <label for="{{ form.cooks.id_for_label }}" class="form__label another__letter"><em>{{ form.cooks.label }}:&nbsp;</em></label>
+              {{ form.cooks }}
+            </div>
+
+            {% for error in form.recipe.errors %}
+              <div class="error__item another__letter">{{ error }}</div>
+            {% endfor %}
+
+            <div class="dish__group__description recipe__box to__opacity">
+              <label for="{{ form.recipe.id_for_label }}" class="form__label recipe__label another__letter"><em>{{ form.recipe.label }}:&nbsp;</em></label>
+              {{ form.recipe }}
+            </div>
+
+          </div>
+        </div>
+      </div>
+  </section>
+  <section class="ing__section" id="ingredients">
+    <div class="ing__body _container">
+      <div class="form__ing__wrapper">
+        <div class="ing__title__box">
+          <h2 class="ing__title to__opacity">
+            <span class="fade">I</span><span class="fade">n</span><span class="fade">g</span><span class="fade">r</span><span class="fade">e</span><span class="fade">d</span><span class="fade">i</span><span class="fade">e</span><span class="fade">n</span><span class="fade">t</span><span class="fade">s</span>
+          </h2>
+        </div>
+
+        {{ formset.management_form }}
+
+        {% if formset.non_form_errors %}
+          <div class="error__item">
+            {{ formset.non_form_errors }}
+          </div>
+        {% endif %}
+
+        {% for form in formset %}
+          {% include 'includes/ingredient_part.html' with form=form index=forloop.counter0 only %}
+        {% endfor %}
+
+        <div id="empty-form-template" style="display: none;">
+          {% include "includes/ingredient_part.html" with form=formset.empty_form index="__prefix__" only %}
+        </div>
+
+        <p id="add-ingredient" class="add__another__ing hover__elem to__opacity">
+          <em class="add__another__ing__box">
+            Add another ingredient
+          </em>
+        </p>
+
+        <button type="submit" class="form__button to__opacity hover__elem">
+          {% for button_letter in object|yesno:'Update,Create' %}<span class="another__letter">{{ button_letter }}</span>{% endfor %}
+        </button>
+      </div>
+    </div>
+  </section>
+</form>
+{% endblock %}
+
+{% block extra_scripts %}
+  <script src="{% static 'js/form_anim.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,233 @@
+.about__box {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10vh;
+}
+
+.title {
+    font-size: 7.5vw;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+}
+
+.title__about {
+    font-size: 10vw;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    padding-bottom: 1.3rem;
+    font-weight: 500;
+}
+
+.about__text {
+    max-width: 400px;
+    width: 100%;
+}
+
+.me__img__box {
+    max-width: 700px;
+    max-height: 600px;
+    width: 100%;
+    height: 100%;
+}
+
+.me__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: bottom;
+}
+
+.what__contacts {
+    padding-top: 10vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.what__text {
+    font-size: 1.6rem;
+    max-width: 650px;
+    width: 100%;
+}
+
+.contacts__wrapper {
+    padding-top: 20vh;
+}
+
+.contact__item {
+    overflow: hidden;
+    position: relative;
+    padding: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.text__item {
+    position: relative;
+    font-size: 1.15rem;
+    z-index: 2;
+    color: var(--primary-color);
+    padding: 0 0.5rem;
+    transition: color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+
+.link {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.contact__arrow {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    fill: var(--primary-color);
+    transition: transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), fill 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+
+.contact__item:hover .text__item {
+    color: var(--back-color);
+}
+
+.contact__item:hover .contact__arrow {
+    fill: var(--back-color);
+    transform: translateX(-10px);
+}
+
+.contact__item::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    will-change: transform;
+    transform: scaleY(0);
+    transform-origin: bottom center;
+    transition: transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+
+.contact__item:hover::before {
+    transform: scaleY(1);
+}
+
+.say__hi {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: transform;
+}
+
+.say_hi_text {
+    position: relative;
+    display: inline-block;
+    transform: translateX(-0.8rem) translateY(-2rem);
+    font-size: 32.9vw;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    font-weight: 300;
+}
+
+.say_hi_link {
+    color: var(--primary-color);
+}
+
+.fade__say__hi {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(25px);
+    transform: translate3d(0, 25%, 0);
+    will-change: transform, opacity, filter;
+}
+
+.fade__about__title,
+.fade__about {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(10px);
+    transform: translate3d(15px, 0, 0);
+    will-change: opacity, filter, transform;
+}
+
+/*media------------------------------------------------*/
+@media (max-width: 1189px) {
+    .about__box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .about__text {
+        text-align: justify;
+        max-width: 100%;
+        margin-bottom: 10vh;
+    }
+
+    .title__about {
+        font-size: 17vw;
+    }
+
+    .title {
+        font-size: 15vw;
+    }
+
+    .what__text {
+        font-size: 1.3rem;
+        text-align: justify;
+        max-width: 100%;
+    }
+
+    .what__contacts {
+        padding-top: 15vh;
+    }
+    .contacts__wrapper {
+        padding-top: 15vh;
+    }
+
+    .contact__item::before {
+        display: none;
+    }
+
+    .contact__item:hover .text__item {
+        color: var(--primary-color);
+    }
+
+    .contact__arrow {
+        display: none;
+    }
+
+    .say__hi__section {
+        padding-top: 10vh;
+        min-height: max-content;
+        padding-bottom: 20vh;
+    }
+}
+
+@media (max-width: 1024px) {
+    .fade {
+        filter: blur(0);
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+
+    .fade__say__hi {
+        opacity: 1;
+        filter: blur(0);
+        transform: translate3d(0, 0, 0);
+    }
+
+    .fade__about__title,
+    .fade__about {
+        opacity: 1;
+        filter: blur(0);
+        transform: translate3d(0, 0, 0);
+    }
+}

@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_styles %}
+  <link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+{% endblock %}
+
+{% block content %}
+  <section class="home__main__section first__section section">
+    <div class="home__main__page__body _container">
+      <h1 class="project__title">
+        <p class="title__text title__text__f"><em><span class="fade__serene">s</span><span class="fade__serene">e</span><span class="fade__serene">r</span><span class="fade__serene">e</span><span class="fade__serene">n</span><span class="fade__serene">e</span></em></p>
+        <p class="title__text title__text__s">
+          <span class="elise__text">
+            <span class="elise">ÉLISE</span>
+          </span>
+        </p>
+      </h1>
+    </div>
+  </section>
+  <section class="info__section section">
+    <div class="info__section__body _container">
+      <div class="big__text__box">
+        <span class="fade__text fade">REDEFINES</span> <span class="b__wh">&nbsp;&nbsp;&nbsp;</span><span class="fade__text fade">CULINARY</span> <span class="b__wh">&nbsp;&nbsp;&nbsp;</span><span class="fade__text fade">SPACES.</span>
+        <br>
+        <span class="fade__text fade">THIS</span> <span class="fade__text fade">PROJECT</span> <span class="fade__text fade">IS</span> <span class="fade__text fade">MORE</span> <span class="fade__text fade">THAN</span> <span class="fade__text fade">JUST</span> <span class="fade__text fade">A</span>
+        <span class="fade__text fade">DESIGN.</span> <span class="fade__text fade">IT</span> <span class="fade__text fade">EMBODIES</span> <span class="fade__text fade">BOTH</span> <span class="fade__text fade">SIMPLICITY</span>
+        <span class="fade__text fade">AND</span> <span class="fade__text fade">BOLDNESS,</span> <span class="fade__text fade">MIRRORING</span> <span class="fade__text fade">THE</span> <span class="fade__text fade">ESSENCE</span>
+        <span class="fade__text fade">OF</span> <span class="fade__text fade">A</span> <span class="fade__text fade">PROFESSIONAL</span> <span class="fade__text fade">KITCHEN.</span>
+      </div>
+      <div class="about__abilities__box">
+        <ul class="about__abilities__text">
+          <li class="ability__item">PROJECT ABILITIES. CREATE NEW DISH TYPES <span class="center__dot">&#8226;</span> <em>allows adding new categories such as appetizers, desserts, vegan dishes, or any custom type tailored to your restaurant's concept.</em></li>
+          <li class="ability__item">EDIT EXISTING DISH TYPES <span class="center__dot">&#8226;</span> <em>modify names, descriptions, or visual icons of current dish categories to better reflect changes in your menu style or branding.</em></li>
+          <li class="ability__item">DELETE UNUSED DISH TYPES <span class="center__dot">&#8226;</span> <em>remove outdated, duplicate, or irrelevant dish categories to maintain a streamlined and easy-to-navigate menu structure.</em></li>
+
+          <li class="ability__item">CREATE NEW DISHES <span class="center__dot">&#8226;</span> <em>add entirely new meals, complete with names, detailed ingredient lists, preparation steps, high-quality images, and pricing information.</em></li>
+          <li class="ability__item">EDIT EXISTING DISHES <span class="center__dot">&#8226;</span> <em>update recipe details, dish names, ingredients, allergens, or availability to reflect seasonal updates or improve menu consistency.</em></li>
+          <li class="ability__item">DELETE DISHES <span class="center__dot">&#8226;</span> <em>permanently remove dishes that are no longer offered, ensuring the digital and printed menu remains current and relevant.</em></li>
+
+          <li class="ability__item">CREATE NEW COOK PROFILES <span class="center__dot">&#8226;</span> <em>register new kitchen staff members, assigning roles, specialties, working hours, and brief bios or certifications.</em></li>
+          <li class="ability__item">EDIT OR REMOVE EXISTING COOKS <span class="center__dot">&#8226;</span> <em>update personal details, role changes, or remove cook profiles of staff who are no longer employed or active in the kitchen.</em></li>
+          <li class="ability__item">ASSIGN COOKS TO SPECIFIC DISHES <span class="center__dot">&#8226;</span> <em>link individual dishes to specific cooks or teams, ensuring accountability and optimizing workflow within the kitchen.</em></li>
+          <li class="ability__item">ACCESS RESTRICTED TO CHEF ONLY <span class="center__dot">&#8226;</span> <em>limit sensitive administrative functions, like deleting dishes or changing cook assignments, to the head chef to maintain control and consistency.</em></li>
+        </ul>
+      </div>
+      <div class="numbers__block__info">
+        <ul class="counter__info__list">
+          <li class="info__list__item">
+            <h3 class="info__title">
+              <span class="fade__word__info fade">T</span><span class="fade__word__info fade">Y</span><span class="fade__word__info fade">P</span><span class="fade__word__info fade">E</span><span class="fade__word__info fade">S</span> <span class="fade__word__info fade">O</span><span class="fade__word__info fade">F</span> <span class="fade__word__info fade">D</span><span class="fade__word__info fade">I</span><span class="fade__word__info fade">S</span><span class="fade__word__info fade">H</span><span class="fade__word__info fade">E</span><span class="fade__word__info fade">S</span>
+            </h3>
+            <p class="info__number"><span class="fade__word__info fade">{{ count_of_dishes_type }}</span></p>
+          </li>
+          <li class="info__list__item">
+            <h3 class="info__title">
+              <span class="fade__word__info fade">C</span><span class="fade__word__info fade">O</span><span class="fade__word__info fade">O</span><span class="fade__word__info fade">K</span><span class="fade__word__info fade">S</span>
+            </h3>
+            <p class="info__number"><span class="fade__word__info fade">{{ count_of_cooks }}</span></p>
+          </li>
+          <li class="info__list__item">
+            <h3 class="info__title">
+              <span class="fade__word__info fade">D</span><span class="fade__word__info fade">I</span><span class="fade__word__info fade">S</span><span class="fade__word__info fade">H</span><span class="fade__word__info fade">E</span><span class="fade__word__info fade">S</span>
+            </h3>
+            <p class="info__number"><span class="fade__word__info fade">{{ count_of_dishes }}</span></p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="about__project__section">
+    <div class="about__pr__box _container">
+      <h2 class="title__about__project">
+        <p class="title__about__project__text title__about__project__text__f">
+          <span class="inner__text__el">
+            <span class="fade__word__title fade">E</span><span class="fade__word__title fade">L</span><span class="fade__word__title fade">E</span><span class="fade__word__title fade">G</span><span class="fade__word__title fade">A</span><span class="fade__word__title fade">N</span><span class="fade__word__title fade">T</span>
+          </span>
+        </p>
+        <p class="title__about__project__text title__about__project__text__s">
+          <span class="inner__text__con">
+            <span class="fade__word__title fade">C</span><span class="fade__word__title fade">O</span><span class="fade__word__title fade">N</span><span class="fade__word__title fade">T</span><span class="fade__word__title fade">R</span><span class="fade__word__title fade">O</span><span class="fade__word__title fade">L</span>
+          </span>
+        </p>
+      </h2>
+        <p class="anim__letter about__project__text about__project__left">
+          <em class="italic__text">
+              <span class="fade__word__about fade">k</span><span class="fade__word__about fade">i</span><span class="fade__word__about fade">t</span><span class="fade__word__about fade">c</span><span class="fade__word__about fade">h</span><span class="fade__word__about fade">e</span><span class="fade__word__about fade">n</span>
+          </em>
+           <span>reflects rhythm</span>
+        </p>
+        <p class="anim__letter about__project__text about__project__center">
+          <em class="italic__text">
+            <span class="fade__word__about fade">s</span><span class="fade__word__about fade">y</span><span class="fade__word__about fade">s</span><span class="fade__word__about fade">t</span><span class="fade__word__about fade">e</span><span class="fade__word__about fade">m</span>
+          </em> <span>shapes behavior</span>
+        </p>
+        <p class="anim__letter about__project__text about__project__right">
+          <em class="italic__text">
+            <span class="fade__word__about fade">i</span><span class="fade__word__about fade">n</span><span class="fade__word__about fade">t</span><span class="fade__word__about fade">e</span><span class="fade__word__about fade">r</span><span class="fade__word__about fade">f</span><span class="fade__word__about fade">a</span><span class="fade__word__about fade">c</span><span class="fade__word__about fade">e</span>
+          </em> <span>adapts quietly</span>
+        </p>
+        <p class="anim__letter about__project__text about__project__left">
+          <em class="italic__text">
+            <span class="fade__word__about fade">p</span><span class="fade__word__about fade">r</span><span class="fade__word__about fade">e</span><span class="fade__word__about fade">a</span><span class="fade__word__about fade">s</span><span class="fade__word__about fade">u</span><span class="fade__word__about fade">r</span><span class="fade__word__about fade">e</span>
+          </em> <span>builds naturally</span>
+        </p>
+        <p class="anim__letter about__project__text about__project__center">
+          <em class="italic__text">
+            <span class="fade__word__about fade">w</span><span class="fade__word__about fade">o</span><span class="fade__word__about fade">r</span><span class="fade__word__about fade">k</span><span class="fade__word__about fade">f</span><span class="fade__word__about fade">l</span><span class="fade__word__about fade">o</span><span class="fade__word__about fade">w</span>
+        </em> <span>stays smooth</span>
+        </p>
+        <p class="anim__letter about__project__text about__project__right">
+          <em class="italic__text">
+            <span class="fade__word__about fade">s</span><span class="fade__word__about fade">t</span><span class="fade__word__about fade">r</span><span class="fade__word__about fade">u</span><span class="fade__word__about fade">c</span><span class="fade__word__about fade">t</span><span class="fade__word__about fade">u</span><span class="fade__word__about fade">r</span><span class="fade__word__about fade">e</span>
+          </em> <span>enables clarity</span>
+        </p>
+        <p class="anim__letter about__project__text about__project__left">
+          <em class="italic__text">
+            <span class="fade__word__about fade">r</span><span class="fade__word__about fade">e</span><span class="fade__word__about fade">s</span><span class="fade__word__about fade">p</span><span class="fade__word__about fade">o</span><span class="fade__word__about fade">n</span><span class="fade__word__about fade">s</span><span class="fade__word__about fade">e</span>
+          </em>
+          <span>remains calm</span>
+        </p>
+        <p class="anim__letter about__project__text about__project__center">
+          <em class="italic__text">
+            <span class="fade__word__about fade">d</span><span class="fade__word__about fade">e</span><span class="fade__word__about fade">s</span><span class="fade__word__about fade">i</span><span class="fade__word__about fade">g</span><span class="fade__word__about fade">n</span>
+          </em> <span>avoids noise</span>
+        </p>
+        <p class="anim__letter about__project__text about__project__right">
+          <em class="italic__text">
+            <span class="fade__word__about fade">f</span><span class="fade__word__about fade">o</span><span class="fade__word__about fade">c</span><span class="fade__word__about fade">u</span><span class="fade__word__about fade">s</span>
+          </em> <span>stays sharp</span>
+        </p>
+        <p class="anim__letter about__project__text about__project__left">
+          <em class="italic__text">
+            <span class="fade__word__about fade">e</span><span class="fade__word__about fade">v</span><span class="fade__word__about fade">e</span><span class="fade__word__about fade">r</span><span class="fade__word__about fade">y</span>
+          </em> <span>tool assists</span>
+        </p>
+        <p class="anim__letter about__project__text about__project__center">
+          <em class="italic__text">
+            <span class="fade__word__about fade">n</span><span class="fade__word__about fade">o</span><span class="fade__word__about fade">t</span><span class="fade__word__about fade">h</span><span class="fade__word__about fade">i</span><span class="fade__word__about fade">n</span><span class="fade__word__about fade">g</span>
+          </em> <span>feels forced</span>
+        </p>
+        <p class="anim__letter about__project__text about__project__right">
+          <em class="italic__text">
+            <span class="fade__word__about fade">t</span><span class="fade__word__about fade">e</span><span class="fade__word__about fade">a</span><span class="fade__word__about fade">m</span>
+          </em> <span>flows freely</span>
+        </p>
+        <p class="anim__letter about__project__text about__project__left">
+          <em class="italic__text">
+            <span class="fade__word__about fade">b</span><span class="fade__word__about fade">a</span><span class="fade__word__about fade">l</span><span class="fade__word__about fade">a</span><span class="fade__word__about fade">n</span><span class="fade__word__about fade">c</span><span class="fade__word__about fade">e</span>
+          </em> <span>over chaos</span>
+        </p>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="footer__box _container">
+      <p class="footer__text">
+        <span class="fake__letter">É</span>
+        <span class="project__right">&#xa9;</span><span class="inner__footer__text">S<em>Élise<span class="k__s__text"><span class="fade__word__foot fade">k</span><span class="fade__word__foot fade">i</span><span class="fade__word__foot fade">t</span><span class="fade__word__foot fade">c</span><span class="fade__word__foot fade">h</span><span class="fade__word__foot fade">e</span><span class="fade__word__foot fade">n</span> <span class="fade__word__foot fade">s</span><span class="fade__word__foot fade">e</span><span class="fade__word__foot fade">r</span><span class="fade__word__foot fade">v</span><span class="fade__word__foot fade">i</span><span class="fade__word__foot fade">c</span><span class="fade__word__foot fade">e</span></span></em></span>
+      </p>
+    </div>
+  </footer>
+{% endblock %}
+{% block extra_scripts %}
+  <script src="{% static 'js/home_page_anim.js' %}"></script>
+{% endblock %}

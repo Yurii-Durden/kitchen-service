@@ -1,0 +1,41 @@
+{% load query_transform %}
+
+{% if page_obj.paginator.count %}
+  <div class="pls__scroll">
+    <svg class="angle__down" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="4 9 12 15 20 9"/>
+    </svg>
+  </div>
+{% endif %}
+
+{% if is_paginated %}
+  <div class="pagination__box">
+    <ul class="pagination__list _container">
+      {% if page_obj.has_previous %}
+        <li class="pagination__item">
+          <em>
+            <a href="?{% query_transform request page=page_obj.previous_page_number %}" class="page__link prev__next__button hover__elem">
+              <span class="fade__pag fade__p">p</span><span class="fade__pag fade__p">r</span><span class="fade__pag fade__p">e</span><span class="fade__pag fade__p">v</span>
+            </a>
+          </em>
+        </li>
+      {% endif %}
+      <li class="pagination__item active">
+        <em>
+          <span class="page__count">
+            <span class="fade__pag">{{ page_obj.number }}</span> <span class="fade__pag">of</span> <span class="fade__pag">{{ paginator.num_pages }}</span>
+          </span>
+        </em>
+      </li>
+      {% if page_obj.has_next %}
+        <li class="pagination__item">
+          <em>
+            <a href="?{% query_transform request page=page_obj.next_page_number %}" class="page__link prev__next__button hover__elem">
+              <span class="fade__pag fade__p">n</span><span class="fade__pag fade__p">e</span><span class="fade__pag fade__p">x</span><span class="fade__pag fade__p">t</span>
+            </a>
+          </em>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+{% endif %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_styles %}
+  <link rel="stylesheet" href="{% static 'css/create_update_form.css' %}">
+{% endblock %}
+
+{% block title %}
+  <title>{{ object|yesno:"Update , Create " }}dish type</title>
+{% endblock %}
+
+{% block content %}
+  <section class="section">
+    <div class="form__body _container">
+      <div class="form__wrapper">
+        <div class="form__box">
+          <h1 class="dish__type__form__title">
+            {% for letter in object|yesno:"Update dish type,Create dish type" %}{% if letter == " " %}<span class="title__letter">&nbsp;</span>{% else %}<span class="title__letter">{{ letter }}</span>{% endif %}{% endfor %}
+          </h1>
+          <form action="" method="post" class="dish__type__form">
+            {% csrf_token %}
+
+            {% if form.name.errors %}
+              <ul class="error__list">
+                {% for error in form.name.errors %}
+                  <li class="error__item">{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+
+            <div class="form__group__dish__type">
+              <label for="{{ form.name.id_for_label }}" class="form__label">
+                <em>
+                  {% for label_letter in form.name.label %}<span class="another__letter">{{ label_letter }}</span>{% endfor %}<span class="another__letter">:&nbsp;</span>
+                </em>
+              </label>
+              {{ form.name }}
+            </div>
+            <button type="submit" class="form__button hover__elem">
+              {% for button_letter in object|yesno:'Update,Create' %}<span class="another__letter">{{ button_letter }}</span>{% endfor %}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block extra_scripts %}
+  <script src="{% static 'js/form_anim.js' %}"></script>
+{% endblock %}

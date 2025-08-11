@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  <title>Login</title>
+{% endblock %}
+
+{% block extra_styles %}
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="log__wrapper _container">
+    <div class="log__body">
+
+      <h1 class="login__title login__title__media">
+        <span class="title__letter">L</span><span class="title__letter">o</span><span class="title__letter">g</span><span class="title__letter">i</span><span class="title__letter">n</span>
+      </h1>
+
+      {% if form.non_field_errors %}
+        <div class="login__error">
+          {% for error in form.non_field_errors %}
+            <p class="help__text">{{ error }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if next %}
+        <p class="help__text">Please login to see this page</p>
+      {% endif %}
+
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+
+        <div class="form__group">
+          {{ form.username.label_tag }}
+          {{ form.username }}
+          {% for error in form.username.errors %}
+            <p class="help__text">{{ error }}</p>
+          {% endfor %}
+        </div>
+
+        <div class="form__group">
+          {{ form.password.label_tag }}
+          {{ form.password }}
+          {% for error in form.password.errors %}
+            <p class="help__text">{{ error }}</p>
+          {% endfor %}
+        </div>
+
+        <button class="login__button button__anim__elem hover__elem" type="submit">
+          <span class="button__fade">L</span><span class="button__fade">o</span><span class="button__fade">g</span><span class="button__fade">i</span><span class="button__fade">n</span>
+        </button>
+
+        <input type="hidden" name="next" value="{{ next }}"/>
+      </form>
+
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+  <script src="{% static 'js/login_anim.js' %}"></script>
+{% endblock %}

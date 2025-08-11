@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  <title>Ingredients</title>
+{% endblock %}
+
+{% block extra_styles %}
+  <link rel="stylesheet" href="{% static 'css/list_pages.css' %}">
+{% endblock %}
+
+{% block content %}
+  <section class="pinned__section section">
+    {% include "includes/pagination.html" %}
+    <div class="main__block _container">
+      {% if not ingredients_list %}
+        <p class="no__data__text">
+          <em>Here aren`t ingredients</em>
+        </p>
+      {% endif %}
+        <h1 class="page__all__title ingredients__title">
+          <span><span class="fade__title__all">A</span><span class="fade__title__all">L</span><span class="fade__title__all">L</span></span> <span><span class="fade__title__all">I</span><span class="fade__title__all">N</span><span class="fade__title__all">G</span><span class="fade__title__all">R</span><span class="fade__title__all">E</span><span class="fade__title__all">D</span><span class="fade__title__all">I</span><span class="fade__title__all">E</span><span class="fade__title__all">N</span><span class="fade__title__all">T</span><span class="fade__title__all">S</span></span>
+        </h1>
+        {% include "includes/search_form.html" %}
+        {% include 'includes/filter_by.html' %}
+      </div>
+    </section>
+    <section class="scrollable__section section">
+      <div class="choose__box _container">
+        <ul class="choose__type__list">
+          <li class="choose__type__item target__block">
+            <em>
+              <a class="filter__by__link to__anim__elem hover__elem" href="{% url 'kitchenflow:ingredients-list' %}">
+                All types
+              </a>
+            </em>
+          </li>
+          {% for type in ingredients_types %}
+            <li class="choose__type__item target__block">
+              <em>
+                <a
+                    class="filter__by__link to__anim__elem hover__elem"
+                    href="{% url 'kitchenflow:ingredients-list' %}?type={{ type.name }}{% if request.GET.name %}&name={{ request.GET.name }}{% endif %}"
+                >
+                  {{ type.name }}
+                </a>
+              </em>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="page__list__box _container">
+        {% if ingredients_list %}
+          <ul class="data__list">
+            {% for ingredient in ingredients_list %}
+              <li class="ingredient__list__item target__block">
+                <a class="ingredient__link to__anim__elem hover__elem" href="{% url 'kitchenflow:ingredient-detail' ingredient.id %}">
+                  <span class="ingredient">{{ ingredient.name }}</span>
+                  <span class="ingredient__type">{{ ingredient.ingredient_type }}</span>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+  </section>
+{% endblock %}
+
+{% block extra_scripts %}
+  <script src="{% static 'js/list_page_anim.js' %}"></script>
+{% endblock %}

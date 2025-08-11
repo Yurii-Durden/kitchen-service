@@ -1,0 +1,385 @@
+/*first-section---------------------------------------------*/
+.home__main__page__body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    will-change: transform;
+}
+
+.project__title {
+    position: absolute;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -3%;
+}
+
+.title__text {
+    line-height: 0.84;
+    font-weight: 500;
+}
+
+.title__text__f {
+    font-size: 17.7vw;
+    font-weight: 300;
+    padding-left: 5px;
+    letter-spacing: -0.03em;
+}
+
+.title__text__s {
+    font-size: 37.75vw;
+    font-weight: 400;
+    margin-top: 30px;
+    padding-right: 5px;
+    letter-spacing: -0.05em;
+    text-align: right;
+}
+
+.elise__text {
+    display: inline-block;
+    transform: translate3d(-2px, 0, 0);
+}
+
+/*big-text----------------------------------------------*/
+.big__text__box {
+    font-size: 5.0vw;
+    line-height: 4.5vw;
+    position: relative;
+    font-weight: 400;
+    letter-spacing: -.03em;
+    padding-top: 33px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    text-align: justify;
+    width: 100%;
+}
+
+.about__abilities__box {
+    margin-bottom: 15.9vh;
+    font-weight: 400;
+    line-height: 1.3;
+    text-align: justify;
+}
+
+.ability__italic {
+    font-family: "Ogg-light", serif;
+}
+
+.ability__item {
+    display: inline;
+}
+
+.counter__info__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+}
+
+.info__list__item {
+    display: flex;
+    flex-direction: column;
+}
+
+.info__title {
+    font-weight: 600;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+.info__number {
+    font-family: "Cormorant Infant", serif;
+    text-align: center;
+    font-weight: 600;
+}
+
+.numbers__block__info {
+    margin-bottom: 15.9vh;
+}
+
+.title__about__project {
+    padding-bottom: 60px;
+}
+
+.title__about__project__text {
+    font-size: 13.5vw;
+    line-height: 0.71;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+}
+
+.title__about__project__text__f {
+    text-align: left;
+}
+
+.inner__text__el {
+    display: inline-block;
+    transform: translateX(-5px);
+}
+
+.title__about__project__text__s {
+    text-align: right;
+}
+
+.inner__text__con {
+    display: inline-block;
+    transform: translateX(-4px);
+}
+
+.about__pr__box {
+    position: relative;
+    will-change: transform;
+}
+
+.about__project__text {
+    font-size: 6.1vw;
+    line-height: 7.0vw;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+}
+
+.italic__text {
+    text-transform: lowercase;
+    letter-spacing: normal;
+}
+
+.about__project__left {
+    text-align: left;
+}
+
+.about__project__center {
+    text-align: center;
+}
+
+.about__project__right {
+    text-align: right;
+}
+
+/*info-section-----------------------------------------------------*/
+.info__section__body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*about-me-block------------------------------------------*/
+.about__me__box {
+    display: flex;
+    justify-content: space-between;
+    will-change: transform;
+}
+
+.box__to__hide {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+}
+
+.letter {
+    display: inline-block;
+    will-change: transform, opacity;
+}
+
+.fade__serene,
+.elise {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(10px);
+  transform: translate3d(15px, 0, 0);
+  will-change: opacity, filter, transform;
+}
+
+/*FOOTER---------------------------------------------*/
+.footer {
+    width: 100%;
+}
+
+.footer__box {
+    padding-top: 35px;
+    padding-bottom: 130px;
+}
+
+.footer__text {
+    position: relative;
+    white-space: nowrap;
+    font-size: 32.9vw;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    font-weight: 300;
+}
+
+.k__s__text {
+    font-size: 2.4vw;
+    font-family: "Cormorant Infant", serif;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.project__right {
+    position: absolute;
+    display: inline-block;
+    left: -0.073em;
+    bottom: 0;
+    line-height: 1.18;
+}
+
+.inner__footer__text {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: inline-block;
+}
+
+.fake__letter {
+    font-size: 32.9vw;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    opacity: 0;
+}
+
+.fade__word__foot {
+    display: inline-block;
+    filter: blur(10px);
+    opacity: 0;
+    transform: translate3d(10px, 0px, 0px);
+    will-change: transform, opacity, filter;
+}
+
+/*media---------------------------------------------------*/
+@media (max-width: 1376px) {
+    .about__project__text {
+        line-height: 7.5vw;
+    }
+}
+
+@media (max-width: 1024px) {
+    .fade__serene,
+    .elise {
+      opacity: 1;
+      filter: blur(0px);
+      transform: translate3d(0, 0, 0);
+    }
+}
+
+@media (max-width: 997px) {
+    .project__title {
+        bottom: -1%;
+    }
+
+    .big__text__box {
+        padding-top: 20px;
+        font-size: 6.0vw;
+        line-height: 6.5vw;
+    }
+
+    .numbers__block__info {
+        margin-bottom: 10vh;
+    }
+
+    .title__about__project__text {
+        font-size: 18vw;
+        line-height: 0.75;
+    }
+
+    .title__about__project {
+        padding-bottom: 30px;
+    }
+
+    .inner__text__con {
+        transform: translateX(0px);
+    }
+
+    .about__project__text {
+        font-size: 6.0vw;
+        line-height: 9.0vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .project__title {
+        bottom: -1%;
+    }
+
+    .about__abilities__box {
+        display: none;
+    }
+
+    .numbers__block__info {
+        margin-bottom: 0;
+    }
+
+    .counter__info__list {
+        gap: 70px;
+        margin-bottom: 15vh;
+        font-weight: 400;
+    }
+
+    .big__text__box {
+        padding-bottom: 0;
+        margin-bottom: 15vh;
+        font-weight: 500;
+    }
+
+    .info__section {
+        min-height: auto;
+    }
+
+    .about__project__text {
+        font-weight: 500;
+    }
+}
+
+@media (max-width: 676px) {
+    .info__title {
+        font-weight: 600;
+    }
+
+    .info__number {
+        font-weight: 600;
+    }
+
+    .about__project__text {
+        font-size: 7.7vw;
+        line-height: 14vw;
+        font-weight: 400;
+    }
+
+    .title__about__project__text {
+        font-size: 19vw;
+        line-height: 0.77;
+    }
+
+    .big__text__box {
+        padding-top: 20px;
+        font-size: 6.7vw;
+        line-height: 8.5vw;
+        font-weight: 400;
+    }
+
+    .b__wh {
+        display: none;
+    }
+}
+
+/*footer-media---------------------------------------*/
+@media (max-width: 881px) {
+    .fade {
+        filter: blur(0);
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+
+    .footer__box {
+        padding-bottom: 30px;
+    }
+}
+
+@media (max-width: 1257px) {
+    .fade {
+        filter: blur(0);
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}

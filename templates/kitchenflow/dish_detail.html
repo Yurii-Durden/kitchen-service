@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+{% load static %}
+{% load letter_transform %}
+
+{% block extra_styles %}
+  <link rel="stylesheet" href="{% static 'css/personal_page.css' %}">
+{% endblock %}
+
+{% block title %}
+  <title>{{ dish.name }}</title>
+{% endblock %}
+
+{% block content %}
+  <section class="first__section section">
+    <div class="personal__box _container">
+      <h1 class="dish__personal__title">
+        <span class="title__anim__item">{{ dish.name }}</span>
+      </h1>
+
+      {% if dish.description %}
+        <p class="dish__description load__anim__item">
+          <em>
+            {{ dish.description|letter_transform }}
+          </em>
+        </p>
+      {% endif %}
+
+      <p class="dish__type load__anim__item">
+        <em>
+          dish type — {{ dish.dish_type.name }}
+        </em>
+      </p>
+      <p class="dish__price load__anim__item">
+        <em>
+          prise — <span class="num__price">{{ dish.price }}</span>$
+        </em>
+      </p>
+
+      {% if user.is_chef %}
+        <div class="button__item b__d button__item__f">
+          <a class="delete__update__button d__but hover__elem" href="{% url 'kitchenflow:dish-update' dish.id %}">
+            <em>
+              <span class="anim__button">U</span><span class="anim__button">p</span><span class="anim__button">d</span><span class="anim__button">a</span><span class="anim__button">t</span><span class="anim__button">e</span> <span class="anim__button">d</span><span class="anim__button">i</span><span class="anim__button">s</span><span class="anim__button">h</span>
+            </em>
+          </a>
+        </div>
+        <div class="button__item b__d button__item__s">
+          <a class="delete__update__button d__but hover__elem" href="{% url 'kitchenflow:dish-delete' dish.id %}">
+            <em>
+              <span class="anim__button">D</span><span class="anim__button">e</span><span class="anim__button">l</span><span class="anim__button">e</span><span class="anim__button">t</span><span class="anim__button">e</span> <span class="anim__button">d</span><span class="anim__button">i</span><span class="anim__button">s</span><span class="anim__button">h</span>
+            </em>
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+
+  <section class="ing__section">
+    <div class="ingredient__box _container">
+    {% if dish.recipe %}
+      <h2 class="recipe__second__title">
+        <span class="rec__fade">R</span><span class="rec__fade">e</span><span class="rec__fade">c</span><span class="rec__fade">i</span><span class="rec__fade">p</span><span class="rec__fade">e</span>
+      </h2>
+      <p class="recipe__text">
+        <em>
+          {{ dish.recipe }}
+        </em>
+      </p>
+    {% endif %}
+
+      <h3 class="ing__second__title">
+        <span class="ing__fade">I</span><span class="ing__fade">n</span><span class="ing__fade">g</span><span class="ing__fade">r</span><span class="ing__fade">e</span><span class="ing__fade">d</span><span class="ing__fade">i</span><span class="ing__fade">e</span><span class="ing__fade">n</span><span class="ing__fade">t</span><span class="ing__fade">s</span>
+      </h3>
+
+      {% if user.is_chef %}
+      	<em class="update__add__ing__button hover__elem">
+          <a href="{% url 'kitchenflow:dish-update' dish.id %}#ingredients" class="update__add__ing">
+            <span class="fade__ing">U</span><span class="fade__ing">p</span><span class="fade__ing">d</span><span class="fade__ing">a</span><span class="fade__ing">t</span><span class="fade__ing">e</span><span class="fade__ing">&nbsp;</span><span class="fade__ing">i</span><span class="fade__ing">n</span><span class="fade__ing">g</span><span class="fade__ing">r</span><span class="fade__ing">e</span><span class="fade__ing">d</span><span class="fade__ing">i</span><span class="fade__ing">e</span><span class="fade__ing">n</span><span class="fade__ing">t</span><span class="fade__ing">s</span>
+          </a>
+        </em>
+      {% endif %}
+
+      {% if dish.ingredients.exists %}
+        <div class="ingredients__box">
+          <ul class="ingredients__list">
+            {% for ingredient in dish.dishes.all %}
+            	<li class="ingredient__item hover__list">
+                <em class="ing__info">
+                  <span>{{ ingredient.ingredient.name }} — <span class="ing__info__num">{{ ingredient.amount }}</span> {{ ingredient.get_unit_display }}</span>
+                </em>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% else %}
+        <p class="no__text__ing">
+          <em>There aren’t any ingredients</em>
+        </p>
+      {% endif %}
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="list__box _container">
+      <h4 class="dish__second__title">
+        <span class="fade">C</span><span class="fade">o</span><span class="fade">o</span><span class="fade">k</span><span class="fade">s</span>
+      </h4>
+
+      {% if user.is_chef %}
+        <button type="button" class="add__cook__button button__item hover__elem">
+          <em>
+            <span class="anim__button">A</span><span class="anim__button">d</span><span class="anim__button">d</span> <span class="anim__button">c</span><span class="anim__button">o</span><span class="anim__button">o</span><span class="anim__button">k</span>
+            <span class="anim__button">
+              <svg class="arrow__down" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </em>
+        </button>
+      {% endif %}
+
+      <div class="cooks__box">
+        {% if user.is_chef %}
+          <ul class="cooks__list">
+            {% for cook in cooks %}
+              {% if cook not in dish.cooks.all %}
+                <li class="cook__list__item hover__list">
+                  <a class="cook__list__link hover__elem" href="{% url 'kitchenflow:remove-from-cooking' dish.id cook.id %}">
+                    <span>{{ cook.first_name }} {{ cook.last_name }}</span><span class="add__cook__plus">+</span>
+                  </a>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        {% if dish.cooks.exists %}
+          <ul class="added__cooks__list">
+            {% for cook in dish.cooks.all %}
+              <li class="added__cook__item hover__list">
+                <a class="added__cook__link added__cook__person hover__elem" href="{% url 'kitchenflow:cook-detail' cook.id %}">{{ cook.first_name }} {{ cook.last_name }}</a>
+                {% if user.is_chef %}
+                  <a class="added__cook__link remove__button hover__elem" href="{% url 'kitchenflow:remove-from-cooking' dish.id cook.id %}">remove from cooking</a>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="no__text__dish">No cooks</p>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block extra_scripts %}
+  <script src="{% static 'js/personal_page_anim.js' %}"></script>
+{% endblock %}

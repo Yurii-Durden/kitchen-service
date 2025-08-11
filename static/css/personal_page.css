@@ -1,0 +1,684 @@
+/*START-----general--------------------------------------------*/
+.title__anim__item {
+    display: inline-block;
+    transform: translate3d(25px, 0, 0);
+    opacity: 0;
+    filter: blur(10px);
+}
+
+.load__anim__item {
+    display: block;
+    transform: translateX(15px);
+    opacity: 0;
+    filter: blur(10px);
+}
+
+.personal__box {
+    margin-top: 10vh;
+}
+
+.personal__title {
+    display: inline-block;
+    padding-right: 10px;
+    font-size: 9vw;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    will-change: transform;
+}
+
+/*buttons----------------------------------------*/
+
+.button__item__f {
+    margin-bottom: 8vh;
+}
+
+.delete__update__button {
+    display: inline-block;
+    will-change: opacity, transform, filter;
+    font-size: clamp(16px, 2vw, 22px);
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.button__item {
+    max-width: max-content;
+    opacity: 0;
+    transform: translateX(15px);
+    filter: blur(10px);
+    will-change: opacity, transform, filter;
+}
+
+.anim__button {
+    display: inline-block;
+    will-change: opacity, transform, filter;
+}
+
+/*list------------------------------------------------*/
+.list__box {
+    margin-bottom: 20vh;
+}
+
+.second__title {
+    font-size: 7.5vw;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+}
+
+.list__link {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding-left: 10px;
+    position: absolute;
+    font-size: clamp(16px, 2vw, 23px);
+    font-style: italic;
+    color: var(--primary-color);
+    transition: color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    z-index: 2;
+}
+
+.list__item {
+    position: relative;
+    padding: 2.6rem 0;
+}
+
+.list__item:hover .list__link {
+    color: var(--back-color);
+}
+
+.list__item::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    will-change: transform;
+    transform: scaleY(0);
+    transform-origin: bottom center;
+    transition: transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+
+.list__item:hover::before {
+    transform: scaleY(1);
+}
+
+/*no-text--------------------------------------*/
+.no__text {
+    position: absolute;
+    font-style: italic;
+    display: block;
+    opacity: 0;
+    filter: blur(10px);
+    transform: translate3d(15px, 0, 0);
+    left: 0;
+    bottom: 5%;
+    width: 100%;
+    text-align: center;
+}
+/*END-general--------------------------------------------*/
+/*cook-personal------------------------------*/
+.y__o__experience {
+    font-size: clamp(16px, 2vw, 22px);
+    font-weight: 500;
+
+}
+
+.y {
+    margin-bottom: 8vh;
+}
+
+.exp__number {
+    font-family: "Cormorant Infant", serif;
+}
+
+/*dish-personal------------------------------*/
+.dish__personal__title {
+    display: inline-block;
+    padding-right: 10px;
+    font-size: 6.5vw;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    will-change: transform;
+}
+
+.dish__second__title {
+    font-size: 7vw;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+}
+
+.dish__description {
+    margin-top: 3vh;
+    font-size: clamp(16px, 2vw, 22px);
+    font-weight: 500;
+}
+
+.dish__type {
+    text-transform: lowercase;
+    font-size: clamp(16px, 2vw, 22px);
+    font-weight: 500;
+}
+
+.dish__price {
+    font-size: clamp(16px, 2vw, 22px);
+    font-weight: 500;
+    margin-bottom: 8vh;
+}
+
+.num__price {
+    font-family: "Cormorant Infant", serif;
+}
+
+.no__text__dish {
+    position: absolute;
+    font-style: italic;
+    display: block;
+    left: 0;
+    top: 5%;
+    width: 100%;
+    text-align: start;
+    padding-left: 10px;
+}
+/*added-ingredients----------------------------------*/
+.no__text__ing {
+    margin-top: 6vh;
+    padding-left: 10px;
+}
+
+.fade__ing {
+    display: inline-block;
+}
+
+.ing__section {
+    min-height: max-content;
+    width: 100%;
+    display: flex;
+    margin-bottom: 20vh;
+    position: relative;
+    z-index: 5;
+}
+
+.ing__second__title, .recipe__second__title {
+    font-size: 7vw;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin-bottom: 3.5vh;
+}
+
+.ing__fade, .rec__fade {
+    display: inline-block;
+    filter: blur(10px);
+    opacity: 0;
+    transform: translate3d(15px, 0px, 0px);
+    will-change: transform, opacity, filter;
+}
+
+.ing__number {
+    font-weight: 500;
+    font-family: "Cormorant Infant", serif;
+}
+
+.update__add__ing__button a {
+    font-size: clamp(16px, 2vw, 23px);
+    color: var(--primary-color);
+    margin-left: 10px;
+    font-weight: 600;
+}
+
+.ingredients__box {
+    position: relative;
+}
+
+.ingredients__list {
+    margin-top: 4vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.ing__info {
+    padding: 1.7rem 10px;
+    display: flex;
+    font-size: clamp(16px, 2vw, 23px);
+    font-style: italic;
+    color: var(--primary-color);
+    transition: color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    z-index: 2;
+}
+
+.ingredient__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.ing__info__num {
+    font-family: "Cormorant Infant", serif;
+}
+
+.ingredient__item:hover .ing__info {
+    color: var(--back-color);
+}
+
+.ingredient__item::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    will-change: transform;
+    transform: scaleY(0);
+    transform-origin: bottom center;
+    transition: transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+
+.ingredient__item:hover::before {
+    transform: scaleY(1);
+}
+
+/*recipe----------------------------------------------*/
+.recipe__text {
+    font-size: clamp(16px, 2vw, 30px);
+    font-weight: 500;
+    max-width: 650px;
+    width: 100%;
+    margin-bottom: 20vh;
+}
+
+/*added-cooks-----------------------------------------*/
+.cooks__box {
+    position: relative;
+}
+
+.added__cooks__list {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.added__cook__link {
+    padding: 1.7rem 0;
+    display: flex;
+    font-size: clamp(16px, 2vw, 23px);
+    font-style: italic;
+    color: var(--primary-color);
+    transition: color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    z-index: 2;
+}
+
+.added__cook__person {
+    padding-right: 50px;
+}
+
+.added__cook__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 0 10px;
+
+}
+
+.added__cook__item:hover .added__cook__link {
+    color: var(--back-color);
+}
+
+.added__cook__item::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    will-change: transform;
+    transform: scaleY(0);
+    transform-origin: bottom center;
+    transition: transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+
+.added__cook__item:hover::before {
+    transform: scaleY(1);
+}
+
+.remove__button {
+    padding-left: 100px;
+    transition: transform 1.5s var(--primary-animation);
+}
+
+.remove__button:hover {
+    transform: translate3d(-15px, 0, 0);
+}
+
+/*cook-list--------------------------------------*/
+.second__section {
+    padding-bottom: 20vh;
+}
+
+.add__cook__button {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(16px, 2vw, 23px);
+    color: var(--primary-color);
+    margin-left: 10px;
+    font-weight: 600;
+    margin-bottom: 4vh;
+    background-color: var(--back-color);
+}
+
+.arrow__down {
+    transform: translateY(3px);
+    transition: transform 1s var(--primary-animation);
+    transform-origin: center;
+}
+
+.arrow__down__active {
+    transform: translateY(2px) rotate(-180deg);
+}
+
+.cooks__list {
+    pointer-events: none;
+    opacity: 0;
+    height: max-content;
+    display: none;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.cook__list__link {
+    width: 100%;
+    height: 100%;
+    padding: 1.7rem 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: clamp(16px, 2vw, 23px);
+    font-style: italic;
+    color: var(--primary-color);
+    transition: color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    z-index: 2;
+}
+
+.cook__list__item {
+    display: flex;
+    gap: 50px;
+    position: relative;
+}
+
+.cook__list__item:hover .cook__list__link {
+    color: var(--back-color);
+}
+
+.cook__list__item::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    will-change: transform;
+    transform: scaleY(0);
+    transform-origin: bottom center;
+    transition: transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+
+.cook__list__item:hover::before {
+    transform: scaleY(1);
+}
+
+.add__cook__plus {
+    font-size: clamp(16px, 2vw, 27px);
+    font-weight: 600;
+    transition: transform 1.5s var(--primary-animation);
+}
+
+.cook__list__item:hover .add__cook__plus {
+    transform: translate3d(-15px, 0, 0);
+}
+
+/*pagination---------------------------------*/
+.pagination__box {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-top: 10vh;
+    z-index: 100;
+    width: 100%;
+}
+
+.pagination__list {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 1rem;
+}
+
+.page__count {
+    font-family: "Cormorant Infant", serif;
+    font-size: clamp(16px, 2.5vw, 22px);
+    font-weight: 550;
+}
+
+.page__link {
+    color: var(--primary-color);
+}
+
+
+.pagination__item {
+    font-size: clamp(34px, 6vw, 75px);
+    font-weight: 400;
+}
+
+.fade__p {
+    display: inline-block;
+}
+
+.pls__scroll {
+    display: none;
+}
+
+/*INGREDIENTS-------------------------------------*/
+.ingredient__type {
+    font-size: clamp(16px, 2vw, 22px);
+    font-weight: 500;
+    margin-bottom: 8vh;
+    text-transform: lowercase;
+}
+
+.dish__section {
+    margin-bottom: 20vh;
+}
+
+/*media-------------------------------------------*/
+@media (max-width: 1025px) {
+    .second__section {
+        padding-bottom: 0;
+    }
+
+    .button__item__f {
+        margin-bottom: 8vh;
+    }
+
+    .fade {
+        opacity: 1;
+        filter: blur(0);
+        transform: translate3d(0, 0, 0);
+    }
+
+    .list__link {
+        padding-left: 0;
+    }
+
+    .list__item::before {
+        display: none;
+    }
+
+    .list__item:hover .list__link {
+        color: var(--primary-color);
+    }
+
+    .list__box {
+        margin-bottom: 0;
+    }
+
+    .y {
+        margin-bottom: 5vh;
+    }
+
+}
+
+@media (max-width: 950px) {
+    .personal__title {
+        font-size: 12vw;
+        white-space: nowrap;
+    }
+
+    .second__title {
+        font-size: 10.5vw;
+    }
+}
+
+@media (max-height: 916px) {
+    .list__box {
+        margin-bottom: 10vh;
+    }
+}
+
+@media (max-width: 597px) {
+    .list__item {
+        padding: 2.0rem 0;
+    }
+}
+
+/*dish-media----------------------------------------*/
+@media (max-width: 1025px) {
+    .rec__fade, .ing__fade {
+        opacity: 1;
+        filter: blur(0);
+        transform: translate3d(0, 0, 0);
+    }
+
+    .ingredient__item:hover .ing__info {
+        color: var(--primary-color);
+    }
+
+    .ingredient__item::before {
+        display: none;
+    }
+
+    /*dish-type, ingredient-type*/
+    .button__item__t, .button__item__i {
+        margin-top: 3vh;
+        margin-bottom: 5vh;
+    }
+    /*dish-type, ingredient-type*/
+
+    .ing__section {
+        margin-bottom: 10vh;
+    }
+
+    .dish__second__title {
+        margin-bottom: 3.5vh;
+    }
+
+    .ing__info {
+        padding: 1.3rem 0;
+    }
+
+    .added__cook__item {
+        padding: 0 0;
+    }
+
+    .add__cook__button {
+        margin-left: 0;
+    }
+
+    .cook__list__link {
+        padding-left: 0;
+    }
+
+    .added__cook__link {
+        padding-left: 0;
+    }
+
+    .cook__list__item:hover .add__cook__plus {
+        transform: translate3d(0, 0, 0);
+    }
+
+    .update__add__ing__button a {
+        margin-left: 0;
+    }
+
+    .cook__list__item::before {
+        display: none;
+    }
+
+    .cook__list__item:hover .cook__list__link {
+        color: var(--primary-color);
+    }
+
+    .remove__button:hover {
+        transform: translate3d(0, 0, 0);
+    }
+
+    .added__cook__item:hover .added__cook__link {
+        color: var(--primary-color);
+    }
+
+    .added__cook__item::before {
+        display: none;
+    }
+
+    .dish__price {
+        margin-bottom: 5vh;
+    }
+
+    .recipe__text {
+        margin-bottom: 10vh;
+    }
+}
+
+@media (max-width: 696px) {
+    .recipe__second__title,
+    .ing__second__title,
+    .dish__second__title {
+        font-size: 8vw;
+    }
+}
+@media (max-width: 512px) {
+    .dish__personal__title {
+        font-size: 9.3vw;
+    }
+
+    .recipe__second__title,
+    .ing__second__title,
+    .dish__second__title {
+        font-size: 12.0vw;
+    }
+}
+
+@media (max-width: 383px) {
+    .dish__personal__title {
+        font-size: 10vw;
+    }
+}

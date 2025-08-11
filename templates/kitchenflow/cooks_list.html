@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  <title>Cooks</title>
+{% endblock %}
+
+{% block extra_styles %}
+  <link rel="stylesheet" href="{% static 'css/list_pages.css' %}">
+{% endblock %}
+
+{% block content %}
+  <section class="pinned__section section">
+    {% include "includes/pagination.html" %}
+      <div class="main__block _container">
+        {% if not cooks_list %}
+          <p class="no__data__text">
+            <em>Here aren`t cooks</em>
+          </p>
+        {% endif %}
+        <h1 class="page__all__title cook__title main__title">
+          <span class="fade__title__all">A</span><span class="fade__title__all">L</span><span class="fade__title__all">L</span> <span class="fade__title__all">C</span><span class="fade__title__all">O</span><span class="fade__title__all">O</span><span class="fade__title__all">K</span><span class="fade__title__all">S</span>
+        </h1>
+        {% include "includes/search_form.html" %}
+        {% if user.is_chef %}
+          <div>
+            <em>
+              <a class="create__button hover__elem" href="{% url 'kitchenflow:cook-create' %}">
+                <span class="create__fade">C</span><span class="create__fade">r</span><span class="create__fade">e</span><span class="create__fade">a</span><span class="create__fade">t</span><span class="create__fade">e</span> <span class="create__fade">c</span><span class="create__fade">o</span><span class="create__fade">o</span><span class="create__fade">k</span>
+              </a>
+            </em>
+          </div>
+        {% endif %}
+      </div>
+    </section>
+
+    {% if cooks_list %}
+    <section class="scrollable__section section">
+      <div class="page__list__box _container">
+          <ul class="data__list">
+            {% for cook in cooks_list %}
+              <li class="swiper-slider cooks__list__item">
+                <p class="f__s__name">
+                  <span class="first__name fade__f__n">{{ cook.first_name }}</span> <span class="second__name">{{ cook.last_name }}</span>
+                </p>
+                <em>
+                  <a class="username hover__elem" href="{% url 'kitchenflow:cook-detail' cook.id %}">
+                    {% for user_letter in cook.username %}<span class="user__letters">{{ user_letter }}</span>{% endfor %}
+                  </a>
+                </em>
+              </li>
+            {% endfor %}
+          </ul>
+      </div>
+  </section>
+  {% endif %}
+{% endblock %}
+
+{% block extra_scripts %}
+  <script src="{% static 'js/list_page_anim.js' %}"></script>
+{% endblock %}

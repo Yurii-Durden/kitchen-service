@@ -1,0 +1,24 @@
+<div class="filter__by__box">
+  <p class="filter__by__text filter__buttons to__opacity hover__elem">
+    {% if ingredients %}
+    	{% for letter in "filter by ingredient type"|make_list %}<span class="type_name_letter">{{ letter }}</span>{% endfor %}
+    {% else %}
+      {% for letter in "filter by dish type"|make_list %}<span class="type_name_letter">{{ letter }}</span>{% endfor %}
+    {% endif %}
+  </p>
+  {% if user.is_chef %}
+    <div>
+      <em>
+        {% if ingredients %}
+        	<a class="create__button hover__elem" href="{% url 'kitchenflow:ingredients-create' %}">
+              <span class="create__fade">C</span><span class="create__fade">r</span><span class="create__fade">e</span><span class="create__fade">a</span><span class="create__fade">t</span><span class="create__fade">e</span> <span class="create__fade">i</span><span class="create__fade">n</span><span class="create__fade">g</span><span class="create__fade">r</span><span class="create__fade">e</span><span class="create__fade">d</span><span class="create__fade">i</span><span class="create__fade">e</span><span class="create__fade">n</span><span class="create__fade">t</span>
+          </a>
+        {% else %}
+          <a class="create__button to__opacity hover__elem" href="{% url 'kitchenflow:dish-create' %}">
+            <span class="create__fade">C</span><span class="create__fade">r</span><span class="create__fade">e</span><span class="create__fade">a</span><span class="create__fade">t</span><span class="create__fade">e</span> <span class="create__fade">d</span><span class="create__fade">i</span><span class="create__fade">s</span><span class="create__fade">h</span>
+          </a>
+        {% endif %}
+      </em>
+    </div>
+  {% endif %}
+</div>

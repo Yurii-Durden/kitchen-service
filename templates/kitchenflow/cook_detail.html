@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_styles %}
+  <link rel="stylesheet" href="{% static 'css/personal_page.css' %}">
+{% endblock %}
+
+{% block title %}
+  <title>{{ cook.first_name }} {{ cook.last_name }}</title>
+{% endblock %}
+
+{% block content %}
+  <section class="first__section section">
+    <div class="personal__box _container">
+      <h1 class="personal__title">
+        <span class="title__anim__item">{{ cook.first_name }} {{ cook.last_name }}</span>
+      </h1>
+
+      <p class="y__o__experience">
+        <em class="load__anim__item">
+          <span class="exp__number">{{ cook.years_of_experience }}</span> years of experience
+        </em>
+      </p>
+
+      <p class="y__o__experience y">
+        <em class="load__anim__item">{{ cook.username }}</em>
+      </p>
+
+      {% if user.is_chef %}
+        <div class="button__item button__item__f hover__elem">
+          <a class="delete__update__button button__to__anim" href="{% url 'kitchenflow:cook-update' cook.id %}">
+            <em>
+              <span class="anim__button">U</span><span class="anim__button">p</span><span class="anim__button">d</span><span class="anim__button">a</span><span class="anim__button">t</span><span class="anim__button">e</span>
+              <span class="anim__button">c</span><span class="anim__button">o</span><span class="anim__button">o</span><span class="anim__button">k</span>
+            </em>
+          </a>
+        </div>
+
+        <div class="button__item hover__elem">
+          <a class="delete__update__button button__to__anim" href="{% url 'kitchenflow:cook-delete' cook.id %}">
+            <em>
+              <span class="anim__button">D</span><span class="anim__button">e</span><span class="anim__button">l</span><span class="anim__button">e</span><span class="anim__button">t</span><span class="anim__button">e</span>
+              <span class="anim__button">c</span><span class="anim__button">o</span><span class="anim__button">o</span><span class="anim__button">k</span>
+            </em>
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+
+  {% if cook.dishes.exists %}
+    {% if user.username == cook.username or user.is_chef %}
+      <section class="section second__section">
+        <div class="list__box _container">
+          <h3 class="second__title">
+            <span class="fade">D</span><span class="fade">i</span><span class="fade">s</span><span class="fade">h</span><span class="fade">e</span><span class="fade">s</span>
+          </h3>
+
+          <ul class="personal__list">
+            {% for dish in page_obj %}
+              <li class="list__item hover__list">
+                <a class="list__link hover__elem" href="{% url 'kitchenflow:dish-detail' dish.id %}">{{ dish }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+
+          {% include 'includes/pagination.html' %}
+        </div>
+      </section>
+    {% endif %}
+  {% else %}
+    <span class="no__text">No dishes</span>
+  {% endif %}
+{% endblock %}
+
+{% block extra_scripts %}
+  <script src="{% static 'js/personal_page_anim.js' %}"></script>
+{% endblock %}
