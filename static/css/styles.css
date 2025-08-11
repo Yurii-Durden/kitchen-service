@@ -68,7 +68,6 @@ body {
     bottom: 0;
     scrollbar-width: thin;
     scrollbar-color: var(--primary-color) var(--back-color);
-    overflow-x: hidden;
 }
 
 html::-webkit-scrollbar,
@@ -98,7 +97,6 @@ body::-webkit-scrollbar-thumb {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow-x: hidden;
 }
 
 .content {
