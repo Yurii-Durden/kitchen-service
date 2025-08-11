@@ -94,6 +94,7 @@ input:-webkit-autofill {
     font-weight: 500;
     color: var(--back-color);
     background-color: var(--primary-color);
+    cursor: pointer;
 }
 
 .form_input:hover,
