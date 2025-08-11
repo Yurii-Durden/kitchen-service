@@ -656,6 +656,7 @@ textarea {
     align-items: center;
     justify-content: space-between;
     min-width: 110px;
+    cursor: pointer;
 }
 
 .checked__unit {
