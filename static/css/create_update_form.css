@@ -349,7 +349,7 @@ textarea {
 }
 
 .item__text {
-    cursor: none;
+    cursor: pointer;
 }
 
 .dish__type__item label {
@@ -425,7 +425,7 @@ textarea {
     display: inline-block;
     padding: 0.12rem 0;
     color: var(--back-color);
-    cursor: none !important;
+    cursor: pointer !important;
 }
 
 /*DISH-INGREDIENT------------------------------------*/
@@ -503,7 +503,7 @@ textarea {
   display: block;
   width: 100%;
   padding: 0.12rem 5px;
-  cursor: none;
+  cursor: pointer;
 }
 
 .ing__labels {
