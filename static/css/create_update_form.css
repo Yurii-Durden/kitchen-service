@@ -175,7 +175,7 @@ input:-webkit-autofill {
     height: 23px;
     border: none;
     background-color: var(--primary-color);
-    cursor: pointer;
+    /*cursor: pointer;*/
     position: relative;
 }
 
@@ -323,7 +323,7 @@ textarea {
     scrollbar-width: thin;
     scrollbar-color: #9f9f9f var(--primary-color);
     background-color: var(--primary-color);
-    pointer-events: none;
+    /*pointer-events: none;*/
     padding-bottom: 5px;
     z-index: 10;
 }
@@ -348,9 +348,9 @@ textarea {
     background-color: var(--primary-color);
 }
 
-.item__text {
-    cursor: none;
-}
+/*.item__text {*/
+/*    cursor: none;*/
+/*}*/
 
 .dish__type__item label {
     display: block;
@@ -425,7 +425,7 @@ textarea {
     display: inline-block;
     padding: 0.12rem 0;
     color: var(--back-color);
-    cursor: none !important;
+    /*cursor: none !important;*/
 }
 
 /*DISH-INGREDIENT------------------------------------*/
@@ -503,7 +503,7 @@ textarea {
   display: block;
   width: 100%;
   padding: 0.12rem 5px;
-  cursor: none;
+  /*cursor: none;*/
 }
 
 .ing__labels {
@@ -567,7 +567,7 @@ textarea {
     overflow-y: auto;
     background-color: var(--primary-color);
     z-index: 10;
-    pointer-events: none;
+    /*pointer-events: none;*/
     scrollbar-width: thin;
     scrollbar-color: #9f9f9f var(--primary-color);
     transition: all 1.5s var(--primary-animation);
@@ -672,7 +672,7 @@ textarea {
     opacity: 0;
     width: 100%;
     background-color: var(--primary-color);
-    pointer-events: none;
+    /*pointer-events: none;*/
     transform: translate3d(0, -10%, 0);
     transition: all 1.5s var(--primary-animation);
     z-index: 10;
@@ -723,7 +723,7 @@ textarea {
 
 .to__opacity__active {
     opacity: 0.25;
-    pointer-events: none;
+    /*pointer-events: none;*/
     z-index: 1;
 }
 
