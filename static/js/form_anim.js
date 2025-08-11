@@ -325,7 +325,7 @@ document.addEventListener("DOMContentLoaded", () => {
       newIngredientBlock.querySelectorAll("[data-cursor-bound]").forEach(el => {
         delete el.dataset.cursorBound;
       });
-      initCursorHoverEffects();
+      // initCursorHoverEffects();
       ScrollTrigger.refresh();
     });
   }
