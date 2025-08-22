@@ -494,6 +494,7 @@ textarea {
     padding: 5px;
     margin-left: 20px;
     transition: opacity 1.5s var(--primary-animation);
+    cursor: pointer;
 }
 
 .close__opacity {
