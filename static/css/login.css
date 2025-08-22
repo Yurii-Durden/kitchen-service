@@ -35,7 +35,7 @@
 
 .login__button {
     display: block;
-    cursor: pointer;
+    /*cursor: pointer;*/
     font-family: "Cormorant Garamond", serif;
     font-style: italic;
     font-size: clamp(20px, 2vw, 25px);

@@ -87,7 +87,7 @@
     transform: translate3d(15px, 0, 0);
     font-size: clamp(16px, 2vw, 21px);
     font-weight: 600;
-    cursor: pointer;
+    /*cursor: pointer;*/
     font-style: italic;
     margin-bottom: 8vh;
 }

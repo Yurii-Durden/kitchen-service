@@ -94,7 +94,7 @@ input:-webkit-autofill {
     font-weight: 500;
     color: var(--back-color);
     background-color: var(--primary-color);
-    cursor: pointer;
+    /*cursor: pointer;*/
 }
 
 .form_input:hover,
@@ -176,7 +176,7 @@ input:-webkit-autofill {
     height: 23px;
     border: none;
     background-color: var(--primary-color);
-    cursor: pointer;
+    /*cursor: pointer;*/
     position: relative;
 }
 
@@ -296,7 +296,7 @@ textarea {
     font-style: italic;
     height: max-content;
     background-color: var(--primary-color);
-    cursor: pointer;
+    /*cursor: pointer;*/
     position: relative;
     transition: opacity 1.5s var(--primary-animation);
 }
@@ -350,7 +350,7 @@ textarea {
 }
 
 .item__text {
-    cursor: pointer;
+    /*cursor: pointer;*/
 }
 
 .dish__type__item label {
@@ -426,7 +426,7 @@ textarea {
     display: inline-block;
     padding: 0.12rem 0;
     color: var(--back-color);
-    cursor: pointer !important;
+    /*cursor: pointer !important;*/
 }
 
 /*DISH-INGREDIENT------------------------------------*/
@@ -494,7 +494,7 @@ textarea {
     padding: 5px;
     margin-left: 20px;
     transition: opacity 1.5s var(--primary-animation);
-    cursor: pointer;
+    /*cursor: pointer;*/
 }
 
 .close__opacity {
@@ -505,7 +505,7 @@ textarea {
   display: block;
   width: 100%;
   padding: 0.12rem 5px;
-  cursor: pointer;
+  /*cursor: pointer;*/
 }
 
 .ing__labels {
@@ -545,7 +545,7 @@ textarea {
     opacity: 1;
     padding: 0.12rem 5px;
     transition: opacity 1.5s var(--primary-animation);
-    cursor: pointer;
+    /*cursor: pointer;*/
 }
 
 .checked__ing {
@@ -658,7 +658,7 @@ textarea {
     align-items: center;
     justify-content: space-between;
     min-width: 110px;
-    cursor: pointer;
+    /*cursor: pointer;*/
 }
 
 .checked__unit {
@@ -702,7 +702,7 @@ textarea {
     opacity: 0;
     filter: blur(10px);
     transform: translate3d(15px, 0, 0);
-    cursor: pointer;
+    /*cursor: pointer;*/
 }
 
 .add__another__ing {

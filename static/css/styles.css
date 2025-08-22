@@ -39,7 +39,7 @@ input:focus {
     margin: 0;
     border: 0;
     box-sizing: border-box;
-    /*cursor: none;*/
+    cursor: none;
 }
 
 a {
